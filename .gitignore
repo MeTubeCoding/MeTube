@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# React
+build/
+node_modules/
+/.env
+
+# MongoDB
+*.log
+*.lock
+*.mdb
+*.dump
+*.repair
+*.0
+*.ns
+
+# Visual Studio Code
+.vscode/
