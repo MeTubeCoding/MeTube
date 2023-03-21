@@ -8,11 +8,18 @@ const app = express();
 const cors = require('cors');
 const bodyparser = require("body-parser");
 const path = require('path');
+<<<<<<< HEAD
 const { query } = require('express');
 
 const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
 
 const uri = "mongodb+srv://Baptiste:Metube2023*@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+=======
+const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
+const { query } = require('express');
+
+const uri = "mongodb+srv://Username:Password@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+>>>>>>> 839d849 (youpi)
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const fs = require('fs');
