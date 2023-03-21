@@ -11,7 +11,7 @@ const path = require('path');
 const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
 const { query } = require('express');
 
-const uri = "mongodb+srv://Username:Password@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Lucas:1t2t3T4T5T@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const fs = require('fs');
