@@ -1,14 +1,23 @@
 {
-  "name": "shorts",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.18",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^4.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "util": "^0.12.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +43,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cypress": "^12.8.1",
+    "nodemon": "^2.0.20",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   }
 }
