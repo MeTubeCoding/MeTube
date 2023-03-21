@@ -4,11 +4,11 @@ import './App.css';
 
 // import composant  :
 
-import { example } from './test'; 
 
 
-example();
-
+const testounet = <p className='test'>
+        Paul je t'aime
+</p>
 console.log("me voit tu ?")
 
 let test = document.getElementById("test");
@@ -38,7 +38,9 @@ function App() {
         >
           Learn React
         </a>
+      {testounet}
       </header>
+      
     </div>
   );
 }
