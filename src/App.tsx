@@ -5,7 +5,6 @@ import './App.css';
 // import composant  :
 
 import { example } from './test';
-import DropdownMenu from './timeline_components/left_menu/left_menu';
 
 
 example();
@@ -32,7 +31,6 @@ test?.addEventListener("click",()=>{
 
 
 function App() {
-  DropdownMenu();
   return (
     <body>
       <div className = "haut">
