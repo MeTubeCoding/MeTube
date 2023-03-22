@@ -8,7 +8,7 @@
 
 
 /* modification des attributs css  */
-body {
+html {
     background-color: #222;
     color: #fff;
     font-family: 'Roboto', sans-serif;
@@ -38,25 +38,27 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-right: 10%;
+    background-color: #111;
 }
 .Searching {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-right: 10%;
-    margin-right: 10%;
-    border-radius: 5px;
+
+    border-radius: 20px;
     padding: 0.5rem;
-    background-color:#444444;
+    border: 1px solid #444444;
+    background-color : #000;
 }
 .Searching:hover {
     background-color: #333333;
-    color: #ffffff73;
+    color: #fff;
 }
 .rechercher {
     background-color: #444444;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 0.5rem;
     margin-right: 1rem;
     color: #fff;
@@ -64,4 +66,13 @@ body {
 .rechercher:hover {
     background-color: #333333;
     color: #fff;
+}
+.ligne {
+    margin: 1% 1% 1% 1%;
+    display: flex;
+    padding: 1% 1% 1% 1%;
+}
+iframe {
+    margin: 1% 1% 1% 1%;
+    border-radius: 10px;
 }
