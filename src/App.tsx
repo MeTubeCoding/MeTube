@@ -35,15 +35,15 @@ const Menu = () => {
     <div className="menu-container">
       <div className="menu-button" onClick={toggleMenu}>
         {isMenuOpen ? (
-          <i className="material-icons">close</i>
+          <button className="material-icons">Close</button>
         ) : (
-          <i className="material-icons">menu</i>
+          <button className="material-icons">Menu</button>
         )}
       </div>
       <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li>
-            <a href="#">Accueil</a>
+            <a href="index.tsx">Accueil</a>
           </li>
           <li>
             <a href="#">Tendances</a>

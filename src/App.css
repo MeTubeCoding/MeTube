@@ -19,6 +19,11 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.menu-button:hover {
+    cursor: pointer;
+}
+
 .haut {
     background-color: #111;
     color: #fff;
