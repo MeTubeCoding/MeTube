@@ -34,12 +34,21 @@ function App() {
   return (
     <body>
       <div className = "haut">
-        <a href='App.ts'><h1>MeTUBE</h1></a>
+        <a href='App.tsx'><h1>MeTUBE</h1></a>
         <div className="search">
           <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
           <button className='rechercher'>Rechercher</button>
           </div>
       </div>
+
+      <div className="menu">
+        <a href='App.tsx'><button className="accueil">Accueil</button></a>
+        <a href='App.tsx'><button className="tendances">Tendances</button></a>
+        <a href='App.tsx'><button className="abonnements">Abonnements</button></a>
+        <a href='App.tsx'><button className="bibliotheque">Bibliothèque</button></a>
+        <a href='App.tsx'><button className="historique">Historique</button></a>
+      </div>
+
       </body>
   )
 }
