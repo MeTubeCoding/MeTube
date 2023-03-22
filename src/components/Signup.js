@@ -23,7 +23,6 @@ export default function Signup(){
   //handle Signup API Integration here
   const createAccount=()=>{
     let local = signupState;
-    console.log("zerty"+local);
     
     fetch("http://127.0.0.1:5600/data",{
     
