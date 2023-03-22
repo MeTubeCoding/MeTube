@@ -14,6 +14,7 @@ export default function Signup(){
   const handleChange=(e)=>setSignupState({...signupState,[e.target.id]:e.target.value});
 
   const handleSubmit=(e)=>{
+    console.log("qsdfghjklm");
     e.preventDefault();
     console.log(signupState)
     createAccount()
@@ -21,7 +22,24 @@ export default function Signup(){
 
   //handle Signup API Integration here
   const createAccount=()=>{
-
+    let local = signupState;
+    console.log("zerty"+local);
+    
+    fetch("http://127.0.0.1:5600/data",{
+    
+    method : "POST",
+    headers : {
+        "Content-Type" : "application/json"
+    },
+    body : JSON.stringify(local)
+    })
+    .then((res)=>{
+      return res.text();
+      console.log(res)
+    })
+    .then((res)=>{
+      console.log(res)
+    })
   }
 
     return(
