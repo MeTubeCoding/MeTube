@@ -43,6 +43,26 @@ const signupFields=[
         placeholder:"First name"   
     },
     {
+        labelText:"Country",
+        labelFor:"country",
+        id:"country",
+        name:"country",
+        type:"text",
+        autoComplete:"country",
+        isRequired:true,
+        placeholder:"Country"   
+    },
+    {
+        labelText:"City",
+        labelFor:"city",
+        id:"city",
+        name:"city",
+        type:"text",
+        autoComplete:"city",
+        isRequired:true,
+        placeholder:"City"   
+    },
+    {
         labelText:"Username",
         labelFor:"username",
         id:"username",
