@@ -7,9 +7,20 @@
 
 
 
-/* css basique ici à titre d'exemple faudra le tej :  */
+/* modification des attributs css  */
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
 .haut {
-    background-color: #000;
+    background-color: #111;
     color: #fff;
     padding: 1rem;
     display: flex;
@@ -40,7 +51,7 @@
 }
 .Searching:hover {
     background-color: #333333;
-    color: #fff;
+    color: #ffffff73;
 }
 .rechercher {
     background-color: #444444;
