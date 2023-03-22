@@ -40,7 +40,7 @@ const Menu = () => {
           <button className="material-icons">Menu</button>
         )}
       </div>
-      <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
         <ul>
           <li>
             <a href="index.tsx">Accueil</a>
