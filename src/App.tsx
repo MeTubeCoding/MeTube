@@ -25,6 +25,9 @@ function App() {
   return (
     <body>
       <div className = "haut">
+        <div className='menu'>
+          
+        </div>
         <a href='App.ts'><h1>MeTUBE</h1></a>
         <div className="search">
           <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
