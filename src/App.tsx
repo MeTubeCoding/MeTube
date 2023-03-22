@@ -23,19 +23,22 @@ test?.addEventListener("click",()=>{
 
 function App() {
   return (
-    <body>
-      <div className = "haut">
-        <div className='menu'>
-          
-        </div>
-        <a href='App.ts'><h1>MeTUBE</h1></a>
-        <div className="search">
-          <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
-          <button className='rechercher'>Rechercher</button>
-          </div>
+    <div className="haut">
+      <div className='menu'>
       </div>
-      </body>
+      <a href='App.ts'><h1>MeTUBE</h1></a>
+      <div className="search">
+        <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
+        <button className='rechercher'>Rechercher</button>
+      </div>
+    </div>
   )
 }
+
+const video = {
+  titre: "Titre de la vidéo",
+  chaine: "Nom de la chaîne",
+  tags: ["tag1", "tag2", "tag3"]
+};
 
 export default App;
