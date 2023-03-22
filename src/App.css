@@ -26,10 +26,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-right: 10%;
 }
 .Searching {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 10 px;
+    padding-right: 10%;
+    margin-right: 10%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color:#444444;
+}
+.Searching:hover {
+    background-color: #333333;
+    color: #fff;
+}
+.rechercher {
+    background-color: #444444;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    color: #fff;
+}
+.rechercher:hover {
+    background-color: #333333;
+    color: #fff;
 }
