@@ -8,3 +8,22 @@
 
 
 /* css basique ici à titre d'exemple faudra le tej :  */
+.haut {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Searching {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10 px;
+}

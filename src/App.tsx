@@ -24,13 +24,13 @@ test?.addEventListener("click",()=>{
 function App() {
   return (
     <body>
-      <header>
-        <h1>MeTUBE</h1>
+      <div className = "haut">
+        <a href='App.ts'><h1>MeTUBE</h1></a>
         <div className="search">
-          <input type="text" placeholder="Search..." />
-          <button>Search</button>
+          <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
+          <button className='rechercher'>Rechercher</button>
           </div>
-      </header>
+      </div>
       </body>
   )
 }
