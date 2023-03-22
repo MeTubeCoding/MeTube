@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
 // import composant  :
 
 import { example } from './test';
+import { PassThrough } from 'stream';
 
 
 example();
@@ -19,6 +21,47 @@ test?.addEventListener("click",()=>{
     // .then(data => console.log(data))
     // .catch(error => console.error(error));
 });
+
+
+
+const Menu = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <div className="menu-container">
+      <div className="menu-button" onClick={toggleMenu}>
+        {isMenuOpen ? (
+          <i className="material-icons">close</i>
+        ) : (
+          <i className="material-icons">menu</i>
+        )}
+      </div>
+      <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+        <ul>
+          <li>
+            <a href="#">Accueil</a>
+          </li>
+          <li>
+            <a href="#">Tendances</a>
+          </li>
+          <li>
+            <a href="#">Abonnements</a>
+          </li>
+          <li>
+            <a href="#">Bibliothèque</a>
+          </li>
+          <li>
+            <a href="#">Historique</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 
 
@@ -38,18 +81,12 @@ function App() {
         <div className="search">
           <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
           <button className='rechercher'>Rechercher</button>
-          </div>
+        </div>
       </div>
-
-      <div className="menu">
-        <a href='App.tsx'><button className="accueil">Accueil</button></a>
-        <a href='App.tsx'><button className="tendances">Tendances</button></a>
-        <a href='App.tsx'><button className="abonnements">Abonnements</button></a>
-        <a href='App.tsx'><button className="bibliotheque">Bibliothèque</button></a>
-        <a href='App.tsx'><button className="historique">Historique</button></a>
+      <div>
+        {Menu()}
       </div>
-
-      </body>
+    </body>
   )
 }
 
