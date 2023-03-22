@@ -33,7 +33,7 @@ function App() {
         <FontAwesomeIcon icon={faForward} style={{color: "#ebecf0",}} />
         <FontAwesomeIcon icon={faForwardFast} style={{color: "#ebecf0",}} />
         <FontAwesomeIcon icon={faChevronDown} style={{color: "#ebecf0",}} />
-    </div> 
+    </div>  
   )
 }
 
