@@ -11,9 +11,10 @@ const path = require('path');
 const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
 const { query } = require('express');
 
-const uri = "mongodb+srv://Username:Password@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://SM_des_SM:meilleurSM@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
 const fs = require('fs');
 
 var publi = path.join(__dirname, 'nom du dossier Public');
@@ -65,6 +66,30 @@ app.post('/node/sub',(req,res)=>{
     res.end();
     
 });
+
+app.post('/data',(req,res)=>{
+  client.connect(err => {
+
+    async function run() {
+        try {
+          const database = client.db('profile');
+          const movies = database.collection('users');
+        //   console.log("mongo connect")
+          const query = req.body;
+        //   console.log(query); 
+          await movies.insertOne(query);
+        //   console.log(movie);
+        } finally {
+          // Ensures that the client will close when you finish/error
+          await client.close(); 
+        }
+      }
+      run().catch(console.dir);
+});
+
+res.end("eloi aime couilles ")
+
+})
 
 app.get('/demo',(req,res)=>{
   console.log("test");
