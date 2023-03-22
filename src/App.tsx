@@ -7,6 +7,7 @@ import './App.css';
 
 import { example } from './test';
 import { PassThrough } from 'stream';
+import './Tendances.tsx'
 
 
 example();
@@ -23,7 +24,6 @@ test?.addEventListener("click",()=>{
 });
 
 
-
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -33,20 +33,22 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <div className="menu-button" onClick={toggleMenu}>
+      <div className="menu-button" id='Menu' onClick={toggleMenu}>
         {isMenuOpen ? (
+          
           <i className="material-icons">close</i>
         ) : (
+
           <i className="material-icons">menu</i>
         )}
       </div>
       <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li>
-            <a href="#">Accueil</a>
+            <a href="App.tsx">Accueil</a>
           </li>
           <li>
-            <a href="#">Tendances</a>
+            <a href="Tendances.tsx">Tendances</a>
           </li>
           <li>
             <a href="#">Abonnements</a>
@@ -83,9 +85,14 @@ function App() {
   };
 
   return (
-    <body>
+    <div className="App">
       <div className = "haut">
+      <div className='haut_gauche'>
+      <div className='display_menu'>
+        {Menu()}
+      </div>
         <a href='App.tsx'><h1>MeTUBE</h1></a>
+      </div>
         <div className="search">
           <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
           <button className='rechercher'>Rechercher</button>
@@ -123,13 +130,8 @@ function App() {
           ></iframe>
         </div>
       </div>
-      </div>
+    </div>
   );
-      <div>
-        {Menu()}
-      </div>
-    </body>
-  )
 }
 
 export default App;

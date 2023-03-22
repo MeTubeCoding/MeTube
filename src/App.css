@@ -6,7 +6,6 @@
 /* Vos futur classe taiwind :  */
 
 
-
 /* modification des attributs css  */
 html {
     background-color: #222;
@@ -20,12 +19,33 @@ html {
     padding: 0;
 }
 .haut {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+h1{
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+.haut {
     background-color: #111;
     color: #fff;
     padding: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.haut_gauche {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-right: auto;
+}
+.display_menu {
+    margin-right: 10%;
 }
 .menu {
     display: flex;
@@ -47,9 +67,9 @@ html {
     padding-right: 10%;
 
     border-radius: 20px;
-    padding: 0.5rem;
+    padding: 0.5rem 5rem 0.5rem 5rem;
     border: 1px solid #444444;
-    background-color : #000;
+    background-color : #111;
 }
 .Searching:hover {
     background-color: #333333;
