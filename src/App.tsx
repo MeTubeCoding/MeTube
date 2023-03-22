@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHome, faHeart, faHeartBroken, faPaperclip, faVolumeUp, faBookmark, faPaperPlane, faPlay, faPause, faForward, faForwardFast} from '@fortawesome/free-solid-svg-icons';
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faHeart, faHeartBroken, faPaperclip, faVolumeUp, faBookmark, faPaperPlane, faPlay, faPause, faForward, faForwardFast, faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
 
 // import composant  :
