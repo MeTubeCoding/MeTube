@@ -24,8 +24,8 @@ function App() {
       <div className='vidéos'>
         <div className='ligne'>
           <iframe
-            width="357"
-            height="201"
+            width="356"
+            height="200"
             src="https://www.youtube.com/embed/_xiv6JxAiqU"
             title="YouTube video player"
             frameBorder="0"
@@ -34,8 +34,8 @@ function App() {
           ></iframe>
           <br />
           <iframe
-            width="357"
-            height="201"
+            width="356"
+            height="200"
             src="https://www.youtube.com/embed/UUYv3kk37oQ"
             title="YouTube video player"
             frameBorder="0"
@@ -43,8 +43,8 @@ function App() {
             allowFullScreen
           ></iframe>
           <iframe
-            width="357"
-            height="201"
+            width="356"
+            height="200"
             src="https://www.youtube.com//embed/AQSNS-bN-8Y"
             title="YouTube video player"
             frameBorder="0"
