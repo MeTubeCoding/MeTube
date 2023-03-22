@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
 // import composant  :
 
-import { example } from './test'; 
+import { example } from './test';
+import { PassThrough } from 'stream';
 
 
 example();
@@ -21,17 +23,70 @@ test?.addEventListener("click",()=>{
 });
 
 
-function App() {
+
+const Menu = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="haut">
-      <div className='menu'>
+    <div className="menu-container">
+      <div className="menu-button" onClick={toggleMenu}>
+        {isMenuOpen ? (
+          <button className="material-icons">Close</button>
+        ) : (
+          <button className="material-icons">Menu</button>
+        )}
       </div>
-      <a href='App.ts'><h1>MeTUBE</h1></a>
-      <div className="search">
-        <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
-        <button className='rechercher'>Rechercher</button>
+      <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+        <ul>
+          <li>
+            <a href="index.tsx">Accueil</a>
+          </li>
+          <li>
+            <a href="#">Tendances</a>
+          </li>
+          <li>
+            <a href="#">Abonnements</a>
+          </li>
+          <li>
+            <a href="#">Bibliothèque</a>
+          </li>
+          <li>
+            <a href="#">Historique</a>
+          </li>
+        </ul>
       </div>
     </div>
+  );
+};
+
+
+
+
+// ================================================================================================
+// ================================================================================================
+// ================================================================================================
+
+
+
+
+function App() {
+  return (
+    <body>
+      <div className = "haut">
+        <a href='App.tsx'><h1>MeTUBE</h1></a>
+        <div className="search">
+          <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
+          <button className='rechercher'>Rechercher</button>
+        </div>
+      </div>
+      <div>
+        {Menu()}
+      </div>
+    </body>
   )
 }
 
