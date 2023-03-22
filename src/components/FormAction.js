@@ -1,4 +1,4 @@
-function register(){
+/*function register(){
     let local = {
         "name": "test",
         "firstname": "test",
@@ -24,7 +24,7 @@ function register(){
      .then((res)=>{
         console.log(res)
      })
-  }
+  }*/
   
 
 export default function FormAction({

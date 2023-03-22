@@ -87,7 +87,7 @@ app.post('/data',(req,res)=>{
       run().catch(console.dir);
 });
 
-res.end("eloi aime couilles ")
+res.end("trop cool")
 
 })
 

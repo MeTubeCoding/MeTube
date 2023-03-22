@@ -25,7 +25,7 @@ export default function Login(){
     const authenticateUser = () =>{
             
         
-        const endpoint=`https://api.loginradius.com/identity/v2/auth/login?apikey=${apiKey}`;
+        const endpoint=`https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88`;
         fetch(endpoint,
             {
             method:'POST',
