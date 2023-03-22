@@ -35,10 +35,36 @@ function App() {
   )
 }
 
-const video = {
-  titre: "Titre de la vidéo",
-  chaine: "Nom de la chaîne",
-  tags: ["tag1", "tag2", "tag3"]
-};
+function video() {
+  const videos = [
+    {
+      titre: "Titre de la vidéo 1",
+      chaine: "Nom de la chaîne 1",
+      tags: ["tag1", "tag2", "tag3"]
+    },
+    {
+      titre: "Titre de la vidéo 2",
+      chaine: "Nom de la chaîne 2",
+      tags: ["tag4", "tag5", "tag6"]
+    },
+    {
+      titre: "Titre de la vidéo 3",
+      chaine: "Nom de la chaîne 3",
+      tags: ["tag7", "tag8", "tag9"]
+    }
+  ];
+
+  return (
+    <div>
+      {videos.map((video, index) => (
+        <div key={index}>
+          <h2>{video.titre}</h2>
+          <p>Chaîne : {video.chaine}</p>
+          <p>Tags : {video.tags.join(", ")}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default App;
