@@ -16,8 +16,11 @@ import {
   faGear,
   faBan,
   faFlag,
-  faBars
+  faBars,
+  faComment
 } from '@fortawesome/free-solid-svg-icons';
+
+import { Modal, Dropdown} from 'react-bootstrap';
 
 const videoData = [
   {
@@ -39,6 +42,8 @@ const videoData = [
 
 function App() {
   // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  /*LIKES DISLIKES*/
   const [heartColor, setHeartColor] = useState("#ffffff"); // blanc par défaut
   const [heartColorBroken, setHeartColorBroken] = useState("#ffffff"); // blanc par défaut
   
@@ -50,6 +55,48 @@ function App() {
     setHeartColorBroken((prevColor) => (prevColor === "#ffffff" ? "#ef4444" : "#ffffff"));
   };
   
+  /*SETTINGS*/
+  const [showModal, setShowModal] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+  const [showNotRecommended, setShowNotRecommended] = useState(false);
+  const [showReport, setShowReport] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
+
+  const handleShowDescription = () => {
+    setShowDescription(!showDescription);
+    setShowNotRecommended(false);
+    setShowReport(false);
+    setShowFeedback(false);
+  }
+
+  const handleShowNotRecommended = () => {
+    setShowNotRecommended(!showNotRecommended);
+    setShowDescription(false);
+    setShowReport(false);
+    setShowFeedback(false);
+  }
+
+  const handleShowReport = () => {
+    setShowReport(!showReport);
+    setShowDescription(false);
+    setShowNotRecommended(false);
+    setShowFeedback(false);
+  }
+
+  const handleShowFeedback = () => {
+    setShowFeedback(!showFeedback);
+    setShowDescription(false);
+    setShowNotRecommended(false);
+    setShowReport(false);
+  }
   
 
   useEffect(() => {
@@ -83,7 +130,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="short text-white">SHORT</h1>
       <div className="video-container">
         <div>{/* icônes pour le visuel principal */}</div>
         <FontAwesomeIcon icon={faHeart} className="icon" style={{ color: heartColor }} onClick={handleHeartClick}/>
@@ -97,7 +143,6 @@ function App() {
         <FontAwesomeIcon icon={faForward} className="icon" style={{ color: "#f9fafb" }} />
         <FontAwesomeIcon icon={faForwardFast} className="icon" style={{ color: "#f9fafb" }} />
         <FontAwesomeIcon icon={faChevronDown} className="icon" style={{ color: "#f9fafb" }} />
-        <FontAwesomeIcon icon={faGear} className="icon" style={{ color: "#f9fafb" }} />
         <div>{/* icônes pour l'intérieur des paramètres */}</div>
         <FontAwesomeIcon icon={faBan} className="icon" style={{ color: "#f9fafb" }} />
         <FontAwesomeIcon icon={faFlag} className="icon" style={{ color: "#f9fafb" }} />
@@ -106,11 +151,84 @@ function App() {
         {/* <video src={`https://www.youtube.com/embed/${currentVideo.id}`} title={currentVideo.title} onKeyDown={handleKeyDown} controls></video>
         <img className="video-preview" src={nextVideo.thumbnail} alt={nextVideo.title} /> */}
       </div>
-  
-      {/* ajouter un bouton qui déclenche la requête */}
-      <button id="test">Tester le serveur</button>
+      <div className="flex justify-end p-4">
+      <FontAwesomeIcon icon={faGear} className="icon" style={{ color: "#f9fafb" }} onClick={handleShowModal} />
+      </div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Settings</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Dropdown show={showDescription}>
+            <Dropdown.Toggle variant="light" id="dropdown-basic" onClick={handleShowDescription}>
+              <FontAwesomeIcon icon={faBars} className="mr-2" />
+              Description
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 1
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 2
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-3">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 3
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown show={showNotRecommended}>
+            <Dropdown.Toggle variant="light" id="dropdown-basic" onClick={handleShowNotRecommended}>
+              <FontAwesomeIcon icon={faBan} className="mr-2" />
+              Ne pas recommander cette chaine
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 1
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 2
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-3">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 3
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown show={showReport}>
+            <Dropdown.Toggle variant="light" id="dropdown-basic" onClick={handleShowReport}>
+              <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+              Signaler
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 1
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 2
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-3">
+                <FontAwesomeIcon icon={faBars} className="mr-2" onClick={handleShowFeedback}/>
+                Option 3
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Modal.Body>
+      </Modal>
     </div>
-  )
+  );
 }
 
 
