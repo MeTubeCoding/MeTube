@@ -34,7 +34,7 @@ console.log("me voit tu ? 2")
 
 function App() {
   // state (état, données)
-  const element = <FontAwesomeIcon icon={faEnvelope} />
+  //const element = <FontAwesomeIcon icon={faEnvelope} />
   // comportements
 
   // affichage (render)
