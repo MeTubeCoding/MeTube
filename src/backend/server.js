@@ -12,7 +12,7 @@ const { query } = require('express');
 
 const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
 
-const uri = "mongodb+srv://Baptiste:Metube2023*@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Baptiste:live2023@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const fs = require('fs');
@@ -29,50 +29,36 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-app.use('/', express.static(publi)); 
 
 app.use(cors(corsOptions));
 
 
+app.post('/chat',(req,res)=>{
 
-// Optionnel a vous de voir pour vous adapter à votre problématique : 
+  client.connect(err => {
 
-// app.get('/',(req,res)=>{
-
-//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
-// })
-
-app.post('/node/sub',(req,res)=>{
-    
-    client.connect(err => {
-
-        async function run() {
-            try {
-              const database = client.db('BigOne');
-              const movies = database.collection('enAttente');
-            //   console.log("mongo connect")
-              const query = req.body;
-            //   console.log(query); 
-              await movies.insertOne(query);
-            //   console.log(movie);
-            } finally {
-              // Ensures that the client will close when you finish/error
-              await client.close(); 
-            }
-          }
-          run().catch(console.dir);
-    });
-
-    res.end();
-    
+    async function run() {
+        try {
+          const database = client.db('LiveBdd');
+          const movies = database.collection('messageChat');
+        //   console.log("mongo connect")
+          const query = req.body;
+        //   console.log(query); 
+          await movies.insertOne(query);
+        //   console.log(movie);
+        } finally {
+          // Ensures that the client will close when you finish/error
+          await client.close(); 
+        }
+      }
+      run().catch(console.dir);
 });
 
-app.get('/demo',(req,res)=>{
-  console.log("test");
-  res.end("reponse du serveur");
+res.end();
+
+  
 })
 
-//
 
 
 app.listen(5600,() => {
