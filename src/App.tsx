@@ -25,7 +25,11 @@ function App() {
   return (
     <body>
       <div className="header">
-        <h1>MeTUNE</h1>
+        <h1>MeTUBE</h1>
+        <div className="search">
+          <input type="text" placeholder="Search..." />
+          <button>Search</button>
+          </div>
       </div>
       </body>
   )
