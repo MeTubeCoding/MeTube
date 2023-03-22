@@ -1,4 +1,5 @@
 // import React from 'react';
+import React from 'react';
 import './App.css';
 
 // import composant  :
@@ -18,6 +19,8 @@ console.log("me voit tu ? 2")
 function App() {
   return (
 ;
+    <div>test</div>
+  )
 }
 
 export default App;
