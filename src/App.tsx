@@ -34,24 +34,16 @@ test?.addEventListener("click",()=>{
 function App() {
   DropdownMenu();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div id='test'>Test</div>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <body>
+      <div className = "haut">
+        <a href='App.ts'><h1>MeTUBE</h1></a>
+        <div className="search">
+          <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
+          <button className='rechercher'>Rechercher</button>
+          </div>
+      </div>
+      </body>
+  )
 }
 
 export default App;
