@@ -26,12 +26,20 @@ var corsOptions = {
 app.use(bodyparser.json()); 
 app.use(bodyparser.urlencoded({
     extended: true
+
 }));
 
-app.use('/', express.static(publi)); 
+// app.use('/', express.static(public)); 
 
 app.use(cors(corsOptions));
-
+app.get('/videos', function(req, res) {
+  res.json([{
+    id:1,
+    title:"Nabil a cassé mon bong",
+    miniature:"https://imgs.search.brave.com/5KvnUyLxAcJHuuU_Ry7pJksq9llJ1Cf0XXfyuKJ7IM0/rs:fit:1200:900:1/g:ce/aHR0cDovL2kuaW1n/dXIuY29tL3ExMmgy/LmpwZw",
+    
+  }]);
+});
 
 
 // Optionnel a vous de voir pour vous adapter à votre problématique : 
