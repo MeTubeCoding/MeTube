@@ -16,8 +16,7 @@ import {
   faGear,
   faBan,
   faFlag,
-  faBars,
-  faComment
+  faBars
 } from '@fortawesome/free-solid-svg-icons';
 
 import { Modal, Dropdown} from 'react-bootstrap';
