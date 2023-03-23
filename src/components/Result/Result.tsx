@@ -4,6 +4,7 @@ export interface IResult{
     title:string;
     miniature:string;
     chanel:string;
+    tag:Array<string>;
 }
 interface Props{
   video:IResult;

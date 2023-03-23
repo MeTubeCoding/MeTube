@@ -15,6 +15,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "cors": "^2.8.5",
+    "eslint-config-standard-with-typescript": "^34.0.1",
     "express": "^4.18.2",
     "mongodb": "^4.10.0",
     "react": "^18.2.0",
