@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
-import Results from '../components/Results'
+import Results, { IResults } from '../components/Results'
 
 
 
 const Main = () => {
+  const [videos, setVideos] = useState<IResults |[]>([]);
   useEffect(() => {
-    fetch("http://localhost:5600/videos").then((response) => console.log(response));
+    fetch("http://localhost:5600/videos").then(response => response.json()).then((response:IResults) => { 
+      setVideos(response)});
    }, []);
   return (
     <div>
       <SearchBar/>
-      <Results videos={[{id:1,
-    title:"Nabil a cassé mon bong",
-    miniature:"https://imgs.search.brave.com/5KvnUyLxAcJHuuU_Ry7pJksq9llJ1Cf0XXfyuKJ7IM0/rs:fit:1200:900:1/g:ce/aHR0cDovL2kuaW1n/dXIuY29tL3ExMmgy/LmpwZw",}]}/>
+      <Results videos={videos}/>
     </div>
   )
 }

@@ -3,6 +3,7 @@ export interface IResult{
     id:number;
     title:string;
     miniature:string;
+    chanel:string;
 }
 interface Props{
   video:IResult;
@@ -16,6 +17,7 @@ const Result = (props:Props) => {
         </a>
         <div className="p-5">
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{props.video.title}</p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{props.video.chanel}</p>
         </div>
     </div>
 

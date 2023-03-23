@@ -1,6 +1,6 @@
 import React from 'react'
 import Result, {IResult} from './Result/Result'
-interface IResults extends Array<IResult>{
+export interface IResults extends Array<IResult>{
     
 }
 
