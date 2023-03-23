@@ -1,17 +1,5 @@
 import React, {useState} from 'react';
-
-import logo from './logo.svg';
 import './App.css';
-
-// import composant  :
-
-import { example } from './test';
-import { PassThrough } from 'stream';
-
-
-example();
-
-console.log("me voit tu ?")
 
 let test = document.getElementById("test");
 
@@ -46,6 +34,9 @@ const Menu = () => {
             <a href="index.tsx">Accueil</a>
           </li>
           <li>
+            <a href="timeline.tsx">Recommandés</a>
+          </li>
+          <li>
             <a href="#">Tendances</a>
           </li>
           <li>
@@ -75,18 +66,20 @@ const Menu = () => {
 
 function App() {
   return (
-    <body>
-      <div className = "haut">
-        <a href='App.tsx'><h1>MeTUBE</h1></a>
-        <div className="search">
-          <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
-          <button className='rechercher'>Rechercher</button>
+    <div>
+      <body>
+        <div className = "haut">
+          <a href='App.tsx'><h1>MeTUBE</h1></a>
+          <div className="search">
+            <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
+            <button className='rechercher'>Rechercher</button>
+          </div>
         </div>
-      </div>
-      <div>
-        {Menu()}
-      </div>
-    </body>
+        <div>
+          {Menu()}
+        </div>
+      </body>
+    </div>
   )
 }
 
