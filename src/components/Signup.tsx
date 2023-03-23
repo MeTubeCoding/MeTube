@@ -2,35 +2,22 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-return-assign */
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import { signupFields } from '../constants/formFields';
 import FormAction from './FormAction';
 import Input from './Input';
 
-interface SignupState {
-  [key: string]: string
-}
+const fields = signupFields;
+const fieldsState: { [key: string]: string } = {};
 
-interface Field {
-  id: string,
-  labelText: string,
-  labelFor: string,
-  type?: string,
-  isRequired?: boolean,
-  placeholder?: string,
-}
+fields.forEach(field => fieldsState[field.id] = '');
 
-const fields: Field[] = signupFields;
-const fieldsState: SignupState = {};
+export default function Signup() {
+  const [signupState, setSignupState] = useState<{ [key: string]: string }>(fieldsState);
 
-fields.forEach((field: Field) => fieldsState[field.id] = '');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
-export default function Signup (): JSX.Element {
-  const [signupState, setSignupState] = useState<SignupState>(fieldsState);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setSignupState({ ...signupState, [e.target.id]: e.target.value });
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(signupState);
     createAccount();
@@ -46,9 +33,12 @@ export default function Signup (): JSX.Element {
       },
       body: JSON.stringify(local)
     })
-      .then((res: Response) => res.text())
-      .then((text: string) => {
-        console.log(text);
+      .then((res) => {
+        console.log(res);
+        return res.text();
+      })
+      .then((res) => {
+        console.log(res);
       });
   };
 
@@ -56,16 +46,19 @@ export default function Signup (): JSX.Element {
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="">
         {
-          fields.map((field: Field) =>
+          fields.map(field =>
             <Input
-                  key={field.id}
-                  handleChange={handleChange}
-                  value={signupState[field.id]}
-                  labelText={field.labelText}
-                  labelFor={field.labelFor}
-                  id={field.id}
-                  isRequired={field.isRequired}
-                  placeholder={field.placeholder} type={''}            />
+              key={field.id}
+              handleChange={handleChange}
+              value={signupState[field.id]}
+              labelText={field.labelText}
+              labelFor={field.labelFor}
+              id={field.id}
+              name={field.name}
+              type={field.type}
+              isRequired={field.isRequired}
+              placeholder={field.placeholder} 
+              customClass={undefined}/>
           )
         }
         <FormAction handleSubmit={handleSubmit} text="Signup"/>
