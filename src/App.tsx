@@ -41,7 +41,6 @@ const videoData = [
 ];
 
 function App() {
-  // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   /*LIKES DISLIKES*/
   const [heartColor, setHeartColor] = useState("#ffffff"); // blanc par défaut
@@ -110,27 +109,40 @@ function App() {
       });
     }
   }, []);
+  
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-  // const handleKeyDown = (event: { key: string; }) => {
-  //   if (event.key === 'ArrowUp') {
-  //     setCurrentVideoIndex(prevIndex => {
-  //       const nextIndex = prevIndex + 1;
-  //       return nextIndex < videoData.length ? nextIndex : 0;
-  //     });
-  //   } else if (event.key === 'ArrowDown') {
-  //     setCurrentVideoIndex(prevIndex => {
-  //       const nextIndex = prevIndex - 1;
-  //       return nextIndex >= 0 ? nextIndex : videoData.length - 1;
-  //     });
-  //   }
-  // };
+  const handleKeyDown = (event: { key: string; }) => {
+    if (event.key === 'ArrowUp') {
+      setCurrentVideoIndex(prevIndex => {
+        const nextIndex = prevIndex + 1;
+        return nextIndex < videoData.length ? nextIndex : 0;
+      });
+    } else if (event.key === 'ArrowDown') {
+      setCurrentVideoIndex(prevIndex => {
+        const nextIndex = prevIndex - 1;
+        return nextIndex >= 0 ? nextIndex : videoData.length - 1;
+      });
+    }
+  };
 
-  // const currentVideo = videoData[currentVideoIndex];
-  // const nextVideo = videoData[(currentVideoIndex + 1) % videoData.length];
+  const currentVideo = videoData[currentVideoIndex];
+  const nextVideo = videoData[(currentVideoIndex + 1) % videoData.length];
 
   return (
     <div className="App">
       <div className="video-container">
+      <video
+          src={`https://www.youtube.com/embed/${currentVideo.id}`}
+          title={currentVideo.title}
+          onKeyDown={handleKeyDown}
+          controls
+        ></video>
+        <img
+          className="video-preview"
+          src={nextVideo.thumbnail}
+          alt={nextVideo.title}
+        />
         <div>{/* icônes pour le visuel principal */}</div>
         <FontAwesomeIcon icon={faHeart} className="icon" style={{ color: heartColor }} onClick={handleHeartClick}/>
         <FontAwesomeIcon icon={faHeartBroken} className="icon" style={{ color: heartColorBroken }} onClick={handleBrokenHeartClick}/>
