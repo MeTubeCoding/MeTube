@@ -11,107 +11,192 @@ test?.addEventListener("click",()=>{
 
 
 
-const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <div className="menu-container">
-      <div className="menu-button" onClick={toggleMenu}>
-        {isMenuOpen ? (
-          <button className="material-icons">Close</button>
-        ) : (
-          <button className="material-icons">Menu</button>
-        )}
-      </div>
-      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
-        <ul>
-          <li>
-            <a href="index.tsx">Accueil</a>
-          </li>
-          <li>
-            <a href="timeline.tsx">Recommandés</a>
-          </li>
-          <li>
-            <a href="#">Tendances</a>
-          </li>
-          <li>
-            <a href="#">Abonnements</a>
-          </li>
-          <li>
-            <a href="#">Bibliothèque</a>
-          </li>
-          <li>
-            <a href="#">Historique</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-
-
-
-// ================================================================================================
-// ================================================================================================
-// ================================================================================================
-
-
-
-
-function App() {
+function Bibliotheque() {
   return (
     <div>
-      <body>
-        <div className = "haut">
-          <a href='App.tsx'><h1>MeTUBE</h1></a>
-          <div className="search">
-            <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
-            <button className='rechercher'>Rechercher</button>
-          </div>
-        </div>
-        <div>
-          {Menu()}
-        </div>
-      </body>
-    </div>
-  )
-}
+      <h1>Bibliothèque</h1>
+      <ul>
+        <h1>J'aime</h1>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
 
-function video() {
-  const videos = [
-    {
-      titre: "Titre de la vidéo 1",
-      chaine: "Nom de la chaîne 1",
-      tags: ["tag1", "tag2", "tag3"]
-    },
-    {
-      titre: "Titre de la vidéo 2",
-      chaine: "Nom de la chaîne 2",
-      tags: ["tag4", "tag5", "tag6"]
-    },
-    {
-      titre: "Titre de la vidéo 3",
-      chaine: "Nom de la chaîne 3",
-      tags: ["tag7", "tag8", "tag9"]
-    }
-  ];
+        <br />
 
-  return (
-    <div>
-      {videos.map((video, index) => (
-        <div key={index}>
-          <h2>{video.titre}</h2>
-          <p>Chaîne : {video.chaine}</p>
-          <p>Tags : {video.tags.join(", ")}</p>
-        </div>
-      ))}
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+
+        <h1>Playlists</h1>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+        <br />
+
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        
+
+        <h1>Historique</h1>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/watch?v=XuDnsjECf_A"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+        <br />
+
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe> 
+        <iframe
+          width="357"
+          height="201"
+          src="https://www.youtube.com/embed/UUYv3kk37oQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </ul>
     </div>
   );
 }
 
-export default App;
+export default Bibliotheque;
