@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 
-let test = document.getElementById("test");
+const test = document.getElementById('test')
 
-test?.addEventListener("click",()=>{
+test?.addEventListener('click', () => {
   fetch('http://localhost:5600/demo')
     // .then(response => response.text())
     // .then(data => console.log(data))
@@ -13,14 +13,14 @@ test?.addEventListener("click",()=>{
 
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen)
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false);
+    setIsMenuOpen(false)
   };
 
   return (
@@ -37,7 +37,7 @@ const Menu = () => {
             </div>
             {isMenuOpen && (
               <div>
-                <li>
+               <li>
                   <a href="index.tsx">Accueil</a>
                 </li>
                 <li>
