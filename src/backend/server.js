@@ -54,7 +54,7 @@ app.post('/chat',(req,res)=>{
       run().catch(console.dir);
 });
 
-res.end();
+res.end("pute");
 
   
 })
