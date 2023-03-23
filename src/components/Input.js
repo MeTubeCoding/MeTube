@@ -1,23 +1,26 @@
-const fixedInputClass="rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
+const fixedInputClass = 'rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm'
 
-export default function Input({
-    handleChange,
-    value,
-    labelText,
-    labelFor,
-    id,
-    lastName,
-    firstName,
-    country,
-    city,
-    username,
-    email,
-    type,
-    isRequired=false,
-    placeholder,
-    customClass
-}){
-    return(
+export default function Input ({
+  handleChange,
+  value,
+  labelText,
+  labelFor,
+  id,
+  lastName,
+  firstName,
+  country,
+  city,
+  username,
+  email,
+  type,
+  isRequired = false,
+  placeholder,
+  customClass
+}) {
+  return (
         <div className="my-5">
             <label htmlFor={labelFor} className="sr-only">
               {labelText}
@@ -34,9 +37,9 @@ export default function Input({
               email={email}
               type={type}
               required={isRequired}
-              className={fixedInputClass+customClass}
+              className={fixedInputClass + customClass}
               placeholder={placeholder}
             />
           </div>
-    )
+  )
 }
