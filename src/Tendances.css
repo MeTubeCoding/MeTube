@@ -23,11 +23,9 @@ html {
     display: flex;
     flex-direction: row;
 }
-h1{
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+.logo {
+    margin-right: 10%;
+    width: 50%;
 }
 .haut {
     background-color: #111;
@@ -133,7 +131,7 @@ h1{
     display: flex;
     flex-direction: column;
 }
-img {
+.img_tendances {
     border-radius: 50%;
     margin-right: 2%;
 }

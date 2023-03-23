@@ -14,32 +14,44 @@ const Menu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="menu-container">
-      <div className="menu-button" id='Menu' onClick={toggleMenu}>
-        {isMenuOpen ? (
-          <i className="material-icons">close</i>
-        ) : (
-
-          <i className="material-icons">menu</i>
-        )}
-      </div>
-      <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
         <ul>
           <li>
-            <a href="App.tsx">Accueil</a>
-          </li>
-          <li>
-            <a href="Tendances.tsx">Tendances</a>
-          </li>
-          <li>
-            <a href="#">Abonnements</a>
-          </li>
-          <li>
-            <a href="#">Bibliothèque</a>
-          </li>
-          <li>
-            <a href="#">Historique</a>
+            <div className="menu-button" onClick={toggleMenu}>
+              {isMenuOpen ? (
+                <button className="material-icons">Close</button>
+              ) : (
+                <button className="material-icons">Menu</button>
+              )}
+            </div>
+            {isMenuOpen && (
+              <div>
+                <li>
+                  <a href="index.tsx">Accueil</a>
+                </li>
+                <li>
+                  <a href="pages/timeline.tsx">Recommandés</a>
+                </li>
+                <li>
+                  <a href="#">Tendances</a>
+                </li>
+                <li>
+                  <a href="#">Abonnements</a>
+                </li>
+                <li>
+                  <a href="#">Bibliothèque</a>
+                </li>
+                <li>
+                  <a href="#">Historique</a>
+                </li>
+              </div>
+            )}
           </li>
         </ul>
       </div>
@@ -61,11 +73,8 @@ return (
     <div>
       <div className="haut">
         <div className='haut_gauche'>
-        <div className='display_menu'>
-          {Menu()}
-        </div>
         <div className='titre'>
-        <a href='App.tsx'><h1>MeTUBE</h1></a>
+        <a href='App.tsx'><img className="logo" src="https://cdn.discordapp.com/attachments/1019222515962368112/1088482444207988838/Metube_logo.png"/></a>
         </div>
         </div>
         <div className="search">
@@ -73,8 +82,11 @@ return (
           <button className='rechercher'>Rechercher</button>
         </div>
       </div>
+      <div>
+          {Menu()}
+        </div>
       <div className="tendances">
-        <img src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
+        <img className='img_tendances' src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
         <h3>TENDANCES</h3>
         </div>
       <div className="filtres">
