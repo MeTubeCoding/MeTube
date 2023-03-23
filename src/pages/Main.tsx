@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
 import Results from '../components/Results'
 
 
 
 const Main = () => {
+  useEffect(() => {
+    fetch("http://localhost:5600/videos").then((response) => console.log(response));
+   }, []);
   return (
     <div>
       <SearchBar/>
