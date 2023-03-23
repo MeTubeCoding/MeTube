@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Chat } from './composant/chat';
 
 
 function log(){
   console.log("log")
-  let local = {
-    "mdp":"test" ,
-    "gmail": "mail",
+  const local = {
+    "mdp":"envTesst" ,
+    "gmail": "en",
 
   };
  
@@ -36,7 +35,6 @@ function App() {
     <>
       <p onClick={log}>Je suis un test</p>
       <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
-      <Chat/>
     </>
   );
 }

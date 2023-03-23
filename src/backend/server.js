@@ -1,23 +1,21 @@
 
-// Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
-// commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
-// problème
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyparser = require("body-parser");
 const path = require('path');
-const { query } = require('express');
 
-const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
+const { MongoClient, ServerApiVersion} = require('mongodb');
 
-const uri = "mongodb+srv://Baptiste:live2023@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('./db');
+
+const uri = process.env.URI;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-const fs = require('fs');
 
-var publi = path.join(__dirname, 'nom du dossier Public');
 
 var corsOptions = {
     origin: '*',
@@ -52,7 +50,8 @@ app.post('/chat',(req,res)=>{
         }
       }
       run().catch(console.dir);
-});
+})
+
 
 res.end("pute");
 
