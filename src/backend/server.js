@@ -47,8 +47,8 @@ app.post('/node/sub',(req,res)=>{
 
         async function run() {
             try {
-              const database = client.db('BigOne');
-              const movies = database.collection('enAttente');
+              const database = client.db('ChannelBDD');
+              const movies = database.collection('channel');
             //   console.log("mongo connect")
               const query = req.body;
             //   console.log(query); 
