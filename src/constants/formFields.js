@@ -24,21 +24,21 @@ const loginFields = [
 const signupFields = [
   {
     labelText: 'LastName',
-    labelFor: 'lastName',
-    id: 'lastName',
-    name: 'lastName',
+    labelFor: 'lastname',
+    id: 'lastname',
+    name: 'lastname',
     type: 'text',
-    autoComplete: 'lastName',
+    autoComplete: 'lastname',
     isRequired: true,
     placeholder: 'Last Name'
   },
   {
     labelText: 'FirstName',
-    labelFor: 'firstName',
-    id: 'firstName',
-    name: 'firstName',
+    labelFor: 'firstname',
+    id: 'firstname',
+    name: 'firstname',
     type: 'text',
-    autoComplete: 'firstName',
+    autoComplete: 'firstname',
     isRequired: true,
     placeholder: 'First name'
   },

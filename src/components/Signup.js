@@ -4,7 +4,6 @@
 /* eslint-disable no-return-assign */
 import { useState } from 'react'
 import { signupFields } from '../constants/formFields'
-import { redirect } from 'react-router-dom'
 import FormAction from './FormAction'
 import Input from './Input'
 
@@ -56,12 +55,7 @@ export default function Signup () {
                             labelText={field.labelText}
                             labelFor={field.labelFor}
                             id={field.id}
-                            lastName={field.lastName}
-                            firstName={field.firstName}
-                            country={field.country}
-                            city={field.city}
-                            username={field.username}
-                            email={field.email}
+                            name={field.name}
                             type={field.type}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}

@@ -9,12 +9,7 @@ export default function Input ({
   labelText,
   labelFor,
   id,
-  lastName,
-  firstName,
-  country,
-  city,
-  username,
-  email,
+  name,
   type,
   isRequired = false,
   placeholder,
@@ -29,12 +24,7 @@ export default function Input ({
               onChange={handleChange}
               value={value}
               id={id}
-              lastName={lastName}
-              firstName={firstName}
-              country={country}
-              city={city}
-              username={username}
-              email={email}
+              name={name}
               type={type}
               required={isRequired}
               className={fixedInputClass + customClass}
