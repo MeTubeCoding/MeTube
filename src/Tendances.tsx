@@ -5,7 +5,6 @@ import './App.css';
 
 // import composant  :
 
-import { example } from './test';
 import { PassThrough } from 'stream';
 
 const Menu = () => {
@@ -19,7 +18,6 @@ const Menu = () => {
     <div className="menu-container">
       <div className="menu-button" id='Menu' onClick={toggleMenu}>
         {isMenuOpen ? (
-          
           <i className="material-icons">close</i>
         ) : (
 
