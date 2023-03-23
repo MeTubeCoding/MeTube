@@ -1,50 +1,53 @@
-import { useState } from 'react';
-import { signupFields } from "../constants/formFields"
-import FormAction from "./FormAction";
-import Input from "./Input";
+/* eslint-disable no-unreachable */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-return-assign */
+import { useState } from 'react'
+import { signupFields } from '../constants/formFields'
+import FormAction from './FormAction'
+import Input from './Input'
 
-const fields=signupFields;
-let fieldsState={};
+const fields = signupFields
+const fieldsState = {}
 
-fields.forEach(field => fieldsState[field.id]='');
+fields.forEach(field => fieldsState[field.id] = '')
 
-export default function Signup(){
-  const [signupState,setSignupState]=useState(fieldsState);
+export default function Signup () {
+  const [signupState, setSignupState] = useState(fieldsState)
 
-  const handleChange=(e)=>setSignupState({...signupState,[e.target.id]:e.target.value});
+  const handleChange = (e) => setSignupState({ ...signupState, [e.target.id]: e.target.value })
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log(signupState)
     createAccount()
   }
 
-  //handle Signup API Integration here
-  const createAccount=()=>{
-    let local = signupState;
-    
-    fetch("http://127.0.0.1:5600/data",{
-    
-    method : "POST",
-    headers : {
-        "Content-Type" : "application/json"
-    },
-    body : JSON.stringify(local)
+  // handle Signup API Integration here
+  const createAccount = () => {
+    const local = signupState
+
+    fetch('http://127.0.0.1:5600/data', {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(local)
     })
-    .then((res)=>{
-      return res.text();
-      console.log(res)
-    })
-    .then((res)=>{
-      console.log(res)
-    })
+      .then((res) => {
+        return res.text()
+        console.log(res)
+      })
+      .then((res) => {
+        console.log(res)
+      })
   }
 
-    return(
+  return (
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="">
         {
-                fields.map(field=>
+                fields.map(field =>
                         <Input
                             key={field.id}
                             handleChange={handleChange}
@@ -57,14 +60,12 @@ export default function Signup(){
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
                     />
-                
+
                 )
             }
           <FormAction handleSubmit={handleSubmit} text="Signup"/>
         </div>
 
-         
-
       </form>
-    )
+  )
 }
