@@ -56,15 +56,10 @@ export default function Login (): JSX.Element {
               labelFor={field.labelFor}
               id={field.id}
               type={field.type}
+              name={''} 
               isRequired={field.isRequired}
-              placeholder={field.placeholder} 
-              lastName={undefined} 
-              firstName={undefined} 
-              country={undefined} 
-              city={undefined} 
-              username={undefined} 
-              email={undefined} 
-              customClass={undefined}            />
+              placeholder={field.placeholder}
+              customClass={undefined}/>
           )
         }
       </div>
