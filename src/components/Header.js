@@ -1,15 +1,17 @@
-import {Link} from 'react-router-dom';
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom'
 
-export default function Header({
-    heading,
-    paragraph,
-    linkName,
-    linkUrl="#"
-}){
-    return(
+export default function Header ({
+  heading,
+  paragraph,
+  linkName,
+  linkUrl = '#'
+}) {
+  return (
         <div className="mb-10">
             <div className="flex justify-center">
-                <img 
+                <img
                     alt=""
                     className="h-14 w-14"
                     src="https://www.kindpng.com/picc/m/250-2509985_youtube-icon-png-2018-transparent-png-high-quality.png"/>
@@ -24,5 +26,5 @@ export default function Header({
             </Link>
             </p>
         </div>
-    )
+  )
 }
