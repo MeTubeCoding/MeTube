@@ -5,6 +5,29 @@ import { Chat } from './composant/chat';
 
 function log(){
   console.log("log")
+  let local = {
+    "mdp":"test" ,
+    "gmail": "mail",
+
+  };
+ 
+  fetch("http://127.0.0.1:5600/chat",{
+ 
+  method : "POST",
+  headers : {
+      "Content-Type" : "application/json"
+  },
+  body : JSON.stringify(local)
+  })
+  .then((res)=>{
+  return res.text()}
+  )
+  .then((res)=>{
+    console.log(res)
+  })
+  
+
+
 }
 
 
