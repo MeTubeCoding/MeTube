@@ -7,7 +7,6 @@ export default function LoginPage () {
   return (
         // eslint-disable-next-line react/react-in-jsx-scope
         <>
-             // eslint-disable-next-line react/react-in-jsx-scope
              <Header
                 heading="Login to your account"
                 paragraph="Don't have an account yet ? "
