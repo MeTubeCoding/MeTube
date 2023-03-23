@@ -1,19 +1,29 @@
 import React from 'react'
+import Result, {IResult} from './Result/Result'
 interface IResults extends Array<IResult>{
     
 }
-interface IResult{
-    id:number;
-    title:string;
-    miniature:string;
-}
+
 interface Props{
     videos:IResults;
 }
 
 const Results = (props:Props) => {
   return (
-    <div>Results</div>
+    <>
+    {
+        props.videos.length === 0 ? 
+        <div></div>
+        :
+        <div>
+            {
+                props.videos.map((video)=>(
+                    <Result key={video.id} video={video}/>
+                ))
+            }
+        </div>
+    }
+    </>
   )
 }
 
