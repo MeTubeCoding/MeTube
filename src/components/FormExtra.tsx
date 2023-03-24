@@ -1,4 +1,5 @@
-export default function FormExtra(): JSX.Element {
+/* eslint-disable react/react-in-jsx-scope */
+export default function FormExtra (): JSX.Element {
   return (
     <div className="flex items-center justify-between ">
       <div className="flex items-center">
@@ -19,5 +20,5 @@ export default function FormExtra(): JSX.Element {
         </a>
       </div>
     </div>
-  );
+  )
 }
