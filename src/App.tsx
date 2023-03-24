@@ -6,7 +6,7 @@ function log(){
   console.log("log")
   const local = {
     "mdp":"envTesst" ,
-    "gmail": "en",
+    "gmail": "e",
 
   };
  

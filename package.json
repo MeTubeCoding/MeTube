@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "concurrently \"nodemon C:\\Users\\grima\\OneDrive\\Documents\\Code\\MeTube\\src\\backend\\server.js\" \"react-scripts start\" \"npm run eslint\"",
-    "eslint": "eslint src",
+    "eslint": "nodemon --exec \"eslint src\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
