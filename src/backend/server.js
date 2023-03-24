@@ -16,7 +16,7 @@ const uri = "mongodb+srv://aya:metube@metube.1cfbpke.mongodb.net/?retryWrites=tr
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const fs = require('fs');
 
-var publi = path.join(__dirname, 'nom du dossier Public');
+let public = path.join(__dirname, 'nom du dossier Public');
 
 var corsOptions = {
     origin: '*',
@@ -28,7 +28,7 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-app.use('/', express.static(publi)); 
+app.use('/', express.static(public)); 
 
 app.use(cors(corsOptions));
 
