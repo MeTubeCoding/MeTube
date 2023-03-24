@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { Link } from 'react-router-dom'
 
 interface HeaderProps {
-  heading: string;
-  paragraph: string;
-  linkName: string;
-  linkUrl?: string;
+  heading: string
+  paragraph: string
+  linkName: string
+  linkUrl?: string
 }
 
-export default function Header({
+export default function Header ({
   heading,
   paragraph,
   linkName,
-  linkUrl = '#',
+  linkUrl = '#'
 }: HeaderProps) {
   return (
     <div className="mb-10">
@@ -35,5 +37,5 @@ export default function Header({
         </Link>
       </p>
     </div>
-  );
+  )
 }
