@@ -71,41 +71,41 @@ app.post('/videos', function(req, res) {
     tags: ["macron"]
   }]
 
-  // let requestString = req.body.data 
-  // let requestedVideos = []
+  let requestString = req.body.data 
+  let requestedVideos = []
   
-  // let fullTitleRequest = fakeVideos.filter(video => video.title === requestString)
+  let fullTitleRequest = fakeVideos.filter(video => video.title === requestString)
 
-  // if(fullTitleRequest.length > 0){
-  //   requestedVideos.push(...fullTitleRequest)
-  //   res.json(requestedVideos);
-  // }
+  if(fullTitleRequest.length > 0){
+    requestedVideos.push(...fullTitleRequest)
+    res.json(requestedVideos);
+  }
 
-  // let fullChanelRequest = fakeVideos.filter(video => video.chanel === requestString)
+  let fullChanelRequest = fakeVideos.filter(video => video.chanel === requestString)
 
-  // if(fullChanelRequest.length > 0){
-  //   requestedVideos.push(...fullChanelRequest)
-  //   res.json(requestedVideos);
-  // }
+  if(fullChanelRequest.length > 0){
+    requestedVideos.push(...fullChanelRequest)
+    res.json(requestedVideos);
+  }
 
-  // let fullTagRequest = fakeVideos.filter(video => video.tags === requestString)
+  let fullTagRequest = fakeVideos.filter(video => video.tags === requestString)
 
   
   
-  /*
-   * difficulté: 3/5
-   * recherche by tags
-   */
+  // /*
+  //  * difficulté: 3/5
+  //  * recherche by tags
+  //  */
 
-  /*
-   * difficulté: 4/5
-   * recherche par mot dans les titre
-   */
+  // /*
+  //  * difficulté: 4/5
+  //  * recherche par mot dans les titre
+  //  */
 
-  /*
-   * difficulté: 5/5
-   * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
-   */
+  // /*
+  //  * difficulté: 5/5
+  //  * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
+  //  */
 
 });
 
