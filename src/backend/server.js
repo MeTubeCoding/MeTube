@@ -92,20 +92,20 @@ app.post('/videos', function(req, res) {
 
   
   
-  // /*
-  //  * difficulté: 3/5
-  //  * recherche by tags
-  //  */
+  /*
+   * difficulté: 3/5
+   * recherche by tags
+   */
 
-  // /*
-  //  * difficulté: 4/5
-  //  * recherche par mot dans les titre
-  //  */
+  /*
+   * difficulté: 4/5
+   * recherche par mot dans les titre
+   */
 
-  // /*
-  //  * difficulté: 5/5
-  //  * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
-  //  */
+  /*
+   * difficulté: 5/5
+   * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
+   */
 
 });
 
