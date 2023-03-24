@@ -56,7 +56,7 @@ export default function Login (): JSX.Element {
               labelFor={field.labelFor}
               id={field.id}
               type={field.type}
-              name={''} 
+              name={field.name} 
               isRequired={field.isRequired}
               placeholder={field.placeholder}
               customClass={undefined}/>
