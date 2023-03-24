@@ -1,19 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Header from '../components/Header'
-import Login from '../components/Login'
+import Profile from '../components/Profile'
 
-export default function LoginPage () {
+export default function ProfilePage () {
   return (
         // eslint-disable-next-line react/react-in-jsx-scope
         <>
              <Header
-                heading="Login to your account"
-                paragraph="Don't have an account yet? "
-                linkName="Signup"
-                linkUrl="/signup"
+                heading="Account"
+                paragraph="Here your account informations"
+                linkName=""
+                linkUrl=""
                 />
-            <Login/>
         </>
   )
 }
