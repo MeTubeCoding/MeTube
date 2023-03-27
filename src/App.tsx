@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Live } from './composant/Live';
 
 
 function log(){
@@ -25,16 +26,31 @@ function log(){
     console.log(res)
   })
   
-
-
 }
 
+let localStream: MediaStream;
+let remoteStream;
+
+const init = async () => {
+
+  try {
+    localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+  } catch(error) {
+    // Gérer l'erreur ici
+  }
+  
+  (document.getElementById('user-1') as HTMLVideoElement).srcObject = localStream;
+}
 
 function App() {
+
+  init();
+
   return (
     <>
       <p onClick={log}>Je suis un test</p>
       <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
+      <Live/>
     </>
   );
 }
