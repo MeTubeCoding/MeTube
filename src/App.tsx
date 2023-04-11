@@ -34,6 +34,8 @@ function App() {
 
   // init();
 
+  console.log("test");
+
   return (
     <>
       <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
