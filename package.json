@@ -15,9 +15,11 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "express": "^4.18.2",
     "mongodb": "^4.10.0",
+    "mongoose": "^7.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
@@ -27,7 +29,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"nodemon src/backend/server.js\" \"react-scripts start\" \"npm run eslint\"",
+    "eslint": "nodemon --exec \"eslint src\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -55,10 +58,12 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "autoprefixer": "^10.4.14",
+    "concurrently": "^7.6.0",
     "cypress": "^12.8.1",
     "eslint": "^8.36.0",
     "nodemon": "^2.0.20",
     "postcss": "^8.4.21",
+    "react-scripts": "^5.0.1",
     "tailwindcss": "^3.2.7"
   }
 }
