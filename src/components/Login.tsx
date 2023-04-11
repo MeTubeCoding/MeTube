@@ -9,7 +9,9 @@ interface LoginState {
   email: string;
   password: string;
   error: string | null;
+  [key: string]: any;
 }
+
 
 const fields = loginFields;
 const fieldsState: LoginState = { email: '', password: '', error: null };
@@ -64,6 +66,7 @@ const Login: React.FC = () => {
           <Input
             key={field.id}
             handleChange={handleChange}
+            value={loginState[field.name]}
             labelText={field.labelText}
             labelFor={field.labelFor}
             id={field.id}
@@ -72,7 +75,6 @@ const Login: React.FC = () => {
             isRequired={field.isRequired}
             placeholder={field.placeholder}
             customClass={undefined}
-            value={''}
                       />
         ))}
       </div>
