@@ -1,28 +1,29 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
-import Results, { IResults } from '../components/Results'
-
-
+import Results, { type IResults } from '../components/Results'
 
 const Main = () => {
-  const [videos, setVideos] = useState<IResults |[]>([]);
+  const [videos, setVideos] = useState<IResults | []>([])
   useEffect(() => {
-    
-   }, []);
-   const [searchDatas, setSearchDatas] = useState("");
+
+  }, [])
+  const [searchDatas, setSearchDatas] = useState('')
 
   const onSearch = (data: string) => {
-    console.log(JSON.stringify(data));
-    
-    fetch("http://localhost:5600/videos", 
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({data: data}),
-    }
-    ).then(response => response.json()).then((response:IResults) => {setVideos(response)});
+    console.log(JSON.stringify(data))
+
+    fetch('http://localhost:5600/videos',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data })
+      }
+    ).then(async response => await response.json()).then((response: IResults) => { setVideos(response) })
   }
   return (
     <div>

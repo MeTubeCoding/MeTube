@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React, { useState } from 'react'
 interface IProps {
-    onSearch(input:string): any
+  onSearch: (input: string) => any
 }
-const SearchBar = (props:IProps) => {
-    const [searchInput, setSearchInput] = useState("")
-    function handleChange(e: React.FormEvent<HTMLInputElement>) {
-        setSearchInput(e.currentTarget.value)
-    }
-    const onSearch = () => {
-        props.onSearch(searchInput)
-    }
+const SearchBar = (props: IProps) => {
+  const [searchInput, setSearchInput] = useState('')
+  function handleChange (e: React.FormEvent<HTMLInputElement>) {
+    setSearchInput(e.currentTarget.value)
+  }
+  const onSearch = () => {
+    props.onSearch(searchInput)
+  }
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form onSubmit={e => { e.preventDefault() }}>
         <div className="flex">
             <div className="relative w-full">
                 <input type="search" id="search-dropdown" onChange={handleChange}
@@ -24,7 +25,7 @@ const SearchBar = (props:IProps) => {
             </div>
         </div>
     </form>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar
