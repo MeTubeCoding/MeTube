@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
+import ProfilePage from './pages/Profile';
 
 function App () {
   return (
@@ -18,6 +19,7 @@ function App () {
         <Routes>
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage/>} />
+            <Route path="/profile" element={<ProfilePage/>} />
         </Routes>
       </BrowserRouter>
     </div>
