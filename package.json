@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"nodemon C:\\Users\\grima\\OneDrive\\Documents\\Code\\MeTube\\src\\backend\\server.js\" \"react-scripts start\" \"npm run eslint\"",
+    "start": "concurrently \"nodemon src/backend/server.js\" \"react-scripts start\" \"npm run eslint\"",
     "eslint": "nodemon --exec \"eslint src\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
