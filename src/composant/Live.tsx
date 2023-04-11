@@ -2,6 +2,23 @@ import React from 'react';
 
 
 export function Live(){
+
+    let localStream: MediaStream;
+    let remoteStream;
+    
+    const init = async () => {
+    
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      } catch(error) {
+        // Gérer l'erreur ici
+      }
+      
+      (document.getElementById('user-1') as HTMLVideoElement).srcObject = localStream;
+    }
+
+    init();
+
     return(
     <>
     <div id="videos" className='border flex justify-around'>
