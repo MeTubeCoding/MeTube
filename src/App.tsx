@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, {useState} from 'react';
-=======
 import React, { useState } from 'react'
 import './App.css'
->>>>>>> origin/timeline_sacha
 
 const test = document.getElementById('test')
 
