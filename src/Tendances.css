@@ -94,12 +94,12 @@ html {
     margin: 3% 1% 5% 1%;
 }
 .filtres {
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .nv{
+    margin-left: 3.5%;
     margin-right: 5%;
     padding: 0;
     text-align: center;
