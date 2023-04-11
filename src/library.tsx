@@ -1,7 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React, {useState} from 'react';
+
+let test = document.getElementById("test");
+
+test?.addEventListener("click",()=>{
+  fetch('http://localhost:5600/demo')
+    // .then(response => response.text())
+    // .then(data => console.log(data))
+    // .catch(error => console.error(error));
+});
+
 
 
 function Bibliotheque() {
