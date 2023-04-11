@@ -3,7 +3,6 @@ import React from 'react';
 export function Live() {
 
   let localStream: MediaStream;
-  let remoteStream;
 
   const init = async () => {
 
