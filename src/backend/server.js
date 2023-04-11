@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable n/handle-callback-err */
 /* eslint-disable no-unused-vars */
 
 // Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
