@@ -10,7 +10,7 @@ export function Live() {
     try {
       localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     } catch (error) {
-      // Gérer l'erreur ici
+      console.log(error);
     }
 
     (document.getElementById('user-1') as HTMLVideoElement).srcObject = localStream;
