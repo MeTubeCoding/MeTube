@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import Bibliotheque from './library';
 
 const test = document.getElementById('test')
 
@@ -247,4 +248,4 @@ return (
 );
 };
 
-export default Bibliotheque;
+export default Bibliotheque
