@@ -4,14 +4,14 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from './pages/Main'
 
-function App () {
+function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path="/" element={<Main />} />
 
-          <Route path='/:id' element={<h1>Page Résultats</h1>} />
+          <Route path="/:id" element={<h1>Page Résultats</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
