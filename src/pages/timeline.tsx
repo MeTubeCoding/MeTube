@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-function findVideo() {
+function App() {
     const video = [
       { name: "Video about vg", channel: "VideoGamer69", tag: "Jeux Vidéos" },
       { name: "VLOG : My adventure to Japan", channel: "Nael Happenings", tag: "VLOG" },
@@ -24,4 +24,4 @@ function findVideo() {
     console.log("Test");
 }
 
-export default findVideo;
+export default App;
