@@ -1,17 +1,5 @@
 import React from 'react';
 export function Chat(){
-
-  // function load(){
-  //   fetch("http://127.0.0.1:5600/chat",{
-  //     method : "GET",
-  //     headers : {
-  //         "Content-Type" : "application/json"
-  //     },
-  //     })
-  // }
-
-  // setTimeout(load, 1000) 
-
   function log(){
     console.log("log")
     const message = document.getElementById("message-input") as HTMLInputElement;
