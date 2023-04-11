@@ -1,20 +1,7 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Main from './pages/Main'
+/* eslint-disable @typescript-eslint/space-before-function-paren */
+import React from 'react'
+import WindowUploadInfos from './pages/WindowUploadInfos'
 
-function App () {
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Main />} />
-
-          <Route path='/:id' element={<h1>Page Résultats</h1>} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+export default function App(): JSX.Element {
+  return <WindowUploadInfos />
 }
-
-export default App
