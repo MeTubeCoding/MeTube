@@ -4,7 +4,6 @@ import './Live.css'; // Importez le fichier CSS
 export function Live() {
 
   let localStream: MediaStream;
-  let remoteStream;
 
   const init = async () => {
 
