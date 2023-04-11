@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Chat } from './composant/chat';
+import { Description } from './composant/description';
 
 
 function log(){
@@ -37,6 +38,7 @@ function App() {
       <p onClick={log}>Je suis un test</p>
       <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
       <Chat/>
+      <Description/>
     </>
   );
 }
