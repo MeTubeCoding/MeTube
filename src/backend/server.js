@@ -69,6 +69,8 @@ app.get('/chat',(req,res)=>{
         //   console.log("mongo connect")
         //   console.log(query); 
         let search = await movies.find({}).toArray();
+        const reponseSearch = JSON.stringify(search);
+        res.end(reponseSearch);
         console.log(search)
         //   console.log(movie);
         } finally {
@@ -78,7 +80,7 @@ app.get('/chat',(req,res)=>{
       }
       runy().catch(console.dir);
 });
-  res.end();
+  
 })
 
 

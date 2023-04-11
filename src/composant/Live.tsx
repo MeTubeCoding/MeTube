@@ -1,5 +1,4 @@
 import React from 'react';
-import './Live.css'; // Importez le fichier CSS
 
 export function Live() {
 
@@ -21,7 +20,7 @@ export function Live() {
   return (
     <>
       <div id="videos" className='border flex justify-around'>
-        <video className="video-player flipped" id="user-1" autoPlay playsInline></video>
+      <video className="video-player transform scale-x-[-1]" id="user-1" autoPlay playsInline></video>
         <video className="video-player" id="user-2" autoPlay playsInline></video>
       </div>
     </>
