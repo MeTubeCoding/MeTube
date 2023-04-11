@@ -1,22 +1,21 @@
 
-// Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
-// commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
-// problème
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyparser = require("body-parser");
 const path = require('path');
-const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb');
-const { query } = require('express');
 
-const uri = "mongodb+srv://Username:Password@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
+const { MongoClient, ServerApiVersion} = require('mongodb');
+
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('./db');
+
+const uri = process.env.URI;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-const fs = require('fs');
 
-var publi = path.join(__dirname, 'nom du dossier Public');
 
 var corsOptions = {
     origin: '*',
@@ -28,50 +27,59 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-app.use('/', express.static(publi)); 
 
 app.use(cors(corsOptions));
 
 
+app.post('/chat',(req,res)=>{
 
-// Optionnel a vous de voir pour vous adapter à votre problématique : 
+  client.connect(err => {
 
-// app.get('/',(req,res)=>{
-
-//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
-// })
-
-app.post('/node/sub',(req,res)=>{
-    
-    client.connect(err => {
-
-        async function run() {
-            try {
-              const database = client.db('BigOne');
-              const movies = database.collection('enAttente');
-            //   console.log("mongo connect")
-              const query = req.body;
-            //   console.log(query); 
-              await movies.insertOne(query);
-            //   console.log(movie);
-            } finally {
-              // Ensures that the client will close when you finish/error
-              await client.close(); 
-            }
-          }
-          run().catch(console.dir);
-    });
-
-    res.end();
-    
-});
-
-app.get('/demo',(req,res)=>{
-  console.log("test");
-  res.end("reponse du serveur");
+    async function run() {
+        try {
+          const database = client.db('LiveBdd');
+          const movies = database.collection('messageChat');
+        //   console.log("mongo connect")
+          const query = req.body;
+        //   console.log(query); 
+          await movies.insertOne(query);
+        //   console.log(movie);
+        } finally {
+          // Ensures that the client will close when you finish/error
+          await client.close(); 
+        }
+      }
+      run().catch(console.dir);
 })
 
-//
+
+res.end();
+
+  
+})
+
+app.get('/chat',(req,res)=>{
+
+  client.connect(err => {
+
+    async function runy() {
+        try {
+          const database = client.db('LiveBdd');
+          const movies = database.collection('messageChat');
+        //   console.log("mongo connect")
+        //   console.log(query); 
+        let search = await movies.find({}).toArray();
+        console.log(search)
+        //   console.log(movie);
+        } finally {
+          // Ensures that the client will close when you finish/error
+          await client.close(); 
+        }
+      }
+      runy().catch(console.dir);
+});
+  res.end();
+})
 
 
 app.listen(5600,() => {
