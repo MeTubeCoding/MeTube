@@ -34,30 +34,36 @@ const Menu = () => {
           <li>
             <div className="menu-button" onClick={toggleMenu}>
               {isMenuOpen ? (
-                <button className="material-icons bg-neutral-700 p-5 rounded-lg active:bg-neutral-800">Close</button>
+                <div> 
+                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800">☰</button>
+                  <p>Close</p>
+                </div>
               ) : (
-                <button className="material-icons bg-neutral-700 p-5 rounded-lg active:bg-neutral-800">Menu</button>
+                <div>
+                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800">☰</button>
+                  <p>Menu</p>
+                </div>
               )}
             </div>
             {isMenuOpen && (
               <div>
-               <li>
-                  <a href="index.tsx">Accueil</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="index.tsx">⌂</a>
                 </li>
-                <li>
-                  <a href="pages/timeline.tsx" className='bg-neutral-700 p-5 rounded-lg active:bg-neutral-800'>Recommandés</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="pages/timeline.tsx"></a>
                 </li>
-                <li>
-                  <a href="#" className='bg-neutral-700 p-5 rounded-lg active:bg-neutral-800'>Tendances</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="#" >Tendances</a>
                 </li>
-                <li>
-                  <a href="#" className='bg-neutral-700 p-5 rounded-lg active:bg-neutral-800'>Abonnements</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="#" >Abonnements</a>
                 </li>
-                <li>
-                  <a href="#" className='bg-neutral-700 p-5 rounded-lg active:bg-neutral-800'>Bibliothèque</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="#" >Bibliothèque</a>
                 </li>
-                <li>
-                  <a href="#" className='bg-neutral-700 p-5 rounded-lg active:bg-neutral-800'>Historique</a>
+                <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
+                  <a href="#" >Historique</a>
                 </li>
               </div>
             )}
@@ -86,7 +92,7 @@ function App() {
           <a href='App.tsx' className="text-white font-bold text-2xl">MeTUBE</a>
           <div className="flex items-center">
             <input type="text" placeholder="Rechercher sur MeTube..." className='px-2 py-1 rounded-lg text-black mr-2' />
-            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
+            <button className='bg-neutral-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
           </div>
         </div>
         <div>

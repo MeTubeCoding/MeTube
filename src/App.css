@@ -7,16 +7,6 @@
 
 
 /* modification des attributs css  */
-body {
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-}
 
 .menu-container {
     display: flex;
