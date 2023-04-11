@@ -23,5 +23,5 @@
   // a modif : 
   "include": [
     "src"
-, "serverBackEnd.js", "setupTests.ts"  ]
+, "serverBackEnd.js", "setupTests.ts", "src/Video.tsx"  ]
 }

@@ -71,9 +71,6 @@ app.get('/demo',(req,res)=>{
   res.end("reponse du serveur");
 })
 
-//
-
-
 app.listen(5600,() => {
     console.log('Server app listening on port 5600');
 });
