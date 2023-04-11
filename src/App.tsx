@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
+<<<<<<< HEAD
+import { Chat } from './composant/chat';
+import { Description } from './composant/description';
+=======
 import { Live } from './composant/Live';
+>>>>>>> 24e93f694e765c1b01bca396646a7a67f0e475eb
 
 
 function log(){
@@ -36,7 +41,12 @@ function App() {
     <>
       <p onClick={log}>Je suis un test</p>
       <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
+<<<<<<< HEAD
+      <Chat/>
+      <Description/>
+=======
       <Live/>
+>>>>>>> 24e93f694e765c1b01bca396646a7a67f0e475eb
     </>
   );
 }
