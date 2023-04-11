@@ -1,47 +1,51 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-redeclare */
-/* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react'
-import { loginFields } from '../constants/formFields'
-import FormAction from './FormAction'
-import FormExtra from './FormExtra'
-import Input from './Input'
-type LoginState = Record<string, string>
+// Login.tsx
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { loginFields } from '../constants/formFields';
+import FormAction from './FormAction';
+import FormExtra from './FormExtra';
+import Input from './Input';
 
-const fields = loginFields
-const fieldsState: LoginState = { email: '', password: '' }
+type LoginState = Record<string, string>;
 
-export default function Login (): JSX.Element {
-  const [loginState, setLoginState] = useState<LoginState>(fieldsState)
+const fields = loginFields;
+const fieldsState: LoginState = { email: '', password: '' };
+
+export default function Login(): JSX.Element {
+  const [loginState, setLoginState] = useState<LoginState>(fieldsState);
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setLoginState({ ...loginState, [e.target.name]: e.target.value })
-  }
+    setLoginState({ ...loginState, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-    authenticateUser()
-  }
+    e.preventDefault();
+    authenticateUser();
+  };
 
   // Handle Login API Integration here
   const authenticateUser = (): void => {
     const endpoint =
-      'https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88'
+      'https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88';
     fetch(endpoint, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(loginState)
+      body: JSON.stringify(loginState),
     })
       .then(async (response) => await response.json())
       .then((_data) => {
         // API Success from LoginRadius Login API
+        navigate('/profile'); // Use navigate to redirect to the profile page
       })
-      .catch((error) => { console.log(error) })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -67,5 +71,5 @@ export default function Login (): JSX.Element {
 
       <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
-  )
+  );
 }
