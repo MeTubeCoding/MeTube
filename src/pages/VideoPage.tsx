@@ -5,8 +5,10 @@ import VideoEditor from '../components/VideoEditor'
 
 function VideoPage() {
   return (
-    <div>
-      <VideoEditor />
+    <div className="flex justify-center items-center h-screen">
+      <div className="max-w-3xl">
+        <VideoEditor />
+      </div>
     </div>
   )
 }
