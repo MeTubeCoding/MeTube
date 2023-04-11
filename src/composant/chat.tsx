@@ -1,3 +1,4 @@
+import React from 'react';
 export function Chat(){
 
   // function load(){
@@ -13,8 +14,8 @@ export function Chat(){
 
   function log(){
     console.log("log")
-    let message = document.getElementById("message-input") as HTMLInputElement;
-    let local = {
+    const message = document.getElementById("message-input") as HTMLInputElement;
+    const local = {
       "message": message.value,
       "pseudo": "Tristan",
 

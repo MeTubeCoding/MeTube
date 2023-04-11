@@ -68,7 +68,7 @@ app.get('/chat',(req,res)=>{
           const movies = database.collection('messageChat');
         //   console.log("mongo connect")
         //   console.log(query); 
-        search = await movies.find({}).toArray();
+        let search = await movies.find({}).toArray();
         console.log(search)
         //   console.log(movie);
         } finally {
