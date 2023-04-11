@@ -86,6 +86,29 @@ app.post('/data', (req, res) => {
 
   res.end('trop cool')
 })
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const database = client.db('profile');
+    const users = database.collection('users');
+
+    const user = await users.findOne({ 'email-address': email });
+
+    if (user) {
+      if (password === user.password) {
+        res.json({ success: true, message: 'Connexion réussie' });
+      } else {
+        res.status(401).json({ success: false, message: 'Mot de passe incorrect' });
+      }
+    } else {
+      res.status(404).json({ success: false, message: "L'email n'existe pas" });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Erreur lors de la connexion" });
+  }
+});
+
 
 app.get('/demo', (req, res) => {
   console.log('test')

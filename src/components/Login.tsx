@@ -1,4 +1,3 @@
-// Login.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginFields } from '../constants/formFields';
@@ -6,19 +5,23 @@ import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
 
-type LoginState = Record<string, string>;
+interface LoginState {
+  email: string;
+  password: string;
+  error: string | null;
+}
 
 const fields = loginFields;
-const fieldsState: LoginState = { email: '', password: '' };
+const fieldsState: LoginState = { email: '', password: '', error: null };
 
-export default function Login(): JSX.Element {
+const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<LoginState>(fieldsState);
   const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setLoginState({ ...loginState, [e.target.name]: e.target.value });
+    setLoginState({ ...loginState, [e.target.name]: e.target.value, error: null });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -26,21 +29,28 @@ export default function Login(): JSX.Element {
     authenticateUser();
   };
 
-  // Handle Login API Integration here
   const authenticateUser = (): void => {
-    const endpoint =
-      'https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88';
+    const endpoint = 'http://localhost:5600/login'; // Remplacez par l'URL de votre serveur
     fetch(endpoint, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(loginState),
+      body: JSON.stringify(loginState)
     })
-      .then(async (response) => await response.json())
-      .then((_data) => {
-        // API Success from LoginRadius Login API
-        navigate('/profile'); // Use navigate to redirect to the profile page
+      .then(async (response) => {
+        const data = await response.json();
+        console.log('Réponse du serveur :', response);
+        console.log('Données renvoyées :', data);
+
+        if (response.ok && data.success) {
+          // Connexion réussie
+          navigate('/profile');
+        } else {
+          // Échec de la connexion
+          setLoginState({ ...loginState, error: data.message });
+          console.log('Erreur lors de la connexion :', data.message);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -54,7 +64,6 @@ export default function Login(): JSX.Element {
           <Input
             key={field.id}
             handleChange={handleChange}
-            value={loginState[field.name]}
             labelText={field.labelText}
             labelFor={field.labelFor}
             id={field.id}
@@ -63,13 +72,20 @@ export default function Login(): JSX.Element {
             isRequired={field.isRequired}
             placeholder={field.placeholder}
             customClass={undefined}
-          />
+            value={''}
+                      />
         ))}
       </div>
+
+      {loginState.error && (
+        <div className="text-red-500">{loginState.error}</div>
+      )}
 
       <FormExtra />
 
       <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
   );
-}
+};
+
+export default Login;
