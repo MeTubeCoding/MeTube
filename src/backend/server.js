@@ -53,11 +53,33 @@ app.post('/chat',(req,res)=>{
 })
 
 
-res.end("pute");
+res.end();
 
   
 })
 
+app.get('/chat',(req,res)=>{
+
+  client.connect(err => {
+
+    async function runy() {
+        try {
+          const database = client.db('LiveBdd');
+          const movies = database.collection('messageChat');
+        //   console.log("mongo connect")
+        //   console.log(query); 
+        search = await movies.find({}).toArray();
+        console.log(search)
+        //   console.log(movie);
+        } finally {
+          // Ensures that the client will close when you finish/error
+          await client.close(); 
+        }
+      }
+      runy().catch(console.dir);
+});
+  res.end();
+})
 
 
 app.listen(5600,() => {
