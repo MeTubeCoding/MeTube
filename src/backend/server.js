@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable n/handle-callback-err */
 /* eslint-disable no-unused-vars */
 
@@ -91,9 +92,9 @@ app.post('/videos', function (req, res) {
 
   let fullTagRequest = fakeVideos.filter(video => video.tags.includes(requestString))
 
-  if(fullTagRequest.length > 0){
+  if (fullTagRequest.length > 0) {
     requestedVideos.push(...fullTagRequest)
-    res.json(requestedVideos);
+    res.json(requestedVideos)
   }
 
   /*
@@ -142,5 +143,6 @@ app.get('/demo', (req, res) => {
 })
 
 app.listen(5600, () => {
+  console.log(console.clear)
   console.log('Server app listening on port 5600')
 })
