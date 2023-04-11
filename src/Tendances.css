@@ -1,0 +1,148 @@
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Vos futur classe taiwind :  */
+
+
+/* modification des attributs css  */
+html {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+.haut {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.logo {
+    margin-right: 10%;
+    width: 50%;
+}
+.haut {
+    background-color: #111;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.haut_gauche {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+}
+.display_menu {
+    margin-right: 10%;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+}
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10%;
+    background-color: #111;
+}
+.Searching {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10%;
+
+    border-radius: 20px;
+    padding: 0.5rem 5rem 0.5rem 5rem;
+    border: 1px solid #444444;
+    background-color : #111;
+}
+.Searching:hover {
+    background-color: #333333;
+    color: #fff;
+}
+.rechercher {
+    background-color: #444444;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    color: #fff;
+}
+.rechercher:hover {
+    background-color: #333333;
+    color: #fff;
+}
+.tendances{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 1% 5% 1%;
+}
+.filtres {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nv{
+    margin-right: 5%;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+}
+.music{
+    margin-right: 5%;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+}
+.films{
+    margin-right: 5%;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+}
+.jeux{
+    margin-right: 5%;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+}
+.img_tendances {
+    border-radius: 50%;
+    margin-right: 2%;
+}
+h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 200%;
+}
+iframe {
+    margin: 1% 1% 1% 1%;
+    border-radius: 10px;
+}

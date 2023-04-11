@@ -79,7 +79,7 @@ function App() {
     <div>
       <body>
         <div className = "haut">
-          <a href='App.tsx'><h1>MeTUBE</h1></a>
+        <a href='App.tsx'><img className="logo" src="https://cdn.discordapp.com/attachments/1019222515962368112/1088482444207988838/Metube_logo.png"/></a>
           <div className="search">
             <input type="text" placeholder="Rechercher sur MeTube..." className='Searching' />
             <button className='rechercher'>Rechercher</button>
