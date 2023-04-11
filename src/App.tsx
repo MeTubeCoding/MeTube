@@ -1,5 +1,3 @@
-import 'tailwindcss/dist/tailwind.min.css'
-
 import React from 'react';
 
 const historyItems = [
