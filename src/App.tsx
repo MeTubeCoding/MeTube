@@ -2,15 +2,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import Editeur from './pages/Editeur'
 import HomePage from './pages/HomePage'
+import NavigationBar from './components/NavigationBar'
+import VideoPage from './pages/VideoPage'
 
 function App () {
   return (
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<VideoPage />} />
           <Route path='/:id' element={<h1>Page Résultats</h1>} />
         </Routes>
       </BrowserRouter>
