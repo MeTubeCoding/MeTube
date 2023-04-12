@@ -34,14 +34,14 @@ const Menu = () => {
           <li>
             <div className="menu-button" onClick={toggleMenu}>
               {isMenuOpen ? (
-                <div className='ml-10 md-6'> 
-                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800">☰</button>
-                  <p>Close</p>
+                <div className='ml-5 md-6 flex items-center'> 
+                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                  <p className='ml-2'>Close</p>
                 </div>
               ) : (
-                <div className='ml-5 md-6'>
-                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800">☰</button>
-                  <p>Menu</p>
+                <div className='ml-5 md-6 flex items-center'>
+                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                  <p className='ml-2'>Menu</p>
                 </div>
               )}
             </div>
