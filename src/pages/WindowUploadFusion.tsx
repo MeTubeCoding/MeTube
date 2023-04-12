@@ -63,7 +63,7 @@ const WindowUploadFusion = () => {
               <label htmlFor="file-upload" className="relative cursor-pointer bg-gray-100 rounded-lg font-medium text-red-600 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500">
                 <span className="text-2xl font-bold mb-2">Drop a file here</span>
                 <br />
-                <span className="text-gray-400">Maximum file size: 256 GB</span>
+                <span className="text-gray-400">Maximum file size: 50 MB </span>
                 <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={handleFileChange} />
               </label>
               <p className="pl-1 mt-5">{file ? file.name : "No file uploaded"}</p>
@@ -134,13 +134,26 @@ const WindowUploadFusion = () => {
                         <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Language</label>
                         <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
                           <option value="">Select a language</option>
-                          <option value="">Other</option>
+                          <option value="other">Other</option>
                           <option value="english">English</option>
                           <option value="french">French</option>
                           <option value="spanish">Spanish</option>
                           <option value="german">German</option>
                         </select>
                       </div>
+                      <div className="w-1/2 pr-2">
+                        <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Subtitling certificate</label>
+                        <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                          <option value="">None</option>
+                          <option value="">This content has never been shown on television in the United States</option>
+                          <option value="">This content was only shown on television in the United States without subtitles</option>
+                          <option value="">This content has not aired on television in the United States with closed captions since September 30, 2012</option>
+                          <option value="">This content does not fall into the category of online programming that requires closed captioning pursuant to FCC Rules (Section 47, Subpart 79)</option>
+                          <option value="">The FCC and/or the US Congress have granted a waiver for this content to meet captioning requirements</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="flex mb-6">
                       <div className="w-1/2 pl-2">
                         <label htmlFor="video-date" className="block font-medium text-gray-800 mb-2">Date of recording</label>
                         <input type="date" id="video-date" name="video-date" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />

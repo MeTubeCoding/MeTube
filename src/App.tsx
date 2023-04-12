@@ -2,6 +2,8 @@
 import React from 'react'
 import WindowUploadFusion from './pages/WindowUploadFusion'
 
-export default function App(): JSX.Element {
+function App(): JSX.Element {
   return <WindowUploadFusion />
 }
+
+export default App
