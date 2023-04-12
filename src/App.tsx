@@ -49,7 +49,7 @@ const Menu = () => {
             {isMenuOpen && (
               <div>
                 <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800 text-align:center'>
-                  <a href="index.tsx">| Accueil</a>
+                  <Link to="index.tsx">| Accueil</Link>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
@@ -57,19 +57,19 @@ const Menu = () => {
                 </li>
                 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >| Tendances</a>
+                  <Link to="#" >| Tendances</Link>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >| Abonnements</a>
+                  <Link to="#" >| Abonnements</Link>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >| Bibliothèque</a>
+                  <Link to="#" >| Bibliothèque</Link>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >| Historique</a>
+                  <Link to="#" >| Historique</Link>
                 </li>
 
               </div>
@@ -97,7 +97,7 @@ function App() {
       <div className='bg-neutral-800'>
         <div className="text-white font-roboto text-base font-normal leading-6 text-left m-0 p-0">
           <head className="bg-neutral-900 flex justify-between items-center py-4 px-6">
-            <a href='App.tsx' className="text-white font-bold text-2xl bg-neutral-700 p-2 rounded-lg active:bg-neutral-800">MeTube</a>
+            <Link to='App.tsx' className="text-white font-bold text-2xl bg-neutral-700 p-2 rounded-lg active:bg-neutral-800">MeTube</Link>
             <div className="flex items-center">
               <input type="text" placeholder="Rechercher sur MeTube..." className='px-2 py-1 rounded-lg text-black mr-2' />
               <button className='bg-neutral-700 active:bg-neutral-800 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
