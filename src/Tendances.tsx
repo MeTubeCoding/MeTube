@@ -6,6 +6,8 @@ import './Tendances.css';
 // import composant  :
 
 import { PassThrough } from 'stream';
+import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
+
 
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,43 +21,51 @@ const Menu = () => {
   };
 
   return (
-    <div className="menu-container">
-      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
-        <ul>
-          <li>
-            <div className="menu-button" onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <button className="material-icons">Close</button>
-              ) : (
-                <button className="material-icons">Menu</button>
-              )}
-            </div>
-            {isMenuOpen && (
-              <div>
-               <li>
-                  <a href="index.tsx">Accueil</a>
-                </li>
-                <li>
-                  <a href="pages/timeline.tsx">Recommandés</a>
-                </li>
-                <li>
-                  <a href="#">Tendances</a>
-                </li>
-                <li>
-                  <a href="#">Abonnements</a>
-                </li>
-                <li>
-                  <a href="#">Bibliothèque</a>
-                </li>
-                <li>
-                  <a href="#">Historique</a>
-                </li>
+    <Router>
+      <div className="menu-container">
+        <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
+          <ul>
+            <li>
+              <div className="menu-button" onClick={toggleMenu}>
+                {isMenuOpen ? (
+                  <div className='ml-5 md-6 flex items-center'> 
+                    <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                    <p className='ml-2'>Close</p>
+                  </div>
+                ) : (
+                  <div className='ml-5 md-6 flex items-center'>
+                    <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                    <p className='ml-2'>Menu</p>
+                  </div>
+                )}
               </div>
-            )}
-          </li>
-        </ul>
+              {isMenuOpen && (
+                <div>
+                  <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="App.tsx" className='text-align:center'>Accueil</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="pages/timeline.tsx">Recommandations</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <Link to='/Tendances'>Tendances</Link>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Abonnements</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Bibliothèque</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Historique</a>
+                  </li>
+                </div>
+              )}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
@@ -82,14 +92,16 @@ return (
           <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>Rechercher</button>
         </div>
       </div>
-      <div>
+      <div className='flex flex-row justify-start h-screen bg-neutral-900'>
+      <div className='bg-neutral-800 px-8 mr-20 '>
           {Menu()}
         </div>
+        <div>
       <div className="flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
         <img className='rounded-full mr-2%' src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
         <h3 className='m-0 p-0 text-center leading-normal text-3xl'>TENDANCES</h3>
         </div>
-      <div className="flex items-center justify-center bg-neutral-900">
+      <div className="flex  items-center justify-center bg-neutral-900">
         <div className="ml-3.5% mr-5/100 p-0 text-center flex flex-col">
         <h4>NOUVEAUTES</h4>
         <iframe className='mr-1% rounded-lg'
@@ -174,6 +186,8 @@ return (
             allowFullScreen
           ></iframe>
         </div>
+      </div>
+      </div>
       </div>
       </div>
   );
