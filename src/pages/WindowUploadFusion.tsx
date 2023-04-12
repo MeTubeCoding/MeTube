@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/comma-dangle */
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable eol-last */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -9,6 +11,14 @@ import "tailwindcss/tailwind.css";
 
 const WindowUploadFusion = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const [selectedGame, setSelectedGame] = useState('');
+
+  const [showComments, setShowComments] = useState(true);
+  const [checkComments, setCheckComments] = useState(false);
+  const [severeComments, setSevereComments] = useState(false);
+  const [sortComments, setSortComments] = useState('mieux-notes');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -20,6 +30,46 @@ const WindowUploadFusion = () => {
     event.preventDefault();
     console.log("File uploaded: ", file);
     // Ajouter le code pour envoyer le fichier
+  };
+
+  const categories = [
+    { value: 'jeu-video', label: 'Video game' },
+    { value: 'musique', label: 'Music' },
+    { value: 'divertissement', label: 'Entertainment' },
+    { value: 'éducation', label: 'Education' },
+  ];
+
+  const games = [
+    { value: 'fortnite', label: 'Fortnite' },
+    { value: 'minecraft', label: 'Minecraft' },
+    { value: 'call-of-duty', label: 'Call of Duty' },
+    { value: 'overwatch', label: 'Overwatch' },
+    { value: 'league-of-legends', label: 'League of Legends' },
+    { value: 'valorant', label: 'Valorant' },
+  ];
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const handleGameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedGame(event.target.value);
+  };
+
+  const handleShowCommentsChange = () => {
+    setShowComments(!showComments);
+  };
+
+  const handleCheckCommentsChange = () => {
+    setCheckComments(!checkComments);
+  };
+
+  const handleSevereCommentsChange = () => {
+    setSevereComments(!severeComments);
+  };
+
+  const handleSortCommentsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortComments(event.target.value);
   };
 
   return (
@@ -168,6 +218,126 @@ const WindowUploadFusion = () => {
                         Tags
                       </label>
                       <input type="text" id="video-tags" name="video-tags" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+                    </div>
+                    <div className="w-1/2 pr-2">
+                      <label htmlFor="video-license" className="block font-medium text-gray-800 mb-2">License</label>
+                      <select id="video-license" name="video-license" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                        <option value="">Youtube License - Standard</option>
+                        <option value="">Creative Commons - Attribution</option>
+                      </select>
+                    </div>
+                    <br />
+                    <div className="flex mb-6">
+                      <div className="w-1/2 pr-2 flex items-center font-medium text-gray-800 mb-2">
+                        <input type="checkbox" id="video-children" name="video-children" className="form-checkbox" required />
+                        <label htmlFor="video-children" className="ml-2">Allow integration</label>
+                      </div>
+                      <div className="w-1/2 pl-2 flex items-center font-medium text-gray-800 mb-2">
+                        <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox" required />
+                        <label htmlFor="video-commercial" className="ml-2">Post to the "Subscriptions" feed and notify subscribers</label>
+                      </div>
+                    </div>
+                    <div className="bg-gray-100 p-4 rounded-lg">
+                      <h2 className="text-xl font-semibold mb-2">Category</h2>
+                      <p className="text-gray-600 mb-4">
+                        Add your video to a category to make it easier for viewers to find it.
+                      </p>
+                      <div>
+                        <label htmlFor="category" className="block font-medium mb-2">
+                        Category
+                        </label>
+                        <select
+                          name="category"
+                          id="category"
+                          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          value={selectedCategory}
+                          onChange={handleCategoryChange}
+                        >
+                          <option value="">Select a category</option>
+                          {categories.map((category) => (
+                            <option key={category.value} value={category.value}>
+                              {category.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      {selectedCategory === 'jeu-video' && (
+                        <div className="mt-4">
+                          <label className="block font-medium mb-2">Video game</label>
+                          {games.map((game) => (
+                            <div key={game.value} className="flex items-center mb-2">
+                              <input
+                                type="radio"
+                                id={game.value}
+                                name="game"
+                                value={game.value}
+                                className="mr-2"
+                                checked={selectedGame === game.value}
+                                onChange={handleGameChange}
+                              />
+                              <label htmlFor={game.value}>{game.label}</label>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <br />
+                    <h2 className="text-xl font-semibold mb-2">Commentaires et avis</h2>
+                    <div>
+                      <label htmlFor="show-comments" className="flex items-center cursor-pointer mb-2">
+                        <input
+                          type="checkbox"
+                          id="show-comments"
+                          className="form-checkbox mr-2"
+                          checked={showComments}
+                          onChange={handleShowCommentsChange}
+                        />
+                        <span>Autoriser tous les commentaires</span>
+                      </label>
+                    </div>
+                    <div>
+                      <label htmlFor="check-comments" className="flex items-center cursor-pointer mb-2">
+                        <input
+                          type="checkbox"
+                          id="check-comments"
+                          className="form-checkbox mr-2"
+                          checked={checkComments}
+                          onChange={handleCheckCommentsChange}
+                        />
+                        <span>Vérifier les commentaires potentiellement inappropriés avant leur publication</span>
+                      </label>
+                      {checkComments && (
+                        <div>
+                          <label htmlFor="severe-comments" className="flex items-center cursor-pointer mb-2">
+                            <input
+                              type="checkbox"
+                              id="severe-comments"
+                              className="form-checkbox mr-2"
+                              checked={severeComments}
+                              onChange={handleSevereCommentsChange}
+                            />
+                            <span>Augmenter la sévérité</span>
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor="sort-comments" className="block font-medium mb-2">
+                        Trier par
+                      </label>
+                      <select
+                        name="sort-comments"
+                        id="sort-comments"
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        value={sortComments}
+                        onChange={handleSortCommentsChange}
+                      >
+                        <option value="mieux-notes">Les mieux notés</option>
+                        <option value="plus-récents">Les plus récents</option>
+                      </select>
+                    </div>
+                    <div className="mt-4">
+                      <p className="text-gray-600 mb-2">Nombre de "J'aime" pour cette vidéo : 105</p>
                     </div>
                   </div>
                 </details>
