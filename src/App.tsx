@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './App.css'
 
 
@@ -17,7 +17,7 @@ const Menu = () => {
   };
 
   return (
-    <BrowserRouter>
+    <Router>
       <div className="menu-container">
         <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
           <ul>
@@ -61,7 +61,7 @@ const Menu = () => {
           </ul>
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 
