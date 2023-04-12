@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable prefer-const */
 /* eslint-disable n/handle-callback-err */
 /* eslint-disable no-unused-vars */
@@ -74,26 +75,11 @@ app.post('/videos', function (req, res) {
   }]
 
   const requestString = req.body.data
-  const requestedVideos = []
+  const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+  const regex = new RegExp(regexString, 'i')
+  const requestedVideos = fakeVideos.filter(video => regex.test(video.title) || regex.test(video.channel) || video.tags.some(tag => regex.test(tag)))
 
-  const fullTitleRequest = fakeVideos.filter(video => video.title.includes(requestString))
-
-  if (fullTitleRequest.length > 0) {
-    requestedVideos.push(...fullTitleRequest)
-    res.json(requestedVideos)
-  }
-
-  const fullChannelRequest = fakeVideos.filter(video => video.channel.includes(requestString))
-
-  if (fullChannelRequest.length > 0) {
-    requestedVideos.push(...fullChannelRequest)
-    res.json(requestedVideos)
-  }
-
-  let fullTagRequest = fakeVideos.filter(video => video.tags.includes(requestString))
-
-  if (fullTagRequest.length > 0) {
-    requestedVideos.push(...fullTagRequest)
+  if (requestedVideos.length > 0) {
     res.json(requestedVideos)
   }
 
