@@ -1,21 +1,13 @@
 import React from 'react';
 
-const historyItems = [
-  {
-    videoUrl: 'https://www.youtube.com/embed/UUYv3kk37oQ',
-    description: 'Une vidéo intéressante'
-  }
-];
-
 function History() {
   return (
     <div className="History">
-      <div className="Header">
-        <img src="menu-btn.png"></img>
+      <div className="bg-neutral-900 object-cover absolute top-0 left-0 right-0">
+        <img src="menu-btn.png" className="object-cover w-5 m-5"></img>
+        <div className="rounded-full absolute top-0 left-0 right-0 bottom-0 hover:bg-white opacity-25 object-cover w-9 m-3"></div>
       </div>
-      <h2>Historique de visionnage</h2>
-      <h3>Aujourd'hui</h3>
-        <div className="flex">
+        <div className="absolute top-20 left-0 right-0 bottom-0 flex">
           <iframe
             width="357"
             height="201"
@@ -25,11 +17,7 @@ function History() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <p>Une video intéréssante</p>
         </div>
-      <h3>Hier</h3>
-      <h3>Dimanche</h3>
-      <h3>13 Mars</h3>
     </div>
   );
 }
