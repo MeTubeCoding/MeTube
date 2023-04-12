@@ -33,7 +33,7 @@ const Menu = () => {
       <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
         <ul>
           <li>
-            <div className="menu-button" onClick={toggleMenu}>
+            <div className="menu-button mt-3 mb-3" onClick={toggleMenu}>
               {isMenuOpen ? (
                 <div className='ml-5 md-6 flex items-center'> 
                   <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
@@ -49,27 +49,27 @@ const Menu = () => {
             {isMenuOpen && (
               <div>
                 <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800 text-align:center'>
-                  <a href="index.tsx">Accueil</a>
+                  <a href="index.tsx">| Accueil</a>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <Link to="pages/timeline.tsx">Recommandations</Link>
+                  <Link to="pages/timeline.tsx">| Recommandations</Link>
                 </li>
                 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Tendances</a>
+                  <a href="#" >| Tendances</a>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Abonnements</a>
+                  <a href="#" >| Abonnements</a>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Bibliothèque</a>
+                  <a href="#" >| Bibliothèque</a>
                 </li>
 
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Historique</a>
+                  <a href="#" >| Historique</a>
                 </li>
 
               </div>
@@ -103,7 +103,7 @@ function App() {
               <button className='bg-neutral-700 active:bg-neutral-800 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
             </div>
           </head>
-          <div className='bg-neutral-800 mt-3'>
+          <div className='bg-neutral-800'>
             {Menu()}
           </div>
         </div>
