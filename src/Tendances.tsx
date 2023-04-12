@@ -70,16 +70,16 @@ const Menu = () => {
 
 function Tendances() {
 return (
-    <div className = "h-screen bg-gray-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div className="text-center flex flex-row bg-gray-800 text-white p-4 flex justify-around items-center">
+    <div className = "h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+      <div className="text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center">
         <div className='flex flex-row justify-between items-center mr-auto'>
         <div className='titre'>
         <a href='App.tsx'><img className="mr-10 w-1/2" src="https://cdn.discordapp.com/attachments/1019222515962368112/1088482444207988838/Metube_logo.png"/></a>
         </div>
         </div>
-        <div className="flex items-center justify-between mr-10 bg-gray-800">
-          <input type="text" placeholder="Rechercher sur MeTube..." className='w:90 pl-1 rounded-2xl border border-gray-600 bg-gray-800 hover:bg-gray-700 text-white placeholder:italic' />
-          <button className='bg-gray-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-gray-700'>Rechercher</button>
+        <div className="flex items-center justify-between mr-10 bg-neutral-800">
+          <input type="text" placeholder="Rechercher sur MeTube..." className='w:90 pl-1 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 text-white placeholder:italic' />
+          <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-gray-700'>Rechercher</button>
         </div>
       </div>
       <div>
@@ -89,7 +89,7 @@ return (
         <img className='rounded-full mr-2%' src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
         <h3 className='m-0 p-0 text-center leading-normal text-3xl'>TENDANCES</h3>
         </div>
-      <div className="flex items-center justify-center bg-gray-900">
+      <div className="flex items-center justify-center bg-neutral-900">
         <div className="ml-3.5% mr-5/100 p-0 text-center flex flex-col">
         <h4>NOUVEAUTES</h4>
         <iframe className='mr-1% rounded-lg'
