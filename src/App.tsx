@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css'
 
 
@@ -47,24 +48,30 @@ const Menu = () => {
             </div>
             {isMenuOpen && (
               <div>
-                <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="index.tsx" className='text-align:center'>Accueil</a>
+                <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800 text-align:center'>
+                  <a href="index.tsx">Accueil</a>
                 </li>
+
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="pages/timeline.tsx">Recommandations</a>
+                  <Link to="pages/timeline.tsx">Recommandations</Link>
                 </li>
+                
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                   <a href="#" >Tendances</a>
                 </li>
+
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                   <a href="#" >Abonnements</a>
                 </li>
+
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                   <a href="#" >Bibliothèque</a>
                 </li>
+
                 <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                   <a href="#" >Historique</a>
                 </li>
+
               </div>
             )}
           </li>
@@ -86,20 +93,22 @@ const Menu = () => {
 
 function App() {
   return (
-    <div>
-      <div className="bg-neutral-900 text-white font-roboto text-base font-normal leading-6 text-left m-0 p-0">
-        <div className="flex justify-between items-center py-4 px-6">
-          <a href='App.tsx' className="text-white font-bold text-2xl bg-neutral-700 p-2 rounded-lg active:bg-neutral-800">MeTube</a>
-          <div className="flex items-center">
-            <input type="text" placeholder="Rechercher sur MeTube..." className='px-2 py-1 rounded-lg text-black mr-2' />
-            <button className='bg-neutral-700 active:bg-neutral-800 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
+    <Router>
+      <div className='bg-neutral-800'>
+        <div className="text-white font-roboto text-base font-normal leading-6 text-left m-0 p-0">
+          <head className="bg-neutral-900 flex justify-between items-center py-4 px-6">
+            <a href='App.tsx' className="text-white font-bold text-2xl bg-neutral-700 p-2 rounded-lg active:bg-neutral-800">MeTube</a>
+            <div className="flex items-center">
+              <input type="text" placeholder="Rechercher sur MeTube..." className='px-2 py-1 rounded-lg text-black mr-2' />
+              <button className='bg-neutral-700 active:bg-neutral-800 text-white font-bold py-2 px-4 rounded-lg'>Rechercher</button>
+            </div>
+          </head>
+          <div className='bg-neutral-800 mt-3'>
+            {Menu()}
           </div>
         </div>
-        <div>
-          {Menu()}
-        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
