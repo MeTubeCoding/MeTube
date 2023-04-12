@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter, Link } from 'react-router-dom'
 import './App.css'
 
 
@@ -28,49 +29,51 @@ const Menu = () => {
   };
 
   return (
-    <div className="menu-container">
-      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
-        <ul>
-          <li>
-            <div className="menu-button" onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <div className='ml-5 md-6 flex items-center'> 
-                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
-                  <p className='ml-2'>Close</p>
-                </div>
-              ) : (
-                <div className='ml-5 md-6 flex items-center'>
-                  <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
-                  <p className='ml-2'>Menu</p>
+    <BrowserRouter>
+      <div className="menu-container">
+        <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
+          <ul>
+            <li>
+              <div className="menu-button" onClick={toggleMenu}>
+                {isMenuOpen ? (
+                  <div className='ml-5 md-6 flex items-center'> 
+                    <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                    <p className='ml-2'>Close</p>
+                  </div>
+                ) : (
+                  <div className='ml-5 md-6 flex items-center'>
+                    <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
+                    <p className='ml-2'>Menu</p>
+                  </div>
+                )}
+              </div>
+              {isMenuOpen && (
+                <div>
+                  <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="index.tsx" className='text-align:center'>Accueil</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="pages/timeline.tsx">Recommandations</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <Link to='/Tendances.tsx'>Tendances</Link>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Abonnements</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Bibliothèque</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href="#" >Historique</a>
+                  </li>
                 </div>
               )}
-            </div>
-            {isMenuOpen && (
-              <div>
-                <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="index.tsx" className='text-align:center'>Accueil</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="pages/timeline.tsx">Recommandations</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Tendances</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Abonnements</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Bibliothèque</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href="#" >Historique</a>
-                </li>
-              </div>
-            )}
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 
