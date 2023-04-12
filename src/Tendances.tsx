@@ -70,7 +70,7 @@ const Menu = () => {
 
 function Tendances() {
 return (
-    <div className = "bg-gray-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+    <div className = "h-screen bg-gray-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
       <div className="text-center flex flex-row bg-gray-800 text-white p-4 flex justify-around items-center">
         <div className='flex flex-row justify-between items-center mr-auto'>
         <div className='titre'>
@@ -89,7 +89,7 @@ return (
         <img className='rounded-full mr-2%' src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
         <h3 className='m-0 p-0 text-center leading-normal text-3xl'>TENDANCES</h3>
         </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center bg-gray-900">
         <div className="ml-3.5% mr-5/100 p-0 text-center flex flex-col">
         <h4>NOUVEAUTES</h4>
         <iframe className='mr-1% rounded-lg'
