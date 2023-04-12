@@ -75,16 +75,16 @@ app.post('/videos', function (req, res) {
     title: 'Il a une calvitie',
     miniature: 'https://imgs.search.brave.com/Mzd1G1UAR4KtlSpOFaL5bLw8jY4YabGntaZq_3qM78Y/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4w/U0hscC16THhYTmg1/a29hUFhHdk9RSGFI/YSZwaWQ9QXBp',
     channel: 'Roro',
-    video: 'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+    video: 'https://media.discordapp.net/attachments/818430407682555956/1086955678540775525/arm3egX_460sv.mp4',
     tags: ['macron']
   }]
 
   const noResult = [{
     id: 1,
     title: 'No Results',
-    miniature: '',
+    miniature: 'https://cdn.discordapp.com/attachments/906279185864073226/1095710412609167591/IMG_5148.jpg',
     channel: '',
-    video: '',
+    video: 'e.mp4',
     tags: ['']
   }]
 

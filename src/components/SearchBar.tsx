@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState } from 'react'
 import { Button, IconButton, InputBase } from '@mui/material'
-import VoiceRecognitionButton from './VoiceRecognitionButton'
 
 interface IProps {
   onSearch: (input: string) => any
@@ -47,8 +46,8 @@ const SearchBar = (props: IProps) => {
             </svg>
             <span className="sr-only">Search</span>
           </button>
-          <div className='bg-[#181818] ml-2 rounded-full hover:bg-[#262626]'>
-            <VoiceRecognitionButton setSearchValue={handleSetSearchInput}/>
+          <div className='bg-[#181818] ml-2 rounded-full hover:bg-[#262626] text-[#e3e3e3]'>
+            <p>butoon</p>
           </div>
       </div>
     </form>
