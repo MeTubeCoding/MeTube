@@ -87,16 +87,6 @@ app.post('/videos', function (req, res) {
   if (requestedVideos.length > 0) {
     res.json(requestedVideos)
   }
-
-  /*
-   * difficulté: 3/5
-   * recherche by tags
-   */
-
-  /*
-   * difficulté: 5/5
-   * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
-   */
 })
 
 // Optionnel a vous de voir pour vous adapter à votre problématique :
