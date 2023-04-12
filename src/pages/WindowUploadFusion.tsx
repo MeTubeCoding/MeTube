@@ -56,7 +56,7 @@ const WindowUploadFusion = () => {
           </svg>
         </button>
       </header>
-      <div className="flex h-screen justify-center items-center">
+      <div className="flex justify-center items-center">
         <div className="w-full md:w-1/2 pl-24 max-w-xl mx-auto px-2 py-8">
           <form onSubmit={handleSubmit} className="max-w-md w-full px-6">
             <div className="flex flex-col items-center justify-center bg-white rounded-lg shadow-lg p-10">
@@ -93,19 +93,79 @@ const WindowUploadFusion = () => {
                 </label>
                 <textarea id="video-description" name="video-description" rows={4} className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600"></textarea>
               </div>
-              <div className="mb-6">
-                <label htmlFor="video-tags" className="block font-medium text-gray-800 mb-2" aria-label="Video tags">
-                  Tags
-                </label>
-                <input type="text" id="video-tags" name="video-tags" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+              <div className="mb-4">
+                <label htmlFor="video-playlist" className="block font-medium text-gray-800 mb-2">Add to Playlist</label>
+                <select id="video-playlist" name="video-playlist" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                  <option value="">Select a playlist</option>
+                  <option value="create-playlist">Create new playlist</option>
+                  <option value="playlist-1">Playlist 1</option>
+                  <option value="playlist-2">Playlist 2</option>
+                  <option value="playlist-3">Playlist 3</option>
+                </select>
               </div>
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:bg-red-700"
-                >
-                  Publish
-                </button>
+              <div className="flex mb-6">
+                <div className="w-1/2 pr-2 flex items-center font-medium text-gray-800 mb-2">
+                  <input type="checkbox" id="video-children" name="video-children" className="form-checkbox" required />
+                  <label htmlFor="video-children" className="ml-2">This video is appropriate for children</label>
+                </div>
+                <div className="w-1/2 pl-2 flex items-center font-medium text-gray-800 mb-2">
+                  <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox" required />
+                  <label htmlFor="video-commercial" className="ml-2">This video contains commercial content</label>
+                </div>
+              </div>
+              <div className="mb-6">
+                <div className="flex">
+                  <div className="w-1/3 mr-2">
+                    <img src="https://via.placeholder.com/640x360.png?text=Preview+Image+1" alt="Video Preview 1" className="w-full h-full object-cover rounded-md cursor-pointer" />
+                  </div>
+                  <div className="w-1/3 mr-2">
+                    <img src="https://via.placeholder.com/640x360.png?text=Preview+Image+2" alt="Video Preview 2" className="w-full h-full object-cover rounded-md cursor-pointer" />
+                  </div>
+                  <div className="w-1/3">
+                    <img src="https://via.placeholder.com/640x360.png?text=Preview+Image+3" alt="Video Preview 3" className="w-full h-full object-cover rounded-md cursor-pointer" />
+                  </div>
+                </div>
+                <br />
+                <details>
+                  <summary className="font-medium text-gray-800 cursor-pointer">Click to see video details</summary>
+                  <div className="mt-4">
+                    <div className="flex mb-6">
+                      <div className="w-1/2 pr-2">
+                        <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Language</label>
+                        <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                          <option value="">Select a language</option>
+                          <option value="">Other</option>
+                          <option value="english">English</option>
+                          <option value="french">French</option>
+                          <option value="spanish">Spanish</option>
+                          <option value="german">German</option>
+                        </select>
+                      </div>
+                      <div className="w-1/2 pl-2">
+                        <label htmlFor="video-date" className="block font-medium text-gray-800 mb-2">Date of recording</label>
+                        <input type="date" id="video-date" name="video-date" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+                      </div>
+                      <div className="w-1/3 pl-2">
+                        <label htmlFor="video-location" className="block font-medium text-gray-800 mb-2">Location</label>
+                        <input type="text" id="video-location" name="video-location" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+                      </div>
+                    </div>
+                    <div className="mb-6">
+                      <label htmlFor="video-tags" className="block font-medium text-gray-800 mb-2" aria-label="Video tags">
+                        Tags
+                      </label>
+                      <input type="text" id="video-tags" name="video-tags" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+                    </div>
+                  </div>
+                </details>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:bg-red-700"
+                  >
+                    Publish
+                  </button>
+                </div>
               </div>
             </form>
           </div>
