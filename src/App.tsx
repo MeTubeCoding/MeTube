@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 import React from 'react'
-import WindowUploadInfos from './pages/WindowUploadInfos'
+import WindowUploadTest from './pages/WindowUploadTest'
 
 export default function App(): JSX.Element {
-  return <WindowUploadInfos />
+  return <WindowUploadTest />
 }
