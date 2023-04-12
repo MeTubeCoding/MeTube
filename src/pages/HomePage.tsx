@@ -16,9 +16,9 @@ const HomePage = () => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 60px)' }}>
       <NavigationBar />
-      <div style={{ display: 'flex', flexDirection: 'column-reverse', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', height: '250px', marginTop: '10%' }}>
         {selectedVideo ? (
           <VideoItem video={selectedVideo} />
         ) : (
