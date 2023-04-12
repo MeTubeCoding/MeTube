@@ -1,3 +1,4 @@
+/* eslint-disable n/handle-callback-err */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-unused-vars */
@@ -22,11 +23,6 @@ const fs = require('fs')
 
 const publi = path.join(__dirname, 'nom du dossier Public')
 
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-}
-
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({
   extended: true
@@ -34,14 +30,9 @@ app.use(bodyparser.urlencoded({
 
 app.use('/', express.static(publi))
 
-app.use(cors(corsOptions))
-
-// Optionnel a vous de voir pour vous adapter à votre problématique :
-
-// app.get('/',(req,res)=>{
-
-//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
-// })
+app.use(cors({
+  origin: 'http://localhost:3000'
+}))
 
 app.post('/node/sub', (req, res) => {
   client.connect(err => {
@@ -87,36 +78,34 @@ app.post('/data', (req, res) => {
   res.end('trop cool')
 })
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body
 
   try {
-    const database = client.db('profile');
-    const users = database.collection('users');
+    const database = client.db('profile')
+    const users = database.collection('users')
 
-    const user = await users.findOne({ 'email-address': email });
+    const user = await users.findOne({ 'email-address': email })
 
     if (user) {
       if (password === user.password) {
-        res.json({ success: true, message: 'Connexion réussie' });
+        res.json({ success: true, message: 'Connexion réussie' })
       } else {
-        res.status(401).json({ success: false, message: 'Mot de passe incorrect' });
+        res.status(401).json({ success: false, message: 'Mot de passe incorrect' })
       }
     } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" });
+      res.status(404).json({ success: false, message: "L'email n'existe pas" })
     }
   } catch (error) {
-    res.status(500).json({ success: false, message: "Erreur lors de la connexion" });
+    res.status(500).json({ success: false, message: 'Erreur lors de la connexion' })
   }
-});
-
+})
 
 app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
 
-//
-
 app.listen(5600, () => {
+  console.log(console.clear())
   console.log('Server app listening on port 5600')
 })

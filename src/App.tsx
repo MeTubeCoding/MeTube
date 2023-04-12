@@ -1,11 +1,11 @@
 // App.tsx
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignupPage from './pages/Signup';
-import LoginPage from './pages/Login';
-import ProfilePage from './pages/Profile';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SignupPage from './pages/Signup'
+import LoginPage from './pages/Login'
+import ProfilePage from './pages/Profile'
 
 const App: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         </BrowserRouter>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

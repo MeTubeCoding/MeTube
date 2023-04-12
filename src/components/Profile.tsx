@@ -7,9 +7,7 @@ import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
 
-interface ProfileState {
-  [key: string]: string
-}
+type ProfileState = Record<string, string>
 
 const fields = loginFields
 const fieldsState: ProfileState = {}
@@ -31,14 +29,14 @@ export default function Profile (): JSX.Element {
   const authenticateUser = (): void => {
     const endpoint = 'https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88'
     fetch('http://localhost:5600/data', {
-  method: 'GET', // Utiliser la méthode GET pour récupérer des données
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-  .then(response => response.json()) // Convertir la réponse en JSON
-  .then(data => console.log(data)) // Utiliser les données récupérées
-  .catch(error => console.error(error)); // Gérer les erreurs éventuelles
+      method: 'GET', // Utiliser la méthode GET pour récupérer des données
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(async response => await response.json()) // Convertir la réponse en JSON
+      .then(data => { console.log(data) }) // Utiliser les données récupérées
+      .catch(error => { console.error(error) }) // Gérer les erreurs éventuelles
   }
 
   return (
@@ -54,7 +52,7 @@ export default function Profile (): JSX.Element {
               labelFor={field.labelFor}
               id={field.id}
               type={field.type}
-              name={''} 
+              name={''}
               isRequired={field.isRequired}
               placeholder={field.placeholder}
               customClass={undefined}/>
