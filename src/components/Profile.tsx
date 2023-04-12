@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-return-assign */
@@ -45,7 +46,6 @@ export default function Profile (): JSX.Element {
         {
           fields.map(field =>
             <Input
-              key={field.id}
               handleChange={handleChange}
               value={loginState[field.id]}
               labelText={field.labelText}

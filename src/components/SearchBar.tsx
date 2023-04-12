@@ -24,7 +24,7 @@ const SearchBar = (props: IProps) => {
             type="search"
             id="search-dropdown"
             value={searchInput}
-            onChange={(e) => { setSearchInput(e.currentTarget.value) }}
+            onChange={(e: { currentTarget: { value: React.SetStateAction<string> } }) => { setSearchInput(e.currentTarget.value) }}
             className="bg-[#131313] border border-[#3d3d3d] text-white font-semibold placeholder:text-[#aaaaaa] placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none h-10 w-5/12"
             placeholder="Search..."
             required

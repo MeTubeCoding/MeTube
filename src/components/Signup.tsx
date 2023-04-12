@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable react/react-in-jsx-scope */
@@ -53,7 +54,6 @@ export default function Signup () {
       <div className="">
         {fields.map((field) => (
           <Input
-            key={field.id}
             handleChange={handleChange}
             value={signupState[field.id]}
             labelText={field.labelText}

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
@@ -65,7 +66,6 @@ const Login: React.FC = () => {
       <div className="-space-y-px">
         {fields.map((field) => (
           <Input
-            key={field.id}
             handleChange={handleChange}
             value={loginState[field.name]}
             labelText={field.labelText}

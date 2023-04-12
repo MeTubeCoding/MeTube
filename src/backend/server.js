@@ -114,11 +114,6 @@ app.get('/demo', (req, res) => {
   res.end('reponse du serveur')
 })
 
-app.listen(5600, () => {
-  console.log(console.clear())
-
-})
-
 // app.use('/', express.static(public));
 
 app.use(cors())
