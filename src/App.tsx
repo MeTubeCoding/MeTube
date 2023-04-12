@@ -51,7 +51,7 @@ const Menu = () => {
                   <a href="index.tsx">⌂</a>
                 </li>
                 <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
-                  <a href="pages/timeline.tsx"></a>
+                  <a href="pages/timeline.tsx">🔥</a>
                 </li>
                 <li className='hover:bg-neutral-700 w-10 h-10 rounded-lg active:bg-neutral-800'>
                   <a href="#" >Tendances</a>
