@@ -6,7 +6,7 @@ import './Tendances.css';
 // import composant  :
 
 import { PassThrough } from 'stream';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
 
 const Menu = () => {
@@ -21,6 +21,7 @@ const Menu = () => {
   };
 
   return (
+    <Router>
       <div className="menu-container">
         <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
           <ul>
@@ -41,13 +42,13 @@ const Menu = () => {
               {isMenuOpen && (
                 <div>
                   <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                    <a href="index.tsx" className='text-align:center'>Accueil</a>
+                    <a href="App.tsx" className='text-align:center'>Accueil</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                     <a href="pages/timeline.tsx">Recommandations</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                    <a to='/Tendances'>Tendances</a>
+                    <Link to='/Tendances'>Tendances</Link>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                     <a href="#" >Abonnements</a>
@@ -64,6 +65,7 @@ const Menu = () => {
           </ul>
         </div>
       </div>
+    </Router>
   );
 };
 
