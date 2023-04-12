@@ -19,17 +19,17 @@ const SearchBar = (props: IProps) => {
   }
   return (
     <form onSubmit={handleSearch}>
-      <div className="flex justify-center bg-[#101010] p-2 items-center">
+      <div className="flex justify-center bg-white dark:bg-[#101010] p-2 items-center">
           <input
             type="search"
             id="search-dropdown"
             value={searchInput}
             onChange={(e) => { setSearchInput(e.currentTarget.value) }}
-            className="bg-[#131313] border border-[#3d3d3d] text-white font-semibold placeholder:text-[#aaaaaa] placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none h-10 w-5/12"
+            className="dark:bg-[#131313] border dark:border-[#3d3d3d] dark:text-[#e3e3e3] font-semibold dark:placeholder:text-[#aaaaaa] dark:placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none h-10 w-5/12"
             placeholder="Search..."
             required
           />
-          <button type="submit" className="bg-[#212121] h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-[#3d3d3d]">
+          <button type="submit" className="dark:bg-[#212121] h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b dark:border-[#3d3d3d]">
             <svg
               aria-hidden="true"
               className="w-5 h-5"

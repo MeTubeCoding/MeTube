@@ -79,6 +79,15 @@ app.post('/videos', function (req, res) {
     tags: ['macron']
   }]
 
+  const noResult = [{
+    id: 1,
+    title: 'No Results',
+    miniature: '',
+    channel: '',
+    video: '',
+    tags: ['']
+  }]
+
   const requestString = req.body.data
   const regexString = requestString.replace(/ /g, '|').split('').join('.*')
   const regex = new RegExp(regexString, 'i')
@@ -86,6 +95,8 @@ app.post('/videos', function (req, res) {
 
   if (requestedVideos.length > 0) {
     res.json(requestedVideos)
+  } else {
+    res.json(noResult)
   }
 
   /*
