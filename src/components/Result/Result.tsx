@@ -32,7 +32,7 @@ const Result = (props: Props) => {
     <div className="max-w-fit bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a className="w-96 h-56 flex" href="#">
             <img className="rounded-t-lg hover:opacity-0 w-96 h-56 absolute z-10" onMouseEnter={playVid} onMouseLeave={pauseVid} src={props.video.miniature} alt=""/>
-            <video muted className="rounded-t-lg w-80 w-96 h-56 absolute"ref={videoRef}>
+            <video muted className="rounded-t-lg w-80 w-96 h-56 absolute" ref={videoRef}>
               <source src={props.video.video} type='video/mp4'/>
             </video>
         </a>
