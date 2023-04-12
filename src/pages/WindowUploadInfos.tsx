@@ -54,7 +54,7 @@ const WindowUploadInfos = () => {
                     <form className="px-6 py-4">
                     <div className="flex flex-col mb-4">
                         <label htmlFor="video-title" className="font-medium text-gray-800" aria-label="Video title" aria-required="true">
-                        Titre de la vidéo
+                        Title
                         </label>
                         <input
                         type="text"
@@ -65,7 +65,7 @@ const WindowUploadInfos = () => {
                     </div>
                     <div className="flex flex-col mb-4">
                         <label htmlFor="video-description" className="font-medium text-gray-800" aria-label="Video description" aria-required="true">
-                        Description de la vidéo
+                        Description
                         </label>
                         <textarea
                         id="video-description"
@@ -76,7 +76,7 @@ const WindowUploadInfos = () => {
                     </div>
                     <div className="flex flex-col mb-4">
                         <label htmlFor="video-tags" className="font-medium text-gray-800" aria-label="Video tags">
-                        Tags de la vidéo
+                        Tags
                         </label>
                         <input
                         type="text"
@@ -90,7 +90,7 @@ const WindowUploadInfos = () => {
                         type="submit"
                         className="px-4 py-2 bg-red-700 text-white rounded-md hover:bg-red-800 focus:outline-none focus:bg-red-800"
                         >
-                        Publier
+                        Publish
                         </button>
                     </div>
                     </form>
