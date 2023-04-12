@@ -1,20 +1,8 @@
 import React, { useState } from 'react'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 
 
-
-
-
-
-const test = document.getElementById('test')
-
-test?.addEventListener('click', () => {
-  fetch('http://localhost:5600/demo')
-    // .then(response => response.text())
-    // .then(data => console.log(data))
-    // .catch(error => console.error(error));
-});
 
 
 const Menu = () => {
@@ -56,7 +44,7 @@ const Menu = () => {
                     <a href="pages/timeline.tsx">Recommandations</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                    <Link to='/Tendances.tsx'>Tendances</Link>
+                    <Link to='/Tendances'>Tendances</Link>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                     <a href="#" >Abonnements</a>
