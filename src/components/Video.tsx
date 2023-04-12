@@ -1,57 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react'
+import './Video.css'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'
+import InsertCommentIcon from '@mui/icons-material/InsertComment'
+import NearMeIcon from '@mui/icons-material/NearMe'
+import Ticker from 'react-ticker'
+import { Avatar } from '@mui/material'
 
-const videoData = [
-  {
-    id: 'Qg0Kk5MO5_0',
-    title: 'Video 1',
-    thumbnail: 'https://i.ytimg.com/vi/Qg0Kk5MO5_0/hqdefault.jpg'
-  },
-  {
-    id: '8XpGZd_7_dI',
-    title: 'Video 2',
-    thumbnail: 'https://i.ytimg.com/vi/8XpGZd_7_dI/hqdefault.jpg'
-  },
-  {
-    id: 'Ib3RJ-_DCT0',
-    title: 'Video 3',
-    thumbnail: 'https://i.ytimg.com/vi/Ib3RJ-_DCT0/hqdefault.jpg'
-  }
-];
-function Video() {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+function Video (): JSX.Element {
+  return (
+        <div className='video'>
+            <video />
+            <div className='shortsContainer'>
+                <div className='shortsVideoTop'>
+                    <div className='shortsVideoTopIcon'>
+                        <ArrowBackIcon />
+                    </div>
+                    <div className='shortsVideoTopIcon'>
+                        <MoreVertIcon />
+                    </div>
+                </div>
+                <div className='shortsVideoSideIcons'>
+                    <div className='shortsVideoSideIcon'>
+                        <ThumbUpIcon />
+                        <p>600</p>
+                    </div>
+                    <div className='shortsVideoSideIcon'>
+                        <ThumbDownIcon />
+                        <p>600</p>
+                    </div>
+                    <div className='shortsVideoSideIcon'>
+                        <InsertCommentIcon />
+                        <p>600</p>
+                    </div>
+                    <div className='shortsVideoSideIcon'>
+                        <NearMeIcon />
+                        <p>600</p>
+                    </div>
+                </div>
+                <div className='shortsBottom'>
+                    <div className='shortsDesc'>
+                        <Ticker>
+                            {({ index }) => (
+                                <p className='description'>test description</p>
+                            )}
+                        </Ticker>
+                    </div>
+                    <div className='shortsDetails'>
+                        <Avatar />
+                        <p>channel name</p>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  )
+}
 
-  const handleKeyDown = (event: { key: string; }) => {
-    if (event.key === 'ArrowUp') {
-      setCurrentVideoIndex(prevIndex => {
-        const nextIndex = prevIndex + 1;
-        return nextIndex < videoData.length ? nextIndex : 0;
-      });
-    } else if (event.key === 'ArrowDown') {
-      setCurrentVideoIndex(prevIndex => {
-        const nextIndex = prevIndex - 1;
-        return nextIndex >= 0 ? nextIndex : videoData.length - 1;
-      });
-    }
-  };
-
-  const currentVideo = videoData[currentVideoIndex];
-  const nextVideo = videoData[(currentVideoIndex + 1) % videoData.length];
-  
-    return (
-      <div className="video-container">
-        <video
-          src={`https://www.youtube.com/embed/${currentVideo.id}`}
-          title={currentVideo.title}
-          onKeyDown={handleKeyDown}
-          controls
-        ></video>
-        <img
-          className="video-preview"
-          src={nextVideo.thumbnail}
-          alt={nextVideo.title}
-        />
-      </div>
-    );
-  }
-  
-  export default Video;
+export default Video
