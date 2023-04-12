@@ -79,7 +79,7 @@ return (
         </div>
         <div className="flex items-center justify-between mr-10 bg-neutral-800">
           <input type="text" placeholder="Rechercher sur MeTube..." className='w:90 pl-1 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 text-white placeholder:italic' />
-          <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-gray-700'>Rechercher</button>
+          <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>Rechercher</button>
         </div>
       </div>
       <div>
