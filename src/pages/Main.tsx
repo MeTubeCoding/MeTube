@@ -3,15 +3,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
-import Results, { type IResults } from '../components/Results'
 
 const Main = () => {
-  const [videos, setVideos] = useState<IResults | []>([])
-  useEffect(() => {
-
-  }, [])
-  const [searchDatas, setSearchDatas] = useState('')
-
   const onSearch = (data: string) => {
     console.log(JSON.stringify(data))
 
@@ -23,13 +16,10 @@ const Main = () => {
         },
         body: JSON.stringify({ data })
       }
-    ).then(async response => await response.json()).then((response: IResults) => { setVideos(response) })
+    ).then(async response => await response.json())
   }
   return (
-    <div>
-      <SearchBar onSearch={onSearch}/>
-      <Results videos={videos}/>
-    </div>
+    <p>ok</p>
   )
 }
 
