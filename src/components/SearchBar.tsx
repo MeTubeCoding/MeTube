@@ -18,11 +18,11 @@ const SearchBar = (props: IProps) => {
   const btn = useRef<HTMLButtonElement>(null)
   const yBorder = () => {
     btn.current?.classList.remove('border-[#4d2e4e]')
-    btn.current?.classList.add('border-[#a45d2b]')
+    btn.current?.classList.add('border-[#ecd4ad]')
   }
 
   const nBorder = () => {
-    btn.current?.classList.remove('border-[#a45d2b]')
+    btn.current?.classList.remove('border-[#ecd4ad]')
     btn.current?.classList.add('border-[#4d2e4e]')
   }
 
@@ -36,7 +36,7 @@ const SearchBar = (props: IProps) => {
           onChange={e => {
             setSearchInput(e.currentTarget.value)
           }}
-          className="bg-[#24152c] border border-[#4d2e4e] text-[#ecd4ad] font-semibold placeholder:text-[#ecd4ad] placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none focus:border-[#a45d2b] h-10 w-5/12"
+          className="bg-[#24152c] border border-[#4d2e4e] text-[#ecd4ad] font-semibold placeholder:text-[#ecd4ad] placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none focus:border-[#ecd4ad] h-10 w-5/12"
           onFocus={yBorder}
           onBlur={nBorder}
           placeholder="Search..."
@@ -45,7 +45,7 @@ const SearchBar = (props: IProps) => {
         <button
           ref={btn}
           type="submit"
-          className="bg-[#4d2e4e] hover:bg-[#a45d2b] h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-[#4d2e4e]"
+          className="bg-[#4d2e4e] hover:bg-[#ecd4ad] h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-[#4d2e4e]"
         >
           <svg
             aria-hidden="true"
@@ -64,9 +64,6 @@ const SearchBar = (props: IProps) => {
           </svg>
           <span className="sr-only">Search</span>
         </button>
-        <div className="bg-[#4d2e4e] hover:bg-[#7d4d55] ml-2 p-2 rounded-full text-[#ecd4ad]">
-          <p>B</p>
-        </div>
       </div>
     </form>
   )
