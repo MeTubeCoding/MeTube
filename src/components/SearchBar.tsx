@@ -16,6 +16,7 @@ const SearchBar = (props: IProps) => {
   }
 
   const btn = useRef<HTMLButtonElement>(null)
+  const logo = useRef<SVGSVGElement>(null)
   const yBorder = () => {
     btn.current?.classList.remove('border-me-lightpurple')
     btn.current?.classList.add('border-me-yellow')
@@ -24,6 +25,16 @@ const SearchBar = (props: IProps) => {
   const nBorder = () => {
     btn.current?.classList.remove('border-me-yellow')
     btn.current?.classList.add('border-me-lightpurple')
+  }
+
+  const yColor = () => {
+    logo.current?.classList.remove('stroke-me-yellow')
+    logo.current?.classList.add('stroke-me-darkpurple')
+  }
+
+  const nColor = () => {
+    logo.current?.classList.remove('stroke-me-darkpurple')
+    logo.current?.classList.add('stroke-me-yellow')
   }
 
   return (
@@ -46,10 +57,13 @@ const SearchBar = (props: IProps) => {
           ref={btn}
           type="submit"
           className="bg-me-lightpurple hover:bg-me-yellow h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-me-lightpurple"
+          onMouseEnter={yColor}
+          onMouseLeave={nColor}
         >
           <svg
+            ref={logo}
             aria-hidden="true"
-            className="w-5 h-5 stroke-me-yellow hover:stroke-me-darkpurple"
+            className="w-5 h-5 stroke-me-yellow"
             fill="none"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
