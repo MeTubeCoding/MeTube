@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { resolveProjectReferencePath } from 'typescript';
+import './abonnements.css';
 
-
-let test = document.getElementById("test");
+const test = document.getElementById("test");
 
 test?.addEventListener("click",()=>{
   fetch('http://localhost:5600/demo')
@@ -114,179 +114,223 @@ test?.addEventListener("click",()=>{
 
 export default function Abonnements(){
     return (
-    <div>
-      <body divide-y>
-
-      <div className= "today">
-        <p><strong>Aujourd'hui</strong></p>
-        <iframe
-            width="357"
-            height="201"
+    <div className="bg-neutral-900 text-white font-sans font-normal text-lg ">
+      <div className=" w-4/5 h-1/4 justify ">
+      <p><strong>Aujourd&apos;hui</strong></p>
+      <div className='flex justify-around flew-row '>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+            <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/wEMjgqgoN3E"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/uUD_dl3_ChE"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/okKBQ1Gp5pQ"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+          </div>
+        </div>
 
-        <div className= "yesterday">
+        <div className= "">
         <p><strong>Hier</strong></p>
-        <iframe
-            width="357"
-            height="201"
+        <div className='flex justify-around flew-row'>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+          <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/kdGOPrfNgIo"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/DLUkTQxL7Hc"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/GxHbBuHm0ug"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+          </div>
+        </div>
 
-        <div className= "recent">
+        <div className= "">
         <p><strong>Récentes</strong></p>
-        <iframe
-            width="357"
-            height="201"
+        <div className='flex justify-around flew-row'>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+          <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/Vv98-xIax3M"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/GNbV9tcCVSA"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/ZwLRjyO_Tks"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+          </div>
+        </div>
 
 
-        <div className= "week">
+        <div className= "">
         <p><strong>Cette semaine</strong></p>
-        <iframe
-            width="357"
-            height="201"
+        <div className='flex justify-around flew-row'>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+        , <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/4YKyAJiN1O0"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/cgz5neFRyfs"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/N61GZLej7Gw"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+          </div>
+        </div>
 
-        <div className='month'>
+        <div className="">
         <p><strong>Ce mois-ci </strong> </p>
-        <iframe
-            width="357"
-            height="201"
+        <div className='flex justify-around flew-row'>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+          <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/2Z-trfG1Q58"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/8RBEoqndm9w"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/Myo5YjK8Xoo"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
+          </div>
+        </div>
 
-        <div className='old'>
+        <div className="">
         <p><strong>Publications plus anciennes</strong></p>
-        <iframe
-            width="357"
-            height="201"
+        <div className='flex justify-around flew-row'>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
+         <iframe
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/vvh-jcSUCnc"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/11s4BlpI4oA"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
+        <div className='relative mb-4 rounded-xl overflow-hidden'>
           <iframe
-            width="357"
-            height="201"
+            width="270"
+            height="150"
             src="https://www.youtube.com/embed/nOdDtnHWaDo"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
-
-      </body>
-    </div>
+        </div>
+          </div>
+        </div>
   )
 }
