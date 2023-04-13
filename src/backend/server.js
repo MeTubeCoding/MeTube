@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -18,10 +16,13 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 var corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 
+  origin: '*',
+  optionsSuccessStatus: 200 
 }
 
 app.use(bodyparser.json()); 
 app.use(bodyparser.urlencoded({
+  extended: true
   extended: true
 }));
 
@@ -30,6 +31,36 @@ app.use(cors(corsOptions));
 app.post('/chat',(req,res)=>{
   client.connect(err => {
     async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageChat');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
+app.post('/desc',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('description');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
       try {
         const database = client.db('LiveBdd');
         const messages = database.collection('messageChat');
@@ -77,8 +108,23 @@ app.get('/chat',(req,res)=>{
     runy().catch(console.dir);
   });
 });
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageChat');
+        let search = await messages.find({}).toArray();
+        const reponseSearch = JSON.stringify(search);
+        res.end(reponseSearch);
+      } finally {
+        await client.close(); 
+      }
+    }
+    runy().catch(console.dir);
+  });
+});
 
 app.listen(5600,() => {
+  console.clear();
+  console.log('Server app listening on port 5600');
   console.clear();
   console.log('Server app listening on port 5600');
 });
