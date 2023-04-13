@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef } from 'react'
 
 export interface IResult {
@@ -29,22 +28,26 @@ const Result = (props: Props) => {
     }
   }
   return (
-
-  <div className='ml-80 flex'>
-  <div className="max-w-fit rounded-lg bg-[#000000] m-2">
+    <div className="ml-80 flex">
+      <div className="max-w-fit rounded-lg bg-[#000000] m-2">
         <a className="w-72 h-40 flex rounded-lg justify-center" href="#">
-            <img className=" hover:opacity-0 transition-opacity duration-500 h-40 absolute z-10" onMouseEnter={playVid} onMouseLeave={pauseVid} src={props.video.miniature} alt=""/>
-            <video muted className="w-72 h-40 absolute" ref={videoRef}>
-              <source src={props.video.video} type='video/mp4'/>
-            </video>
+          <img
+            className=" hover:opacity-0 transition-opacity duration-500 h-40 absolute z-10"
+            onMouseEnter={playVid}
+            onMouseLeave={pauseVid}
+            src={props.video.miniature}
+            alt=""
+          />
+          <video muted className="w-72 h-40 absolute" ref={videoRef}>
+            <source src={props.video.video} type="video/mp4" />
+          </video>
         </a>
-  </div>
-    <div className="m-3 max-w-3/12">
+      </div>
+      <div className="m-3 max-w-3/12">
         <p className="text-[#ecd4ad] font-semibold">{props.video.title}</p>
         <p className="text-[#aaaaaa9e]">{props.video.channel}</p>
+      </div>
     </div>
-  </div>
-
   )
 }
 
