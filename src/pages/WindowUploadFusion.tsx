@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable eol-last */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/comma-dangle */
@@ -18,6 +20,8 @@ const WindowUploadFusion = () => {
   const [checkComments, setCheckComments] = useState(true);
   const [severeComments, setSevereComments] = useState(false);
   const [sortComments, setSortComments] = useState("mieux-notes");
+
+  const [selectedOption, setSelectedOption] = useState('');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -70,6 +74,10 @@ const WindowUploadFusion = () => {
   const handleSortCommentsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortComments(event.target.value);
   };
+
+  const handleOptionChange = (e: { target: { id: React.SetStateAction<string>; }; }) => {
+    setSelectedOption(e.target.id);
+  }
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -288,53 +296,61 @@ const WindowUploadFusion = () => {
                       <div>
                         <label htmlFor="show-comments" className="flex items-center cursor-pointer mb-2">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="show-comments"
-                            className="form-checkbox mr-2"
-                            checked={showComments}
-                            onChange={handleShowCommentsChange}
+                            name="comment-option"
+                            className="form-radio mr-2"
+                            checked={selectedOption === "show-comments"}
+                            onChange={handleOptionChange}
                           />
                           <span>Allow all comments</span>
                         </label>
                       </div>
                       <div>
-                        <label htmlFor="check-comments" className="flex items-center cursor-pointer mb-2">
+                      <label htmlFor="check-comments" className="flex items-center cursor-pointer mb-2 radio-button">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="check-comments"
-                            className="form-checkbox mr-2"
-                            checked={checkComments}
-                            onChange={handleCheckCommentsChange}
+                            name="comment-option"
+                            className="form-radio mr-2"
+                            checked={selectedOption === "check-comments"}
+                            onChange={handleOptionChange}
                           />
-                          <span>Review potentially inappropriate comments before posting</span>
+                          <span className="radio-button-label">Review potentially inappropriate comments before posting</span>
                         </label>
                         <div>
                           <label htmlFor="severe-comments" className="ml-5 flex items-center cursor-pointer mb-2">
                             <input
                               type="checkbox"
                               id="severe-comments"
-                              className={`form-checkbox mr-2 ${checkComments ? '' : 'opacity-50'}`}
+                              className={`form-checkbox mr-2 ${selectedOption === "check-comments" ? '' : 'opacity-50'}`}
                               checked={severeComments}
                               onChange={handleSevereCommentsChange}
-                              disabled={!checkComments}
+                              disabled={selectedOption !== "check-comments"}
                             />
-                            <span className={`${checkComments ? '' : 'opacity-50'}`}>Increase severity <span className="text-red-600 bg-red-100 px-1 rounded-md">Test</span></span>
+                            <span className={`${selectedOption === "check-comments" ? '' : 'opacity-50'}`}>Increase severity <span className="text-red-600 bg-red-100 px-1 rounded-md">Test</span></span>
                           </label>
                         </div>
                       </div>
                       <label htmlFor="verify-all-comments" className="flex items-center cursor-pointer mb-2">
                         <input
-                          type="checkbox"
+                          type="radio"
                           id="verify-all-comments"
-                          className="form-checkbox mr-2"
+                          name="comment-option"
+                          className="form-radio mr-2"
+                          checked={selectedOption === "verify-all-comments"}
+                          onChange={handleOptionChange}
                         />
                         <span>Check all comments before posting</span>
                       </label>
                       <label htmlFor="disable-comments" className="flex items-center cursor-pointer mb-2">
                         <input
-                          type="checkbox"
+                          type="radio"
                           id="disable-comments"
-                          className="form-checkbox mr-2"
+                          name="comment-option"
+                          className="form-radio mr-2"
+                          checked={selectedOption === "disable-comments"}
+                          onChange={handleOptionChange}
                         />
                         <span>Disable comments</span>
                       </label>
@@ -345,7 +361,7 @@ const WindowUploadFusion = () => {
                         <select
                           name="sort-comments"
                           id="sort-comments"
-                          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                          className="w-full px-3 py-2 border rounded-lg focus:      outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                           value={sortComments}
                           onChange={handleSortCommentsChange}
                         >
