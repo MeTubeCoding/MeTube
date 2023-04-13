@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
+import Filters from '../components/Filters'
 import Results, { type IResults } from '../components/Results'
 
 const Main = () => {
@@ -28,6 +29,7 @@ const Main = () => {
   return (
     <div>
       <SearchBar onSearch={onSearch}/>
+      <Filters></Filters>
       <Results videos={videos}/>
     </div>
   )
