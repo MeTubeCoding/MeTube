@@ -28,12 +28,12 @@ const Menu = () => {
             <li>
               <div className="menu-button" onClick={toggleMenu}>
                 {isMenuOpen ? (
-                  <div className='ml-5 md-6 flex items-center'> 
+                  <div className='ml-3 md-6 flex items-center'> 
                     <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
                     <p className='ml-2'>Close</p>
                   </div>
                 ) : (
-                  <div className='ml-5 md-6 flex items-center'>
+                  <div className='ml-3 md-6 flex items-center'>
                     <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
                     <p className='ml-2'>Menu</p>
                   </div>
@@ -93,7 +93,7 @@ return (
         </div>
       </div>
       <div className='flex flex-row justify-start h-screen bg-neutral-900'>
-      <div className='bg-neutral-800 px-8 mr-20 '>
+      <div className='bg-neutral-700 px-8 mr-20 '>
           {Menu()}
         </div>
         <div>
