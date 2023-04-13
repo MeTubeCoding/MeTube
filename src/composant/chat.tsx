@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { ModerationChat } from "./ModerationChat"
+// import { ModerationChat } from "./ModerationChat"
 
 
 interface Message {
