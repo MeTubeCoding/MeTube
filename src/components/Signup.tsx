@@ -9,12 +9,11 @@ import { FileUpload } from '@mui/icons-material'
 const fields = signupFields
 const fieldsState: Record<string, string> = {}
 
-fields.forEach((field) => (fieldsState[field.id] = ''))
+fields.forEach(field => (fieldsState[field.id] = ''))
 
-export default function Signup () {
-  const [signupState, setSignupState] = useState<Record<string, string>>(
-    fieldsState
-  )
+export default function Signup() {
+  const [signupState, setSignupState] =
+    useState<Record<string, string>>(fieldsState)
   const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,22 +21,22 @@ export default function Signup () {
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      console.log("Le password est " + signupState.password)
-      console.log("Le confirm-password est " + signupState.confirmpassword)
+    e.preventDefault()
+    console.log('Le password est ' + signupState.password)
+    console.log('Le confirm-password est ' + signupState.confirmpassword)
+    console.log(signupState)
+    if (arePasswordsEqual()) {
       console.log(signupState)
-      if (arePasswordsEqual()) {
-        console.log(signupState)
-        createAccount()
-      } else {
-        console.log('Passwords do not match')
-      }
+      createAccount()
+    } else {
+      console.log('Passwords do not match')
+    }
   }
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword
   }
-  
+
   const createAccount = () => {
     const local = signupState
 
@@ -48,23 +47,22 @@ export default function Signup () {
       },
       body: JSON.stringify(local)
     })
-      .then(async (res) => {
+      .then(async res => {
         console.log(res)
         return await res.text()
       })
-      .then((res) => {
+      .then(res => {
         console.log(res)
         navigate('/login') // Rediriger vers la page "account"
       })
   }
 
-  
-
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="">
-        {fields.map((field) => (
+        {fields.map(field => (
           <Input
+            key={field.id}
             handleChange={handleChange}
             value={signupState[field.id]}
             labelText={field.labelText}
