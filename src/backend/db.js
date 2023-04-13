@@ -1,10 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 mongoose
-    .connect("mongodb+srv://" + process.env.DB_USER_PASS + "@metube.1cfbpke.mongodb.net/test",
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        })
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.error('Could not connect to MongoDB', err));
+  .connect(
+    'mongodb+srv://' +
+      process.env.DB_USER_PASS +
+      '@metube.1cfbpke.mongodb.net/test',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  )
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => console.error('Could not connect to MongoDB', err))
