@@ -54,7 +54,7 @@ export default function Signup () {
       })
       .then((res) => {
         console.log(res)
-        navigate('/profile') // Rediriger vers la page "account"
+        navigate('/login') // Rediriger vers la page "account"
       })
   }
 
