@@ -81,7 +81,7 @@ const Menu = () => {
 function Tendances() {
 return (
     <div className = "h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div className="text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center">
+                          <div className="text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center">
         <div className='flex flex-row justify-between items-center mr-auto'>
         <div className='titre'>
         <a href='App.tsx'><img className="mr-10 w-1/2" src="https://cdn.discordapp.com/attachments/1019222515962368112/1088482444207988838/Metube_logo.png"/></a>
@@ -109,7 +109,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/SRpYxmmy6EI"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -118,7 +117,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/dMekskqXbL4"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -130,7 +128,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -139,7 +136,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/3NoKAOTE_ZI"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -160,7 +156,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/wK69QJ2ESO0"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -172,7 +167,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/loarI5X93wI"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -181,7 +175,6 @@ return (
             height="170"
             src="https://www.youtube.com/embed/QBBLxrvOmqw"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>

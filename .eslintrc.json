@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "plugin:prettier/recommended",
+        "prettier"
     ],
     "overrides": [
     ],
@@ -17,6 +18,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "@typescript-eslint/dot-notation": "error"
+        "@typescript-eslint/dot-notation": "error",
+        "prettier/prettier": "error"
     }
 }
