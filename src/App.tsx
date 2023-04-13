@@ -6,14 +6,6 @@ import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: unknown
-    }
-  }
-}
-
 function App() {
   return (
     <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
