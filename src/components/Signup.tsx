@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
+import crypto from 'crypto';
 import { FileUpload } from '@mui/icons-material'
 
 const fields = signupFields
@@ -20,6 +21,8 @@ export default function Signup() {
     setSignupState({ ...signupState, [e.target.id]: e.target.value })
   }
 
+  const [passwordsMatch, setPasswordsMatch] = useState(true)
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('Le password est ' + signupState.password)
@@ -30,6 +33,7 @@ export default function Signup() {
       createAccount()
     } else {
       console.log('Passwords do not match')
+      setPasswordsMatch(false)
     }
   }
 
@@ -37,9 +41,9 @@ export default function Signup() {
     return signupState.password === signupState.confirmpassword
   }
 
-  const createAccount = () => {
-    const local = signupState
-
+  const createAccount = async () => {
+    const local = { ...signupState, password: crypto.createHash('sha256').update(signupState.password).digest('hex') };
+  
     fetch('http://127.0.0.1:5600/data', {
       method: 'POST',
       headers: {
@@ -76,6 +80,9 @@ export default function Signup() {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
+        {!passwordsMatch && (
+          <p className="text-me-yellow">Passwords do not match</p>
+        )}
       </div>
     </form>
   )
