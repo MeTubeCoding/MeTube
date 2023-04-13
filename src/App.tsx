@@ -5,7 +5,7 @@ import Main from './pages/Main'
 
 function App () {
   return (
-    <div className='App bg-[#101010]'>
+    <div className='App bg-[#1d1124]'>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Main />} />

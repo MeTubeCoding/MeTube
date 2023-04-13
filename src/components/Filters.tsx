@@ -6,25 +6,25 @@ const Filters = () => {
 
   const dropDown = () => {
     if (dropMenu.current instanceof HTMLDivElement) {
-      if (dropMenu.current.classList.contains('collapse')) {
-        dropMenu.current.classList.remove('collapse')
+      if (dropMenu.current.classList.contains('hidden')) {
+        dropMenu.current.classList.remove('hidden')
       } else {
-        dropMenu.current.classList.add('collapse')
+        dropMenu.current.classList.add('hidden')
       }
     }
   }
 
   return (
-    <div className=" ml-72 text-[#e3e3e3] font-semibold">
+    <div className=" ml-72 text-[#ecd4ad] font-semibold">
         <button onClick={dropDown}>
         <p className='ml-5'>Filtres</p>
         </button>
-        <div ref={dropMenu} className='ml-5 collapse'>
+        <div ref={dropMenu} className='ml-5 hidden'>
             <a>Channels</a>
             <a>Titles</a>
             <a>Tags</a>
         </div>
-        <hr className='w-9/12 m-3'></hr>
+        <hr className='w-9/12 m-3 border-[#ecd4ad] '></hr>
     </div>
   )
 }

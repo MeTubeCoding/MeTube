@@ -40,8 +40,8 @@ const Result = (props: Props) => {
         </a>
   </div>
     <div className="m-3 max-w-3/12">
-        <p className="text-[#e3e3e3] font-semibold">{props.video.title}</p>
-        <p className="text-[#aaaaaa]">{props.video.channel}</p>
+        <p className="text-[#ecd4ad] font-semibold">{props.video.title}</p>
+        <p className="text-[#aaaaaa9e]">{props.video.channel}</p>
     </div>
   </div>
 
