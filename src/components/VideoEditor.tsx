@@ -74,6 +74,10 @@ const VideoEditor = () => {
     // TODO: Implement crop functionality
     }
 
+    const handleCutVideo = () => {
+        // TODO: Implement crop functionality
+    }
+
     const handleMergeVideos = () => {
     // TODO: Implement merge functionality
     }
@@ -102,6 +106,7 @@ const VideoEditor = () => {
                 <Button onClick={handleMergeVideos}>Merge</Button>
                 <Button onClick={handleRotateLeft}>Rotate Left</Button>
                 <Button onClick={handleRotateRight}>Rotate Right</Button>
+                <Button onClick={handleCutVideo}>Cut</Button>
                 <Button onClick={handleCropVideo}>Crop</Button>
                 <Button onClick={handleSaveVideo}>Save</Button>
                 <Slider min={0} max={1} step={0.01} onChange={handleVolumeChange} value={volume} />
