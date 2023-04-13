@@ -9,8 +9,8 @@ export default function ChannelCreationPage () {
     // eslint-disable-next-line react/react-in-jsx-scope
     <>
          <Header
-            heading="Create a channel"
-            paragraph="Already have an account ? "
+            heading="Création de chaine"
+            paragraph="Déjà un compte ? "
             linkName="Login"
             linkUrl="/login"
             />
