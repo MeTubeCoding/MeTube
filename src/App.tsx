@@ -1,25 +1,18 @@
-import React from 'react';
-import './App.css';
-import { Chat } from './composant/chat';
-import { Description } from './composant/description';
-import { Live } from './composant/Live';
-
+import React from "react"
+import "./App.css"
+// import { Chat } from './composant/Chat';
+// import { Description } from './composant/description';
+import { Live } from "./composant/Live"
+import { LiveNavBar } from "./composant/LiveNavBar"
 
 function App() {
-
-  // init();
-
-  console.log("test");
-
-  return (
-    <>
-      <p className="text-3xl font-bold text-red-500">Je suis du texte</p>
-      <Chat/>
-      <Description/>
-      <Live/>
-    </>
-  );
+	return (
+		<>
+			<div className='flex items-center'>
+				<Live />
+			</div>
+		</>
+	)
 }
 
-
-export default App;
+export default App
