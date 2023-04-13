@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 
+
 interface Message {
 	id: string
 	pseudo: string
@@ -37,6 +38,7 @@ export function ModerationChat() {
 		"nique la coding",
 		"fuck",
 		"test",
+		"pute",
 	]
 	useEffect(() => {
 		fetchMessages()

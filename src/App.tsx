@@ -1,5 +1,5 @@
 import React from "react"
-import "./App.css"
+import "./index.css"
 // import { Chat } from './composant/Chat';
 // import { Description } from './composant/description';
 import { Live } from "./composant/Live"

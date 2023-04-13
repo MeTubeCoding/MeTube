@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import '../App.css'; // Importez le fichier CSS
+import '../index.css'; // Importez le fichier CSS
 import './LiveNavBar'
-import './Chat'
+import { Chat } from './Chat';
 import { LiveNavBar } from './LiveNavBar';
+import { ModerationChat } from './ModerationChat';
+import { Description } from './Description';
 
 export function Live() {
 
@@ -48,11 +50,16 @@ export function Live() {
   return (
     <>
       <LiveNavBar/>
-      {/* <Chat/> */}
+      <Chat/>
+      <ModerationChat/>
+      <Description/>
+      
       <div id="videos" className='w-max h-max px-20'>
         <video className="transform scale-x-[-1] " id="webcam" width="500" height="500"autoPlay playsInline></video>
         <video className="" id="partageEcran" width="500" height="500"autoPlay playsInline></video>
       </div>
+
+
     </>
   )
 }

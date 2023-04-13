@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { ModerationChat } from "./moderationChat"
+import { ModerationChat } from "./ModerationChat"
+
 
 interface Message {
 	id: string
@@ -88,7 +89,6 @@ export function Chat() {
 				</form>
 			</div>
 
-			<ModerationChat />
 		</>
 	)
 }

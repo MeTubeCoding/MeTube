@@ -1,29 +1,32 @@
-import react from "react";
+import React from "react"
 
-export function Titre(){
+export function Titre() {
+	const [triste, setTriste] = React.useState("")
 
-    const [titre, setTitre] = react.useState("");
-
-    function handleInputChange(event: {target:{value: React.SetStateAction<string>;};  }){
-        setTitre(event.target.value);
-
-    }
-
-    function postData() {
-        fetch("http://127.0.0.1:5600/dataset", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ Titre })
-        })
-          .then((res) => res.text())
-          .then((res) => console.log(res));
-      }
-      
-      return(
-        <div className="p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md">
-        </div>
-      );
-    
+	function handleInputChange(event: {
+		target: { value: React.SetStateAction<string> }
+	}) {
+		setTriste(event.target.value)
+	}
+	function post() {
+		console.log("log")
+		const message = document.getElementById("description") as HTMLInputElement
+		const local = {
+			description: message.value,
+			live: "Zerator",
+		}
+		fetch("http://127.0.0.1:5600/desc", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(local),
+		})
+			.then((res) => {
+				return res.text()
+			})
+			.then((res) => {
+				console.log(res)
+			})
+	}
 }
