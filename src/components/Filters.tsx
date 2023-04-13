@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef } from 'react'
 
 const Filters = () => {
@@ -16,15 +15,15 @@ const Filters = () => {
 
   return (
     <div className=" ml-72 text-[#ecd4ad] font-semibold">
-        <button onClick={dropDown}>
-        <p className='ml-5'>Filtres</p>
-        </button>
-        <div ref={dropMenu} className='ml-5 hidden'>
-            <a>Channels</a>
-            <a>Titles</a>
-            <a>Tags</a>
-        </div>
-        <hr className='w-9/12 m-3 border-[#ecd4ad] '></hr>
+      <button onClick={dropDown}>
+        <p className="ml-5">Filtres</p>
+      </button>
+      <div ref={dropMenu} className="ml-5 hidden">
+        <a>Channels</a>
+        <a>Titles</a>
+        <a>Tags</a>
+      </div>
+      <hr className="w-9/12 m-3 border-[#ecd4ad] "></hr>
     </div>
   )
 }
