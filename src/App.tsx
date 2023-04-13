@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes as Switch, Route, Link } from 'react-router-dom'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 
-
-
+import Tendances from './Tendances';
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false)
+    setIsMenuOpen(false);
   };
 
   return (

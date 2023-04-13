@@ -1,23 +1,24 @@
 import React, {useState} from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import logo from './logo.svg';
+import App from './App'
 import './Tendances.css';
 
 // import composant  :
 
 import { PassThrough } from 'stream';
-import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
 
 const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false)
+    setIsMenuOpen(false);
   };
 
   return (
@@ -42,7 +43,7 @@ const Menu = () => {
               {isMenuOpen && (
                 <div>
                   <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                    <a href="App.tsx" className='text-align:center'>Accueil</a>
+                    <a href="index.tsx" className='text-align:center'>Accueil</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                     <a href="pages/timeline.tsx">Recommandations</a>
@@ -71,7 +72,6 @@ const Menu = () => {
 
 
 
-
 // ================================================================================================
 // ================================================================================================
 // ================================================================================================
@@ -92,16 +92,14 @@ return (
           <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>Rechercher</button>
         </div>
       </div>
-      <div className='flex flex-row justify-start h-screen bg-neutral-900'>
-      <div className='bg-neutral-800 px-8 mr-20 '>
+      <div>
           {Menu()}
         </div>
-        <div>
       <div className="flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
         <img className='rounded-full mr-2%' src="https://www.youtube.com/img/trending/avatar/trending.png"></img>
         <h3 className='m-0 p-0 text-center leading-normal text-3xl'>TENDANCES</h3>
         </div>
-      <div className="flex  items-center justify-center bg-neutral-900">
+      <div className="flex items-center justify-center bg-neutral-900">
         <div className="ml-3.5% mr-5/100 p-0 text-center flex flex-col">
         <h4>NOUVEAUTES</h4>
         <iframe className='mr-1% rounded-lg'
@@ -186,8 +184,6 @@ return (
             allowFullScreen
           ></iframe>
         </div>
-      </div>
-      </div>
       </div>
       </div>
   );
