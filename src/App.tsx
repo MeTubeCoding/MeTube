@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
+//import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 import './App.css'
 
 
@@ -17,7 +17,7 @@ const Menu = () => {
   };
 
   return (
-    <Router>
+    //<Router>
       <div className="menu-container">
         <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
           <ul>
@@ -44,7 +44,7 @@ const Menu = () => {
                     <a href="pages/timeline.tsx">Recommandations</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                    <Link to='/Tendances'>Tendances</Link>
+                    <a href='/Tendances'>Tendances</a>
                   </li>
                   <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
                     <a href="#" >Abonnements</a>
@@ -61,7 +61,7 @@ const Menu = () => {
           </ul>
         </div>
       </div>
-    </Router>
+    //</Router>
   );
 };
 
