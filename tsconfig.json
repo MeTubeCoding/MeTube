@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,7 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  // a modif : 
-  "include": [
-    "src", "serverBackEnd.js", "setupTests.ts", "tailwind.config.js"],
+  // a modif :
+  "include": ["src", "serverBackEnd.js", "setupTests.ts", "tailwind.config.js"]
 }

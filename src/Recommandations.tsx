@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import logo from './logo.svg'
 import './Tendances.css'
 
 // import composant  :
@@ -96,7 +95,7 @@ function Tendances() {
           <input
             type='text'
             placeholder='Rechercher sur MeTube...'
-            className='w:90 px-1 py-2 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 text-white placeholder:italic'
+            className='w:90 px-1 py-2 mr-5 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-white-900 text-white placeholder:italic'
           />
           <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>
             Rechercher
@@ -104,22 +103,22 @@ function Tendances() {
         </div>
       </div>
       <div className='flex flex-row justify-start h-screen bg-neutral-900'>
-        <div className='bg-neutral-800 px-8 mr-20 '>{Menu()}</div>
+        <div className='bg-neutral-600 px-8 mr-20 '>{Menu()}</div>
         <div>
-          <div className='flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100'>
+          <div className='flex flex-row justify-center items-center my-3 mt-10 mb-10 mx-1/100 lg:mx-5/100'>
             <img
               className='rounded-full mr-2%'
               src='https://www.youtube.com/img/trending/avatar/trending.png'
             ></img>
-            <h3 className='ml-5 p-0 text-center leading-normal text-3xl'>
+            <h1 className='ml-5 p-0 text-center leading-normal text-3xl'>
               RECOMMANDATIONS
-            </h3>
+            </h1>
           </div>
           <div className='flex  items-center justify-center bg-neutral-900'>
-            <div className='ml-3.5% mr-5/100 p-0 text-center flex flex-col'>
-              <h4>NOUVEAUTES</h4>
+            <div className='ml-5 mr-5/100 p-0 text-center flex flex-col'>
+              <h4 className='mb-5'>NOUVEAUTES</h4>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/SRpYxmmy6EI'
@@ -128,7 +127,7 @@ function Tendances() {
                 allowFullScreen
               ></iframe>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/dMekskqXbL4'
@@ -138,9 +137,9 @@ function Tendances() {
               ></iframe>
             </div>
             <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>MUSIQUE</h4>
+              <h4 className='mb-5'>MUSIQUE</h4>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -149,7 +148,7 @@ function Tendances() {
                 allowFullScreen
               ></iframe>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/3NoKAOTE_ZI'
@@ -159,9 +158,9 @@ function Tendances() {
               ></iframe>
             </div>
             <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>FILMS</h4>
+              <h4 className='mb-5'>FILMS</h4>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/RjNcTBXTk4I'
@@ -171,7 +170,7 @@ function Tendances() {
                 allowFullScreen
               ></iframe>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/wK69QJ2ESO0'
@@ -181,9 +180,9 @@ function Tendances() {
               ></iframe>
             </div>
             <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>JEUX VIDEOS</h4>
+              <h4 className='mb-5'>JEUX VIDEOS</h4>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/loarI5X93wI'
@@ -192,7 +191,7 @@ function Tendances() {
                 allowFullScreen
               ></iframe>
               <iframe
-                className='mr-1% rounded-lg'
+                className='mr-5 mb-5 rounded-lg'
                 width='300'
                 height='170'
                 src='https://www.youtube.com/embed/QBBLxrvOmqw'
