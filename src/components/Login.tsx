@@ -1,23 +1,30 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-redeclare */
-/* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
-type LoginState = Record<string, string>
+
+interface LoginState {
+  email: string
+  password: string
+  error: string | null
+  [key: string]: any
+}
 
 const fields = loginFields
-const fieldsState: LoginState = { email: '', password: '' }
+const fieldsState: LoginState = { email: '', password: '', error: null }
 
-export default function Login (): JSX.Element {
+const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<LoginState>(fieldsState)
+  const navigate = useNavigate()
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setLoginState({ ...loginState, [e.target.name]: e.target.value })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setLoginState({
+      ...loginState,
+      [e.target.name]: e.target.value,
+      error: null
+    })
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -25,10 +32,8 @@ export default function Login (): JSX.Element {
     authenticateUser()
   }
 
-  // Handle Login API Integration here
   const authenticateUser = (): void => {
-    const endpoint =
-      'https://api.loginradius.com/identity/v2/auth/login?apikey=641ad513e382b893fc591d88'
+    const endpoint = 'http://localhost:5600/login' // Remplacez par l'URL de votre serveur
     fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -36,17 +41,32 @@ export default function Login (): JSX.Element {
       },
       body: JSON.stringify(loginState)
     })
-      .then(async (response) => await response.json())
-      .then((_data) => {
-        // API Success from LoginRadius Login API
+      .then(async response => {
+        const data = await response.json()
+        console.log('Réponse du serveur :', response)
+        console.log('Données renvoyées :', data)
+
+        if (response.ok && Boolean(data.success)) {
+          // Connexion réussie
+          navigate('/profile')
+        } else {
+          // Échec de la connexion
+          setLoginState({
+            ...loginState,
+            error: data.message
+          })
+          console.log('Erreur lors de la connexion :', data.message)
+        }
       })
-      .catch((error) => { console.log(error) })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="-space-y-px">
-        {fields.map((field) => (
+        {fields.map(field => (
           <Input
             key={field.id}
             handleChange={handleChange}
@@ -63,9 +83,15 @@ export default function Login (): JSX.Element {
         ))}
       </div>
 
+      {Boolean(loginState.error) && (
+        <div className="text-red-500">{loginState.error}</div>
+      )}
+
       <FormExtra />
 
       <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
   )
 }
+
+export default Login

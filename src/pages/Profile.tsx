@@ -1,18 +1,17 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-no-comment-textnodes */
+import React from 'react'
 import Header from '../components/Header'
 import Profile from '../components/Profile'
 
-export default function ProfilePage () {
+export default function ProfilePage(): JSX.Element {
   return (
-        // eslint-disable-next-line react/react-in-jsx-scope
-        <>
-             <Header
-                heading="Account"
-                paragraph="Here your account informations"
-                linkName=""
-                linkUrl=""
-                />
-        </>
+    // eslint-disable-next-line react/react-in-jsx-scope
+    <>
+      <Header
+        heading="Account"
+        paragraph="Here your account informations"
+        linkName=""
+        linkUrl=""
+      />
+    </>
   )
 }

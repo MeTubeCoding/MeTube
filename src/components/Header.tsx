@@ -9,7 +9,7 @@ interface HeaderProps {
   linkUrl?: string
 }
 
-export default function Header ({
+export default function Header({
   heading,
   paragraph,
   linkName,
