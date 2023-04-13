@@ -15,14 +15,12 @@ test?.addEventListener("click",()=>{
 function Bibliotheque() {
   return (
     <div>
-      <h1 className='flex justify-center text-5xl'>Bibliothèque</h1>
+      <h1 className='text-5xl sm:mb-16'>Bibliothèque</h1>
 
       <ul>
-        <br /><br /><br /><br />
-        <h1 className='flex justify-center text-4xl'>J'aime</h1>
-        <br />
+        <h1 className='text-4xl sm:mb-10'>J'aime</h1>
 
-        <div className='flex justify-around flex-row'>
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
@@ -52,9 +50,8 @@ function Bibliotheque() {
           ></iframe>
         </div>
 
-        <br />
 
-        <div className='flex justify-around flex-row'>
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
@@ -84,11 +81,10 @@ function Bibliotheque() {
           ></iframe>
         </div>
 
-        <br /><br /><br /><br />
-        <h1 className='flex justify-center text-4xl'>Playlists</h1>
-        <br />
 
-        <div className='flex justify-around flex-row'>
+        <h1 className='text-4xl sm:mb-10'>Playlists</h1>
+
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
@@ -118,9 +114,9 @@ function Bibliotheque() {
           ></iframe>
         </div>
 
-        <br />
 
-        <div className='flex justify-around flex-row'>
+
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
@@ -150,11 +146,10 @@ function Bibliotheque() {
           ></iframe>
         </div>
 
-        <br /><br /><br /><br />
-        <h1 className='flex justify-center text-4xl'>Historique</h1>
-        <br />
 
-        <div className='flex justify-around flex-row'>
+        <h1 className='text-4xl sm:mb-10'>Historique</h1>
+
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
@@ -184,9 +179,9 @@ function Bibliotheque() {
           ></iframe>
         </div>
 
-        <br />
 
-        <div className='flex justify-around flex-row'>
+
+        <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
             width="357"
             height="201"
