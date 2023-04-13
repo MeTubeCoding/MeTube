@@ -1,6 +1,3 @@
-
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -16,75 +13,53 @@ const uri = process.env.URI;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-
 var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 
+  origin: '*',
+  optionsSuccessStatus: 200 
 }
 
 app.use(bodyparser.json()); 
 app.use(bodyparser.urlencoded({
-    extended: true
+  extended: true
 }));
-
 
 app.use(cors(corsOptions));
 
-
 app.post('/chat',(req,res)=>{
-
   client.connect(err => {
-
     async function run() {
-        try {
-          const database = client.db('LiveBdd');
-          const movies = database.collection('messageChat');
-        //   console.log("mongo connect")
-          const query = req.body;
-        //   console.log(query); 
-          await movies.insertOne(query);
-        //   console.log(movie);
-        } finally {
-          // Ensures that the client will close when you finish/error
-          await client.close(); 
-        }
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageChat');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
       }
-      run().catch(console.dir);
-})
-
-
-res.end();
-
-  
-})
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
 
 app.get('/chat',(req,res)=>{
-
   client.connect(err => {
-
     async function runy() {
-        try {
-          const database = client.db('LiveBdd');
-          const movies = database.collection('messageChat');
-        //   console.log("mongo connect")
-        //   console.log(query); 
-        let search = await movies.find({}).toArray();
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageChat');
+        let search = await messages.find({}).toArray();
         const reponseSearch = JSON.stringify(search);
         res.end(reponseSearch);
-        console.log(search)
-        //   console.log(movie);
-        } finally {
-          // Ensures that the client will close when you finish/error
-          await client.close(); 
-        }
+      } finally {
+        await client.close(); 
       }
-      runy().catch(console.dir);
+    }
+    runy().catch(console.dir);
+  });
 });
-  
-})
-
 
 app.listen(5600,() => {
-    console.clear();
-    console.log('Server app listening on port 5600');
+  console.clear();
+  console.log('Server app listening on port 5600');
 });
