@@ -1,19 +1,19 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react'
 import Header from '../components/Header'
 import Signup from '../components/Signup'
 
-export default function SignupPage () {
-  return (
-        // eslint-disable-next-line react/react-in-jsx-scope, react/jsx-no-comment-textnodes
-        <>
-            <Header
-              heading="Signup to create an account"
-              paragraph="Already have an account ? "
-              linkName="Login"
-              linkUrl="/login"
-            />
-            <Signup/>
-        </>
-  )
+export default function SignupPage(): JSX.Element {
+  {
+    return (
+      <>
+        <Header
+          heading="Signup to create an account"
+          paragraph="Already have an account ? "
+          linkName="Login"
+          linkUrl="/login"
+        />
+        <Signup />
+      </>
+    )
+  }
 }

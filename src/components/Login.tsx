@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/formFields'
@@ -22,10 +19,12 @@ const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<LoginState>(fieldsState)
   const navigate = useNavigate()
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setLoginState({ ...loginState, [e.target.name]: e.target.value, error: null })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setLoginState({
+      ...loginState,
+      [e.target.name]: e.target.value,
+      error: null
+    })
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -42,21 +41,24 @@ const Login: React.FC = () => {
       },
       body: JSON.stringify(loginState)
     })
-      .then(async (response) => {
+      .then(async response => {
         const data = await response.json()
         console.log('Réponse du serveur :', response)
         console.log('Données renvoyées :', data)
 
-        if (response.ok && data.success) {
+        if (response.ok && Boolean(data.success)) {
           // Connexion réussie
           navigate('/profile')
         } else {
           // Échec de la connexion
-          setLoginState({ ...loginState, error: data.message })
+          setLoginState({
+            ...loginState,
+            error: data.message
+          })
           console.log('Erreur lors de la connexion :', data.message)
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   }
@@ -64,8 +66,9 @@ const Login: React.FC = () => {
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="-space-y-px">
-        {fields.map((field) => (
+        {fields.map(field => (
           <Input
+            key={field.id}
             handleChange={handleChange}
             value={loginState[field.name]}
             labelText={field.labelText}
@@ -76,11 +79,11 @@ const Login: React.FC = () => {
             isRequired={field.isRequired}
             placeholder={field.placeholder}
             customClass={undefined}
-                      />
+          />
         ))}
       </div>
 
-      {loginState.error && (
+      {Boolean(loginState.error) && (
         <div className="text-red-500">{loginState.error}</div>
       )}
 
