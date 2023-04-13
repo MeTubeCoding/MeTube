@@ -1,21 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Header from '../components/Header'
-import Profile from '../components/Profile'
+import Forgot_Password from '../components/ForgotPassword'
 
-export default function ProfilePage () {
+export default function ForgotPassword () {
   return (
         // eslint-disable-next-line react/react-in-jsx-scope
         <>
              <Header
-                heading="Account"
-                paragraph="Here your account informations"
-                linkName=""
-                linkUrl=""
+                heading="Change your password"
+                paragraph="Password"
+                linkName="ForgotPassword"
+                linkUrl="/forgotpassword"
                 />
-                <Profile/>
+            <ForgotPassword/>
         </>
   )
 }

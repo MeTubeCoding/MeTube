@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
+import ForgotPassword from './pages/ForgotPassword'
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </div>
