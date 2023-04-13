@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/comma-dangle */
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable eol-last */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/quotes */
 import React, { useState } from "react";
@@ -16,9 +15,9 @@ const WindowUploadFusion = () => {
   const [selectedGame, setSelectedGame] = useState('');
 
   const [showComments, setShowComments] = useState(true);
-  const [checkComments, setCheckComments] = useState(false);
+  const [checkComments, setCheckComments] = useState(true);
   const [severeComments, setSevereComments] = useState(false);
-  const [sortComments, setSortComments] = useState('mieux-notes');
+  const [sortComments, setSortComments] = useState("mieux-notes");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -56,16 +55,16 @@ const WindowUploadFusion = () => {
     setSelectedGame(event.target.value);
   };
 
-  const handleShowCommentsChange = () => {
-    setShowComments(!showComments);
+  const handleShowCommentsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShowComments(event.target.checked);
   };
 
-  const handleCheckCommentsChange = () => {
-    setCheckComments(!checkComments);
+  const handleCheckCommentsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckComments(event.target.checked);
   };
 
-  const handleSevereCommentsChange = () => {
-    setSevereComments(!severeComments);
+  const handleSevereCommentsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSevereComments(event.target.checked);
   };
 
   const handleSortCommentsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -155,11 +154,11 @@ const WindowUploadFusion = () => {
               </div>
               <div className="flex mb-6">
                 <div className="w-1/2 pr-2 flex items-center font-medium text-gray-800 mb-2">
-                  <input type="checkbox" id="video-children" name="video-children" className="form-checkbox" required />
+                  <input type="checkbox" id="video-children" name="video-children" className="form-checkbox"/>
                   <label htmlFor="video-children" className="ml-2">This video is appropriate for children</label>
                 </div>
                 <div className="w-1/2 pl-2 flex items-center font-medium text-gray-800 mb-2">
-                  <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox" required />
+                  <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox"/>
                   <label htmlFor="video-commercial" className="ml-2">This video contains commercial content</label>
                 </div>
               </div>
@@ -179,40 +178,43 @@ const WindowUploadFusion = () => {
                 <details>
                   <summary className="font-medium text-gray-800 cursor-pointer">Click to see video details</summary>
                   <div className="mt-4">
-                    <div className="flex mb-6">
-                      <div className="w-1/2 pr-2">
-                        <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Language</label>
-                        <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
-                          <option value="">Select a language</option>
-                          <option value="other">Other</option>
-                          <option value="english">English</option>
-                          <option value="french">French</option>
-                          <option value="spanish">Spanish</option>
-                          <option value="german">German</option>
-                        </select>
+                    <div className="bg-gray-100 p-4 rounded-lg">
+                      <div className="flex mb-6">
+                        <div className="w-1/2 pr-2">
+                          <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Language</label>
+                          <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                            <option value="">Select a language</option>
+                            <option value="other">Other</option>
+                            <option value="english">English</option>
+                            <option value="french">French</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="german">German</option>
+                          </select>
+                        </div>
+                        <div className="w-1/2 pr-2">
+                          <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Subtitling certificate</label>
+                          <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
+                            <option value="">None</option>
+                            <option value="">This content has never been shown on television in the United States</option>
+                            <option value="">This content was only shown on television in the United States without subtitles</option>
+                            <option value="">This content has not aired on television in the United States with closed captions since September 30, 2012</option>
+                            <option value="">This content does not fall into the category of online programming that requires closed captioning pursuant to FCC Rules (Section 47, Subpart 79)</option>
+                            <option value="">The FCC and/or the US Congress have granted a waiver for this content to meet captioning requirements</option>
+                          </select>
+                        </div>
                       </div>
-                      <div className="w-1/2 pr-2">
-                        <label htmlFor="video-language" className="block font-medium text-gray-800 mb-2">Subtitling certificate</label>
-                        <select id="video-language" name="video-language" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600">
-                          <option value="">None</option>
-                          <option value="">This content has never been shown on television in the United States</option>
-                          <option value="">This content was only shown on television in the United States without subtitles</option>
-                          <option value="">This content has not aired on television in the United States with closed captions since September 30, 2012</option>
-                          <option value="">This content does not fall into the category of online programming that requires closed captioning pursuant to FCC Rules (Section 47, Subpart 79)</option>
-                          <option value="">The FCC and/or the US Congress have granted a waiver for this content to meet captioning requirements</option>
-                        </select>
+                      <div className="flex mb-6">
+                        <div className="w-1/2 pl-2">
+                            <label htmlFor="video-date" className="block font-medium text-gray-800 mb-2">Date of recording</label>
+                            <input type="date" id="video-date" defaultValue={"test"} name="video-date" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" value="" placeholder="None" />
+                          </div>
+                        <div className="w-1/3 pl-2">
+                          <label htmlFor="video-location" className="block font-medium text-gray-800 mb-2">Location</label>
+                          <input type="text" id="video-location" name="video-location" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
+                        </div>
                       </div>
                     </div>
-                    <div className="flex mb-6">
-                      <div className="w-1/2 pl-2">
-                        <label htmlFor="video-date" className="block font-medium text-gray-800 mb-2">Date of recording</label>
-                        <input type="date" id="video-date" name="video-date" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
-                      </div>
-                      <div className="w-1/3 pl-2">
-                        <label htmlFor="video-location" className="block font-medium text-gray-800 mb-2">Location</label>
-                        <input type="text" id="video-location" name="video-location" className="w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600" />
-                      </div>
-                    </div>
+                    <br />
                     <div className="mb-6">
                       <label htmlFor="video-tags" className="block font-medium text-gray-800 mb-2" aria-label="Video tags">
                         Tags
@@ -229,11 +231,11 @@ const WindowUploadFusion = () => {
                     <br />
                     <div className="flex mb-6">
                       <div className="w-1/2 pr-2 flex items-center font-medium text-gray-800 mb-2">
-                        <input type="checkbox" id="video-children" name="video-children" className="form-checkbox" required />
+                        <input type="checkbox" id="video-children" name="video-children" className="form-checkbox"/>
                         <label htmlFor="video-children" className="ml-2">Allow integration</label>
                       </div>
                       <div className="w-1/2 pl-2 flex items-center font-medium text-gray-800 mb-2">
-                        <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox" required />
+                        <input type="checkbox" id="video-commercial" name="video-commercial" className="form-checkbox"/>
                         <label htmlFor="video-commercial" className="ml-2">Post to the "Subscriptions" feed and notify subscribers</label>
                       </div>
                     </div>
@@ -249,7 +251,7 @@ const WindowUploadFusion = () => {
                         <select
                           name="category"
                           id="category"
-                          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                           value={selectedCategory}
                           onChange={handleCategoryChange}
                         >
@@ -281,65 +283,89 @@ const WindowUploadFusion = () => {
                         </div>
                       )}
                     </div>
-                    <br />
-                    <h2 className="text-xl font-semibold mb-2">Commentaires et avis</h2>
-                    <div>
-                      <label htmlFor="show-comments" className="flex items-center cursor-pointer mb-2">
-                        <input
-                          type="checkbox"
-                          id="show-comments"
-                          className="form-checkbox mr-2"
-                          checked={showComments}
-                          onChange={handleShowCommentsChange}
-                        />
-                        <span>Autoriser tous les commentaires</span>
-                      </label>
-                    </div>
-                    <div>
-                      <label htmlFor="check-comments" className="flex items-center cursor-pointer mb-2">
-                        <input
-                          type="checkbox"
-                          id="check-comments"
-                          className="form-checkbox mr-2"
-                          checked={checkComments}
-                          onChange={handleCheckCommentsChange}
-                        />
-                        <span>Vérifier les commentaires potentiellement inappropriés avant leur publication</span>
-                      </label>
-                      {checkComments && (
+                    <div className="border-t border-gray-200 mt-8 pt-4 bg-gray-100 p-4 rounded-lg">
+                      <h2 className="text-xl font-semibold mb-2">Comments and reviews</h2>
+                      <div>
+                        <label htmlFor="show-comments" className="flex items-center cursor-pointer mb-2">
+                          <input
+                            type="checkbox"
+                            id="show-comments"
+                            className="form-checkbox mr-2"
+                            checked={showComments}
+                            onChange={handleShowCommentsChange}
+                          />
+                          <span>Allow all comments</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label htmlFor="check-comments" className="flex items-center cursor-pointer mb-2">
+                          <input
+                            type="checkbox"
+                            id="check-comments"
+                            className="form-checkbox mr-2"
+                            checked={checkComments}
+                            onChange={handleCheckCommentsChange}
+                          />
+                          <span>Review potentially inappropriate comments before posting</span>
+                        </label>
                         <div>
-                          <label htmlFor="severe-comments" className="flex items-center cursor-pointer mb-2">
+                          <label htmlFor="severe-comments" className="ml-5 flex items-center cursor-pointer mb-2">
                             <input
                               type="checkbox"
                               id="severe-comments"
-                              className="form-checkbox mr-2"
+                              className={`form-checkbox mr-2 ${checkComments ? '' : 'opacity-50'}`}
                               checked={severeComments}
                               onChange={handleSevereCommentsChange}
+                              disabled={!checkComments}
                             />
-                            <span>Augmenter la sévérité</span>
+                            <span className={`${checkComments ? '' : 'opacity-50'}`}>Increase severity <span className="text-red-600 bg-red-100 px-1 rounded-md">Test</span></span>
                           </label>
                         </div>
-                      )}
-                    </div>
-                    <div>
-                      <label htmlFor="sort-comments" className="block font-medium mb-2">
-                        Trier par
+                      </div>
+                      <label htmlFor="verify-all-comments" className="flex items-center cursor-pointer mb-2">
+                        <input
+                          type="checkbox"
+                          id="verify-all-comments"
+                          className="form-checkbox mr-2"
+                        />
+                        <span>Check all comments before posting</span>
                       </label>
-                      <select
-                        name="sort-comments"
-                        id="sort-comments"
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        value={sortComments}
-                        onChange={handleSortCommentsChange}
-                      >
-                        <option value="mieux-notes">Les mieux notés</option>
-                        <option value="plus-récents">Les plus récents</option>
-                      </select>
-                    </div>
-                    <div className="mt-4">
-                      <p className="text-gray-600 mb-2">Nombre de "J'aime" pour cette vidéo : 105</p>
+                      <label htmlFor="disable-comments" className="flex items-center cursor-pointer mb-2">
+                        <input
+                          type="checkbox"
+                          id="disable-comments"
+                          className="form-checkbox mr-2"
+                        />
+                        <span>Disable comments</span>
+                      </label>
+                      <div>
+                        <label htmlFor="sort-comments" className="block font-medium mb-2">
+                          Sort by
+                        </label>
+                        <select
+                          name="sort-comments"
+                          id="sort-comments"
+                          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                          value={sortComments}
+                          onChange={handleSortCommentsChange}
+                        >
+                          <option value="mieux-notes">Top Rated</option>
+                          <option value="plus-récents">The most recent</option>
+                        </select>
+                      </div>
+                      <div className="mt-4">
+                        <label htmlFor="show-likes" className="flex items-center cursor-pointer mb-2">
+                          <input
+                            type="checkbox"
+                            id="show-likes"
+                            className="form-checkbox mr-2"
+                          />
+                          <span>Display the number of "likes" for this video</span>
+                        </label>
+                      </div>
                     </div>
                   </div>
+                  <br />
                 </details>
                 <div className="flex justify-end">
                   <button
