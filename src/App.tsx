@@ -1,21 +1,23 @@
-import React from "react";
-import Navigation from "./components/Navigation";
-import MontagePanneau from "./components/MontagePanneau";
-import PrevisualisationPanneau from "./components/PrevisualisationPanneau";
-import BibliothequeMedias from "./components/BibliothequeMedias";
+/* eslint-disable eol-last */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import NavigationBar from './components/NavigationBar'
+import VideoPage from './pages/VideoPage'
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <div className="container mx-auto px-4">
-        <MontagePanneau />
-        <PrevisualisationPanneau />
-        <BibliothequeMedias />
-        {/* Ajoutez le reste de votre application ici */}
-      </div>
+    <div className='App'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path="/" element={<NavigationBar />} />
+          <Route path="/videopage" element={<VideoPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App
