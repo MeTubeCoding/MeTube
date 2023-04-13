@@ -30,12 +30,10 @@ const Menu = () => {
                 {isMenuOpen ? (
                   <div className='ml-3 md-6 flex items-center'> 
                     <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
-                    <p className='ml-2'>Close</p>
                   </div>
                 ) : (
                   <div className='ml-3 md-6 flex items-center'>
                     <button className="material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800">☰</button>
-                    <p className='ml-2'>Menu</p>
                   </div>
                 )}
               </div>
@@ -88,7 +86,7 @@ return (
         </div>
         </div>
         <div className="flex items-center justify-between mr-10 bg-neutral-800">
-          <input type="text" placeholder="Rechercher sur MeTube..." className='w:90 pl-1 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 text-white placeholder:italic' />
+          <input type="text" placeholder="Rechercher sur MeTube..." className='w:90 px-1 py-2 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 text-white placeholder:italic' />
           <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>Rechercher</button>
         </div>
       </div>
