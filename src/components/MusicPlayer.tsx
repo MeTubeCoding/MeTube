@@ -1,63 +1,52 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 const MusicPlayer = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Charger le fichier précédemment sélectionné lors du montage du composant
-  useEffect(() => {
-    const storedFile = localStorage.getItem('selectedFile');
-    if (storedFile) {
-      setSelectedFile(JSON.parse(storedFile));
-    }
-  }, []);
-
-  // Enregistrer le fichier sélectionné dans le localStorage à chaque mise à jour
-  useEffect(() => {
-    if (selectedFile) {
-      localStorage.setItem('selectedFile', JSON.stringify(selectedFile));
-    } else {
-      localStorage.removeItem('selectedFile');
-    }
-  }, [selectedFile]);
+  const [selectedAudios, setSelectedAudios] = useState<File[]>([]);
+  const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    setSelectedFile(file || null);
-
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.load();
+    const files = event.target.files;
+    if (files) {
+      const fileList = Array.from(files);
+      setSelectedAudios([...selectedAudios, ...fileList]);
     }
   };
 
-  const handlePlay = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
+  const handlePlay = (index: number) => {
+    if (audioRefs.current[index]) {
+      audioRefs.current[index]?.play();
     }
   };
 
-  const handlePause = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
+  const handlePause = (index: number) => {
+    if (audioRefs.current[index]) {
+      audioRefs.current[index]?.pause();
     }
+  };
+
+  const handleRemove = (index: number) => {
+    const updatedFiles = [...selectedAudios];
+    updatedFiles.splice(index, 1);
+    setSelectedAudios(updatedFiles);
+    audioRefs.current.splice(index, 1);
   };
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      {selectedFile && (
-        <div>
-          <audio ref={audioRef} controls>
-            <source src={URL.createObjectURL(selectedFile)} />
+      <input type="file" onChange={handleFileChange} multiple />
+      {selectedAudios.map((file, index) => (
+        <div key={index}>
+          <audio ref={(ref) => (audioRefs.current[index] = ref)} controls>
+            <source src={URL.createObjectURL(file)} />
           </audio>
-          <button onClick={handlePlay}>Play</button>
-          <button onClick={handlePause}>Pause</button>
+          <button onClick={() => handleRemove(index)}>Remove</button>
         </div>
-      )}
+      ))}
     </div>
   );
 };
 
 export default MusicPlayer;
+
+
 
