@@ -1,49 +1,24 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Box, Button, Typography } from '@mui/material'
-import { styled } from '@mui/system'
-import logoImage from '../assets/youtube_baneer.jpeg'
-const ChannelBanner = styled(Box)({
-  width: 'auto',
-  height: '150px',
-  backgroundSize: 'cover',
-  backgroundColor: 'grey',
-  backgroundPosition: 'center',
-  marginTop: '40px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginLeft: '200px'
-})
-const LogoImage = styled('img')({
-  width: '100px',
-  height: '100px',
-  borderRadius: '50%',
-  marginRight: '20px'
-})
 
 function ChannelPresentation () {
   return (
-    <ChannelBanner>
-       <LogoImage src={logoImage}/>
-      <Box sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        height: '200px',
-        backgroundSize: 'cover',
-        backgroundColor: 'grey',
-        backgroundPosition: 'center',
-        marginTop: '40px',
-        paddingLeft: '20px',
-        paddingRight: '20px'
-      }}>
-          <Typography variant="h4">Nom de la chaîne</Typography>
-          <Typography variant="subtitle1">Description de la chaîne</Typography>
-          <Button variant="contained" color="primary">Sabonner</Button>
-        </Box>
-    </ChannelBanner>
+<div className="bg-gray-200 h-52 ml-80 flex items-center justify-between">
+  <div className="flex items-center space-x-2">
+    <img src="logo.png" alt="logo" className="w-10 h-10"/>
+    <h1 className="text-lg font-bold">Nom de la chaîne</h1>
+  </div>
+  <div className="flex-grow text-center">
+    <p className="text-sm">Description de la chaîne</p>
+  </div>
+  <div className="flex-shrink-0">
+    <button className="bg-blue-500 mr-7 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Subscribe
+    </button>
+  </div>
+</div>
+
   )
 }
+
 export default ChannelPresentation
