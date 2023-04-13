@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Button, IconButton, InputBase } from '@mui/material'
-import VoiceRecognitionButton from './VoiceRecognitionButton'
 
 interface IProps {
   onSearch: (input: string) => any
@@ -15,31 +14,57 @@ const SearchBar = (props: IProps) => {
   const handleSetSearchInput = (value: string) => {
     setSearchInput(value)
   }
+
+  const btn = useRef<HTMLButtonElement>(null)
+  const logo = useRef<SVGSVGElement>(null)
+  const yBorder = () => {
+    btn.current?.classList.remove('border-me-lightpurple')
+    btn.current?.classList.add('border-me-yellow')
+  }
+
+  const nBorder = () => {
+    btn.current?.classList.remove('border-me-yellow')
+    btn.current?.classList.add('border-me-lightpurple')
+  }
+
+  const yColor = () => {
+    logo.current?.classList.remove('stroke-me-yellow')
+    logo.current?.classList.add('stroke-me-darkpurple')
+  }
+
+  const nColor = () => {
+    logo.current?.classList.remove('stroke-me-darkpurple')
+    logo.current?.classList.add('stroke-me-yellow')
+  }
+
   return (
     <form onSubmit={handleSearch}>
-      <div className="flex justify-center bg-[#101010] p-2 items-center">
+      <div className="flex justify-center bg-me-darkpurple p-2 items-center">
         <input
           type="search"
           id="search-dropdown"
           value={searchInput}
-          onChange={(e: {
-            currentTarget: { value: React.SetStateAction<string> }
-          }) => {
+          onChange={e => {
             setSearchInput(e.currentTarget.value)
           }}
-          className="bg-[#131313] border border-[#3d3d3d] text-white font-semibold placeholder:text-[#aaaaaa] placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none h-10 w-5/12"
+          className="bg-me-mediumpurple border border-me-lightpurple text-me-yellow font-semibold placeholder:text-me-yellow placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none focus:border-me-yellow h-10 w-5/12"
+          onFocus={yBorder}
+          onBlur={nBorder}
           placeholder="Search..."
           required
         />
         <button
+          ref={btn}
           type="submit"
-          className="bg-[#212121] h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-[#3d3d3d]"
+          className="bg-me-lightpurple hover:bg-me-yellow h-10 rounded-r-full w-16 justify-center flex items-center border-r border-t border-b border-me-lightpurple"
+          onMouseEnter={yColor}
+          onMouseLeave={nColor}
         >
           <svg
+            ref={logo}
             aria-hidden="true"
-            className="w-5 h-5"
+            className="w-5 h-5 stroke-me-yellow"
             fill="none"
-            stroke="white"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -52,9 +77,6 @@ const SearchBar = (props: IProps) => {
           </svg>
           <span className="sr-only">Search</span>
         </button>
-        <div className="bg-[#181818] ml-2 rounded-full hover:bg-[#262626]">
-          <VoiceRecognitionButton setSearchValue={handleSetSearchInput} />
-        </div>
       </div>
     </form>
   )
