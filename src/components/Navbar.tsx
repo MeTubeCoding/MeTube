@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import onSearch from '../pages/Main'
 
-const Navbar = (): JSX.Element => {
+const Navbar = () => {
   return (
     <nav className="bg-zinc-900 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
