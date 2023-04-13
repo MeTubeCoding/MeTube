@@ -9,7 +9,7 @@ interface Message {
 export function ModerationChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
-  const motsInterdit = ['higu', 'gay', 'nardinemouk']; 
+  const motsInterdit = ['ta race', 'chatte', 'couille', 'couille', 'bite', 'zizi', 'nique ta mère', 'merde', 'imbécile', 'bordel', 'enfoiré', 'connard', 'bouffon', 'boloss', 'abrutti', 'salope', 'pd',]; 
   useEffect(() => {
     fetchMessages();
   }, []);
