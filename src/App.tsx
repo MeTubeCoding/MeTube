@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import React from 'react'
 import './index.css'
 import Main from './pages/Main'
@@ -8,18 +7,10 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: unknown
-    }
-  }
-}
-
 function App() {
   return (
-    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-full h-screen flex">
+      <div className="w-full space-y-8">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />

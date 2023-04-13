@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
+import { FileUpload } from '@mui/icons-material'
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}
 
 fields.forEach(field => (fieldsState[field.id] = ''))
 
-export default function Signup(): JSX.Element {
+export default function Signup() {
   const [signupState, setSignupState] =
     useState<Record<string, string>>(fieldsState)
   const navigate = useNavigate()
@@ -21,8 +22,19 @@ export default function Signup(): JSX.Element {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    console.log('Le password est ' + signupState.password)
+    console.log('Le confirm-password est ' + signupState.confirmpassword)
     console.log(signupState)
-    createAccount()
+    if (arePasswordsEqual()) {
+      console.log(signupState)
+      createAccount()
+    } else {
+      console.log('Passwords do not match')
+    }
+  }
+
+  const arePasswordsEqual = (): boolean => {
+    return signupState.password === signupState.confirmpassword
   }
 
   const createAccount = () => {
@@ -41,7 +53,7 @@ export default function Signup(): JSX.Element {
       })
       .then(res => {
         console.log(res)
-        navigate('/profile') // Rediriger vers la page "account"
+        navigate('/login') // Rediriger vers la page "account"
       })
   }
 
