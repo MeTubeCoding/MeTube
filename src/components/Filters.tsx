@@ -23,7 +23,7 @@ const Filters = () => {
         <a>Titles</a>
         <a>Tags</a>
       </div>
-      <hr className="w-9/12 m-3 border-me-yellow "></hr>
+      <hr className="w-9/12 m-3 border-me-yellow"></hr>
     </div>
   )
 }
