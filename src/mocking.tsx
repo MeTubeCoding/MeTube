@@ -54,15 +54,15 @@ interface Video {
   // Example usage:
   const database = new VideoDatabase();
   database.addVideo({
-    id: "abc123",
-    title: "My First YouTube Video",
-    description: "This is my very first YouTube video!",
+    id: "1",
+    title: "placeholder",
+    description: "placeholder",
     views: 10,
     likes: 2,
     dislikes: 1,
     tags: ["first", "video"],
     uploadDate: new Date("2022-01-01"),
-    uploader: "JohnDoe",
+    uploader: "channel",
     duration: 60
   });
   const video = database.getVideoById("abc123");
