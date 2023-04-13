@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react' // Importer useState pour gérer l'état local
 import './Video.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
@@ -10,9 +10,15 @@ import Ticker from 'react-ticker'
 import { Avatar } from '@mui/material'
 
 function Video(): JSX.Element {
+  // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [description] = useState('test description')
+
   return (
     <div className='video'>
-      <video />
+      <video>
+        <source src="./cruise.mp4" type="video/mp4" />
+      </video>
       <div className='shortsContainer'>
         <div className='shortsVideoTop'>
           <div className='shortsVideoTopIcon'>
@@ -42,8 +48,12 @@ function Video(): JSX.Element {
         </div>
         <div className='shortsBottom'>
           <div className='shortsDesc'>
-            <Ticker>
-              {({ index }) => <p className='description'>test description</p>}
+            <Ticker mode="smooth">
+              {({ index }) => (
+                <>
+                  <p className='description'>{description}</p>
+                </>
+              )}
             </Ticker>
           </div>
           <div className='shortsDetails'>
