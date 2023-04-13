@@ -78,7 +78,7 @@ app.listen(5600, () => {
   console.log('Server app listening on port 5600')
 })
 
-
+app.post('/videos', function (req, res) {
   const fakeVideos = [
     {
       id: 1,
@@ -131,3 +131,4 @@ app.listen(5600, () => {
       tags: ['macron']
     }
   ]
+})
