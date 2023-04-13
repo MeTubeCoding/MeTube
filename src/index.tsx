@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import Tendances from './Tendances';
 
 const root = ReactDOM.createRoot(
