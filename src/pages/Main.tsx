@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import Results, { type IResults } from '../components/Results'
+import Navbar from '../components/Navbar'
 
 const Main = () => {
   const [videos, setVideos] = useState<IResults | []>([])
@@ -26,7 +27,9 @@ const Main = () => {
   }
   return (
     <div>
-      <SearchBar onSearch={onSearch} />
+      <div style={{ height: '7.5vh' }}>
+        <Navbar />
+      </div>
       <Results videos={videos} />
     </div>
   )
