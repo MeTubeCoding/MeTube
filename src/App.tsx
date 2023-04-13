@@ -1,16 +1,17 @@
 import React from 'react'
+import './App.css'
 import Video from './components/Video'
 
-function App (): JSX.Element {
+function App(): JSX.Element {
   return (
-    <div className='App'>
-        <div className='app_video'>
-              <Video />
-              <p>
-                Bonjour
-              </p>
+    <>
+      <div className="App">
+        <div className="app_video">
+          {/* <Video /> */}
+          <p>Bonjour</p>
         </div>
-    </div>
+      </div>
+    </>
   )
 }
 

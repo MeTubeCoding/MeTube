@@ -9,53 +9,51 @@ import NearMeIcon from '@mui/icons-material/NearMe'
 import Ticker from 'react-ticker'
 import { Avatar } from '@mui/material'
 
-function Video (): JSX.Element {
+function Video(): JSX.Element {
   return (
-        <div className='video'>
-            <video />
-            <div className='shortsContainer'>
-                <div className='shortsVideoTop'>
-                    <div className='shortsVideoTopIcon'>
-                        <ArrowBackIcon />
-                    </div>
-                    <div className='shortsVideoTopIcon'>
-                        <MoreVertIcon />
-                    </div>
-                </div>
-                <div className='shortsVideoSideIcons'>
-                    <div className='shortsVideoSideIcon'>
-                        <ThumbUpIcon />
-                        <p>600</p>
-                    </div>
-                    <div className='shortsVideoSideIcon'>
-                        <ThumbDownIcon />
-                        <p>600</p>
-                    </div>
-                    <div className='shortsVideoSideIcon'>
-                        <InsertCommentIcon />
-                        <p>600</p>
-                    </div>
-                    <div className='shortsVideoSideIcon'>
-                        <NearMeIcon />
-                        <p>600</p>
-                    </div>
-                </div>
-                <div className='shortsBottom'>
-                    <div className='shortsDesc'>
-                        <Ticker>
-                            {({ index }) => (
-                                <p className='description'>test description</p>
-                            )}
-                        </Ticker>
-                    </div>
-                    <div className='shortsDetails'>
-                        <Avatar />
-                        <p>channel name</p>
-                        <button>Subscribe</button>
-                    </div>
-                </div>
-            </div>
+    <div className="video">
+      <video />
+      <div className="shortsContainer">
+        <div className="shortsVideoTop">
+          <div className="shortsVideoTopIcon">
+            <ArrowBackIcon />
+          </div>
+          <div className="shortsVideoTopIcon">
+            <MoreVertIcon />
+          </div>
         </div>
+        <div className="shortsVideoSideIcons">
+          <div className="shortsVideoSideIcon">
+            <ThumbUpIcon />
+            <p>600</p>
+          </div>
+          <div className="shortsVideoSideIcon">
+            <ThumbDownIcon />
+            <p>600</p>
+          </div>
+          <div className="shortsVideoSideIcon">
+            <InsertCommentIcon />
+            <p>600</p>
+          </div>
+          <div className="shortsVideoSideIcon">
+            <NearMeIcon />
+            <p>600</p>
+          </div>
+        </div>
+        <div className="shortsBottom">
+          <div className="shortsDesc">
+            <Ticker>
+              {({ index }) => <p className="description">test description</p>}
+            </Ticker>
+          </div>
+          <div className="shortsDetails">
+            <Avatar />
+            <p>channel name</p>
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
