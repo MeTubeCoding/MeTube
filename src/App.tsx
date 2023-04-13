@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 /* eslint-disable @typescript-eslint/member-delimiter-style */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -17,7 +18,7 @@ declare global {
   }
 }
 
-const App: React.FC = () => {
+function App () {
   return (
     <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
