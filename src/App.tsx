@@ -6,6 +6,9 @@ function App (): JSX.Element {
     <div className='App'>
         <div className='app_video'>
               <Video />
+              <p>
+                Bonjour
+              </p>
         </div>
     </div>
   )
