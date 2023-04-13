@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Tendances from './Tendances';
+import Tendances from './Recommandations';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
