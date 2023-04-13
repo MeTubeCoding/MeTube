@@ -14,7 +14,7 @@ const Filters = () => {
   }
 
   return (
-    <div className=" ml-72 text-[#ecd4ad] font-semibold">
+    <div className=" ml-72 text-me-yellow font-semibold">
       <button onClick={dropDown}>
         <p className="ml-5">Filtres</p>
       </button>
@@ -23,7 +23,7 @@ const Filters = () => {
         <a>Titles</a>
         <a>Tags</a>
       </div>
-      <hr className="w-9/12 m-3 border-[#ecd4ad] "></hr>
+      <hr className="w-9/12 m-3 border-me-yellow "></hr>
     </div>
   )
 }
