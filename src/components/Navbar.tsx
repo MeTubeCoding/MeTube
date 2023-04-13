@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
-import onSearch from '../pages/Main'
-
-const Navbar = () => {
+import { useOnSearch } from './useOnSearch'
+interface Props {
+  onSearch: (data: string) => void
+}
+const Navbar = (props: Props) => {
   return (
     <nav className="bg-zinc-900 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +23,7 @@ const Navbar = () => {
               </svg>
               <span className="font-bold text-lg ml-2">YouTube</span>
             </Link>
-            <SearchBar onSearch={onSearch} />
+            <SearchBar onSearch={data => props.onSearch(data)} />
           </div>
           <div className="flex items-center">
             <Link
@@ -31,7 +33,7 @@ const Navbar = () => {
               Upload
             </Link>
             <Link
-              to="/account"
+              to="/login"
               className="text-gray-700 hover:text-gray-900 font-bold text-lg"
             >
               Account
