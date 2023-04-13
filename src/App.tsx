@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import Video from './components/Video'
 
 function App(): JSX.Element {
