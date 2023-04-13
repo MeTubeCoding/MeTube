@@ -9,7 +9,7 @@ interface Message {
 export function ModerationChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
-  const forbiddenWords = ['higu', 'gay', 'nardinemouk']; 
+  const motsInterdit = ['higu', 'gay', 'nardinemouk']; 
   useEffect(() => {
     fetchMessages();
   }, []);
@@ -30,8 +30,8 @@ export function ModerationChat() {
   function TestClique() {
     const filtered = messages.filter(
       (message) =>
-        forbiddenWords &&
-        forbiddenWords.some(
+        motsInterdit &&
+        motsInterdit.some(
           (word) =>
             message.message &&
             message.message.toLowerCase().includes(word.toLowerCase())
