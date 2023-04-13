@@ -111,8 +111,8 @@ function Tendances() {
               className='rounded-full mr-2%'
               src='https://www.youtube.com/img/trending/avatar/trending.png'
             ></img>
-            <h3 className='m-0 p-0 text-center leading-normal text-3xl'>
-              TENDANCES
+            <h3 className='ml-5 p-0 text-center leading-normal text-3xl'>
+              RECOMMANDATIONS
             </h3>
           </div>
           <div className='flex  items-center justify-center bg-neutral-900'>

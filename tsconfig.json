@@ -22,6 +22,5 @@
   },
   // a modif : 
   "include": [
-    "src"
-, "serverBackEnd.js", "setupTests.ts"  ],
+    "src", "serverBackEnd.js", "setupTests.ts", "tailwind.config.js"],
 }
