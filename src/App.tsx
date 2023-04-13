@@ -34,7 +34,7 @@ function History() {
             </div>
             <div className="absolute text-xs mr-24 left-72 top-20 text-gray-400">
               Mon dernier single est disponible absolument partout 
-👉            https://bfan.link/j-ai-mange-une-pomme-et-j-ai-plein-d-energie
+              👉https://bfan.link/j-ai-mange-une-pomme-et-j-ai-plein-d-energie
 
               Retrouvez-moi sur : 
               ▶ Spotify : https://tinyurl.com/spotify-david-momone
