@@ -6,13 +6,19 @@ const mongoose = require('mongoose')
 
 mongoose
   .connect(
-    'mongodb+srv://' +
-      process.env.DB_USER_PASS +
-      '@metube.1cfbpke.mongodb.net/test',
+    process.env.DB_USER_PASS,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true
+    },
+    err => {
+      if (err) {
+        console.error(err)
+      } else {
+        console.log('Connected to MongoDB...')
+      }
     }
   )
+
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB', err))

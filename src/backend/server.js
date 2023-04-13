@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -9,7 +8,7 @@ const path = require('path')
 const { MongoClient, ServerApiVersion } = require('mongodb')
 
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
-require('./db')
+require('./db.js')
 
 const uri = process.env.URI
 
