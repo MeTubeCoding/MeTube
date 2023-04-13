@@ -1,17 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-unused-vars */
 
-import express from 'express'
+// Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
+// commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
+// problème
+
+const express = require('express')
 const app = express()
-import cors from 'cors'
-import { json, urlencoded } from 'body-parser'
-import { resolve } from 'path'
+const cors = require('cors')
+const bodyparser = require('body-parser')
+const path = require('path')
+const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb')
+const { query } = require('express')
 
-import { MongoClient, ServerApiVersion } from 'mongodb'
-
-import('dotenv').config({ path: resolve(__dirname, '../../.env') })
-import './db'
-
-const uri = process.env.URI
+const uri =
+  'mongodb+srv://SM_des_SM:meilleurSM@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority'
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -19,26 +23,31 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1
 })
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-}
+const fs = require('fs')
 
-app.use(json())
+const publi = path.join(__dirname, 'nom du dossier Public')
+
+app.use(bodyparser.json())
 app.use(
-  urlencoded({
+  bodyparser.urlencoded({
     extended: true
   })
 )
 
-app.use(cors(corsOptions))
+app.use('/', express.static(publi))
 
-app.post('/chat', (req, res) => {
+app.use(
+  cors({
+    origin: 'http://localhost:3000'
+  })
+)
+
+app.post('/node/sub', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
-        const database = client.db('LiveBdd')
-        const movies = database.collection('messageChat')
+        const database = client.db('BigOne')
+        const movies = database.collection('enAttente')
         //   console.log("mongo connect")
         const query = req.body
         //   console.log(query);
@@ -55,25 +64,26 @@ app.post('/chat', (req, res) => {
   res.end()
 })
 
-app.get('/chat', (req, res) => {
+app.post('/data', (req, res) => {
   client.connect(err => {
-    async function runy() {
+    async function run() {
       try {
-        const database = client.db('LiveBdd')
-        const movies = database.collection('messageChat')
+        const database = client.db('profile')
+        const movies = database.collection('users')
         //   console.log("mongo connect")
+        const query = req.body
         //   console.log(query);
-        let search = await movies.find({}).toArray()
-        console.log(search)
+        await movies.insertOne(query)
         //   console.log(movie);
       } finally {
         // Ensures that the client will close when you finish/error
         await client.close()
       }
     }
-    runy().catch(console.dir)
+    run().catch(console.dir)
   })
-  res.end()
+
+  res.end('trop cool')
 })
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
@@ -102,7 +112,12 @@ app.post('/login', async (req, res) => {
   }
 })
 
+app.get('/demo', (req, res) => {
+  console.log('test')
+  res.end('reponse du serveur')
+})
+
 app.listen(5600, () => {
-  console.clear()
+  console.log(console.clear())
   console.log('Server app listening on port 5600')
 })
