@@ -1,113 +1,89 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable n/handle-callback-err */
-/* eslint-disable no-unused-vars */
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const bodyparser = require('body-parser')
+const path = require('path')
 
-const uri = process.env.MONGODB_URI;
+const { MongoClient, ServerApiVersion } = require('mongodb')
+
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
+require('./db.js')
+
+const uri = process.env.URI
+
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
+  serverApi: ServerApiVersion.v1
+})
 
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const bodyparser = require("body-parser");
-const path = require("path");
-const { MongoClient, ServerApiVersion, ObjectID } = require("mongodb");
-const { query } = require("express");
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
 
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const bodyparser = require("body-parser");
-const path = require("path");
-const { query } = require("express");
-
-const { MongoClient, ServerApiVersion, ObjectID } = require("mongodb");
-
-const uri =
-  "mongodb+srv://Baptiste:Metube2023*@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
-
-const fs = require("fs");
-
-const publi = path.join(__dirname, "nom du dossier Public");
-
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200,
-};
-
-app.use(bodyparser.json());
+app.use(bodyparser.json())
 app.use(
   bodyparser.urlencoded({
-    extended: true,
+    extended: true
   })
-);
+)
 
-app.use("/", express.static(publi));
+app.use(cors(corsOptions))
 
-app.use(cors(corsOptions));
-
-// Optionnel a vous de voir pour vous adapter à votre problématique :
-
-// app.get('/',(req,res)=>{
-
-//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
-// })
-
-app.post("/node/sub", (req, res) => {
-  client.connect((err) => {
+app.post('/chat', (req, res) => {
+  client.connect(err => {
     async function run() {
       try {
-        const database = client.db("BigOne");
-        const movies = database.collection("enAttente");
-        //   console.log("mongo connect")
-        const query = req.body;
-        //   console.log(query);
-        await movies.insertOne(query);
-        //   console.log(movie);
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        const query = req.body
+        await messages.insertOne(query)
       } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
+        await client.close()
       }
     }
-    run().catch(console.dir);
-  });
+    run().catch(console.dir)
+  })
+  res.end()
+})
 
-  res.end();
-});
-
-app.post("/data", (req, res) => {
-  client.connect((err) => {
+app.post('/desc', (req, res) => {
+  client.connect(err => {
     async function run() {
       try {
-        const database = client.db("profile");
-        const movies = database.collection("users");
-        //   console.log("mongo connect")
-        const query = req.body;
-        //   console.log(query);
-        await movies.insertOne(query);
-        //   console.log(movie);
+        const database = client.db('LiveBdd')
+        const messages = database.collection('description')
+        const query = req.body
+        await messages.insertOne(query)
       } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
+        await client.close()
       }
     }
-    run().catch(console.dir);
-  });
+    run().catch(console.dir)
+  })
+  res.end()
+})
 
-  res.end("trop cool");
-});
-
-app.get("/demo", (req, res) => {
-  console.log("test");
-  res.end("reponse du serveur");
-});
-
-//
+app.get('/chat', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
 
 app.listen(5600, () => {
-  console.log("Server app listening on port 5600");
-});
+  console.clear()
+  console.log('Server app listening on port 5600')
+})
