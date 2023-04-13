@@ -44,7 +44,7 @@ app.use(bodyparser.urlencoded({
 
 app.post('/node/sub', (req, res) => {
   client.connect(err => {
-    async function run() {
+    async function run () {
       try {
         const database = client.db('BigOne')
         const movies = database.collection('enAttente')
