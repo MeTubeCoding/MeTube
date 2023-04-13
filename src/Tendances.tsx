@@ -104,7 +104,7 @@ function Tendances() {
         </div>
       </div>
       <div className='flex flex-row justify-start h-screen bg-neutral-900'>
-        <div className='bg-neutral-800 px-8 mr-20 '>{Menu()}</div>
+        <div className='bg-neutral-700 px-8 mr-20 '>{Menu()}</div>
         <div>
           <div className='flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100'>
             <img
