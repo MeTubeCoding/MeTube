@@ -7,8 +7,7 @@ function App(): JSX.Element {
     <>
       <div className="App">
         <div className="app_video">
-          {/* <Video /> */}
-          <p>Bonjour</p>
+          <Video />
         </div>
       </div>
     </>
