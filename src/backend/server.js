@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -31,6 +33,23 @@ app.post('/chat',(req,res)=>{
       try {
         const database = client.db('LiveBdd');
         const messages = database.collection('messageChat');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
+app.post('/desc',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('description');
         const query = req.body;
         await messages.insertOne(query);
       } finally {

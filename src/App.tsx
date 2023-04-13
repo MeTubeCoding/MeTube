@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Chat } from './composant/chat';
 import { Description } from './composant/description';
 import { Live } from './composant/Live';
