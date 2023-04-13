@@ -103,7 +103,7 @@ function VideoList () {
       key={video.id}
       className={`w-full md:w-1/3 px-4 mb-8 ${index === 0 ? 'mt-8' : ''}`}
     >
-      <div className="bg-gray-800 h-72 rounded-xl overflow-hidden flex flex-col justify-between">
+      <div className="bg-me-lightpurple h-72 rounded-xl overflow-hidden flex flex-col justify-between">
         <img src={video.imgUrl} alt={video.title} className="h-48 w-full object-cover" />
         <div className="p-4">
           <h3 className="text-white mb-2">{video.title}</h3>
