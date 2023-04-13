@@ -1,29 +1,32 @@
-import React from "react"
-export function Chat() {
-	// function load(){
-	//   fetch("http://127.0.0.1:5600/chat",{
-	//     method : "GET",
-	//     headers : {
-	//         "Content-Type" : "application/json"
-	//     },
-	//     })
-	// }
+import React, { useEffect, useState } from "react"
+import { ModerationChat } from "./moderationChat"
 
-	// setTimeout(load, 1000)
+interface Message {
+	id: string
+	pseudo: string
+	message: string
+}
+
+export function Chat() {
+	const [messages, setMessages] = useState<Message[]>([])
+	const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
+	useEffect(() => {
+		fetchMessages()
+	}, [])
 
 	function log() {
 		console.log("log")
 		const message = document.getElementById("message-input") as HTMLInputElement
 		const local = {
 			message: message.value,
-			pseudo: "Tristan"
+			pseudo: "Tristan",
 		}
 		fetch("http://127.0.0.1:5600/chat", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(local)
+			body: JSON.stringify(local),
 		})
 			.then((res) => {
 				return res.text()
@@ -33,41 +36,64 @@ export function Chat() {
 			})
 	}
 
-  function getChat(){
-    fetch("http://127.0.0.1:5600/chat",{
-      method : "GET",
-      })
-  }
-    return(
-      <>
-        <div>
-          <p id="titre_chat" className="text-lg font-bold text-blue-500">
-            Espace de modération
-          </p>
-          <button className="bg-blue-500 text-white font-bold py-1 px-2 rounded">test</button>
-        </div>
-        <div
-          style={{
-            width: '30%',
-            height: '600px',
-            backgroundColor: '#grey',
-            border: '1px solid #ccc',
-            borderRadius: '20px',
-            marginTop: '20px',
-            marginLeft: '10px',
-          }}
-        ></div>
-  
-          <div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
-            
-            <form className='margin-top: 10px;'>
-              <label htmlFor="message-input">Message:</label>
-              <input type="text" name="message" id="message-input"className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'></input>
-              <p onClick={log}>send</p>
-  
-              <p onClick={getChat}>chat</p>
-            </form>
-          </div>
-        </>
-    )
+	function fetchMessages() {
+		fetch("http://127.0.0.1:5600/chat", {
+			method: "GET",
+		})
+			.then((res) => {
+				return res.json()
+			})
+			.then((res) => {
+				console.log(res)
+				setMessages(res)
+			})
+	}
+
+	function getChat() {
+		fetch("http://127.0.0.1:5600/chat", {
+			method: "GET",
+		})
+			.then((res) => {
+				return res.json()
+			})
+			.then((res) => {
+				console.log(res)
+				const section = document.querySelector("section") as HTMLInputElement
+				section.innerHTML = ""
+				res.forEach((message: { message: string; pseudo: string }) => {
+					const text = `${message.pseudo}: ${message.message}`
+					const p = document.createElement("p")
+					p.textContent = text
+					section.appendChild(p)
+				})
+			})
+	}
+
+	return (
+		<>
+			<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
+				<section></section>
+
+				<form className='margin-top: 10px;'>
+					<section className='p-2'>
+						{filteredMessages.map((message) => (
+							<p key={message.id}>{`${message.pseudo}: ${message.message}`}</p>
+						))}
+					</section>
+					<label htmlFor='message-input'>Message:</label>
+					<input
+						type='text'
+						name='message'
+						id='message-input'
+						className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
+					></input>
+					<p onClick={log}>send</p>
+
+					<p onClick={getChat}>chat</p>
+				</form>
+			</div>
+
+			<ModerationChat />
+		</>
+	)
 }
