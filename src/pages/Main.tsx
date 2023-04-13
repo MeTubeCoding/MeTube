@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import Results, { type IResults } from '../components/Results'
 
 const Main = () => {
   const [videos, setVideos] = useState<IResults | []>([])
-  useEffect(() => {}, [])
+  useEffect(() => {
+    // do nothing.
+  }, [])
   const [searchDatas, setSearchDatas] = useState('')
 
   const onSearch = (data: string) => {
