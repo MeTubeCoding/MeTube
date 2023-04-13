@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import React from 'react'
 import './index.css'
 import Main from './pages/Main'
@@ -6,14 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: unknown
-    }
-  }
-}
 
 function App() {
   return (

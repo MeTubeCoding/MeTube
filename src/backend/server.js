@@ -183,6 +183,18 @@ app.post('/videos', function (req, res) {
     }
   ]
 
+  const noResult = [
+    {
+      id: 1,
+      title: 'No Results',
+      miniature:
+        'https://cdn.discordapp.com/attachments/906279185864073226/1095710412609167591/IMG_5148.jpg',
+      channel: '',
+      video: 'e.mp4',
+      tags: ['']
+    }
+  ]
+
   const requestString = req.body.data
   const regexString = requestString.replace(/ /g, '|').split('').join('.*')
   const regex = new RegExp(regexString, 'i')
@@ -195,6 +207,8 @@ app.post('/videos', function (req, res) {
 
   if (requestedVideos.length > 0) {
     res.json(requestedVideos)
+  } else {
+    res.json(noResult)
   }
 })
 

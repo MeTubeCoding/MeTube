@@ -17,38 +17,35 @@ const Result = (props: Props) => {
 
   const playVid = () => {
     if (videoRef.current != null) {
+      videoRef.current.currentTime = 0
       void videoRef.current.play()
     }
   }
 
   const pauseVid = () => {
     if (videoRef.current != null) {
-      videoRef.current.pause()
+      void videoRef.current.play()
     }
   }
   return (
-    <div>
-      <div className="max-w-fit border rounded-lg shadow bg-[#282828] border-slate-700">
-        <a className="w-96 h-56 flex" href="#">
+    <div className="ml-80 flex">
+      <div className="max-w-fit rounded-lg bg-[#000000] m-2">
+        <a className="w-72 h-40 flex rounded-lg justify-center" href="#">
           <img
-            className="rounded-t-lg hover:opacity-0 w-96 h-56 absolute z-10"
+            className=" hover:opacity-0 transition-opacity duration-500 h-40 absolute z-10"
             onMouseEnter={playVid}
             onMouseLeave={pauseVid}
             src={props.video.miniature}
             alt=""
           />
-          <video
-            muted
-            className="rounded-t-lg w-80 w-96 h-56 absolute"
-            ref={videoRef}
-          >
+          <video muted className="w-72 h-40 absolute" ref={videoRef}>
             <source src={props.video.video} type="video/mp4" />
           </video>
         </a>
       </div>
-      <div className="">
-        <p className="">{props.video.title}</p>
-        <p className="">{props.video.channel}</p>
+      <div className="m-3 max-w-3/12">
+        <p className="text-[#ecd4ad] font-semibold">{props.video.title}</p>
+        <p className="text-[#aaaaaa9e]">{props.video.channel}</p>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
+import Filters from '../components/Filters'
 import Results, { type IResults } from '../components/Results'
 import Navbar from '../components/Navbar'
 
