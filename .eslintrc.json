@@ -5,9 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
+        "standard-with-typescript"
     ],
     "overrides": [
     ],
@@ -20,6 +18,5 @@
         "react"
     ],
     "rules": {
-        "prettier/prettier": "error"
     }
 }

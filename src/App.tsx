@@ -5,11 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import NavigationBar from './components/NavigationBar'
 import VideoPage from './pages/VideoPage'
-import React from 'react'
-import './App.css'
-import Video from './components/Video'
 
-function App(): JSX.Element {
+function App () {
   return (
     <div className='App'>
       <BrowserRouter>
