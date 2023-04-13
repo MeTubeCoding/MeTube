@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
-import crypto from 'crypto';
 import { FileUpload } from '@mui/icons-material'
 
 const fields = signupFields
@@ -25,8 +24,6 @@ export default function Signup() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('Le password est ' + signupState.password)
-    console.log('Le confirm-password est ' + signupState.confirmpassword)
     console.log(signupState)
     if (arePasswordsEqual()) {
       console.log(signupState)
@@ -42,7 +39,7 @@ export default function Signup() {
   }
 
   const createAccount = async () => {
-    const local = { ...signupState, password: crypto.createHash('sha256').update(signupState.password).digest('hex') };
+    const local = signupState
   
     fetch('http://127.0.0.1:5600/data', {
       method: 'POST',
