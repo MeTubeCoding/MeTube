@@ -98,16 +98,6 @@ app.post('/videos', function (req, res) {
   } else {
     res.json(noResult)
   }
-
-  /*
-   * difficulté: 3/5
-   * recherche by tags
-   */
-
-  /*
-   * difficulté: 5/5
-   * recherche la plus proche en fonction des lettres (search: "nbl a cs mn bg" = "Nabil a cassé mon bong")
-   */
 })
 
 // Optionnel a vous de voir pour vous adapter à votre problématique :
