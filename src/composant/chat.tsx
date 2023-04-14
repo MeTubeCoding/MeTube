@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react"
-// import { ModerationChat } from "./ModerationChat"
-
+import React, { useEffect, useRef, useState } from "react"
 
 interface Message {
 	id: string
@@ -10,9 +8,15 @@ interface Message {
 
 export function Chat() {
 	const [messages, setMessages] = useState<Message[]>([])
-	const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
+	const invisibleButtonRef = useRef<HTMLButtonElement>(null)
+
 	useEffect(() => {
-		fetchMessages()
+		const interval = setInterval(() => {
+			getChat()
+		}, 1000)
+
+		// Cleanup function to clear the interval when the component unmounts
+		return () => clearInterval(interval)
 	}, [])
 
 	function log() {
@@ -23,6 +27,28 @@ export function Chat() {
 			pseudo: "Tristan",
 		}
 		fetch("http://127.0.0.1:5600/chat", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(local),
+		})
+			.then((res) => {
+				return res.text()
+			})
+			.then((res) => {
+				console.log(res)
+			})
+	}
+
+	function logModeration() {
+		console.log("log")
+		const message = document.getElementById("message-input") as HTMLInputElement
+		const local = {
+			message: message.value,
+			pseudo: "Tristan",
+		}
+		fetch("http://127.0.0.1:5600/moderation", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -70,25 +96,34 @@ export function Chat() {
 			})
 	}
 
+	function handleInvisibleButtonClick() {
+		fetchMessages()
+	}
+
 	return (
 		<>
 			<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
 				<section></section>
 
-        <form className='margin-top: 10px;'>
-          <label htmlFor='message-input'>Message:</label>
-          <input
-            type='text'
-            name='message'
-            id='message-input'
-            className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
-          ></input>
-          <p onClick={log}>send</p>
+				<form className='margin-top: 10px;'>
+					<label htmlFor='message-input'>Message:</label>
+					<input
+						type='text'
+						name='message'
+						id='message-input'
+						className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
+					></input>
+					<p onClick={log}>send</p>
 
 					<p onClick={getChat}>chat</p>
+
+					<button
+						ref={invisibleButtonRef}
+						onClick={handleInvisibleButtonClick}
+						style={{ display: "none" }}
+					></button>
 				</form>
 			</div>
-
 		</>
 	)
 }

@@ -45,7 +45,7 @@ export function ModerationChat() {
 	}, [])
 
 	function fetchMessages() {
-		fetch("http://127.0.0.1:5600/chat", {
+		fetch("http://127.0.0.1:5600/moderation", {
 			method: "GET",
 		})
 			.then((res) => {
