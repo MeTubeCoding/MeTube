@@ -27,6 +27,7 @@ const client = new MongoClient(uri, {
 })
 
 const fs = require('fs')
+const { channel } = require('diagnostics_channel')
 
 const publi = path.join(__dirname, 'nom du dossier Public')
 
@@ -183,15 +184,24 @@ app.post('/videos', function (req, res) {
     }
   ]
 
-  const noResult = [
+  const fakeChannels = [
     {
       id: 1,
-      title: 'No Results',
-      miniature:
-        'https://cdn.discordapp.com/attachments/906279185864073226/1095710412609167591/IMG_5148.jpg',
-      channel: '',
-      video: 'e.mp4',
-      tags: ['']
+      name: 'Roro',
+      pfp: '',
+      subs: 200
+    },
+    {
+      id: 2,
+      name: 'Maxime',
+      pfp: '',
+      subs: 1
+    },
+    {
+      id: 3,
+      name: 'Ludwig',
+      pfp: '',
+      subs: 60000
     }
   ]
 
@@ -205,10 +215,12 @@ app.post('/videos', function (req, res) {
       video.tags.some(tag => regex.test(tag))
   )
 
+  const requestedChannels = fakeChannels.filter(channel =>
+    regex.test(channel.name)
+  )
+
   if (requestedVideos.length > 0) {
     res.json(requestedVideos)
-  } else {
-    res.json(noResult)
   }
 })
 
