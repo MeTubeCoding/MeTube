@@ -1,65 +1,79 @@
-import React, { useEffect } from 'react';
-import '../index.css'; // Importez le fichier CSS
-import './LiveNavBar'
-import { Chat } from './Chat';
-import { LiveNavBar } from './LiveNavBar';
-import { ModerationChat } from './ModerationChat';
-import { Description } from './Description';
+import React, { useEffect } from "react"
+import "../index.css" // Importez le fichier CSS
+import "./LiveNavBar"
+import { Chat } from "./Chat"
+import { LiveNavBar } from "./LiveNavBar"
+import { ModerationChat } from "./ModerationChat"
+import { Description } from "./Description"
 
 export function Live() {
+	let localStream: MediaStream
+	let showEcran: MediaStream
+	let peerConnection: RTCPeerConnection
+	let remoteStream: MediaStream
 
-  let localStream: MediaStream;
-  let showEcran :MediaStream;
-  let peerConnection:RTCPeerConnection
-  let remoteStream:MediaStream;
+	const init = async () => {
+		console.log("exec")
 
-  const init = async () => {
+		try {
+			localStream = await navigator.mediaDevices.getUserMedia({
+				video: true,
+				audio: false
+			})
+			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
+		} catch (error) {
+			console.log(error)
+		}
 
-    console.log("exec")
+		(document.getElementById("webcam") as HTMLVideoElement).srcObject = localStream;
+			
+		(document.getElementById("partageEcran") as HTMLVideoElement).srcObject = showEcran; 
+		
 
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-      showEcran = await navigator.mediaDevices.getDisplayMedia({video: true})
+		createOffer()
+	}
 
-    } catch (error) {
-      console.log(error);
-    }
+	const createOffer = async () => {
+		peerConnection = new RTCPeerConnection()
 
-    (document.getElementById('webcam') as HTMLVideoElement).srcObject = localStream;
-    (document.getElementById('partageEcran') as HTMLVideoElement).srcObject = showEcran;
+		remoteStream = new MediaStream()
 
-    createOffer();
-  }
+		const offer = await peerConnection.createOffer()
+		await peerConnection.setLocalDescription(offer)
 
-            const createOffer = async()=>{
-    peerConnection = new RTCPeerConnection();
+		console.log("Offer", offer)
+	}
 
-    remoteStream = new MediaStream();
+	useEffect(() => {
+		init()
+		console.log("init")
+	}, [])
 
-    const offer = await peerConnection.createOffer();
-    await peerConnection.setLocalDescription(offer)
+	return (
+		<>
+			<LiveNavBar />
+			<Chat />
+			<ModerationChat />
+			<Description />
 
-    console.log('Offer',offer);
-  }
-
-  useEffect(() => {
-    init();
-    console.log("init")
-  }, []);
-
-  return (
-    <>
-      <LiveNavBar/>
-      <Chat/>
-      <ModerationChat/>
-      <Description/>
-      
-      <div id="videos" className='w-max h-max px-20'>
-        <video className="transform scale-x-[-1] " id="webcam" width="500" height="500"autoPlay playsInline></video>
-        <video className="" id="partageEcran" width="500" height="500"autoPlay playsInline></video>
-      </div>
-
-
-    </>
-  )
+			<div id='videos' className='w-max h-max px-20'>
+				<video
+					className='transform scale-x-[-1] '
+					id='webcam'
+					width='500'
+					height='500'
+					autoPlay
+					playsInline
+				></video>
+				<video
+					className=''
+					id='partageEcran'
+					width='500'
+					height='500'
+					autoPlay
+					playsInline
+				></video>
+			</div>
+		</>
+	)
 }
