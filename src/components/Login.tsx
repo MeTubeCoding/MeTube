@@ -4,6 +4,7 @@ import { loginFields } from '../constants/FormFields'
 import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
+import { sha256 } from 'js-sha256'
 
 interface LoginState {
   email: string
@@ -61,6 +62,13 @@ const Login: React.FC = () => {
       .catch(error => {
         console.log(error)
       })
+  }
+
+  const verifyPassword = (
+    password: string,
+    hashedPassword: string
+  ): boolean => {
+    return sha256(password) === hashedPassword
   }
 
   return (

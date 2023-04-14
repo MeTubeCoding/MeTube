@@ -42,8 +42,12 @@ export default function Signup() {
   const createAccount = async () => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(signupState.password, salt)
-    const local = { ...signupState, password: hashedPassword, confirmpassword:hashedPassword}
-  
+    const local = {
+      ...signupState,
+      password: hashedPassword,
+      confirmpassword: hashedPassword
+    }
+
     fetch('http://127.0.0.1:5600/data', {
       method: 'POST',
       headers: {

@@ -93,6 +93,8 @@ app.post('/data', (req, res) => {
 
   res.end('trop cool')
 })
+const crypto = require('crypto')
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
@@ -103,7 +105,12 @@ app.post('/login', async (req, res) => {
     const user = await users.findOne({ 'email-address': email })
 
     if (user) {
-      if (password === user.password) {
+      const hashedPassword = crypto
+        .createHash('sha256')
+        .update(password)
+        .digest('hex')
+
+      if (hashedPassword === user.password) {
         res.json({ success: true, message: 'Connexion réussie' })
       } else {
         res
