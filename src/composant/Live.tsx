@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react"
 import "../index.css" // Importez le fichier CSS
 import "./LiveNavBar"
@@ -16,19 +15,23 @@ export function Live() {
 	const init = async () => {
 		console.log("exec")
 
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-      showEcran = await navigator.mediaDevices.getDisplayMedia({video: true})
+		try {
+			localStream = await navigator.mediaDevices.getUserMedia({
+				video: true,
+				audio: false,
+			})
+			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
+		} catch (error) {
+			console.log(error)
+		}
 
-    } catch (error) {
-      console.log(error);
-    }
+		;(document.getElementById("webcam") as HTMLVideoElement).srcObject =
+			localStream
+		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
+			showEcran
 
-    (document.getElementById('webcam') as HTMLVideoElement).srcObject = localStream;
-    (document.getElementById('partageEcran') as HTMLVideoElement).srcObject = showEcran;
-
-    createOffer();
-  }
+		createOffer()
+	}
 
 	const createOffer = async () => {
 		peerConnection = new RTCPeerConnection()
