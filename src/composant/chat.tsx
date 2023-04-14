@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 // import { ModerationChat } from "./ModerationChat"
 
-
 interface Message {
 	id: string
 	pseudo: string
@@ -75,20 +74,19 @@ export function Chat() {
 			<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
 				<section></section>
 
-        <form className='margin-top: 10px;'>
-          <label htmlFor='message-input'>Message:</label>
-          <input
-            type='text'
-            name='message'
-            id='message-input'
-            className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
-          ></input>
-          <p onClick={log}>send</p>
+				<form className='margin-top: 10px;'>
+					<label htmlFor='message-input'>Message:</label>
+					<input
+						type='text'
+						name='message'
+						id='message-input'
+						className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
+					></input>
+					<p onClick={log}>send</p>
 
 					<p onClick={getChat}>chat</p>
 				</form>
 			</div>
-
 		</>
 	)
 }
