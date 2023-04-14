@@ -3,6 +3,7 @@ import { loginFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
+import { useSelector } from 'react-redux'
 
 type ProfileState = Record<string, string>
 
@@ -14,6 +15,12 @@ fields.forEach(field => {
 
 export default function Profile(): JSX.Element {
   const [loginState, setLoginState] = useState<ProfileState>(fieldsState)
+  const email = useSelector(
+    (state: { user: { email: any } }) => state.user.email
+  )
+  const username = useSelector(
+    (state: { user: { username: any } }) => state.user.username
+  )
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value })
@@ -42,27 +49,33 @@ export default function Profile(): JSX.Element {
   }
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      <div className="-space-y-px">
-        {fields.map(field => (
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={loginState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            type={field.type}
-            name=""
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-            customClass={undefined}
-          />
-        ))}
+    <div>
+      <div>
+        <p>Email: {email}</p>
+        <p>Username: {username}</p>
       </div>
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <div className="-space-y-px">
+          {fields.map(field => (
+            <Input
+              key={field.id}
+              handleChange={handleChange}
+              value={loginState[field.id]}
+              labelText={field.labelText}
+              labelFor={field.labelFor}
+              id={field.id}
+              type={field.type}
+              name=""
+              isRequired={field.isRequired}
+              placeholder={field.placeholder}
+              customClass={undefined}
+            />
+          ))}
+        </div>
 
-      <FormExtra />
-      <FormAction handleSubmit={handleSubmit} text="Login" />
-    </form>
+        <FormExtra />
+        <FormAction handleSubmit={handleSubmit} text="Login" />
+      </form>
+    </div>
   )
 }
