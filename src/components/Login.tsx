@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loginFields } from '../constants/FormFields'
+import { loginFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import { sha256 } from 'js-sha256'
 
 interface LoginState {
   email: string
@@ -52,6 +51,8 @@ const Login: React.FC = () => {
         if (response.ok && Boolean(data.success)) {
           // Récupérez le mot de passe hashé stocké dans votre base de données pour l'utilisateur correspondant
           const hashedPassword = data.hashedPassword
+          console.log(hashedPassword)
+          console.log(loginState.password)
 
           // Comparez le mot de passe hashé stocké dans votre base de données avec le mot de passe entré par l'utilisateur lors de la tentative de connexion
           const passwordMatch = bcrypt.compareSync(
@@ -86,18 +87,12 @@ const Login: React.FC = () => {
       })
   }
 
-  const verifyPassword = (
-    password: string,
-    hashedPassword: string
-  ): boolean => {
-    return sha256(password) === hashedPassword
-  }
-
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="-space-y-px">
         {fields.map(field => (
           <Input
+            key={field.id}
             handleChange={handleChange}
             value={loginState[field.name]}
             labelText={field.labelText}

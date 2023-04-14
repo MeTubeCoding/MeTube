@@ -128,6 +128,16 @@ app.post('/login', async (req, res) => {
   }
 })
 
+app.get('/check-email', async (req, res) => {
+  const { email } = req.query;
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'email-address': email })
+  res.json({ exists: !!user });
+});
+
+
+
 app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
