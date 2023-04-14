@@ -72,7 +72,7 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/data', (req, res) => {
+app.post('/signup', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
@@ -90,9 +90,12 @@ app.post('/data', (req, res) => {
     }
     run().catch(console.dir)
   })
-
+  //coucou
   res.end('trop cool')
 })
+
+const bcrypt = require('bcryptjs')
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
@@ -103,8 +106,13 @@ app.post('/login', async (req, res) => {
     const user = await users.findOne({ 'email-address': email })
 
     if (user) {
-      if (password === user.password) {
-        res.json({ success: true, message: 'Connexion réussie' })
+      const isPasswordCorrect = await bcrypt.compare(password, user.password)
+      if (isPasswordCorrect) {
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
       } else {
         res
           .status(401)
@@ -119,6 +127,16 @@ app.post('/login', async (req, res) => {
       .json({ success: false, message: 'Erreur lors de la connexion' })
   }
 })
+
+app.get('/check-email', async (req, res) => {
+  const { email } = req.query;
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'email-address': email })
+  res.json({ exists: !!user });
+});
+
+
 
 app.get('/demo', (req, res) => {
   console.log('test')

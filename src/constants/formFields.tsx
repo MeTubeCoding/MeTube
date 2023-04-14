@@ -74,7 +74,7 @@ const signupFields = [
   {
     labelText: 'Email address',
     labelFor: 'email-address',
-    id: 'email-address',
+    id: 'emailaddress',
     name: 'email',
     type: 'email',
     autoComplete: 'email',

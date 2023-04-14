@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -5,7 +6,7 @@ import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import { FileUpload } from '@mui/icons-material'
+import axios from 'axios';
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}
@@ -23,17 +24,30 @@ export default function Signup() {
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log(signupState)
-    if (arePasswordsEqual()) {
-      console.log(signupState)
-      createAccount()
-    } else {
-      console.log('Passwords do not match')
-      setPasswordsMatch(false)
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    // Vérifier si l'e-mail existe déjà
+    const emailExists = await checkEmailExists(signupState.emailaddress);
+    if (emailExists) {
+      console.log('Email already exists');
+      return;
     }
-  }
+  
+    if (arePasswordsEqual()) {
+      console.log(signupState);
+      createAccount();
+    } else {
+      console.log('Passwords do not match');
+      setPasswordsMatch(false);
+    }
+  };  
+
+  const checkEmailExists = async (email: string) => {
+    const response = await axios.get(`http://127.0.0.1:5600/check-email?email=${email}`);
+    return response.data.exists;
+  };
+  
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword
@@ -48,7 +62,7 @@ export default function Signup() {
       confirmpassword: hashedPassword
     }
 
-    fetch('http://127.0.0.1:5600/data', {
+    fetch('http://127.0.0.1:5600/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -61,7 +75,7 @@ export default function Signup() {
       })
       .then(res => {
         console.log(res)
-        navigate('/profile') // Rediriger vers la page "account"
+        navigate('/login') // Rediriger vers la page "account"
       })
   }
 
