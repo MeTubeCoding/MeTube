@@ -18,6 +18,8 @@ import {
   MdOutlineBolt
 } from 'react-icons/md'
 
+let isOpen = false
+
 function SideBar() {
   const mainpart = [
     {
@@ -117,7 +119,11 @@ function SideBar() {
   ]
 
   return (
-    <div className="w-2/12 bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar">
+    <div
+      className={`mt-4 w-2/12 bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar ${
+        isOpen ? 'block' : 'hidden'
+      }`}
+    >
       <ul className="flex flex-col border-b-2 text-me-yellow">
         {mainpart.map(({ icon, name, href }) => {
           return (
@@ -168,5 +174,10 @@ function SideBar() {
       </ul>
     </div>
   )
+}
+
+export function toggleBoolean() {
+  isOpen = !isOpen
+  console.log(isOpen)
 }
 export default SideBar

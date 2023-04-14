@@ -2,7 +2,8 @@ import React, { useState, useEffect, HTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import MenuBurger from './MenuBurger'
+import { toggleBoolean } from './SideBar'
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
   onSearch: (data: string) => void
 }
@@ -12,7 +13,11 @@ const Navbar = (props: Props) => {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex h-16">
           <div className="w-14 h-16">
-            <GiHamburgerMenu size="10" className="w-8 h-16 text-me-yellow" />
+            <GiHamburgerMenu
+              size="10"
+              className="w-8 h-16 text-me-yellow"
+              onClick={toggleBoolean}
+            />
           </div>
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
