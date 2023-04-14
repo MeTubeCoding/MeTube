@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signupFields } from '../constants/formFields'
+import { signupFields } from '../constants/FormFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import { FileUpload } from '@mui/icons-material'
