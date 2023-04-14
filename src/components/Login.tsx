@@ -18,7 +18,6 @@ const fieldsState: LoginState = { email: '', password: '', error: null }
 const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<LoginState>(fieldsState)
   const navigate = useNavigate()
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setLoginState({
       ...loginState,
