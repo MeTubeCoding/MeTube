@@ -7,11 +7,12 @@ const fakeProfile = {
   avatar: 'https://via.placeholder.com/150'
 }
 
-const ChannelCreationPage = (/*{ profileName }*/) => {
+const ChannelCreationPage = () => {
   return (
     <div
       style={{
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh'

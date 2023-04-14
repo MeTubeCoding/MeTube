@@ -3,7 +3,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
+import React from 'react'
+import { useState } from 'react'
 
 const WindowCreateChannel = () => {
   return (
@@ -40,7 +41,7 @@ const WindowCreateChannel = () => {
           </svg>
         </button>
       </header>
-      
+
       <div className="container mx-auto py-20">
         <h1 className="text-4xl text-center font-bold mb-8">
           Welcome to MeTube
@@ -58,7 +59,7 @@ const WindowCreateChannel = () => {
         </div>
       </div>
     </body>
-  );
+  )
 }
 
-export default WindowCreateChannel;
+export default WindowCreateChannel
