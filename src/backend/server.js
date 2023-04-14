@@ -108,7 +108,11 @@ app.post('/login', async (req, res) => {
     if (user) {
       const isPasswordCorrect = await bcrypt.compare(password, user.password)
       if (isPasswordCorrect) {
-        res.json({ success: true, message: 'Connexion réussie', hashedPassword: user.password })
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
       } else {
         res
           .status(401)

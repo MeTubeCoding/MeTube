@@ -6,6 +6,7 @@ import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
+import { sha256 } from 'js-sha256'
 
 interface LoginState {
   email: string
@@ -50,10 +51,13 @@ const Login: React.FC = () => {
 
         if (response.ok && Boolean(data.success)) {
           // Récupérez le mot de passe hashé stocké dans votre base de données pour l'utilisateur correspondant
-          const hashedPassword = data.hashedPassword;
+          const hashedPassword = data.hashedPassword
 
           // Comparez le mot de passe hashé stocké dans votre base de données avec le mot de passe entré par l'utilisateur lors de la tentative de connexion
-          const passwordMatch = bcrypt.compareSync(loginState.password, hashedPassword);
+          const passwordMatch = bcrypt.compareSync(
+            loginState.password,
+            hashedPassword
+          )
           if (passwordMatch) {
             // Connexion réussie
             navigate('/profile')
@@ -63,7 +67,10 @@ const Login: React.FC = () => {
               ...loginState,
               error: 'Adresse e-mail ou mot de passe incorrect.'
             })
-            console.log('Erreur lors de la connexion :', 'Adresse e-mail ou mot de passe incorrect.')
+            console.log(
+              'Erreur lors de la connexion :',
+              'Adresse e-mail ou mot de passe incorrect.'
+            )
           }
         } else {
           // Échec de la connexion
