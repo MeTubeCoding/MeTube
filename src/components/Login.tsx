@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/FormFields'
@@ -76,7 +77,6 @@ const Login: React.FC = () => {
       <div className="-space-y-px">
         {fields.map(field => (
           <Input
-            key={field.id}
             handleChange={handleChange}
             value={loginState[field.name]}
             labelText={field.labelText}

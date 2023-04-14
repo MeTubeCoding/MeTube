@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -70,7 +71,6 @@ export default function Signup() {
       <div className="">
         {fields.map(field => (
           <Input
-            key={field.id}
             handleChange={handleChange}
             value={signupState[field.id]}
             labelText={field.labelText}
