@@ -23,6 +23,7 @@ export function Live() {
 			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
 		} catch (error) {
 			console.log(error)
+		
 		}
 
 		(document.getElementById("webcam") as HTMLVideoElement).srcObject =localStream;
