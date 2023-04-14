@@ -139,7 +139,12 @@ app.post('/videos', function (req, res) {
       channel: 'Roro',
       video:
         'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'réaction']
+      tags: ['défonce', 'réaction'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false
     },
     {
       id: 2,
@@ -149,7 +154,12 @@ app.post('/videos', function (req, res) {
       channel: 'Ludwig',
       video:
         'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'macron']
+      tags: ['défonce', 'macron'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false
     },
     {
       id: 3,
@@ -159,7 +169,12 @@ app.post('/videos', function (req, res) {
       channel: 'Maxime',
       video:
         'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce']
+      tags: ['défonce'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false
     },
     {
       id: 4,
@@ -169,7 +184,12 @@ app.post('/videos', function (req, res) {
       channel: 'Roro',
       video:
         'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'macron', 'fun', 'réaction']
+      tags: ['défonce', 'macron', 'fun', 'réaction'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false
     },
     {
       id: 5,
@@ -179,7 +199,13 @@ app.post('/videos', function (req, res) {
       channel: 'Roro',
       video:
         'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['macron']
+      tags: ['macron'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: true,
+      duration: ''
     }
   ]
 
