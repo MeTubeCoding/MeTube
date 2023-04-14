@@ -18,7 +18,7 @@ import {
   MdOutlineBolt
 } from 'react-icons/md'
 
-let isOpen = false
+let isOpen = true
 
 function SideBar() {
   const mainpart = [
