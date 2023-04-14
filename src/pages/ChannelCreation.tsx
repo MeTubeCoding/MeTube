@@ -1,8 +1,13 @@
 import React from 'react'
-import 'tailwindcss/tailwind.css'
 
-const ChannelCreation = () => {
-  return <div></div>
+function ChannelCreation(): JSX.Element {
+  return (
+    <>
+      <body>
+        <div></div>
+      </body>
+    </>
+  )
 }
 
 export default ChannelCreation
