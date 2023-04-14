@@ -1,6 +1,7 @@
-import React, { useState, HTMLAttributes } from 'react'
+import React, { useState, useEffect, HTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import MenuBurger from './MenuBurger'
 interface Props extends HTMLAttributes<HTMLDivElement> {
   onSearch: (data: string) => void
@@ -8,10 +9,10 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const Navbar = (props: Props) => {
   return (
     <nav className="bg-me-darkpurple shadow-md">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex h-16">
-          <div className="">
-            <MenuBurger />
+          <div className="w-14 h-16">
+            <GiHamburgerMenu size="10" className="w-8 h-16 text-me-yellow" />
           </div>
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
@@ -30,10 +31,7 @@ const Navbar = (props: Props) => {
             </Link>
           </div>
           <div className="flex justify-center items-center flex-grow">
-            <SearchBar
-              onSearch={data => props.onSearch(data)}
-              className="w-full max-w-3xl"
-            />
+            <SearchBar onSearch={data => props.onSearch(data)} />
           </div>
           <div className="flex items-center">
             <Link
