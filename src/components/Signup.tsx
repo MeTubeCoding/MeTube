@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
+import bcrypt from 'bcryptjs'
 import { FileUpload } from '@mui/icons-material'
 
 const fields = signupFields
@@ -20,16 +21,17 @@ export default function Signup() {
     setSignupState({ ...signupState, [e.target.id]: e.target.value })
   }
 
+  const [passwordsMatch, setPasswordsMatch] = useState(true)
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('Le password est ' + signupState.password)
-    console.log('Le confirm-password est ' + signupState.confirmpassword)
     console.log(signupState)
     if (arePasswordsEqual()) {
       console.log(signupState)
       createAccount()
     } else {
       console.log('Passwords do not match')
+      setPasswordsMatch(false)
     }
   }
 
@@ -37,9 +39,11 @@ export default function Signup() {
     return signupState.password === signupState.confirmpassword
   }
 
-  const createAccount = () => {
-    const local = signupState
-
+  const createAccount = async () => {
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(signupState.password, salt)
+    const local = { ...signupState, password: hashedPassword, confirmpassword:hashedPassword}
+  
     fetch('http://127.0.0.1:5600/data', {
       method: 'POST',
       headers: {
@@ -76,6 +80,9 @@ export default function Signup() {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
+        {!passwordsMatch && (
+          <p className="text-me-yellow">Passwords do not match</p>
+        )}
       </div>
     </form>
   )
