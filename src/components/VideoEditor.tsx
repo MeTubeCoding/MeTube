@@ -49,8 +49,8 @@ const VideoEditor = () => {
         playerRef.current.seekTo(value)
     }
 
-    const handleSetStartTime = () => {
-        setStartTime(playerRef.current.getCurrentTime())
+    function handleSetStartTime() {
+        setStartTime(playerRef.current.getCurrentTime());
     }
 
     const handleSetEndTime = () => {
@@ -98,8 +98,6 @@ const VideoEditor = () => {
     // TODO: Implement save functionality
     }
 
-
-
     return (
         <div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -126,7 +124,6 @@ const VideoEditor = () => {
             </div>
             <div>
             </div>
-            
             <div style={{ flex: 1 }}>
                 <ReactPlayer
                 ref={playerRef}

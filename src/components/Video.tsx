@@ -9,7 +9,7 @@ import NearMeIcon from '@mui/icons-material/NearMe'
 import Ticker from 'react-ticker'
 import { Avatar } from '@mui/material'
 
-function Video(): JSX.Element {
+function Video (): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [description] = useState('test description')

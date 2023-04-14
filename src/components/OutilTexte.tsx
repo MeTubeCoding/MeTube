@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OutilTexteProps {
   // Ajouter les props nécessaires ici
 }
 
+// eslint-disable-next-line no-empty-pattern
 const OutilTexte: React.FC<OutilTexteProps> = ({}) => {
-  const [texte, setTexte] = useState("");
+  const [texte, setTexte] = useState('')
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTexte(e.target.value);
-  };
+    setTexte(e.target.value)
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
@@ -27,7 +30,7 @@ const OutilTexte: React.FC<OutilTexteProps> = ({}) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OutilTexte;
+export default OutilTexte

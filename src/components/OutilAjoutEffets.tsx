@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OutilAjoutEffetsProps {
   // Ajouter les props nécessaires ici
 }
 
+// eslint-disable-next-line no-empty-pattern
 const OutilAjoutEffets: React.FC<OutilAjoutEffetsProps> = ({}) => {
-    return (
+  return (
       <div className="bg-white rounded-lg shadow-lg p-4">
         <h3 className="text-lg font-medium text-gray-800 mb-4">Ajouter un effet</h3>
         <div className="grid grid-cols-2 gap-4">
@@ -19,8 +21,7 @@ const OutilAjoutEffets: React.FC<OutilAjoutEffetsProps> = ({}) => {
           </div>
         </div>
       </div>
-    );
-  };
-  
-  export default OutilAjoutEffets;
-  
+  )
+}
+
+export default OutilAjoutEffets

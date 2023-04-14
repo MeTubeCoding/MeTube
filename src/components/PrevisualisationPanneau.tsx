@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PrevisualisationPanneauProps {
   // Ajoutez les props nécessaires ici
 }
 
+// eslint-disable-next-line no-empty-pattern
 const PrevisualisationPanneau: React.FC<PrevisualisationPanneauProps> = ({}) => {
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
       <div className="bg-gray-200 rounded-md p-2">
         <h3 className="text-lg font-medium text-gray-800 mb-2">Prévisualisation</h3>
-        <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+        <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
           <iframe
             className="absolute top-0 left-0 w-full h-full"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -27,7 +29,7 @@ const PrevisualisationPanneau: React.FC<PrevisualisationPanneauProps> = ({}) => 
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PrevisualisationPanneau;
+export default PrevisualisationPanneau
