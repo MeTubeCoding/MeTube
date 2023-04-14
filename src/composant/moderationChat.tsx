@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 
-
 interface Message {
 	id: string
 	pseudo: string
@@ -13,7 +12,6 @@ export function ModerationChat() {
 	const motsInterdit = [
 		"ta race",
 		"chatte",
-		"couille",
 		"couille",
 		"bite",
 		"zizi",
