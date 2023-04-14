@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/space-before-function-paren */
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Main from './pages/Main'
+import WindowUploadFusion from './pages/WindowUploadFusion'
 
-function App() {
-  return <div className="App"></div>
+function App(): JSX.Element {
+  return <WindowUploadFusion />
 }
 
 export default App
