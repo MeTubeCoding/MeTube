@@ -25,10 +25,10 @@ export function Live() {
 			console.log(error)
 		}
 
-		;(document.getElementById("webcam") as HTMLVideoElement).srcObject =
-			localStream
-		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
-			showEcran
+		(document.getElementById("webcam") as HTMLVideoElement).srcObject =localStream;
+			
+		(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =showEcran;
+			
 
 		createOffer()
 	}
