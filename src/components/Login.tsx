@@ -35,16 +35,12 @@ const Login: React.FC = () => {
 
   const authenticateUser = (): void => {
     const endpoint = 'http://localhost:5600/login' // Remplacez par l'URL de votre serveur
-    const hashedPassword = sha256(loginState.password)
     fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email: loginState.email,
-        password: sha256(loginState.password)
-      })
+      body: JSON.stringify(loginState)
     })
       .then(async response => {
         const data = await response.json()
@@ -66,6 +62,13 @@ const Login: React.FC = () => {
       .catch(error => {
         console.log(error)
       })
+  }
+
+  const verifyPassword = (
+    password: string,
+    hashedPassword: string
+  ): boolean => {
+    return sha256(password) === hashedPassword
   }
 
   return (

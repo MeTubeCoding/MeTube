@@ -9,54 +9,91 @@
 // commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
 // problème
 
-import express from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import path from 'path'
-import { MongoClient, ServerApiVersion } from 'mongodb'
-import { sha256 } from 'js-sha256'
-
+const express = require('express')
 const app = express()
+const cors = require('cors')
+const bodyparser = require('body-parser')
+const path = require('path')
+const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb')
+const { query } = require('express')
 
 const uri =
   'mongodb+srv://SM_des_SM:meilleurSM@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority'
+
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1
 })
 
-const publicDirectory = path.join(__dirname, 'public')
+const fs = require('fs')
 
-app.use(express.static(publicDirectory))
+const publi = path.join(__dirname, 'nom du dossier Public')
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
 
-// Ajout des headers CORS
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  next()
+app.use(bodyparser.json())
+app.use(
+  bodyparser.urlencoded({
+    extended: true
+  })
+)
+
+app.use('/', express.static(publi))
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000'
+  })
+)
+
+app.post('/node/sub', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('BigOne')
+        const movies = database.collection('enAttente')
+        //   console.log("mongo connect")
+        const query = req.body
+        //   console.log(query);
+        await movies.insertOne(query)
+        //   console.log(movie);
+      } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+
+  res.end()
 })
 
-app.post('/data', async (req, res) => {
-  try {
-    const database = client.db('profile')
-    const users = database.collection('users')
+app.post('/data', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('profile')
+        const movies = database.collection('users')
+        //   console.log("mongo connect")
+        const query = req.body
+        //   console.log(query);
+        await movies.insertOne(query)
+        //   console.log(movie);
+      } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
 
-    const query = req.body
-
-    await users.insertOne(query)
-
-    res.status(200).send('Account created successfully')
-  } catch (error) {
-    console.error(error)
-    res.status(500).send('Internal server error')
-  }
+  res.end('trop cool')
 })
+const crypto = require('crypto')
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
@@ -68,25 +105,27 @@ app.post('/login', async (req, res) => {
     const user = await users.findOne({ 'email-address': email })
 
     if (user) {
-      const hashedPassword = sha256(password)
+      const hashedPassword = crypto
+        .createHash('sha256')
+        .update(password)
+        .digest('hex')
+
       if (hashedPassword === user.password) {
-        res.status(200).json({ success: true, message: 'Login successful' })
+        res.json({ success: true, message: 'Connexion réussie' })
       } else {
-        res.status(401).json({ success: false, message: 'Incorrect password' })
+        res
+          .status(401)
+          .json({ success: false, message: 'Mot de passe incorrect' })
       }
     } else {
-      res.status(404).json({ success: false, message: "Email doesn't exist" })
+      res.status(404).json({ success: false, message: "L'email n'existe pas" })
     }
   } catch (error) {
-    console.error(error)
-    res.status(500).json({ success: false, message: 'Error during login' })
+    res
+      .status(500)
+      .json({ success: false, message: 'Erreur lors de la connexion' })
   }
 })
-
-const verifyPassword = (password, hashedPassword) => {
-  const hashedInput = sha256(password)
-  return hashedInput === hashedPassword
-}
 
 app.get('/demo', (req, res) => {
   console.log('test')
