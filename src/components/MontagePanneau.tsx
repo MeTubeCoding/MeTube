@@ -1,8 +1,9 @@
-import React from "react";
-import OutilDecoupage from "./OutilDecoupage";
-import OutilAjoutEffets from "./OutilAjoutEffets";
-import OutilTexte from "./OutilTexte";
+import React from 'react'
+import OutilDecoupage from './OutilDecoupage'
+import OutilAjoutEffets from './OutilAjoutEffets'
+import OutilTexte from './OutilTexte'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface MontagePanneauProps {
 // Ajoutez les props nécessaires ici
 }
@@ -43,7 +44,7 @@ const MontagePanneau: React.FC<MontagePanneauProps> = ({}) => {
       </div>
     </div>
   </div>
-  );
-};
+  )
+}
 
-export default MontagePanneau;
+export default MontagePanneau
