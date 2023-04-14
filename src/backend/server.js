@@ -72,7 +72,7 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/data', (req, res) => {
+app.post('/signup', (req, res) => {
   client.connect(err => {
     async function run() {
       try {

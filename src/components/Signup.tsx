@@ -49,7 +49,7 @@ export default function Signup() {
       confirmpassword: hashedPassword
     }
 
-    fetch('http://127.0.0.1:5600/data', {
+    fetch('http://127.0.0.1:5600/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
