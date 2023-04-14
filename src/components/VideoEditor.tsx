@@ -6,7 +6,7 @@
 import React, { useState, useRef } from 'react'
 import { Button, Input, Slider } from 'antd'
 import ReactPlayer from 'react-player'
-import MusicPlayer from '../components/MusicPlayer';
+import MusicPlayer from '../components/MusicPlayer'
 
 const VideoEditor = () => {
     const [videoUrl, setVideoUrl] = useState('')
@@ -19,7 +19,7 @@ const VideoEditor = () => {
     const [muted, setMuted] = useState(false)
     const [playedSeconds, setPlayedSeconds] = useState(0)
     const playerRef = useRef(null)
-    const [musicPlayerActive, setMusicPlayerActive] = useState(false);
+    const [musicPlayerActive, setMusicPlayerActive] = useState(false)
 
     const handleVideoUrlChange = (event: { target: { value: React.SetStateAction<string> } }) => {
         setVideoUrl(event.target.value)
@@ -49,13 +49,7 @@ const VideoEditor = () => {
         playerRef.current.seekTo(value)
     }
 
-    function handleSetStartTime() {
-        setStartTime(playerRef.current.getCurrentTime());
-    }
 
-    const handleSetEndTime = () => {
-        setEndTime(playerRef.current.getCurrentTime())
-    }
 
     const handleTrimVideo = () => {
         playerRef.current.seekTo(startTime)
@@ -85,7 +79,7 @@ const VideoEditor = () => {
     }
 
     const handleActivateMusicPlayer = () => {
-        setMusicPlayerActive(true);
+        setMusicPlayerActive(true)
       }
 
     const formatTime = (time: number) => {
