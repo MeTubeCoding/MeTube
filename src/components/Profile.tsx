@@ -1,55 +1,53 @@
-import React, { useState } from 'react'
-import { loginFields } from '../constants/formFields'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 
-type ProfileState = Record<string, string>
+interface Profile {
+  username: string
+  emailaddress: string
+}
 
-const fields = loginFields
-const fieldsState: ProfileState = {}
-fields.forEach(field => {
-  fieldsState[field.id] = ''
-})
-export default function Profile(): JSX.Element {
-  const [loginState, setLoginState] = useState<ProfileState>(fieldsState)
-  const email = useSelector(
-    (state: { user: { email: any } }) => state.user.email
-  )
-  const username = useSelector(
-    (state: { user: { username: any } }) => state.user.username
-  )
+export default function Profile() {
+  const [profile, setProfile] = useState<Profile | null>(null)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setLoginState({ ...loginState, [e.target.id]: e.target.value })
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-    authenticateUser()
-  }
-
-  // Handle Login API Integration here
-  const authenticateUser = (): void => {
-    fetch('http://localhost:5600/data', {
-      method: 'GET', // Utiliser la méthode GET pour récupérer des données
-      headers: {
-        'Content-Type': 'application/json'
-      }
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    const email = formData.get('email') as string
+    fetch(`http://127.0.0.1:5600/data?email=${email}`, {
+      method: 'GET'
     })
-      .then(async response => await response.json()) // Convertir la réponse en JSON
-      .then(data => {
-        console.log(data)
-      }) // Utiliser les données récupérées
-      .catch(error => {
-        console.error(error)
-      }) // Gérer les erreurs éventuelles
+      .then(res => {
+        return res.json()
+      })
+      .then(res => {
+        if (res.length > 0) {
+          setProfile(res[0])
+        } else {
+          setProfile(null)
+        }
+      })
   }
 
   return (
     <div>
-      <div>
-        <p>Email: {email}</p>
-        <p>Username: {username}</p>
-      </div>
+      {profile ? (
+        <p>
+          Logged in as {profile.username} ({profile.emailaddress})
+        </p>
+      ) : (
+        <p>Not logged in</p>
+      )}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email address:</label>
+        <input type="email" id="email" name="email" required />
+        <button type="submit">Get profile</button>
+      </form>
+      {profile && (
+        <section>
+          <p>
+            {profile.emailaddress}: {profile.username}
+          </p>
+        </section>
+      )}
     </div>
   )
 }

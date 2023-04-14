@@ -124,6 +124,22 @@ app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
+app.get('/profile',(req,res)=>{
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('profile');
+        const messages = database.collection('users');
+        let search = await messages.find({}).toArray();
+        const reponseSearch = JSON.stringify(search);
+        res.end(reponseSearch);
+      } finally {
+        await client.close(); 
+      }
+    }
+    runy().catch(console.dir);
+  });
+})
 
 // app.use('/', express.static(public));
 

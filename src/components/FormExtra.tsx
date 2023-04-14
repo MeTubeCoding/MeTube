@@ -19,7 +19,7 @@ export default function FormExtra(): JSX.Element {
 
       <div className="text-sm">
         <a
-          href="#"
+          href="forgotpassword"
           className="font-medium text-purple-600 hover:text-purple-500"
         >
           Forgot your password ?
