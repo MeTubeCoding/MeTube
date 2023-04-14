@@ -6,6 +6,7 @@
 import React, { useState, useRef } from 'react'
 import { Button, Input, Slider } from 'antd'
 import ReactPlayer from 'react-player'
+import MusicPlayer from '../components/MusicPlayer';
 
 const VideoEditor = () => {
     const [videoUrl, setVideoUrl] = useState('')
@@ -18,6 +19,7 @@ const VideoEditor = () => {
     const [muted, setMuted] = useState(false)
     const [playedSeconds, setPlayedSeconds] = useState(0)
     const playerRef = useRef(null)
+    const [musicPlayerActive, setMusicPlayerActive] = useState(false);
 
     const handleVideoUrlChange = (event: { target: { value: React.SetStateAction<string> } }) => {
         setVideoUrl(event.target.value)
@@ -82,6 +84,10 @@ const VideoEditor = () => {
         setPlayedSeconds(playedSeconds)
     }
 
+    const handleActivateMusicPlayer = () => {
+        setMusicPlayerActive(true);
+      }
+
     const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60)
     const seconds = Math.floor(time % 60)
@@ -91,6 +97,8 @@ const VideoEditor = () => {
     const handleSaveVideo = () => {
     // TODO: Implement save functionality
     }
+
+
 
     return (
         <div>
@@ -104,6 +112,7 @@ const VideoEditor = () => {
                 <Button onClick={handleRotateRight}>Rotate Right</Button>
                 <Button onClick={handleCropVideo}>Crop</Button>
                 <Button onClick={handleSaveVideo}>Save</Button>
+                <Button onClick={handleActivateMusicPlayer}>Activer MusicPlayer</Button>
                 <Slider min={0} max={1} step={0.01} onChange={handleVolumeChange} value={volume} />
                 <Slider min={0.5} max={2} step={0.1} onChange={handleSpeedChange} value={speed} />
                 <Button onClick={handleLoopChange}>{loop ? 'Disable Loop' : 'Enable Loop'}</Button>
@@ -113,7 +122,11 @@ const VideoEditor = () => {
                 <div>{formatTime(playedSeconds)}</div>
                 <div>{formatTime(playerRef.current ? playerRef.current.getDuration() : 0)}</div>
                 </div>
+                <div><MusicPlayer/></div>
             </div>
+            <div>
+            </div>
+            
             <div style={{ flex: 1 }}>
                 <ReactPlayer
                 ref={playerRef}

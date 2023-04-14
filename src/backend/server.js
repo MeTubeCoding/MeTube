@@ -137,6 +137,7 @@ app.get('/demo', (req, res) => {
 })
 
 app.listen(5600, () => {
+  console.clear()
   console.log(console.clear())
   console.log('Server app listening on port 5600')
 })

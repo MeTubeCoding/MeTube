@@ -8,10 +8,10 @@ import VideoPage from './pages/VideoPage'
 
 function App () {
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/" element={<NavigationBar />} />
           <Route path="/videopage" element={<VideoPage />} />
         </Routes>
