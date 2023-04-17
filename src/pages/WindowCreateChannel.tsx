@@ -1,8 +1,3 @@
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { useState } from 'react'
 
