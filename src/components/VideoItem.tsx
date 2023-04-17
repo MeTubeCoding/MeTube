@@ -21,6 +21,7 @@ const VideoItem = ({ video }: { video: File }): JSX.Element => {
     <div>
       <video ref={videoElement} src={URL.createObjectURL(video)} controls />
       <button onClick={handlePlay}>Play</button>
+      <br></br>
       <button onClick={handlePause}>Pause</button>
     </div>
   )
