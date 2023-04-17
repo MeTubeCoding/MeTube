@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Result, { type IResult } from './Result/Result'
 export type IResults = Array<IResult>
 
 interface Props {
   videos: IResults
+  visible: boolean
 }
 
-const ResultsC = (props: Props): any => {
+const Results = (props: Props): any => {
   return (
     <>
       {props.videos.length === 0 ? (
@@ -14,7 +15,7 @@ const ResultsC = (props: Props): any => {
       ) : (
         <div>
           {props.videos.map(video => (
-            <Result key={video.id} video={video} />
+            <Result key={video.id} video={video} visible={props.visible} />
           ))}
         </div>
       )}
@@ -22,4 +23,4 @@ const ResultsC = (props: Props): any => {
   )
 }
 
-export default ResultsC
+export default Results
