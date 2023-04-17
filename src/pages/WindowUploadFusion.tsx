@@ -115,7 +115,7 @@ const WindowUploadFusion = () => {
               >
                 <div className='flex flex-col items-center justify-center space-y-4'>
                   <svg
-                    className='w-16 h-16 text-me-background'
+                    className='w-16 h-16 text-me-colorprimary'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -128,7 +128,7 @@ const WindowUploadFusion = () => {
                       d='M16 17l-4 4m0 0l-4-4m4 4V3'
                     />
                   </svg>
-                  <span className='text-xl text-me-background font-bold'>
+                  <span className='text-xl text-me-colorprimary font-bold'>
                     Select files to upload
                   </span>
                   <span className='text-me-background text-sm'>
