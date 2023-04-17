@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, HTMLAttributes } from 'react'
 import { Button, IconButton, InputBase } from '@mui/material'
 
-interface IProps {
+interface IProps extends HTMLAttributes<HTMLDivElement> {
   onSearch: (input: string) => any
 }
 
@@ -38,8 +38,8 @@ const SearchBar = (props: IProps) => {
   }
 
   return (
-    <form onSubmit={handleSearch}>
-      <div className="flex justify-center bg-me-darkpurple p-2 items-center">
+    <form className="w-full max-w-3xl" onSubmit={handleSearch}>
+      <div className="flex bg-me-darkpurple p-2 items-center ">
         <input
           type="search"
           id="search-dropdown"
@@ -47,7 +47,7 @@ const SearchBar = (props: IProps) => {
           onChange={e => {
             setSearchInput(e.currentTarget.value)
           }}
-          className="bg-me-mediumpurple border border-me-lightpurple text-me-yellow font-semibold placeholder:text-me-yellow placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none focus:border-me-yellow h-10 w-5/12"
+          className="bg-me-mediumpurple border border-me-lightpurple text-me-yellow font-semibold placeholder:text-me-yellow placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none  focus:border-me-yellow h-10 w-11/12"
           onFocus={yBorder}
           onBlur={nBorder}
           placeholder="Search..."
