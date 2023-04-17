@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
+import React from 'react'
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}

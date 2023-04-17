@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/react-in-jsx-scope */
+import React from 'react'
 import { type ChangeEvent } from 'react'
 
 const fixedInputClass =
