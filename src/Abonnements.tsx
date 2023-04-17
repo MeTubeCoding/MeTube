@@ -1,16 +1,15 @@
+import React, { useState } from 'react'
+import { resolveProjectReferencePath } from 'typescript'
+import './abonnements.css'
 
-import React, { useState } from "react";
-import { resolveProjectReferencePath } from "typescript";
-import "./abonnements.css";
+const test = document.getElementById('test')
 
-const test = document.getElementById("test");
-
-test?.addEventListener("click", () => {
-  fetch("http://localhost:5600/demo");
+test?.addEventListener('click', () => {
+  fetch('http://localhost:5600/demo')
   // .then(response => response.text())
   // .then(data => console.log(data))
   // .catch(error => console.error(error));
-});
+})
 
 export default function Abonnements() {
   return (
@@ -24,7 +23,7 @@ export default function Abonnements() {
       <div className="bg-neutral-900 object-cover absolute top-14 right-0 bottom-0 ml-60 w-96"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 bottom-0 right-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-96 w-20 bottom-0"></div>
-      
+
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 right-96 mr-20 bottom-0 overflow-y-auto max-h-[1000px]">
         <div>
           <p className="font-bold text-base text-white relative mt-12 mb-5">
@@ -42,27 +41,23 @@ export default function Abonnements() {
               allowFullScreen
             ></iframe>
             <div className="absolute text-base font-bold mr-32 left-72 top-0 mb-16 text-white">
-            On découvre le Japon avec la School ! (GTA RP SCHOOL # 6)
+              On découvre le Japon avec la School ! (GTA RP SCHOOL # 6)
             </div>
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
-              Inoxtag • 762 k vues  Diffusé en direct il y a 14 heures 
+              Inoxtag • 762 k vues Diffusé en direct il y a 14 heures
             </div>
             <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
-            🎥 Chaîne secondaire : https://inoxtag.tv/inoxtag2.0
-💙 T'abonner : https://inoxtag.tv/subscribe
-🔔✅ Activez la cloche de notification, afin d'être au courant de mes prochains lives ou vidéos !
-
-📸 Instagram: @Inoxtag / https://inoxtag.tv/instagram
-🐤 Twitter: @Inoxtag / https://inoxtag.tv/twitter
-🚀 Actualités: @InoxtagCrew / https://inoxtag.tv/news
-📞 Discord: https://inoxtag.tv/discord
-💜 Twitch: https://inoxtag.tv/twitch
-📡 Reddit: https://inoxtag.tv/reddit
-
-💎 Deviens Sponsor: https://inoxtag.tv/sponsor
-💌 SponsorShip : inoxtag@talentweb.fr
-
-(-10% dans toute la boutique Roccat avec le code Inoxtag): https://roc.gg/RocInoxtag
+              🎥 Chaîne secondaire : https://inoxtag.tv/inoxtag2.0 💙 T'abonner
+              : https://inoxtag.tv/subscribe 🔔✅ Activez la cloche de
+              notification, afin d'être au courant de mes prochains lives ou
+              vidéos ! 📸 Instagram: @Inoxtag / https://inoxtag.tv/instagram 🐤
+              Twitter: @Inoxtag / https://inoxtag.tv/twitter 🚀 Actualités:
+              @InoxtagCrew / https://inoxtag.tv/news 📞 Discord:
+              https://inoxtag.tv/discord 💜 Twitch: https://inoxtag.tv/twitch 📡
+              Reddit: https://inoxtag.tv/reddit 💎 Deviens Sponsor:
+              https://inoxtag.tv/sponsor 💌 SponsorShip : inoxtag@talentweb.fr
+              (-10% dans toute la boutique Roccat avec le code Inoxtag):
+              https://roc.gg/RocInoxtag
             </div>
             <div className="bg-neutral-900 object-cover absolute top-28 ml-72 left-0 bottom-0 right-0"></div>
             <div className="bg-neutral-900 absolute h-12 w-20 right-0 -top-0">
@@ -90,31 +85,27 @@ export default function Abonnements() {
               allowFullScreen
             ></iframe>
             <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
-            J'ai acheté tous les objets des pubs insta (on a explosé le budget 😭) #4
+              J'ai acheté tous les objets des pubs insta (on a explosé le budget
+              😭) #4
             </div>
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Amixem • 1,6 M vues il y a 21 heures
             </div>
             <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
-            On a vraiment été trop loin avec nos objets instagram !
-Tentez de remporter une Tesla modèle Y en souscrivant à tout abonnement NordVPN de 2 ans en passant par mon lien → https://nordvpn.com/amixem
-Inscription au jeu concours disponible jusqu'au 1er Mai, seulement pour les résidents Français
-
-Ma boutique SPACEFOX.shop ! : http://bit.ly/3KskVsU
-SUIS MOI ICI C'EST BIEN AUSSI : 
-→ INSTAGRAM : http://bit.ly/amixeminsta
-→ TIKTOK : https://bit.ly/AmixemTikTok
-→ TWITTER :  http://bit.ly/AmixemTwitter
-→ TWITCH AMIXEM :  http://bit.ly/AmixemTwitch
-→ SNAPCHAT : amixemsnap
-
-Responsable de production : Solène Chupin
-Chargé de production : Thibaut Trotin
-
-Réalisateur plateau : Yann Goy
-Chef Opérateur : Théo Sauvion
-Cadrage : Florent Bodenez, Baptiste Constant
-Montage : Quentin Branquart
+              On a vraiment été trop loin avec nos objets instagram ! Tentez de
+              remporter une Tesla modèle Y en souscrivant à tout abonnement
+              NordVPN de 2 ans en passant par mon lien →
+              https://nordvpn.com/amixem Inscription au jeu concours disponible
+              jusqu'au 1er Mai, seulement pour les résidents Français Ma
+              boutique SPACEFOX.shop ! : http://bit.ly/3KskVsU SUIS MOI ICI
+              C'EST BIEN AUSSI : → INSTAGRAM : http://bit.ly/amixeminsta →
+              TIKTOK : https://bit.ly/AmixemTikTok → TWITTER :
+              http://bit.ly/AmixemTwitter → TWITCH AMIXEM :
+              http://bit.ly/AmixemTwitch → SNAPCHAT : amixemsnap Responsable de
+              production : Solène Chupin Chargé de production : Thibaut Trotin
+              Réalisateur plateau : Yann Goy Chef Opérateur : Théo Sauvion
+              Cadrage : Florent Bodenez, Baptiste Constant Montage : Quentin
+              Branquart
             </div>
             <div className="bg-neutral-900 object-cover absolute top-28 ml-72 left-0 bottom-0 right-0"></div>
             <div className="bg-neutral-900 absolute h-12 w-20 right-0 -top-0">
@@ -142,19 +133,16 @@ Montage : Quentin Branquart
               allowFullScreen
             ></iframe>
             <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
-            LES TOURS DE MAGIE LES PLUS RATÉS
+              LES TOURS DE MAGIE LES PLUS RATÉS
             </div>
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Donovan • 4,5k vues il y a 22heures
             </div>
             <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
-              J'espère que cette vidéo vous plaira !
-
-On se croise en spectacle? 
-BILLETERIE : https://donovan.bleucitron.net
-
-Merci à Kilam pour le montage et la miniature !
-(Son compte insta : https://www.instagram.com/kilam.simav... )
+              J'espère que cette vidéo vous plaira ! On se croise en spectacle?
+              BILLETERIE : https://donovan.bleucitron.net Merci à Kilam pour le
+              montage et la miniature ! (Son compte insta :
+              https://www.instagram.com/kilam.simav... )
             </div>
             <div className="bg-neutral-900 object-cover absolute top-28 ml-72 left-0 bottom-0 right-0"></div>
             <div className="bg-neutral-900 absolute h-12 w-20 right-0 -top-0">
@@ -1130,9 +1118,9 @@ Merci à Kilam pour le montage et la miniature !
           </div>
         </div>
         <div className="mb-4 text-xs text-gray-400">
-              _________________________________________________________________________________________________________________________________________
-          </div>
-          <div>
+          _________________________________________________________________________________________________________________________________________
+        </div>
+        <div>
           <p className="font-bold text-base text-white relative mt-12 mb-6">
             Publications plus anciennes
           </p>
@@ -1369,8 +1357,7 @@ Merci à Kilam pour le montage et la miniature !
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  );
+  )
 }
