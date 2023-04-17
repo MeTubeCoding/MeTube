@@ -1,13 +1,18 @@
-import React, { useState, useEffect, HTMLAttributes } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { toggleBoolean } from './SideBar'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props {
   onSearch: (data: string) => void
+  onToggleSideBar: () => void
 }
+
 const Navbar = (props: Props) => {
+  const handleHamburgerClick = () => {
+    props.onToggleSideBar()
+  }
+
   return (
     <nav className="bg-me-darkpurple shadow-md">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -16,7 +21,7 @@ const Navbar = (props: Props) => {
             <GiHamburgerMenu
               size="10"
               className="w-8 h-16 text-me-yellow"
-              onClick={toggleBoolean}
+              onClick={handleHamburgerClick}
             />
           </div>
           <div className="flex items-center">
