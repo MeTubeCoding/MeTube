@@ -1,55 +1,38 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signupFields } from '../constants/formFields'
+import { forgotFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import axios from 'axios'
 import React from 'react'
 
-const fields = signupFields
+const fields = forgotFields
 const fieldsState: Record<string, string> = {}
 
 fields.forEach(field => (fieldsState[field.id] = ''))
 
-export default function Signup() {
+export default function ForgotPassword() {
   const [signupState, setSignupState] =
     useState<Record<string, string>>(fieldsState)
   const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target
-    setSignupState({ ...signupState, [id]: value })
+    setSignupState({ ...signupState, [e.target.id]: e.target.value })
   }
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    // Vérifier si l'e-mail existe déjà
-    const emailExists = await checkEmailExists(signupState.emailaddress)
-    if (emailExists) {
-      console.log('Email already exists')
-      return
-    }
-
+    console.log(signupState)
     if (arePasswordsEqual()) {
       console.log(signupState)
       createAccount()
-    } else if (!arePasswordsEqual()) {
+    } else {
       console.log('Passwords do not match')
       setPasswordsMatch(false)
     }
-  }
-
-  const checkEmailExists = async (email: string) => {
-    const response = await axios.get(
-      `http://127.0.0.1:5600/check-email?email=${email}`
-    )
-    return response.data.exists
   }
 
   const arePasswordsEqual = (): boolean => {
@@ -65,7 +48,7 @@ export default function Signup() {
       confirmpassword: hashedPassword
     }
 
-    fetch('http://127.0.0.1:5600/signup', {
+    fetch('http://127.0.0.1:5600/data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -100,10 +83,10 @@ export default function Signup() {
             customClass={undefined}
           />
         ))}
+        <FormAction handleSubmit={handleSubmit} text="Change" />
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
         )}
-        <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
     </form>
   )

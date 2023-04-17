@@ -73,7 +73,7 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/data', (req, res) => {
+app.post('/signup', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
@@ -91,9 +91,12 @@ app.post('/data', (req, res) => {
     }
     run().catch(console.dir)
   })
-
+  //coucou
   res.end('trop cool')
 })
+
+const bcrypt = require('bcryptjs')
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
@@ -104,31 +107,92 @@ app.post('/login', async (req, res) => {
     const user = await users.findOne({ 'email-address': email })
 
     if (user) {
-      if (password === user.password) {
-        res.json({ success: true, message: 'Connexion réussie' })
+      const isPasswordCorrect = await bcrypt.compare(password, user.password)
+      if (isPasswordCorrect) {
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
       } else {
-        res
-          .status(401)
-          .json({ success: false, message: 'Mot de passe incorrect' })
+        res.status(401).json({ success: false, message: 'Incorrect password' })
       }
     } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" })
+      res.status(404).json({ success: false, message: 'Email does not exist' })
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: 'Erreur lors de la connexion' })
+    res.status(500).json({ success: false, message: 'Error while connecting' })
   }
+})
+
+app.get('/check-email', async (req, res) => {
+  const { email } = req.query
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'email-address': email })
+  res.json({ exists: !!user })
 })
 
 app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
+app.get('/profile', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('profile')
+        const messages = database.collection('users')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
 
 // app.use('/', express.static(public));
 
 app.use(cors())
+
+app.post('/channels'),
+  function (req, res) {
+    const fakeChannels = [
+      {
+        id: 1,
+        name: 'Roro',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png',
+        subs: 200
+      },
+      {
+        id: 2,
+        name: 'Maxime',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029117988914/Capture_decran_2023-04-17_a_10.36.13.png',
+        subs: 1
+      },
+      {
+        id: 3,
+        name: 'Ludwig',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029751316550/Capture_decran_2023-03-29_a_16.17.11.png',
+        subs: 60000
+      }
+    ]
+
+    const requestString = req.body.data
+    const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+    const regex = new RegExp(regexString, 'i')
+
+    const requestedChannels = fakeChannels.filter(channel =>
+      regex.test(channel.name)
+    )
+
+    if (requestedChannels.length > 0) {
+      res.json(requestedChannels)
+    }
+  }
 
 app.post('/videos', function (req, res) {
   const fakeVideos = [
@@ -214,27 +278,6 @@ app.post('/videos', function (req, res) {
     }
   ]
 
-  const fakeChannels = [
-    {
-      id: 1,
-      name: 'Roro',
-      pfp: '',
-      subs: 200
-    },
-    {
-      id: 2,
-      name: 'Maxime',
-      pfp: '',
-      subs: 1
-    },
-    {
-      id: 3,
-      name: 'Ludwig',
-      pfp: '',
-      subs: 60000
-    }
-  ]
-
   const requestString = req.body.data
   const regexString = requestString.replace(/ /g, '|').split('').join('.*')
   const regex = new RegExp(regexString, 'i')
@@ -243,10 +286,6 @@ app.post('/videos', function (req, res) {
       regex.test(video.title) ||
       regex.test(video.channel) ||
       video.tags.some(tag => regex.test(tag))
-  )
-
-  const requestedChannels = fakeChannels.filter(channel =>
-    regex.test(channel.name)
   )
 
   if (requestedVideos.length > 0) {

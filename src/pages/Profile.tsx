@@ -12,6 +12,7 @@ export default function ProfilePage(): JSX.Element {
         linkName=""
         linkUrl=""
       />
+      <Profile />
     </>
   )
 }

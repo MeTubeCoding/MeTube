@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IResults } from '../components/Results'
+import { IResults } from './ResultsVideo'
 
 const useOnSearch = () => {
   const [videos, setVideos] = useState<IResults | []>([])

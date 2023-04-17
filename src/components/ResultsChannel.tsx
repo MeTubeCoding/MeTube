@@ -6,7 +6,7 @@ interface Props {
   videos: IResults
 }
 
-const Results = (props: Props): any => {
+const ResultsC = (props: Props): any => {
   return (
     <>
       {props.videos.length === 0 ? (
@@ -22,4 +22,4 @@ const Results = (props: Props): any => {
   )
 }
 
-export default Results
+export default ResultsC
