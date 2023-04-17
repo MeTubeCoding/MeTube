@@ -159,9 +159,6 @@ const VideoEditor = () => {
           {formatTime(playerRef.current ? playerRef.current.getDuration() : 0)}
         </div>
       </div>
-      <div>
-        <MusicPlayer />
-      </div>
     </div>
   );
 };
