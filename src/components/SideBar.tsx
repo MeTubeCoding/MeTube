@@ -151,7 +151,7 @@ function SideBar(props: SideBarProps) {
       </div>
 
       <div
-        className={`bg-me-darkpurple pr-5 overflow-auto pb-8 scrollbar-hide sidebar w-full px-4 ${
+        className={`bg-me-darkpurple pr-5 overflow-auto pb-14 scrollbar-hide sidebar w-full px-4 ${
           props.visible ? 'block' : 'hidden'
         }`}
         ref={bar}
