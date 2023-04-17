@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Results from '../components/Results'
 import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
-import Filters from '../components/Filters'
 import SideBar from '../components/SideBar'
 
 const Main = () => {
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
   const { videos, onSearch } = useOnSearch()
+
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
+  }
 
   return (
     <div className="max-h-screen overflow-hidden">
       <div style={{ height: '7.5vh' }}>
-        <Navbar onSearch={onSearch} />
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
       <div className="flex" style={{ height: '92.5vh' }}>
-        <SideBar />
-        <Filters></Filters>
+        <SideBar visible={isSideBarVisible} />
         <Results videos={videos} />
       </div>
     </div>
