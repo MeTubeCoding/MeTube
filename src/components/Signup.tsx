@@ -6,7 +6,8 @@ import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import axios from 'axios';
+import axios from 'axios'
+import zxcvbn from 'zxcvbn';
 import React from 'react'
 
 const fields = signupFields
@@ -20,24 +21,33 @@ export default function Signup() {
   const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSignupState({ ...signupState, [e.target.id]: e.target.value })
-  }
+    const { id, value } = e.target;
+    setSignupState({ ...signupState, [id]: value });
+    
+    if (id === 'password') {
+      const strength = zxcvbn(value).score; // Score ranges from 0 to 4
+      setPasswordStrength(strength);
+    }
+  };
+  
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
   const [passwordStrong, setPasswordStrong] = useState(true);
 
+  const [passwordStrength, setPasswordStrength] = useState(0);
+
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Vérifier si l'e-mail existe déjà
     const emailExists = await checkEmailExists(signupState.emailaddress);
     if (emailExists) {
       console.log('Email already exists');
       return;
     }
-    
+
     if (arePasswordsEqual() && isPasswordStrong(signupState.password)) {
       console.log(signupState);
       createAccount();
@@ -49,13 +59,13 @@ export default function Signup() {
       setPasswordStrong(false);
     }
   };
-  
+
 
   const checkEmailExists = async (email: string) => {
     const response = await axios.get(`http://127.0.0.1:5600/check-email?email=${email}`);
     return response.data.exists;
   };
-  
+
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword
@@ -66,7 +76,7 @@ export default function Signup() {
     // Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et faire au moins 8 caractères de long
     return regex.test(password)
   }
-  
+
 
   const createAccount = async () => {
     const salt = await bcrypt.genSalt(10)
@@ -112,6 +122,19 @@ export default function Signup() {
             customClass={undefined}
           />
         ))}
+        {signupState.password && (
+          <progress
+            value={passwordStrength}
+            max="4"
+            className={`mt-2 appearance-none w-full ${
+              passwordStrength === 4
+                ? 'bg-green-300'
+                : passwordStrength === 3
+                ? 'bg-yellow-300'
+                : 'bg-red-300'
+            }`}
+          />
+        )}
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
         )}
