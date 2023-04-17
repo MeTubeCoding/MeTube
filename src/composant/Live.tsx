@@ -5,8 +5,8 @@ import { Chat } from "./Chat"
 import { LiveNavBar } from "./LiveNavBar"
 import { ModerationChat } from "./ModerationChat"
 import { Description } from "./Description"
-import NombreViewer from './NombreViewer';
-import ListeViewer from './ListeViewer';
+import NombreViewer from "./NombreViewer"
+import ListeViewer from "./ListeViewer"
 
 export function Live() {
 	let localStream: MediaStream
@@ -20,18 +20,18 @@ export function Live() {
 		try {
 			localStream = await navigator.mediaDevices.getUserMedia({
 				video: true,
-				audio: false,
+				audio: false
 			})
 			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
 		} catch (error) {
 			console.log(error)
-		
 		}
 
-		(document.getElementById("webcam") as HTMLVideoElement).srcObject =localStream;
-			
-		(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =showEcran;
-			
+		(document.getElementById("webcam") as HTMLVideoElement).srcObject =
+			localStream
+
+		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
+			showEcran
 
 		createOffer()
 	}
@@ -55,34 +55,47 @@ export function Live() {
 	return (
 		<>
 			<LiveNavBar />
-			<Chat />
-			<ModerationChat />
-			<Description />
 
-			<div id='videos' className='w-max h-max px-20'>
-				<video
-					className='transform scale-x-[-1] '
-					id='webcam'
-					width='500'
-					height='500'
-					autoPlay
-					playsInline
-				></video>
-				<video
-					className=''
-					id='partageEcran'
-					width='500'
-					height='500'
-					autoPlay
-					playsInline
-				></video>
+			<div className='flex flex-row'>
+				<ModerationChat />
+				<section className='flex flex-row'>
+					<div className='flex flex-col items-center'>
+						<div className='relative'>
+							<div id='videos' className='w-max h-max px-20'>
+								<video
+									className='transform scale-x-[-1] '
+									id='webcam'
+									width='400'
+									height='400'
+									autoPlay
+									playsInline
+								></video>
+								<div className='absolute top-2 left-2'>
+									<video
+										className=''
+										id='partageEcran'
+										width='400'
+										height='400'
+										autoPlay
+										playsInline
+									></video>
+								</div>
+							</div>
+						</div>
+						<div className='flex flex-col items-center mt-4'>
+							<Description />
+						</div>
+					</div>
+				</section>
+
+				<Chat />
+				<div className='live-info'>
+					<NombreViewer /> {/* Ajoutez le composant ListeViewer */}
+				</div>
+				<div className='live-info'>
+					<ListeViewer /> {/* Ajoutez le composant ListeViewer */}
+				</div>
 			</div>
-      <div className="live-info">
-        <NombreViewer /> {/* Ajoutez le composant ListeViewer */}
-      </div>
-      <div className="live-info">
-        <ListeViewer /> {/* Ajoutez le composant ListeViewer */}
-      </div>
 		</>
 	)
 }

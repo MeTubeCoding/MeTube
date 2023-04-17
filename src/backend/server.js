@@ -45,6 +45,23 @@ app.post('/chat',(req,res)=>{
   res.end();
 });
 
+app.post('/moderation',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageModeration');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
 app.post('/desc',(req,res)=>{
   client.connect(err => {
     async function run() {
@@ -69,6 +86,23 @@ app.get('/chat',(req,res)=>{
       try {
         const database = client.db('LiveBdd');
         const messages = database.collection('messageChat');
+        let search = await messages.find({}).toArray();
+        const reponseSearch = JSON.stringify(search);
+        res.end(reponseSearch);
+      } finally {
+        await client.close(); 
+      }
+    }
+    runy().catch(console.dir);
+  });
+});
+
+app.get('/moderation',(req,res)=>{
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('messageModeration');
         let search = await messages.find({}).toArray();
         const reponseSearch = JSON.stringify(search);
         res.end(reponseSearch);
