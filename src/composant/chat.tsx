@@ -129,7 +129,7 @@ export function Chat() {
 
 	return (
 		<>
-			<div className='h-300 border border-gray-300 p-10 bg-me-background rounded-xl'>
+			<div className='h-300 overflow-y-scroll border border-gray-300 p-10 bg-me-background rounded-xl'>
 				<section id='Chat' className='text-me-white'></section>
 				<form className='mt-10 flex flex-col justify-end'>
 					<label
