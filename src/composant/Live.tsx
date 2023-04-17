@@ -5,8 +5,8 @@ import { Chat } from "./Chat"
 import { LiveNavBar } from "./LiveNavBar"
 import { ModerationChat } from "./ModerationChat"
 import { Description } from "./Description"
-import NombreViewer from './nombreViewer';
-import ListeViewer from './listeViewer';
+import NombreViewer from './NombreViewer';
+import ListeViewer from './ListeViewer';
 
 export function Live() {
 	let localStream: MediaStream
