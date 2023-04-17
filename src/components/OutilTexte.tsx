@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+<<<<<<< HEAD
 interface OutilTexteProps {
   // Ajouter les props nécessaires ici
 }
@@ -10,6 +11,14 @@ const OutilTexte: React.FC<OutilTexteProps> = ({}) => {
   const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTexte(e.target.value);
   };
+=======
+const OutilTexte: React.FC = () => {
+  const [texte, setTexte] = useState('')
+
+  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>): any => {
+    setTexte(e.target.value)
+  }
+>>>>>>> 25ccf4773ef9cd93e99dbffcca756f320c5977c3
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">

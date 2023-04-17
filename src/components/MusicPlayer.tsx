@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
 
-const MusicPlayer = () => {
+const MusicPlayer = (): JSX.Element => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([]);
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([]);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): any => {
     const files = event.target.files;
     if (files != null) {
       const fileList = Array.from(files);
@@ -12,19 +14,19 @@ const MusicPlayer = () => {
     }
   };
 
-  const handlePlay = (index: number) => {
+  const handlePlay = (index: number): any => {
     if (audioRefs.current[index] != null) {
       void audioRefs.current[index]?.play();
     }
   };
 
-  const handlePause = (index: number) => {
+  const handlePause = (index: number): any => {
     if (audioRefs.current[index] != null) {
       audioRefs.current[index]?.pause();
     }
   };
 
-  const handleRemove = (index: number) => {
+  const handleRemove = (index: number): any => {
     const updatedFiles = [...selectedAudios];
     updatedFiles.splice(index, 1);
     setSelectedAudios(updatedFiles);
@@ -46,6 +48,14 @@ const MusicPlayer = () => {
           >
             Remove
           </button>
+          <button
+            onClick={() => {
+              props.setSelectedMusic([...props.selectedMusic, file]);
+            }}
+          >
+            Superposer
+          </button>{" "}
+          {/* Ajouter ce bouton pour superposer la musique */}
         </div>
       ))}
     </div>

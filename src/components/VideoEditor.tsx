@@ -45,20 +45,24 @@ const VideoEditor = () => {
   const handleSeek = (value: any) => {
     playerRef.current.seekTo(value);
   };
+
   const handleTrimVideo = () => {
     playerRef.current.seekTo(startTime);
     playerRef.current.pause();
   };
+
   const handleRotateLeft = () => {
     const currentRotation =
       playerRef.current.getInternalPlayer().style.transform;
     playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} -90deg)`;
   };
+
   const handleRotateRight = () => {
     const currentRotation =
       playerRef.current.getInternalPlayer().style.transform;
     playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} 90deg)`;
   };
+
   const handleCropVideo = () => {
     // TODO: Implement crop functionality
   };
@@ -151,21 +155,12 @@ const VideoEditor = () => {
             <MusicPlayer />
           </div>
         </div>
-        <div></div>
-        <div style={{ flex: 1 }}>
-          <ReactPlayer
-            ref={playerRef}
-            url={videoUrl}
-            playing={playing}
-            volume={volume}
-            playbackRate={speed}
-            loop={loop}
-            muted={muted}
-            onProgress={handleProgress}
-            width="100%"
-            height="auto"
-          />
+        <div>
+          {formatTime(playerRef.current ? playerRef.current.getDuration() : 0)}
         </div>
+      </div>
+      <div>
+        <MusicPlayer />
       </div>
     </div>
   );

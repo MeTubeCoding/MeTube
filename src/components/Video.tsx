@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // Importer useState pour gérer l'état local
+import React from "react"; // Importer useState pour gérer l'état local
 import "./Video.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -10,8 +10,7 @@ import { Avatar } from "@mui/material";
 
 function Video(): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
-
-  const [description] = useState("test description");
+  // const [description] = useState('test description')
 
   return (
     <div className="video">
