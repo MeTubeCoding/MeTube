@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 
-const MusicPlayer = (): JSX.Element => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([]);
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([]);
 
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): any => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files != null) {
       const fileList = Array.from(files);
@@ -14,19 +14,22 @@ const MusicPlayer = (): JSX.Element => {
     }
   };
 
-  const handlePlay = (index: number): any => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unused-vars
+  const handlePlay = (index: number) => {
     if (audioRefs.current[index] != null) {
       void audioRefs.current[index]?.play();
     }
   };
 
-  const handlePause = (index: number): any => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
+  const handlePause = (index: number) => {
     if (audioRefs.current[index] != null) {
       audioRefs.current[index]?.pause();
     }
   };
 
-  const handleRemove = (index: number): any => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleRemove = (index: number) => {
     const updatedFiles = [...selectedAudios];
     updatedFiles.splice(index, 1);
     setSelectedAudios(updatedFiles);
@@ -48,14 +51,6 @@ const MusicPlayer = (): JSX.Element => {
           >
             Remove
           </button>
-          <button
-            onClick={() => {
-              props.setSelectedMusic([...props.selectedMusic, file]);
-            }}
-          >
-            Superposer
-          </button>{" "}
-          {/* Ajouter ce bouton pour superposer la musique */}
         </div>
       ))}
     </div>
