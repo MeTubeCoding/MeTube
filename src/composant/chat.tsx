@@ -65,6 +65,7 @@ export function Chat() {
 	}
 
 	function verify(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+		resetInput()
 		event.preventDefault()
 		console.log("verify")
 		const messageInput = document.getElementById(
@@ -124,8 +125,15 @@ export function Chat() {
 			event.preventDefault()
 			// eslint-disable-next-line @typescript-eslint/no-empty-function
 			verify({ preventDefault: () => {} } as React.MouseEvent<HTMLButtonElement, MouseEvent>)
+			resetInput()
 		}
 	}
+	
+	function resetInput() {
+		const messageInput = document.getElementById("message-input") as HTMLInputElement
+		messageInput.value = ""
+	}
+	
 
 	return (
 		<>
