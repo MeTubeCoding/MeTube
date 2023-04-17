@@ -1,108 +1,36 @@
 import React, { useState } from 'react'
-import './reco.css'
+import SideBar from '../../components/SideBar'
+import ResultsV from '../../components/Results'
 
 // import composant  :
 
 import { PassThrough } from 'stream'
+import Navbar from '../../components/Navbar'
+import { useOnSearch } from '../../components/useOnSearch'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
-
-const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
-  return (
-    //<Router>
-    <div className='menu-container'>
-      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
-        <ul>
-          <li>
-            <div className='menu-button' onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <div className='ml-3 md-6 flex items-center'>
-                  <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
-                    ☰
-                  </button>
-                  <p className='ml-2'>Close</p>
-                </div>
-              ) : (
-                <div className='ml-3 md-6 flex items-center'>
-                  <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
-                    ☰
-                  </button>
-                  <p className='ml-2'>Menu</p>
-                </div>
-              )}
-            </div>
-            {isMenuOpen && (
-              <div>
-                <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='App.tsx' className='text-align:center'>
-                    Accueil
-                  </a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='pages/timeline.tsx'>Recommandations</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='/Tendances'>Tendances</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Abonnements</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Bibliothèque</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Historique</a>
-                </li>
-              </div>
-            )}
-          </li>
-        </ul>
-      </div>
-    </div>
-    //</Router>
-  )
-}
 
 // ================================================================================================
 // ================================================================================================
 // ================================================================================================
 
 function Tendances() {
+
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const { videos, onSearch } = useOnSearch()
+
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
+  }
+
   return (
     <div className='h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
-      <div className='text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center'>
-        <div className='flex flex-row justify-between items-center mr-auto'>
-          <div className='titre'>
-            <a href='App.tsx'>
-              <img
-                className='mr-10 w-1/2'
-                src='https://cdn.discordapp.com/attachments/1019222515962368112/1088482444207988838/Metube_logo.png'
-              />
-            </a>
-          </div>
-        </div>
-        <div className='flex items-center justify-between mr-10 bg-neutral-800'>
-          <input
-            type='text'
-            placeholder='Rechercher sur MeTube...'
-            className='w:90 px-1 py-2 mr-5 rounded-2xl border border-neutral-600 bg-neutral-800 hover:bg-white-900 text-white placeholder:italic'
-          />
-          <button className='bg-neutral-600 border-none rounded-2xl px-4 py-2 mr-1 text-white hover:bg-blue-700'>
-            Rechercher
-          </button>
-        </div>
+      <div style={{ height: '8.5vh' }}>
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+      </div>
+      <div className="flex flex-col" style={{ height: '92.5vh' }}>
+        <SideBar visible={isSideBarVisible} />
       </div>
       <div className='flex flex-row justify-start h-screen bg-neutral-900'>
-        <div className='bg-neutral-600 px-8 mr-20 '>{Menu()}</div>
         <div>
           <div className='flex flex-row justify-center items-center my-3 mt-10 mb-10 mx-1/100 lg:mx-5/100'>
             <img
