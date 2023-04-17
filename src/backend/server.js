@@ -102,7 +102,7 @@ app.get('/moderation',(req,res)=>{
     async function runy() {
       try {
         const database = client.db('LiveBdd');
-        const messages = database.collection('messageChat');
+        const messages = database.collection('messageModeration');
         let search = await messages.find({}).toArray();
         const reponseSearch = JSON.stringify(search);
         res.end(reponseSearch);

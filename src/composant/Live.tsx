@@ -53,7 +53,7 @@ export function Live() {
 		<>
 			<LiveNavBar />
 			<Chat />
-			<ModerationChat />
+			<ModerationChat/>
 			<Description />
 
 			<div id='videos' className='w-max h-max px-20'>
