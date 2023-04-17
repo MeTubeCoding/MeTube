@@ -17,7 +17,7 @@ const Main = () => {
       <div style={{ height: '7.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
-      <div className="flex mt-4" style={{ height: '92.5vh' }}>
+      <div className="flex" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
         <ResultsV videos={videos} />
       </div>
