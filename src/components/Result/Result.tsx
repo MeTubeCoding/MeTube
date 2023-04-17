@@ -36,9 +36,7 @@ const Result = (props: Props) => {
 
   return (
     <div
-      className={`flex ml-60 mt-4 overflow-auto ${
-        props.visible ? 'ml-96' : 'ml-60'
-      }`}
+      className={`flex mt-4 overflow-auto ${props.visible ? 'ml-96' : 'ml-60'}`}
     >
       <div className="max-w-fit rounded-lg bg-[#000000] m-2">
         <a
