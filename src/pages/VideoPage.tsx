@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import VideoItem from "../components/VideoItem";
-import VideoEditor from "../components/VideoEditor";
-import NavigationBar from "../components/NavigationBar";
-import Cropper from "../components/fonction/CropVideo";
+import React, { useState } from 'react'
+import VideoItem from '../components/VideoItem'
+import VideoEditor from '../components/VideoEditor'
+import NavigationBar from '../components/NavigationBar'
+import Cropper from '../components/fonction/CropVideo'
 
 const VideoPage = () => {
-  const [selectedVideo, setVideoUrl] = useState<string | undefined>(undefined);
+  const [selectedVideo, setVideoUrl] = useState<string | undefined>(undefined)
 
   const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const videoUrl = URL.createObjectURL(file);
-      setVideoUrl(videoUrl);
+      const file = event.target.files[0]
+      const videoUrl = URL.createObjectURL(file)
+      setVideoUrl(videoUrl)
     }
-  };
+  }
 
   return (
     <div className="flex flex-col h-screen">
@@ -46,14 +46,25 @@ const VideoPage = () => {
         <div className="w-1/3 flex items-center justify-center">
           <div className="w-full max-w-xs px-4">
             {selectedVideo && (
-              <Cropper src={selectedVideo} />
+              <Cropper
+                src={selectedVideo}
+                onDone={function (): void {
+                  throw new Error('Function not implemented.')
+                }}
+                onCancel={function (): void {
+                  throw new Error('Function not implemented.')
+                }}
+              />
             )}
-            <VideoEditor selectedVideo={selectedVideo} handleVideoUpload={handleVideoUpload} />
+            <VideoEditor
+              selectedVideo={selectedVideo}
+              handleVideoUpload={handleVideoUpload}
+            />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoPage;
+export default VideoPage
