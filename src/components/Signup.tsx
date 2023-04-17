@@ -6,7 +6,7 @@ import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import axios from 'axios'
+import axios from 'axios';
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}
@@ -24,35 +24,48 @@ export default function Signup() {
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
+  const [passwordStrong, setPasswordStrong] = useState(true);
+
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
+    e.preventDefault();
+    
     // Vérifier si l'e-mail existe déjà
-    const emailExists = await checkEmailExists(signupState.emailaddress)
+    const emailExists = await checkEmailExists(signupState.emailaddress);
     if (emailExists) {
-      console.log('Email already exists')
-      return
+      console.log('Email already exists');
+      return;
     }
-
-    if (arePasswordsEqual()) {
-      console.log(signupState)
-      createAccount()
+    
+    if (arePasswordsEqual() && isPasswordStrong(signupState.password)) {
+      console.log(signupState);
+      createAccount();
+    } else if (!arePasswordsEqual()) {
+      console.log('Passwords do not match');
+      setPasswordsMatch(false);
     } else {
-      console.log('Passwords do not match')
-      setPasswordsMatch(false)
+      console.log('Password is not strong enough');
+      setPasswordStrong(false);
     }
-  }
+  };
+  
 
   const checkEmailExists = async (email: string) => {
-    const response = await axios.get(
-      `http://127.0.0.1:5600/check-email?email=${email}`
-    )
-    return response.data.exists
-  }
+    const response = await axios.get(`http://127.0.0.1:5600/check-email?email=${email}`);
+    return response.data.exists;
+  };
+  
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword
   }
+
+  const isPasswordStrong = (password: string): boolean => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    // Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et faire au moins 8 caractères de long
+    return regex.test(password)
+  }
+  
 
   const createAccount = async () => {
     const salt = await bcrypt.genSalt(10)
@@ -98,10 +111,13 @@ export default function Signup() {
             customClass={undefined}
           />
         ))}
-        <FormAction handleSubmit={handleSubmit} text="Signup" />
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
         )}
+        {!passwordStrong && (
+          <p className="text-me-yellow">Password must contain at least one lowercase letter, one uppercase letter, one number, and be at least 8 characters long</p>
+        )}
+        <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
     </form>
   )

@@ -116,15 +116,15 @@ app.post('/login', async (req, res) => {
       } else {
         res
           .status(401)
-          .json({ success: false, message: 'Mot de passe incorrect' })
+          .json({ success: false, message: 'Incorrect password' })
       }
     } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" })
+      res.status(404).json({ success: false, message: "Email does not exist" })
     }
   } catch (error) {
     res
       .status(500)
-      .json({ success: false, message: 'Erreur lors de la connexion' })
+      .json({ success: false, message: 'Error while connecting' })
   }
 })
 
