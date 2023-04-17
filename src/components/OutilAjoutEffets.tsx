@@ -1,11 +1,9 @@
 import React from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OutilAjoutEffetsProps {
   // Ajouter les props nécessaires ici
 }
 
-// eslint-disable-next-line no-empty-pattern
 const OutilAjoutEffets: React.FC<OutilAjoutEffetsProps> = ({}) => {
   return (
       <div className="bg-white rounded-lg shadow-lg p-4">

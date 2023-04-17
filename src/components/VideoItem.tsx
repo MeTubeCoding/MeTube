@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const VideoItem = ({ video }: { video: File }) => {
+const VideoItem = ({ video }: { video: File }): JSX.Element => {
   const videoElement = useRef<HTMLVideoElement | null>(null);
 
   // Function to handle play button click

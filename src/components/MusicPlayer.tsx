@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): any => {
     const files = event.target.files
     if (files != null) {
       const fileList = Array.from(files)
@@ -14,22 +12,19 @@ const MusicPlayer = () => {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unused-vars
-  const handlePlay = (index: number) => {
+  const handlePlay = (index: number): any => {
     if (audioRefs.current[index] != null) {
       void audioRefs.current[index]?.play()
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
-  const handlePause = (index: number) => {
+  const handlePause = (index: number): any => {
     if (audioRefs.current[index] != null) {
       audioRefs.current[index]?.pause()
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleRemove = (index: number) => {
+  const handleRemove = (index: number): any => {
     const updatedFiles = [...selectedAudios]
     updatedFiles.splice(index, 1)
     setSelectedAudios(updatedFiles)
