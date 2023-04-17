@@ -5,8 +5,11 @@ import { FaBars } from 'react-icons/fa'
 const NavigationBar = (): any => {
   const navigate = useNavigate()
 
-  const handleClick = (): any => {
+  const handleClickEditor = (): any => {
     navigate('/videopage')
+  }
+  const handleClickShort = (): any => {
+    navigate('/short')
   }
   return (
     <nav className="bg-gray-800 py-2 w-full fixed top-0">
@@ -14,18 +17,18 @@ const NavigationBar = (): any => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link to="/">
-                <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
-              </Link>
+              <img
+                className="h-8 w-8"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                alt="Workflow"
+                onClick={handleClickShort}
+                style={{ cursor: 'pointer' }}
+              />
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
               <div>
-                <div onClick={handleClick} style={{ cursor: 'pointer' }} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                <div onClick={handleClickEditor} style={{ cursor: 'pointer' }} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   Video Editor
                 </div>
               </div>
