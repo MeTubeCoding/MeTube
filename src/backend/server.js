@@ -114,17 +114,13 @@ app.post('/login', async (req, res) => {
           hashedPassword: user.password
         })
       } else {
-        res
-          .status(401)
-          .json({ success: false, message: 'Incorrect password' })
+        res.status(401).json({ success: false, message: 'Incorrect password' })
       }
     } else {
-      res.status(404).json({ success: false, message: "Email does not exist" })
+      res.status(404).json({ success: false, message: 'Email does not exist' })
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: 'Error while connecting' })
+    res.status(500).json({ success: false, message: 'Error while connecting' })
   }
 })
 
