@@ -10,37 +10,7 @@ export function Chat() {
 	const [messages, setMessages] = useState<Message[]>([])
 	const invisibleButtonRef = useRef<HTMLButtonElement>(null)
 	const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
-	const motsInterdit = [
-		"ta race",
-		"chatte",
-		"couille",
-		"couille",
-		"bite",
-		"zizi",
-		"nique ta mère",
-		"merde",
-		"imbécile",
-		"bordel",
-		"enfoiré",
-		"connard",
-		"bouffon",
-		"boloss",
-		"abrutti",
-		"salope",
-		"pd",
-		"fdp",
-		"ta grand mère la pute",
-		"fils de pute",
-		"negro",
-		"nigger",
-		"hitler",
-		"staline",
-		"nique la coding",
-		"fuck",
-		"test",
-		"pute",
-		"gay",
-	]
+	const motsInterdit = ["test"]
 	useEffect(() => {
 		const interval = setInterval(() => {
 			getChat()
@@ -148,6 +118,15 @@ export function Chat() {
 	function handleInvisibleButtonClick() {
 		fetchMessages()
 	}
+
+	function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+		if (event.key === "Enter") {
+			event.preventDefault()
+			// eslint-disable-next-line @typescript-eslint/no-empty-function
+			verify({ preventDefault: () => {} } as React.MouseEvent<HTMLButtonElement, MouseEvent>)
+		}
+	}
+
 	return (
 		<>
 			<div className='h-300 overflow-y-scroll border border-gray-300 p-10 bg-me-background rounded-xl'>
@@ -164,6 +143,7 @@ export function Chat() {
 						name='message'
 						id='message-input'
 						className='border border-gray-300 rounded-md bg-me-background text-me-white'
+						onKeyPress={handleKeyPress}
 					></input>
 					<button
 						onClick={(event) => verify(event)}
