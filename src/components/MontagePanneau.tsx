@@ -42,5 +42,5 @@ const MontagePanneau: React.FC<MontagePanneauProps> = ({}) => {
       </div>
     </div>
   </div>
-  );
-};
+  )
+}
