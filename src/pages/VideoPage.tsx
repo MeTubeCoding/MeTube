@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import VideoItem from "../components/VideoItem";
-import VideoEditor from "../components/VideoEditor";
-import NavigationBar from "../components/NavigationBar";
-import MusicPlayer from "../components/MusicPlayer";
+import React, { useState } from 'react'
+import VideoItem from '../components/VideoItem'
+import VideoEditor from '../components/VideoEditor'
+import NavigationBar from '../components/NavigationBar'
+import MusicPlayer from '../components/MusicPlayer'
 
-const [selectedMusic, setSelectedMusic] = useState<File[]>([]);
+const [selectedMusic, setSelectedMusic] = useState<File[]>([])
 
 const VideoPage = (): JSX.Element => {
   const [selectedVideo, setSelectedVideo] = useState<File | null>(null)

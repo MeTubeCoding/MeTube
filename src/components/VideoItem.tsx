@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react'
 
 const VideoItem = ({ video }: { video: File }): JSX.Element => {
-  const videoElement = useRef<HTMLVideoElement | null>(null);
+  const videoElement = useRef<HTMLVideoElement | null>(null)
 
   // Function to handle play button click
-  const handlePlay = () => {
-    if (videoElement.current) {
-      videoElement.current.play();
+  const handlePlay = (): any => {
+    if (videoElement.current != null) {
+      void videoElement.current.play()
     }
-  };
+  }
 
   // Function to handle pause button click
-  const handlePause = () => {
-    if (videoElement.current) {
-      videoElement.current.pause();
+  const handlePause = (): any => {
+    if (videoElement.current != null) {
+      videoElement.current.pause()
     }
-  };
+  }
 
   return (
     <div>
@@ -23,9 +23,7 @@ const VideoItem = ({ video }: { video: File }): JSX.Element => {
       <button onClick={handlePlay}>Play</button>
       <button onClick={handlePause}>Pause</button>
     </div>
-  );
-};
+  )
+}
 
-export default VideoItem;
-
-
+export default VideoItem

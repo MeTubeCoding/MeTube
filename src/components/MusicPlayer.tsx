@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-const MusicPlayer = () => {
+const MusicPlayer = (): JSX.Element => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
 
@@ -45,7 +45,6 @@ const MusicPlayer = () => {
       ))}
     </div>
   )
-  
 }
 
 export default MusicPlayer
