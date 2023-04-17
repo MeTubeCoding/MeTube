@@ -7,7 +7,6 @@ import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
 import axios from 'axios'
-import zxcvbn from 'zxcvbn';
 import React from 'react'
 
 const fields = signupFields
@@ -21,48 +20,41 @@ export default function Signup() {
   const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setSignupState({ ...signupState, [id]: value });
-    
-  };
-  
+    const { id, value } = e.target
+    setSignupState({ ...signupState, [id]: value })
+  }
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
-
-
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Vérifier si l'e-mail existe déjà
-    const emailExists = await checkEmailExists(signupState.emailaddress);
+    const emailExists = await checkEmailExists(signupState.emailaddress)
     if (emailExists) {
-      console.log('Email already exists');
-      return;
+      console.log('Email already exists')
+      return
     }
 
     if (arePasswordsEqual()) {
-      console.log(signupState);
-      createAccount();
+      console.log(signupState)
+      createAccount()
     } else if (!arePasswordsEqual()) {
-      console.log('Passwords do not match');
-      setPasswordsMatch(false);
-    } 
-  };
-
+      console.log('Passwords do not match')
+      setPasswordsMatch(false)
+    }
+  }
 
   const checkEmailExists = async (email: string) => {
-    const response = await axios.get(`http://127.0.0.1:5600/check-email?email=${email}`);
-    return response.data.exists;
-  };
-
+    const response = await axios.get(
+      `http://127.0.0.1:5600/check-email?email=${email}`
+    )
+    return response.data.exists
+  }
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword
   }
-
-
 
   const createAccount = async () => {
     const salt = await bcrypt.genSalt(10)
