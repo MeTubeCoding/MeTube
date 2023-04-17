@@ -65,7 +65,6 @@ export function Chat() {
 	}
 
 	function verify(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-		resetInput()
 		event.preventDefault()
 		console.log("verify")
 		const messageInput = document.getElementById(
@@ -78,8 +77,10 @@ export function Chat() {
 
 		if (hasForbiddenWord) {
 			logModeration()
+			resetInput()
 		} else {
 			log()
+			resetInput()
 		}
 	}
 
