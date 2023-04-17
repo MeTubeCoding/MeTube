@@ -16,7 +16,7 @@ function trend_new() {
   const trend_new = mockData.new
   return (
     <div className='mr-5 p-0 text-center top-0 flex flex-col justify-start h-full'>
-      <h4>NOUVEAUTES</h4>
+      <h4 className='mb-5'>NOUVEAUTES</h4>
       {trend_new.map(trend_new => (
         <div className='flex flex-col'>
           <div className='flex flex-col'>
@@ -33,7 +33,7 @@ function trend_music() {
   const trend_music = mockData.music
   return (
     <div className='mr-5 p-0 text-center top-0 flex flex-col justify-start h-full'>
-      <h4>MUSIQUE</h4>
+      <h4 className='mb-5'>MUSIQUE</h4>
       {trend_music.map(trend_music => (
         <div className='flex flex-col'>
           <div className='flex flex-col'>
@@ -50,7 +50,7 @@ function trend_movies() {
   const trend_movies = mockData.movies
   return (
     <div className='mr-5 p-0 text-center flex flex-col justify-start h-full'>
-      <h4>FILMS</h4>
+      <h4 className='mb-5'>FILMS</h4>
       {trend_movies.map(trend_movies => (
         <div className='flex flex-col'>
           <div className='flex flex-col'>
@@ -67,7 +67,7 @@ function trend_gaming() {
   const trend_gaming = mockData.gaming
   return (
     <div className='mr-5 p-0 text-center flex flex-col h-full'>
-      <h4>JEUX VIDEOS</h4>
+      <h4 className='mb-5'>JEUX VIDEOS</h4>
       {trend_gaming.map(trend_gaming => (
         <div className='flex flex-col'>
           <div className='flex flex-col'>
