@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import 'tailwindcss/tailwind.css'
 

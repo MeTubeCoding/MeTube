@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const ChannelName = [
   {
     labelname: 'Channel Name',

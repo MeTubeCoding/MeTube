@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { connect } from 'mongoose'
 // console.log(process.env.DB_USER_PASS);
 
