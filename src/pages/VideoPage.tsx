@@ -14,6 +14,16 @@ const VideoPage = () => {
       setVideoUrl(videoUrl)
     }
   }
+  const saveCroppedVideo = () => {
+    // Code to save the cropped video goes here
+    console.log('Cropped video saved successfully!')
+  }
+
+  const handleCropCancel = () => {
+    // Remove the cropped video and reset the component state
+    setVideoUrl(undefined)
+    console.log('Crop cancelled successfully!')
+  }
 
   return (
     <div className="flex flex-col h-screen">
@@ -48,12 +58,8 @@ const VideoPage = () => {
             {selectedVideo && (
               <Cropper
                 src={selectedVideo}
-                onDone={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
-                onCancel={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
+                onDone={saveCroppedVideo}
+                oncancel={handleCropCancel}
               />
             )}
             <VideoEditor

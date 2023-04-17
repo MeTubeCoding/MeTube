@@ -58,7 +58,7 @@ const VideoEditor = ({
                 <Cropper
                   src={selectedVideo}
                   onDone={handleCropDone}
-                  onCancel={handleCancelCrop}
+                  oncancel={handleCancelCrop}
                 />
               )
             ) : croppedVideo ? (

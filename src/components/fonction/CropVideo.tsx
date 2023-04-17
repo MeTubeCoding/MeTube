@@ -3,10 +3,10 @@ import React, { useState, useRef } from 'react'
 interface CropperProps {
   src: string
   onDone: (croppedSrc: string) => void
-  onCancel: () => void
+  oncancel: () => void
 }
 
-const Cropper = ({ src }: CropperProps) => {
+const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [cropMode, setCropMode] = useState<boolean>(false)
@@ -29,15 +29,16 @@ const Cropper = ({ src }: CropperProps) => {
     }
   }
 
-  const handleMouseDown = (
-    event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
-  ) => {
+  const handleMouseDown = ({
+    clientX,
+    clientY
+  }: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
     if (cropMode && canvasRef.current) {
       setDragging(true)
       const canvas = canvasRef.current
       const rect = canvas.getBoundingClientRect()
-      const x = event.clientX - rect.left
-      const y = event.clientY - rect.top
+      const x = clientX - rect.left
+      const y = clientY - rect.top
       setMousePosition({ x, y })
     }
   }
@@ -100,60 +101,62 @@ const Cropper = ({ src }: CropperProps) => {
         const cropWidth = cropDimensions.width * scaleX
         const cropHeight = cropDimensions.height * scaleY
 
-        // Dessiner la zone de recadrage sur le canvas
+        // Dessiner l'image recadrée sur le canvas
         context.drawImage(
           video,
-          cropDimensions.x,
-          cropDimensions.y,
+          cropDimensions.x * scaleX,
+          cropDimensions.y * scaleY,
           cropWidth,
           cropHeight,
           0,
           0,
-          cropWidth,
-          cropHeight
+          canvas.width,
+          canvas.height
         )
-        // Obtenir l'image recadrée sous forme de base64
-        const croppedImage = canvas.toDataURL('image/png')
 
-        // Envoyer l'image recadrée à une API ou la télécharger
-        console.log(croppedImage)
+        // Convertir l'image recadrée en base64
+        const croppedSrc = canvas.toDataURL()
+
+        // Appeler la fonction onDone avec l'image recadrée
+        onDone(croppedSrc)
       }
+    }
+  }
+
+  function handleLoad(): void {
+    if (videoRef.current && canvasRef.current) {
+      // Charger la vidéo
+      const video = videoRef.current
+      video.load()
+
+      // Définir les dimensions du canvas en fonction de la taille de la vidéo
+      const canvas = canvasRef.current
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
     }
   }
 
   return (
     <div>
-      <video
-        src={src}
-        ref={videoRef}
-        onPlay={() => {
-          if (videoRef.current && canvasRef.current) {
-            const canvas = canvasRef.current
-            const video = videoRef.current
-            const context = canvas.getContext('2d')
-            if (context) {
-              // Mettre la largeur et la hauteur du canvas à celles de la vidéo
-              canvas.width = video.videoWidth
-              canvas.height = video.videoHeight
-              // Dessiner la vidéo sur le canvas toutes les 16ms (environ 60 fps)
-              setInterval(() => {
-                context.drawImage(video, 0, 0, canvas.width, canvas.height)
-              }, 16)
-            }
-          }
-        }}
+      <video ref={videoRef} src={src} onLoadedMetadata={handleLoad} />
+      <canvas
+        ref={canvasRef}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onClick={handleSelect}
       />
       {cropMode && (
-        <canvas
-          ref={canvasRef}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onClick={handleSelect}
-          style={{ position: 'absolute', top: 0, left: 0 }}
-        />
+        <div>
+          <p>Sélectionnez la zone à recadrer</p>
+          <p>
+            Dimensions: {cropDimensions.width.toFixed(0)} x{''}
+            {cropDimensions.height.toFixed(0)}
+          </p>
+        </div>
       )}
       <button onClick={handleCrop}>Recadrer</button>
+      <button onClick={oncancel}>Annuler</button>
     </div>
   )
 }
