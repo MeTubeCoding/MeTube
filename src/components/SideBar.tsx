@@ -124,9 +124,8 @@ function SideBar(props: SideBarProps) {
 
   return (
     <div
-      className={`flex pt-3 mr-4 bg-me-darkpurple ${
-        props.visible ? 'w-2/12' : 'w-1/12'
-      }`}
+      className={`flex fixed h-screen z-10
+      pt-3 mr-4 bg-me-darkpurple ${props.visible ? 'w-[20%]' : 'w-1/12'}`}
     >
       <div
         className={`bg-me-darkpurple overflow-auto sidebar ${
@@ -152,7 +151,7 @@ function SideBar(props: SideBarProps) {
       </div>
 
       <div
-        className={`bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar w-full px-4 ${
+        className={`bg-me-darkpurple pr-5 overflow-auto pb-8 scrollbar-hide sidebar w-full px-4 ${
           props.visible ? 'block' : 'hidden'
         }`}
         ref={bar}

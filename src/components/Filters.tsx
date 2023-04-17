@@ -1,6 +1,10 @@
 import React, { useRef } from 'react'
 
-const Filters = () => {
+interface Props {
+  visible: boolean
+}
+
+const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
 
   const dropDown = () => {
@@ -30,7 +34,11 @@ const Filters = () => {
   }
 
   return (
-    <div className="mt-5 ml-64 text-me-yellow font-semibold">
+    <div
+      className={`mt-5 text-me-yellow font-semibold ${
+        props.visible ? 'ml-96' : 'ml-60'
+      }`}
+    >
       <button onClick={dropDown}>
         <p className="ml-5">Filtres</p>
       </button>
@@ -44,7 +52,11 @@ const Filters = () => {
           <a onClick={fMovie}>Movie</a>
         </div>
       </div>
-      <hr className="w-9/12 m-3 border-me-yellow"></hr>
+      <hr
+        className={`m-3 border-me-yellow ${
+          props.visible ? 'w-[71.55%]' : 'w-9/12'
+        }`}
+      ></hr>
     </div>
   )
 }
