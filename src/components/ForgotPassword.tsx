@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { forgotFields } from '../constants/formFields'
@@ -12,7 +11,7 @@ const fieldsState: Record<string, string> = {}
 
 fields.forEach(field => (fieldsState[field.id] = ''))
 
-export default function ForgotPassword() {
+export default function ForgotPassword(): JSX.Element {
   const [signupState, setSignupState] =
     useState<Record<string, string>>(fieldsState)
   const navigate = useNavigate()
