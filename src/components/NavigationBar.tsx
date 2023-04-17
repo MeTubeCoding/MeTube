@@ -12,7 +12,7 @@ const NavigationBar = (): any => {
     navigate('/short')
   }
   return (
-    <nav className="bg-gray-800 py-2 w-full fixed top-0">
+    <nav className="bg-me-colorprimary py-2 w-full fixed top-0">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -28,20 +28,20 @@ const NavigationBar = (): any => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
               <div>
-                <div onClick={handleClickEditor} style={{ cursor: 'pointer' }} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                <div onClick={handleClickEditor} style={{ cursor: 'pointer' }} className="text-me-black hover:bg-me-black-700 hover:text-me-white px-3 py-2 rounded-md text-sm font-medium">
                   Video Editor
                 </div>
               </div>
 
                 <Link
                   to="/music"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-me-black hover:bg-me-black hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Music Library
                 </Link>
                 <Link
                   to="/slideshow"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-me-black hover:bg-me-black hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Slideshow Editor
                 </Link>
@@ -50,14 +50,14 @@ const NavigationBar = (): any => {
           </div>
           <div className="-mr-2 flex md:hidden">
             <label htmlFor="file-upload" className="cursor-pointer">
-              <span className="bg-blue-500 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+              <span className="bg-me-red inline-flex items-center justify-center p-2 rounded-md text-me-white hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-me-black focus:ring-me-white">
                 Choose a file
               </span>
               <input id="file-upload" name="file-upload" type="file" className="sr-only" />
             </label>
             <button
               type="button"
-              className="bg-blue-500 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white ml-4"
+              className="bg-me-red inline-flex items-center justify-center p-2 rounded-md text-me-white hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-me-black focus:ring-me-white ml-4"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >

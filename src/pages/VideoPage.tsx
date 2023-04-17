@@ -16,17 +16,17 @@ const VideoPage = () => {
     <div className="flex flex-col h-screen">
       <NavigationBar />
       <div className="flex-1 flex flex-row">
-        <div className="flex-1 flex items-center justify-center bg-gray-100">
+        <div className="flex-1 flex items-center justify-center bg-me-black">
           {selectedVideo ? (
             <VideoItem video={selectedVideo} />
           ) : (
             <div className="flex flex-col items-center justify-center space-y-4">
-              <h2 className="text-xl font-medium text-gray-500">
+              <h2 className="text-xl font-medium text-me-black">
                 Select a video to get started:
               </h2>
               <label
                 htmlFor="video-upload"
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
               >
                 Choose a file
               </label>

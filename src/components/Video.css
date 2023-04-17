@@ -101,7 +101,7 @@
 }
 
 .shortsVideoSideIcon > .MuiSvgIcon-root:hover {
-    color:blue;
+    color: red;
 }
 
 .shortsDesc > .ticker {
