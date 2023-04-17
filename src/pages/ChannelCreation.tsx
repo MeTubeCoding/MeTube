@@ -1,22 +1,22 @@
 // AddObjectPage.tsx
 import Header from '../components/Header'
 import CreateChannel from '../components/CreateChannel'
-import React from 'react';
-import Button from '../components/Button';
+import React from 'react'
+import Button from '../components/Button'
 
-export default function ChannelCreationPage () {
+export default function ChannelCreationPage() {
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
     <>
-         <Header
+      {/* <Header
             heading="Création de chaine"
             paragraph="Déjà un compte ? "
             linkName="Login"
             linkUrl="/login"
-            />
+            /> */}
+      <CreateChannel />
     </>
-)
-
+  )
 }
 
 // function AddObject() {
