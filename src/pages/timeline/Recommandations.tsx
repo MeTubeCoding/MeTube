@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-
-import './Tendances.css'
+import './reco.css'
 
 // import composant  :
 
