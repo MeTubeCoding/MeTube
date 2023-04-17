@@ -104,7 +104,7 @@ app.post('/login', async (req, res) => {
     const database = client.db('profile')
     const users = database.collection('users')
 
-    const user = await users.findOne({ 'email-address': email })
+    const user = await users.findOne({ 'emailaddress': email })
 
     if (user) {
       const isPasswordCorrect = await bcrypt.compare(password, user.password)
@@ -129,7 +129,7 @@ app.get('/check-email', async (req, res) => {
   const { email } = req.query
   const database = client.db('profile')
   const users = database.collection('users')
-  const user = await users.findOne({ 'email-address': email })
+  const user = await users.findOne({ 'emailaddress': email })
   res.json({ exists: !!user })
 })
 
