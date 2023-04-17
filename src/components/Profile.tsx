@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 interface Profile {
   username: string
-  emailaddress: string
+  email: string
 }
 
 export default function Profile() {
@@ -10,17 +10,18 @@ export default function Profile() {
 
   useEffect(() => {
     // Fetch user data from your backend API
-    fetch('http://127.0.0.1:5600/profile', {
+    fetch('http://localhost:5600/profile', {
       method: 'GET',
       credentials: 'include' // Send cookies along with the request
     })
       .then(res => {
+        if (res.status === 401) {
+          throw new Error('Unauthorized')
+        }
         return res.json()
       })
       .then(res => {
-        if (res.username && res.email) {
-          setProfile({ username: res.username, emailaddress: res.email })
-        }
+        setProfile({ username: res.username, email: res.email })
       })
       .catch(err => {
         console.error(err)
@@ -32,7 +33,7 @@ export default function Profile() {
       {profile ? (
         <section>
           <p>
-            {profile.emailaddress}: {profile.username}
+            {profile.email}: {profile.username}
           </p>
         </section>
       ) : (

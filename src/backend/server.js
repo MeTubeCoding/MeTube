@@ -42,6 +42,15 @@ app.use(
     extended: true
   })
 )
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.header('Access-Control-Allow-Credentials', true)
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
 
 app.use('/', express.static(publi))
 
@@ -104,7 +113,7 @@ app.post('/login', async (req, res) => {
     const database = client.db('profile')
     const users = database.collection('users')
 
-    const user = await users.findOne({ 'email-address': email })
+    const user = await users.findOne({ emailaddress: email })
 
     if (user) {
       const isPasswordCorrect = await bcrypt.compare(password, user.password)
@@ -137,27 +146,34 @@ app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
-app.get('/profile', (req, res) => {
-  client.connect(err => {
-    async function runy() {
-      try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
-        let search = await messages.find({}).toArray()
-        const reponseSearch = JSON.stringify(search)
-        res.end(reponseSearch)
-      } finally {
-        await client.close()
-      }
-    }
-    runy().catch(console.dir)
-  })
+app.get('/profile', async (req, res) => {
+  const userEmail = req.cookies.email
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'email-address': userEmail })
+
+  if (user) {
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.setHeader('Access-Control-Allow-Methods', 'GET')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-Requested-With,content-type'
+    )
+    res.json({ username: user.username, email: user.emailAddress })
+  } else {
+    res.status(401).send('Unauthorized')
+  }
 })
 
 // app.use('/', express.static(public));
 
-app.use(cors())
-
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Remplacez par l'URL de votre application frontend
+    credentials: true // Permet l'envoi de cookies avec les requêtes CORS
+  })
+)
 app.post('/videos', function (req, res) {
   const fakeVideos = [
     {
@@ -317,6 +333,6 @@ app.get('/demo', (req, res) => {
 })
 
 app.listen(5600, () => {
-  console.log(console.clear)
+  console.clear()
   console.log('Server app listening on port 5600')
 })
