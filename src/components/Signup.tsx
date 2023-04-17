@@ -24,18 +24,12 @@ export default function Signup() {
     const { id, value } = e.target;
     setSignupState({ ...signupState, [id]: value });
     
-    if (id === 'password') {
-      const strength = zxcvbn(value).score; // Score ranges from 0 to 4
-      setPasswordStrength(strength);
-    }
   };
   
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
-  const [passwordStrong, setPasswordStrong] = useState(true);
 
-  const [passwordStrength, setPasswordStrength] = useState(0);
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -48,16 +42,13 @@ export default function Signup() {
       return;
     }
 
-    if (arePasswordsEqual() && isPasswordStrong(signupState.password)) {
+    if (arePasswordsEqual()) {
       console.log(signupState);
       createAccount();
     } else if (!arePasswordsEqual()) {
       console.log('Passwords do not match');
       setPasswordsMatch(false);
-    } else {
-      console.log('Password is not strong enough');
-      setPasswordStrong(false);
-    }
+    } 
   };
 
 
@@ -71,11 +62,6 @@ export default function Signup() {
     return signupState.password === signupState.confirmpassword
   }
 
-  const isPasswordStrong = (password: string): boolean => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-    // Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et faire au moins 8 caractères de long
-    return regex.test(password)
-  }
 
 
   const createAccount = async () => {
@@ -122,24 +108,8 @@ export default function Signup() {
             customClass={undefined}
           />
         ))}
-        {signupState.password && (
-          <progress
-            value={passwordStrength}
-            max="4"
-            className={`mt-2 appearance-none w-full ${
-              passwordStrength === 4
-                ? 'bg-green-300'
-                : passwordStrength === 3
-                ? 'bg-yellow-300'
-                : 'bg-red-300'
-            }`}
-          />
-        )}
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
-        )}
-        {!passwordStrong && (
-          <p className="text-me-yellow">Password must contain at least one lowercase letter, one uppercase letter, one number, and be at least 8 characters long</p>
         )}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
