@@ -1,17 +1,17 @@
-import React, { useState } from "react"; // Importer useState pour gérer l'état local
-import "./Video.css";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
-import NearMeIcon from "@mui/icons-material/NearMe";
-import { Avatar } from "@mui/material";
+import React, { useState } from 'react' // Importer useState pour gérer l'état local
+import './Video.css'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'
+import InsertCommentIcon from '@mui/icons-material/InsertComment'
+import NearMeIcon from '@mui/icons-material/NearMe'
+import { Avatar } from '@mui/material'
 
-function Video(): JSX.Element {
+function Video (): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [description] = useState("test description");
+  const [description] = useState('test description')
 
   return (
     <div className="video">
@@ -55,7 +55,7 @@ function Video(): JSX.Element {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Video;
+export default Video
