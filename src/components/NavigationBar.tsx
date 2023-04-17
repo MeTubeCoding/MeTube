@@ -1,13 +1,3 @@
-/* eslint-disable eol-last */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable padded-blocks */
-/* eslint-disable @typescript-eslint/indent */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/display-name */
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
