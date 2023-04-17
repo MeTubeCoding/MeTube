@@ -7,13 +7,17 @@ export type CIResults = Array<CIResult>
 interface Props {
   videos: IResults
   channels: CIResults
+  filter: string
   visible: boolean
 }
 
 const Results = (props: Props): any => {
   return (
     <>
-      {props.channels.length === 0 ? (
+      {props.channels.length === 0 &&
+      props.filter != 'video' &&
+      props.filter != 'movie' &&
+      props.filter != 'playlist' ? (
         <div></div>
       ) : (
         <div>
@@ -35,7 +39,10 @@ const Results = (props: Props): any => {
           ></hr>
         </div>
       )}
-      {props.videos.length === 0 ? (
+      {props.videos.length === 0 &&
+      props.filter != 'channel' &&
+      props.filter != 'movie' &&
+      props.filter != 'playlist' ? (
         <div></div>
       ) : (
         <div className="pb-6">

@@ -2,6 +2,11 @@ import React, { useRef } from 'react'
 
 interface Props {
   visible: boolean
+  filter: string
+  filterChannel: () => void
+  filterVideo: () => void
+  filterMovie: () => void
+  filterPlaylist: () => void
 }
 
 const Filters = (props: Props) => {
@@ -18,19 +23,23 @@ const Filters = (props: Props) => {
   }
 
   const fVideo = () => {
-    console.log('filter by video')
+    console.log('filter by ' + props.filter)
+    props.filterVideo()
   }
 
   const fChannel = () => {
-    console.log('filter by channel')
+    console.log('filter by ' + props.filter)
+    props.filterChannel()
   }
 
   const fPlaylist = () => {
-    console.log('filter by playlist')
+    console.log('filter by ' + props.filter)
+    props.filterPlaylist()
   }
 
   const fMovie = () => {
-    console.log('filter by movie')
+    console.log('filter by ' + props.filter)
+    props.filterMovie()
   }
 
   return (
@@ -40,7 +49,7 @@ const Filters = (props: Props) => {
       }`}
     >
       <button onClick={dropDown}>
-        <p className="ml-5">Filtres</p>
+        <p className="ml-5">Filters, currently filtering by: {props.filter}</p>
       </button>
       <div ref={dropMenu} className="ml-5 hidden">
         <div>
