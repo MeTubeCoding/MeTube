@@ -4,11 +4,10 @@ export type IResults = Array<IResult>
 
 interface Props {
   videos: IResults
+  visible: boolean
 }
 
 const Results = (props: Props): any => {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-
   return (
     <>
       {props.videos.length === 0 ? (
@@ -16,7 +15,7 @@ const Results = (props: Props): any => {
       ) : (
         <div>
           {props.videos.map(video => (
-            <Result key={video.id} video={video} visible={isSideBarVisible} />
+            <Result key={video.id} video={video} visible={props.visible} />
           ))}
         </div>
       )}

@@ -13,13 +13,13 @@ const Main = () => {
   }
 
   return (
-    <div className="max-h-screen overflow-auto">
+    <div className="max-h-screen">
       <div style={{ height: '8.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
       <div className="flex" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        <Results visible={isSideBarVisible} videos={videos} />
+        <ResultsV visible={isSideBarVisible} videos={videos} />
       </div>
     </div>
   )
