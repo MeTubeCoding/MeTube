@@ -5,6 +5,8 @@ import { Chat } from "./Chat"
 import { LiveNavBar } from "./LiveNavBar"
 import { ModerationChat } from "./ModerationChat"
 import { Description } from "./Description"
+import NombreViewer from './nombreViewer';
+import ListeViewer from './listeViewer';
 
 export function Live() {
 	let localStream: MediaStream
@@ -75,6 +77,12 @@ export function Live() {
 					playsInline
 				></video>
 			</div>
+      <div className="live-info">
+        <NombreViewer /> {/* Ajoutez le composant ListeViewer */}
+      </div>
+      <div className="live-info">
+        <ListeViewer /> {/* Ajoutez le composant ListeViewer */}
+      </div>
 		</>
 	)
 }
