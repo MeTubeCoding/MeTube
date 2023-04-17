@@ -1,12 +1,13 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useRef } from 'react'
 
 const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
-  const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
+  const audioRefs = useRef<(HTMLAudioElement | null)[]>([])
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files
-    if (files != null) {
+    if (files) {
       const fileList = Array.from(files)
       setSelectedAudios([...selectedAudios, ...fileList])
     }
@@ -19,7 +20,7 @@ const MusicPlayer = () => {
   }
 
   const handlePause = (index: number) => {
-    if (audioRefs.current[index] != null) {
+    if (audioRefs.current[index]) {
       audioRefs.current[index]?.pause()
     }
   }
@@ -36,7 +37,7 @@ const MusicPlayer = () => {
       <input type="file" onChange={handleFileChange} multiple />
       {selectedAudios.map((file, index) => (
         <div key={index}>
-          <audio ref={(ref) => (audioRefs.current[index] = ref)} controls>
+          <audio ref={ref => (audioRefs.current[index] = ref)} controls>
             <source src={URL.createObjectURL(file)} />
 
           </audio>
