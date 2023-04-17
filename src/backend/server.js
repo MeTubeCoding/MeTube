@@ -174,6 +174,42 @@ app.use(
     credentials: true // Permet l'envoi de cookies avec les requêtes CORS
   })
 )
+app.post('/channels'),
+  function (req, res) {
+    const fakeChannels = [
+      {
+        id: 1,
+        name: 'Roro',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png',
+        subs: 200
+      },
+      {
+        id: 2,
+        name: 'Maxime',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029117988914/Capture_decran_2023-04-17_a_10.36.13.png',
+        subs: 1
+      },
+      {
+        id: 3,
+        name: 'Ludwig',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029751316550/Capture_decran_2023-03-29_a_16.17.11.png',
+        subs: 60000
+      }
+    ]
+
+    const requestString = req.body.data
+    const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+    const regex = new RegExp(regexString, 'i')
+
+    const requestedChannels = fakeChannels.filter(channel =>
+      regex.test(channel.name)
+    )
+
+    if (requestedChannels.length > 0) {
+      res.json(requestedChannels)
+    }
+  }
+
 app.post('/videos', function (req, res) {
   const fakeVideos = [
     {
@@ -258,27 +294,6 @@ app.post('/videos', function (req, res) {
     }
   ]
 
-  const fakeChannels = [
-    {
-      id: 1,
-      name: 'Roro',
-      pfp: '',
-      subs: 200
-    },
-    {
-      id: 2,
-      name: 'Maxime',
-      pfp: '',
-      subs: 1
-    },
-    {
-      id: 3,
-      name: 'Ludwig',
-      pfp: '',
-      subs: 60000
-    }
-  ]
-
   const requestString = req.body.data
   const regexString = requestString.replace(/ /g, '|').split('').join('.*')
   const regex = new RegExp(regexString, 'i')
@@ -287,10 +302,6 @@ app.post('/videos', function (req, res) {
       regex.test(video.title) ||
       regex.test(video.channel) ||
       video.tags.some(tag => regex.test(tag))
-  )
-
-  const requestedChannels = fakeChannels.filter(channel =>
-    regex.test(channel.name)
   )
 
   if (requestedVideos.length > 0) {

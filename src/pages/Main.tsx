@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import Results from '../components/Results'
+import ResultsV from '../components/Results'
 import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
 import SideBar from '../components/SideBar'
+import Filters from '../components/Filters'
 
 const Main = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
@@ -13,13 +14,14 @@ const Main = () => {
   }
 
   return (
-    <div className="max-h-screen overflow-hidden">
-      <div style={{ height: '7.5vh' }}>
+    <div className="max-h-screen">
+      <div style={{ height: '8.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
-      <div className="flex" style={{ height: '92.5vh' }}>
+      <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        <Results videos={videos} />
+        <Filters visible={isSideBarVisible}></Filters>
+        <ResultsV visible={isSideBarVisible} videos={videos} />
       </div>
     </div>
   )

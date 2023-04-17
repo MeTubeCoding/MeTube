@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
   }
 
   return (
-    <nav className="bg-me-darkpurple shadow-md">
+    <nav className="bg-me-darkpurple shadow-md fixed w-screen z-10">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex h-16">
           <div className="w-14 h-16">
