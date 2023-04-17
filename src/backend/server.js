@@ -5,23 +5,31 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 
-/* eslint-disable @typescript-eslint/no-var-requires */
+// Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
+// commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
+// problème
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const bodyparser = require("body-parser");
-const path = require('path');
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const bodyparser = require('body-parser')
+const path = require('path')
+const { MongoClient, ServerApiVersion, ObjectID } = require('mongodb')
+const { query } = require('express')
 
-const { MongoClient, ServerApiVersion} = require('mongodb');
+const uri =
+  'mongodb+srv://SM_des_SM:meilleurSM@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority'
 
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
-require('./db');
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverApi: ServerApiVersion.v1
+})
 
-const uri = process.env.URI;
+const fs = require('fs')
+const { channel } = require('diagnostics_channel')
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
+const publi = path.join(__dirname, 'nom du dossier Public')
 
 const corsOptions = {
   origin: '*',
@@ -197,6 +205,10 @@ app.post('/channels'),
       regex.test(channel.name)
     )
 
+    if (requestedChannels.length > 0) {
+      res.json(requestedChannels)
+    }
+  }
 
 app.post('/videos', function (req, res) {
   const fakeVideos = [
@@ -292,53 +304,46 @@ app.post('/videos', function (req, res) {
       video.tags.some(tag => regex.test(tag))
   )
 
-app.post('/chat',(req,res)=>{
+  if (requestedVideos.length > 0) {
+    res.json(requestedVideos)
+  }
+})
 
+// Optionnel a vous de voir pour vous adapter à votre problématique :
+
+// app.get('/',(req,res)=>{
+
+//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
+// })
+
+app.post('/node/sub', (req, res) => {
   client.connect(err => {
-
     async function run() {
-        try {
-          const database = client.db('LiveBdd');
-          const movies = database.collection('messageChat');
+      try {
+        const database = client.db('BigOne')
+        const movies = database.collection('enAttente')
         //   console.log("mongo connect")
-          const query = req.body;
-        //   console.log(query); 
-          await movies.insertOne(query);
+        const query = req.body
+        //   console.log(query);
+        await movies.insertOne(query)
         //   console.log(movie);
-        } finally {
-          // Ensures that the client will close when you finish/error
-          await client.close(); 
-        }
+      } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close()
       }
-      run().catch(console.dir);
+    }
+    run().catch(console.dir)
+  })
+
+  res.end()
 })
 
-
-res.end();
-
-  
+app.get('/demo', (req, res) => {
+  console.log('test')
+  res.end('reponse du serveur')
 })
 
-app.get('/chat',(req,res)=>{
-
-  client.connect(err => {
-
-    async function runy() {
-        try {
-          const database = client.db('LiveBdd');
-          const movies = database.collection('messageChat');
-        //   console.log("mongo connect")
-        //   console.log(query); 
-        let search = await movies.find({}).toArray();
-        console.log(search)
-        //   console.log(movie);
-        } finally {
-          // Ensures that the client will close when you finish/error
-          await client.close(); 
-        }
-      }
-      runy().catch(console.dir);
-});
-  res.end();
+app.listen(5600, () => {
+  console.clear()
+  console.log('Server app listening on port 5600')
 })
-
