@@ -1,7 +1,5 @@
 import React from "react"
 import "./index.css"
-// import { Chat } from './composant/Chat';
-// import { Description } from './composant/description';
 import { Live } from "./composant/Live"
 import { LiveNavBar } from "./composant/LiveNavBar"
 
