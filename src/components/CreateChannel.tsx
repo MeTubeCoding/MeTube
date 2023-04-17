@@ -1,64 +1,71 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { signupFields } from '../constants/formFields'
-import FormAction from './FormAction'
-import Input from './Input'
+import React, { useState } from 'react';
 
-const fields = signupFields
-const fieldsState: Record<string, string> = {}
-
-fields.forEach(field => fieldsState[field.id] = '')
-
-export default function CreateChannel(){
-    const [creationState, setSignupState] = useState<Record<string, string>>(fieldsState)
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => { setSignupState({ ...creationState, [e.target.id]: e.target.value }) }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log(creationState)
-    createChannel()
-  }
-
-    const createChannel = () => {
-        const local = creationState
-
-        fetch('/create-channel' , {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ key: 'value' }),
-        })
-        .then(async (res) => {
-            console.log(res)
-            return await res.text()
-            })
-            .then((res) => {
-            console.log(res)
-            })
-    }
-
-    return (
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="">
-            {
-              fields.map(field =>
-                <Input
-                  key={field.id}
-                  handleChange={handleChange}
-                  value={creationState[field.id]}
-                  labelText={field.labelText}
-                  labelFor={field.labelFor}
-                  id={field.id}
-                  name={field.name}
-                  type={field.type}
-                  isRequired={field.isRequired}
-                  placeholder={field.placeholder}
-                  customClass={undefined}/>
-              )
-            }
-            <FormAction handleSubmit={handleSubmit} text="Créer une chaine"/>
-          </div>
-        </form>
-      )
+interface ChannelFormData {
+  user_id: string;
+  name: string;
+  nametag: string;
+  description: string;
+  country: string;
 }
+
+const CreateChannel: React.FC = () => {
+  const [formData, setFormData] = useState<ChannelFormData>({
+    user_id: '',
+    name: '',
+    nametag: '',
+    description: '',
+    country: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/channels', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Channel created:', data);
+      } else {
+        throw new Error(Error creating channel: ${response.statusText});
+      }
+    } catch (error) {
+      console.error('Error creating channel:', error.message);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Remplacez "your_user_id" par l'ID utilisateur actuel, ou gérez la sélection de l'utilisateur */}
+      <input type="hidden" name="user_id" value="your_user_id" />
+      <label>
+        Name:
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+      </label>
+      <label>
+        Nametag:
+        <input type="text" name="nametag" value={formData.nametag} onChange={handleChange} required />
+      </label>
+      <label>
+        Description:
+        <input type="text" name="description" value={formData.description} onChange={handleChange} />
+      </label>
+      <label>
+        Country:
+        <input type="text" name="country" value={formData.country} onChange={handleChange} />
+      </label>
+      <button type="submit">Create Channel</button>
+    </form>
+  );
+};
+
+export default CreateChannel;
