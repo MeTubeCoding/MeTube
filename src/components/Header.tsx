@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 interface HeaderProps {

@@ -7,6 +7,7 @@ import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
 import axios from 'axios';
+import React from 'react'
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}

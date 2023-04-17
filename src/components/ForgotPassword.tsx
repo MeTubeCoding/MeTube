@@ -5,6 +5,7 @@ import { forgotFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
+import React from 'react'
 
 const fields = forgotFields
 const fieldsState: Record<string, string> = {}
