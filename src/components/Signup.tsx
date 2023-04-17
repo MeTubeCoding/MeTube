@@ -6,7 +6,7 @@ import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
-import axios from 'axios';
+import axios from 'axios'
 
 const fields = signupFields
 const fieldsState: Record<string, string> = {}
@@ -25,29 +25,30 @@ export default function Signup() {
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  
+    e.preventDefault()
+
     // Vérifier si l'e-mail existe déjà
-    const emailExists = await checkEmailExists(signupState.emailaddress);
+    const emailExists = await checkEmailExists(signupState.emailaddress)
     if (emailExists) {
-      console.log('Email already exists');
-      return;
+      console.log('Email already exists')
+      return
     }
-  
+
     if (arePasswordsEqual()) {
-      console.log(signupState);
-      createAccount();
+      console.log(signupState)
+      createAccount()
     } else {
-      console.log('Passwords do not match');
-      setPasswordsMatch(false);
+      console.log('Passwords do not match')
+      setPasswordsMatch(false)
     }
-  };  
+  }
 
   const checkEmailExists = async (email: string) => {
-    const response = await axios.get(`http://127.0.0.1:5600/check-email?email=${email}`);
-    return response.data.exists;
-  };
-  
+    const response = await axios.get(
+      `http://127.0.0.1:5600/check-email?email=${email}`
+    )
+    return response.data.exists
+  }
 
   const arePasswordsEqual = (): boolean => {
     return signupState.password === signupState.confirmpassword

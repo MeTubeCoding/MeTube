@@ -8,45 +8,35 @@ interface Profile {
 export default function Profile() {
   const [profile, setProfile] = useState<Profile | null>(null)
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    const email = formData.get('email') as string
-    fetch(`http://127.0.0.1:5600/data?email=${email}`, {
-      method: 'GET'
+  useEffect(() => {
+    // Fetch user data from your backend API
+    fetch('http://127.0.0.1:5600/profile', {
+      method: 'GET',
+      credentials: 'include' // Send cookies along with the request
     })
       .then(res => {
         return res.json()
       })
       .then(res => {
-        if (res.length > 0) {
-          setProfile(res[0])
-        } else {
-          setProfile(null)
+        if (res.username && res.email) {
+          setProfile({ username: res.username, emailaddress: res.email })
         }
       })
-  }
+      .catch(err => {
+        console.error(err)
+      })
+  }, []) // Only fetch the data once, on component mount
 
   return (
     <div>
       {profile ? (
-        <p>
-          Logged in as {profile.username} ({profile.emailaddress})
-        </p>
-      ) : (
-        <p>Not logged in</p>
-      )}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email address:</label>
-        <input type="email" id="email" name="email" required />
-        <button type="submit">Get profile</button>
-      </form>
-      {profile && (
         <section>
           <p>
             {profile.emailaddress}: {profile.username}
           </p>
         </section>
+      ) : (
+        <p>Not logged in</p>
       )}
     </div>
   )
