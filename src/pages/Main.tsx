@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Results from '../components/Results'
+import ResultsV from '../components/ResultsVideo'
 import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
 import SideBar from '../components/SideBar'
@@ -17,9 +17,9 @@ const Main = () => {
       <div style={{ height: '7.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
-      <div className="flex" style={{ height: '92.5vh' }}>
+      <div className="flex mt-4" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        <Results videos={videos} />
+        <ResultsV videos={videos} />
       </div>
     </div>
   )
