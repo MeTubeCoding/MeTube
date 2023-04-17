@@ -22,6 +22,11 @@ function App() {
     }
 
     console.log("Test");
+    return (
+        <div className="App">
+            <h1>Test</h1>
+        </div>
+    );
 }
 
 export default App;

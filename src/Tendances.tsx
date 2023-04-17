@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 
-import logo from './logo.svg'
 import './Tendances.css'
 
 // import composant  :
 
 import { PassThrough } from 'stream'
-//import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes as Switch,
+  Link
+} from 'react-router-dom'
 
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,57 +24,57 @@ const Menu = () => {
   }
 
   return (
-    //<Router>
-    <div className='menu-container'>
-      <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
-        <ul>
-          <li>
-            <div className='menu-button' onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <div className='ml-3 md-6 flex items-center'>
-                  <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
-                    ☰
-                  </button>
-                  <p className='ml-2'>Close</p>
-                </div>
-              ) : (
-                <div className='ml-3 md-6 flex items-center'>
-                  <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
-                    ☰
-                  </button>
-                  <p className='ml-2'>Menu</p>
+    <Router>
+      <div className='menu-container'>
+        <div className={`menu ${isMenuOpen ? 'open' : ''} texts`}>
+          <ul>
+            <li>
+              <div className='menu-button' onClick={toggleMenu}>
+                {isMenuOpen ? (
+                  <div className='ml-3 md-6 flex items-center'>
+                    <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
+                      ☰
+                    </button>
+                    <p className='ml-2'>Close</p>
+                  </div>
+                ) : (
+                  <div className='ml-3 md-6 flex items-center'>
+                    <button className='material-icons hover:bg-neutral-700 w-10 h-10 rounded-full active:bg-neutral-800'>
+                      ☰
+                    </button>
+                    <p className='ml-2'>Menu</p>
+                  </div>
+                )}
+              </div>
+              {isMenuOpen && (
+                <div>
+                  <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href='App.tsx' className='text-align:center'>
+                      Accueil
+                    </a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <Link to='pages/timeline.tsx'>Recommandations</Link>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href='/Tendances'>Tendances</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href='#'>Abonnements</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href='#'>Bibliothèque</a>
+                  </li>
+                  <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
+                    <a href='#'>Historique</a>
+                  </li>
                 </div>
               )}
-            </div>
-            {isMenuOpen && (
-              <div>
-                <li className='material-icons hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='App.tsx' className='text-align:center'>
-                    Accueil
-                  </a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='pages/timeline.tsx'>Recommandations</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='/Tendances'>Tendances</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Abonnements</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Bibliothèque</a>
-                </li>
-                <li className='hover:bg-neutral-700 p-3 rounded-lg active:bg-neutral-800'>
-                  <a href='#'>Historique</a>
-                </li>
-              </div>
-            )}
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    //</Router>
+    </Router>
   )
 }
 
@@ -80,7 +84,7 @@ const Menu = () => {
 
 function Tendances() {
   return (
-    <div className='h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
+    <div className='h-screen bg-me-darkpurple text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
       <div className='text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center'>
         <div className='flex flex-row justify-between items-center mr-auto'>
           <div className='titre'>
