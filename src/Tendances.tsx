@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import mockData from './mocking.json'
 import './Tendances.css'
 
 // import composant  :
@@ -12,6 +12,52 @@ import {
   Link
 } from 'react-router-dom'
 
+function trend_new() {
+  const trend_new = mockData.new
+  return (
+    <div className='ml-3.5% mr-5/100 p-0 text-center flex flex-col'>
+      <h4>NOUVEAUTES</h4>
+      {trend_new.map((trend_new) => (
+        <div className='flex flex-row justify-between items-center'>
+          <div className='flex flex-row justify-between items-center'>
+            <img className='w-1/6' src={trend_new.minia} />
+            <div className='flex flex-col justify-between items-center'>
+              <h5 className='text-left'>{trend_new.titre}</h5>
+              <p className='text-left'>{trend_new.chaine}</p>
+              </div>
+              </div>
+              </div>)
+              )}
+    </div>
+  )
+}
+function trend_music() {
+  const trend_music = mockData.music
+  return (
+    <div className='mr-5/100 p-0 text-center flex flex-col'>
+      <h4>MUSIQUE</h4>
+      
+    </div>
+  )
+}
+function trend_movies() {
+  const trend_movies = mockData.movies
+  return (
+    <div className='mr-5/100 p-0 text-center flex flex-col'>
+      <h4>FILMS</h4>
+      
+    </div>
+  )
+}
+function trend_gaming() {
+  const trend_gaming = mockData.gaming
+  return (
+    <div className='mr-5/100 p-0 text-center flex flex-col'>
+      <h4>JEUX VIDEOS</h4>
+      
+    </div>
+  )
+}
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -120,91 +166,10 @@ function Tendances() {
             </h3>
           </div>
           <div className='flex  items-center justify-center bg-neutral-900'>
-            <div className='ml-3.5% mr-5/100 p-0 text-center flex flex-col'>
-              <h4>NOUVEAUTES</h4>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/SRpYxmmy6EI'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/dMekskqXbL4'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>MUSIQUE</h4>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/dQw4w9WgXcQ'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/3NoKAOTE_ZI'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>FILMS</h4>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/RjNcTBXTk4I'
-                title='YouTube video player'
-                frameBorder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/wK69QJ2ESO0'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className='mr-5/100 p-0 text-center flex flex-col'>
-              <h4>JEUX VIDEOS</h4>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/loarI5X93wI'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-              <iframe
-                className='mr-1% rounded-lg'
-                width='300'
-                height='170'
-                src='https://www.youtube.com/embed/QBBLxrvOmqw'
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-            </div>
+            {trend_new()}
+            {trend_music()}
+            {trend_movies()}
+            {trend_gaming()}
           </div>
         </div>
       </div>
