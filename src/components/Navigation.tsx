@@ -6,14 +6,14 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({}) => {
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
+    <nav className="flex items-center justify-between flex-wrap bg-me-black p-6">
+      <div className="flex items-center flex-shrink-0 text-me-white mr-6">
         <span className="font-semibold text-xl tracking-tight">
           Mon éditeur vidéo
         </span>
       </div>
       <div className="block lg:hidden">
-        <button className="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white">
+        <button className="flex items-center px-3 py-2 border rounded text-me-black border-me-black hover:text-me-white hover:border-me-white">
           <svg
             className="fill-current h-3 w-3"
             viewBox="0 0 20 20"
@@ -28,19 +28,19 @@ const Navigation: React.FC<NavigationProps> = ({}) => {
         <div className="text-sm lg:flex-grow">
           <a
             href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-me-black hover:text-me-white mr-4"
           >
             Fonctionnalité 1
           </a>
           <a
             href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-me-black hover:text-me-white mr-4"
           >
             Fonctionnalité 2
           </a>
           <a
             href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white"
+            className="block mt-4 lg:inline-block lg:mt-0 text-me-black hover:text-me-white"
           >
             Fonctionnalité 3
           </a>

@@ -28,9 +28,9 @@ const OutilDecoupage: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4">
-      <div className="bg-gray-200 rounded-md p-2">
-        <h3 className="text-lg font-medium text-gray-800 mb-2">
+    <div className="bg-me-white rounded-lg shadow-lg p-4">
+      <div className="bg-me-black rounded-md p-2">
+        <h3 className="text-lg font-medium text-me-black mb-2">
           Outil de découpage
         </h3>
         <div className="flex items-center mb-4">
@@ -41,7 +41,7 @@ const OutilDecoupage: React.FC = () => {
             type="number"
             id="start"
             min="0"
-            className="border border-gray-400 rounded-md py-2 px-3 mr-4 w-20"
+            className="border border-me-black rounded-md py-2 px-3 mr-4 w-20"
             value={start}
             onChange={handleStartChange}
           />
@@ -52,12 +52,12 @@ const OutilDecoupage: React.FC = () => {
             type="number"
             id="end"
             min="0"
-            className="border border-gray-400 rounded-md py-2 px-3 mr-4 w-20"
+            className="border border-me-black rounded-md py-2 px-3 mr-4 w-20"
             value={end}
             onChange={handleEndChange}
           />
           <button
-            className="bg-gray-600 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-700"
+            className="bg-me-black text-me-white font-bold py-2 px-4 rounded-md hover:bg-me-black"
             onClick={handleDecouperClick}
           >
             Découper

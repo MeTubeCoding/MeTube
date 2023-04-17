@@ -9,7 +9,7 @@ function App(): JSX.Element {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/short" element={<HomePage />} />
           <Route path="/" element={<NavigationBar />} />
           <Route path="/videopage" element={<VideoPage />} />
         </Routes>
