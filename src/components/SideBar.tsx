@@ -123,60 +123,97 @@ function SideBar(props: SideBarProps) {
   ]
 
   return (
-    <div
-      className={`mt-4 w-2/12 bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar ${
-        props.visible ? 'block' : 'hidden'
-      }`}
-      ref={bar}
-    >
-      <ul className="flex flex-col border-b-2 text-me-yellow">
-        {mainpart.map(({ icon, name, href }) => {
-          return (
-            <li key={name} className={`pl-6 py-3`}>
-              <a href={href} className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-      <ul className="flex flex-col border-b-2 text-me-yellow">
-        {secondpart.map(({ icon, name, href }) => {
-          return (
-            <li key={name} className={`pl-6 py-3`}>
-              <a href={href} className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-      <ul className="flex flex-col border-b-2 text-me-yellow">
-        {thirdpart.map(({ icon, name, href }) => {
-          return (
-            <li key={name} className={`pl-6 py-3`}>
-              <a href={href} className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-      <ul className="flex flex-col border-b-2 text-me-yellow">
-        {helppart.map(({ icon, name, href }) => {
-          return (
-            <li key={name} className={`pl-6 py-3`}>
-              <a href={href} className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          )
-        })}
-      </ul>
+    <div className={`flex mr-4 ${props.visible ? 'w-2/12' : 'w-1/12'}`}>
+      <div
+        className={`bg-me-darkpurple overflow-auto sidebar ${
+          props.visible ? 'hidden' : 'block'
+        }`}
+        ref={bar}
+      >
+        <ul className="flex flex-col text-me-yellow p-4">
+          {mainpart.map(({ icon, name, href }) => {
+            return (
+              <li
+                key={name}
+                className={`hover:bg-me-lightpurple rounded-lg py-4`}
+              >
+                <a href={href} className="flex flex-col items-center gap-2">
+                  {icon}
+                  <span className="text-xs tracking-wider">{name}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+
+      <div
+        className={`bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar w-full mx-4 ${
+          props.visible ? 'block' : 'hidden'
+        }`}
+        ref={bar}
+      >
+        <ul className="flex flex-col border-b-2 py-4 text-me-yellow">
+          {mainpart.map(({ icon, name, href }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-me-lightpurple rounded-lg`}
+              >
+                <a href={href} className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+        <ul className="flex flex-col border-b-2 py-4 text-me-yellow">
+          {secondpart.map(({ icon, name, href }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-me-lightpurple rounded-lg`}
+              >
+                <a href={href} className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+        <ul className="flex flex-col border-b-2 py-4 text-me-yellow">
+          {thirdpart.map(({ icon, name, href }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-me-lightpurple rounded-lg`}
+              >
+                <a href={href} className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+        <ul className="flex flex-col py-4 text-me-yellow">
+          {helppart.map(({ icon, name, href }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-me-lightpurple rounded-lg`}
+              >
+                <a href={href} className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }

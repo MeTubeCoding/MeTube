@@ -1,5 +1,4 @@
 import React, { useState, useRef, HTMLAttributes } from 'react'
-import { Button, IconButton, InputBase } from '@mui/material'
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   onSearch: (input: string) => any
@@ -10,9 +9,6 @@ const SearchBar = (props: IProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     props.onSearch(searchInput)
-  }
-  const handleSetSearchInput = (value: string) => {
-    setSearchInput(value)
   }
 
   const btn = useRef<HTMLButtonElement>(null)

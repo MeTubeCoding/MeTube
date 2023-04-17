@@ -28,7 +28,7 @@ const Result = (props: Props) => {
     }
   }
   return (
-    <div className="ml-80 flex">
+    <div className="flex">
       <div className="max-w-fit rounded-lg bg-[#000000] m-2">
         <a className="w-72 h-40 flex rounded-lg justify-center" href="#">
           <img
