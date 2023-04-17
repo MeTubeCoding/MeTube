@@ -49,7 +49,7 @@ export function ModerationChat() {
 	}
 
 	return (
-		<div className='h-300 overflow-y-scroll border border-gray-300 p-10 bg-me-background rounded-xl'>
+		<div className='h-300 border border-gray-300 p-10 bg-me-background rounded-xl'>
 			<form className='margin-top: 10px;'>
 				<label
 					htmlFor='message-input'
