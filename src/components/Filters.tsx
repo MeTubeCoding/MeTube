@@ -30,20 +30,19 @@ const Filters = () => {
   }
 
   return (
-    <div className=" ml-64 text-me-yellow font-semibold">
+    <div className="mt-5 ml-64 text-me-yellow font-semibold">
       <button onClick={dropDown}>
         <p className="ml-5">Filtres</p>
       </button>
       <div ref={dropMenu} className="ml-5 hidden">
-        <p>
-          {' '}
-          Type
+        <div>
+          <p>Type</p>
           <hr className="w-10 m-3 border-me-yellow"></hr>
           <a onClick={fVideo}>Video</a>
           <a onClick={fChannel}>Channel</a>
           <a onClick={fPlaylist}>Playlist</a>
           <a onClick={fMovie}>Movie</a>
-        </p>
+        </div>
       </div>
       <hr className="w-9/12 m-3 border-me-yellow"></hr>
     </div>
