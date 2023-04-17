@@ -1,11 +1,9 @@
 import React from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface NavigationProps {
   // Ajoutez les props nécessaires ici
 }
 
-// eslint-disable-next-line no-empty-pattern
 const Navigation: React.FC<NavigationProps> = ({}) => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">

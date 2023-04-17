@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
 export interface IResult {
   id: number
@@ -10,7 +9,7 @@ export interface IResult {
 interface Props {
   video: IResult
 }
-const Result = (props: Props) => {
+const Result = (props: Props): JSX.Element => {
   return (
 
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

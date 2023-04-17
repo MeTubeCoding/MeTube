@@ -1,26 +1,21 @@
 import React from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OutilDecoupageProps {
   // Ajoutez les props nécessaires ici
 }
 
-// eslint-disable-next-line no-empty-pattern
 const OutilDecoupage: React.FC<OutilDecoupageProps> = ({}) => {
   const [start, setStart] = React.useState(0)
   const [end, setEnd] = React.useState(0)
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleStartChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStart(parseInt(event.target.value))
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleEndChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnd(parseInt(event.target.value))
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleDecouperClick = () => {
     // Ajoutez le code pour découper le média ici
   }

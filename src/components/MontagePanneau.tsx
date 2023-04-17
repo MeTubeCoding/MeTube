@@ -3,12 +3,10 @@ import OutilDecoupage from './OutilDecoupage'
 import OutilAjoutEffets from './OutilAjoutEffets'
 import OutilTexte from './OutilTexte'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface MontagePanneauProps {
 // Ajoutez les props nécessaires ici
 }
 
-// eslint-disable-next-line no-empty-pattern
 const MontagePanneau: React.FC<MontagePanneauProps> = ({}) => {
   return (
   <div className="bg-white rounded-lg shadow-lg p-4">

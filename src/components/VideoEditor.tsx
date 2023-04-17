@@ -1,98 +1,91 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/indent */
 import React, { useState, useRef } from 'react'
 import { Button, Input, Slider } from 'antd'
 import ReactPlayer from 'react-player'
 import MusicPlayer from '../components/MusicPlayer'
 
 const VideoEditor = () => {
-    const [videoUrl, setVideoUrl] = useState('')
-    const [startTime, setStartTime] = useState(0)
-    const [endTime, setEndTime] = useState(0)
-    const [playing, setPlaying] = useState(false)
-    const [volume, setVolume] = useState(0.5)
-    const [speed, setSpeed] = useState(1)
-    const [loop, setLoop] = useState(false)
-    const [muted, setMuted] = useState(false)
-    const [playedSeconds, setPlayedSeconds] = useState(0)
-    const playerRef = useRef(null)
-    const [musicPlayerActive, setMusicPlayerActive] = useState(false)
+  const [videoUrl, setVideoUrl] = useState('')
+  const [startTime, setStartTime] = useState(0)
+  const [endTime, setEndTime] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const [volume, setVolume] = useState(0.5)
+  const [speed, setSpeed] = useState(1)
+  const [loop, setLoop] = useState(false)
+  const [muted, setMuted] = useState(false)
+  const [playedSeconds, setPlayedSeconds] = useState(0)
+  const playerRef = useRef(null)
+  const [musicPlayerActive, setMusicPlayerActive] = useState(false)
 
-    const handleVideoUrlChange = (event: { target: { value: React.SetStateAction<string> } }) => {
-        setVideoUrl(event.target.value)
-    }
+  const handleVideoUrlChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+    setVideoUrl(event.target.value)
+  }
 
-    const handlePlayPause = () => {
-        setPlaying(!playing)
-    }
+  const handlePlayPause = () => {
+    setPlaying(!playing)
+  }
 
-    const handleVolumeChange = (value: React.SetStateAction<number>) => {
-        setVolume(value)
-    }
+  const handleVolumeChange = (value: React.SetStateAction<number>) => {
+    setVolume(value)
+  }
 
-    const handleSpeedChange = (value: React.SetStateAction<number>) => {
-        setSpeed(value)
-    }
+  const handleSpeedChange = (value: React.SetStateAction<number>) => {
+    setSpeed(value)
+  }
 
-    const handleLoopChange = () => {
-        setLoop(!loop)
-    }
+  const handleLoopChange = () => {
+    setLoop(!loop)
+  }
 
-    const handleMutedChange = () => {
-        setMuted(!muted)
-    }
+  const handleMutedChange = () => {
+    setMuted(!muted)
+  }
 
-    const handleSeek = (value: any) => {
-        playerRef.current.seekTo(value)
-    }
+  const handleSeek = (value: any) => {
+    playerRef.current.seekTo(value)
+  }
 
+  const handleTrimVideo = () => {
+    playerRef.current.seekTo(startTime)
+    playerRef.current.pause()
+  }
 
+  const handleRotateLeft = () => {
+    const currentRotation = playerRef.current.getInternalPlayer().style.transform
+    playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} -90deg)`
+  }
 
-    const handleTrimVideo = () => {
-        playerRef.current.seekTo(startTime)
-        playerRef.current.pause()
-    }
+  const handleRotateRight = () => {
+    const currentRotation = playerRef.current.getInternalPlayer().style.transform
+    playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} 90deg)`
+  }
 
-    const handleRotateLeft = () => {
-        const currentRotation = playerRef.current.getInternalPlayer().style.transform
-        playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} -90deg)`
-    }
-
-    const handleRotateRight = () => {
-        const currentRotation = playerRef.current.getInternalPlayer().style.transform
-        playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} 90deg)`
-    }
-
-    const handleCropVideo = () => {
+  const handleCropVideo = () => {
     // TODO: Implement crop functionality
-    }
+  }
 
-    const handleMergeVideos = () => {
+  const handleMergeVideos = () => {
     // TODO: Implement merge functionality
-    }
+  }
 
-    const handleProgress = ({ playedSeconds }) => {
-        setPlayedSeconds(playedSeconds)
-    }
+  const handleProgress = ({ playedSeconds }) => {
+    setPlayedSeconds(playedSeconds)
+  }
 
-    const handleActivateMusicPlayer = () => {
-        setMusicPlayerActive(true)
-      }
+  const handleActivateMusicPlayer = () => {
+    setMusicPlayerActive(true)
+  }
 
-    const formatTime = (time: number) => {
+  const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60)
     const seconds = Math.floor(time % 60)
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-    }
+  }
 
-    const handleSaveVideo = () => {
+  const handleSaveVideo = () => {
     // TODO: Implement save functionality
-    }
+  }
 
-    return (
+  return (
         <div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', flexDirection: 'column', marginRight: 20 }}>
@@ -134,7 +127,7 @@ const VideoEditor = () => {
             </div>
             </div>
         </div>
-    )
+  )
 }
 
 export default VideoEditor
