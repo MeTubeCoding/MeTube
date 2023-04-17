@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface BibliothequeMediasProps {
   // Ajoutez les props nécessaires ici
 }
 
-// eslint-disable-next-line no-empty-pattern
 const BibliothequeMedias: React.FC<BibliothequeMediasProps> = ({}) => {
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
@@ -28,7 +26,7 @@ const BibliothequeMedias: React.FC<BibliothequeMediasProps> = ({}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BibliothequeMedias
+export default BibliothequeMedias;

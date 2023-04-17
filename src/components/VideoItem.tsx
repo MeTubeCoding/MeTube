@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react'
+import React from "react";
 
 interface Props {
-  video: File
+  video: File;
 }
 
 const VideoItem = ({ video }: Props) => {
-  const videoUrl = URL.createObjectURL(video)
+  const videoUrl = URL.createObjectURL(video);
 
   return (
     <div className="video-item">
@@ -16,7 +15,7 @@ const VideoItem = ({ video }: Props) => {
       </video>
       <h3>{video.name}</h3>
     </div>
-  )
-}
+  );
+};
 
-export default VideoItem
+export default VideoItem;

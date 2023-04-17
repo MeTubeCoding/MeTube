@@ -1,12 +1,9 @@
-/* eslint-disable eol-last */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import NavigationBar from './components/NavigationBar'
-import VideoPage from './pages/VideoPage'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import NavigationBar from "./components/NavigationBar";
+import VideoPage from "./pages/VideoPage";
 
-function App () {
+function App() {
   return (
     <div className="App">
       <BrowserRouter>
@@ -17,7 +14,7 @@ function App () {
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
