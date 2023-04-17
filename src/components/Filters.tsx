@@ -54,7 +54,7 @@ const Filters = (props: Props) => {
       </div>
       <hr
         className={`m-3 border-me-yellow ${
-          props.visible ? 'w-[71.55%]' : 'w-[78%]'
+          props.visible ? 'w-[74.96%]' : 'w-[78%]'
         }`}
       ></hr>
     </div>

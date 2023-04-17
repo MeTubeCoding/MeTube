@@ -29,8 +29,8 @@ const Results = (props: Props): any => {
           <hr
             className={`my-8 border-me-yellow ${
               props.visible
-                ? 'w-[52.33%] ml-[24.75rem]'
-                : 'w-[62.42%] ml-[15.73rem]'
+                ? 'w-[54.76%] ml-[24.75rem]'
+                : 'w-[64.90%] ml-[15.73rem]'
             }`}
           ></hr>
         </div>
