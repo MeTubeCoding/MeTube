@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
+import React, { useEffect, useState } from 'react';
 
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-  viewingTime: number;
-}
-
-function LiveUsersList() {
-  const [liveUsers, setLiveUsers] = useState<User[]>([]);
+const ListeViewer = () => {
+  const [viewers, setViewers] = useState([]);
 
   useEffect(() => {
-      // Établir une connexion avec le serveur de sockets Web
-      const socket = io('http://localhost:5600');
+    const ws = new WebSocket('ws://localhost:3000');
 
-      // Écouter les événements de mise à jour de la liste des utilisateurs
-      socket.on('liveUsersUpdate', (users: User[]) => {
-          setLiveUsers(users);
-      });
+    ws.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === 'VIEWERS_LIST') {
+        setViewers(message.data);
+      }
+    };
 
-      // Se déconnecter lorsque le composant est démonté
-      return () => socket.disconnect();
+    return () => {
+      ws.close();
+    };
   }, []);
 
   return (
     <div>
-      <h2>Liste des utilisateurs en train de regarder le live :</h2>
+      <h2>Viewers connectés :</h2>
       <ul>
-        {liveUsers.map(user => (
-          <li key={user.id}>
-            <img src={user.avatar} alt={user.name} />
-            <span>{user.name}</span>
-            <span>{user.viewingTime}</span>
-          </li>
+        {viewers.map((viewer) => (
+          <li key={viewer}>{viewer}</li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
-export default LiveUsersList;
+export default ListeViewer;
