@@ -20,8 +20,8 @@ const ListeViewer = () => {
 
   return (
     <div>
-      <h2>Viewers connectés :</h2>
-      <ul>
+      <h2 className='text-me-colorprimary font-bold'>Viewers connectés :</h2>
+      <ul  className='text-me-colorprimary font-bold'>
         {viewers.map((viewer) => (
           <li key={viewer}>{viewer}</li>
         ))}

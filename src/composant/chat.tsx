@@ -94,7 +94,8 @@ export function Chat() {
 			})
 	}
 
-	function verify() {
+	function verify(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+		event.preventDefault()
 		console.log("verify")
 		const messageInput = document.getElementById(
 			"message-input"
@@ -149,18 +150,27 @@ export function Chat() {
 	}
 	return (
 		<>
-			<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
-				<section id='Chat'></section>
-				<form className='margin-top: 10px;'>
-					<label htmlFor='message-input'>Message:</label>
+			<div className='h-300 overflow-y-scroll border border-gray-300 p-10 bg-me-background rounded-xl'>
+				<section id='Chat' className='text-me-white'></section>
+				<form className='mt-10 flex flex-col justify-end'>
+					<label
+						htmlFor='message-input'
+						className='text-me-colorprimary font-bold'
+					>
+						Message:
+					</label>
 					<input
 						type='text'
 						name='message'
 						id='message-input'
-						className='width: 80%;padding: 10px;border: 1px solid #ccc;border-radius: 3px;'
+						className='border border-gray-300 rounded-md bg-me-background text-me-white'
 					></input>
-					<p onClick={verify}>send</p> {/* Change this line */}
-					<p onClick={getChat}>chat</p>
+					<button
+						onClick={(event) => verify(event)}
+						className='bg-me-colorprimary font-bold mt-2 rounded-md'
+					>
+						Send
+					</button>
 					<button
 						ref={invisibleButtonRef}
 						onClick={handleInvisibleButtonClick}

@@ -8,7 +8,7 @@ import { LiveNavBar } from "./composant/LiveNavBar"
 function App() {
 	return (
 		<>
-			<div className='flex items-center'>
+			<div className='bg-me-background'>
 				<Live />
 			</div>
 		</>

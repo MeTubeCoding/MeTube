@@ -7,6 +7,7 @@ import { ModerationChat } from "./ModerationChat"
 import { Description } from "./Description"
 import NombreViewer from "./NombreViewer"
 import ListeViewer from "./ListeViewer"
+import { Titre} from "./Titre"
 
 export function Live() {
 	let localStream: MediaStream
@@ -20,7 +21,7 @@ export function Live() {
 		try {
 			localStream = await navigator.mediaDevices.getUserMedia({
 				video: true,
-				audio: false
+				audio: false,
 			})
 			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
 		} catch (error) {
@@ -29,7 +30,6 @@ export function Live() {
 
 		(document.getElementById("webcam") as HTMLVideoElement).srcObject =
 			localStream
-
 		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
 			showEcran
 
@@ -54,48 +54,53 @@ export function Live() {
 
 	return (
 		<>
-			<LiveNavBar />
+			
+				<LiveNavBar />
 
-			<div className='flex flex-row'>
-				<ModerationChat />
-				<section className='flex flex-row'>
-					<div className='flex flex-col items-center'>
-						<div className='relative'>
-							<div id='videos' className='w-max h-max px-20'>
-								<video
-									className='transform scale-x-[-1] '
-									id='webcam'
-									width='400'
-									height='400'
-									autoPlay
-									playsInline
-								></video>
-								<div className='absolute top-2 left-2'>
+				<div className='flex flex-row text-white'>
+					<ModerationChat />
+					<section className='flex flex-row'>
+						<div className='flex flex-col items-center'>
+							<div className='relative'>
+								<div id='videos' className='w-max h-max px-20 w-full '>
 									<video
-										className=''
+										className='border rounded-md'
 										id='partageEcran'
-										width='400'
-										height='400'
+										width='500'
+										height='500'
 										autoPlay
 										playsInline
 									></video>
+									<div className='absolute top-1 right-[64%] '>
+										<video
+											className='transform scale-x-[-1] scale-y-[95%] border rounded-md'
+											id='webcam'
+											width='150'
+											height='150'
+											autoPlay
+											playsInline
+										></video>
+									</div>
 								</div>
 							</div>
+							<div className='flex flex-col items-center mt-4'>
+								<Description />
+							</div>
+							<Titre/>
 						</div>
-						<div className='flex flex-col items-center mt-4'>
-							<Description />
+					</section>
+
+					<Chat />
+					<div>
+						<div className='live-info'>
+							<NombreViewer /> {/* Ajoutez le composant ListeViewer */}
+						</div>
+						<div className='live-info'>
+							<ListeViewer /> {/* Ajoutez le composant ListeViewer */}
 						</div>
 					</div>
-				</section>
-
-				<Chat />
-				<div className='live-info'>
-					<NombreViewer /> {/* Ajoutez le composant ListeViewer */}
 				</div>
-				<div className='live-info'>
-					<ListeViewer /> {/* Ajoutez le composant ListeViewer */}
-				</div>
-			</div>
+			
 		</>
 	)
 }

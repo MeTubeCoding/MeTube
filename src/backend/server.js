@@ -78,6 +78,23 @@ app.post('/desc',(req,res)=>{
   });
   res.end();
 });
+
+app.post('/titre',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('titre');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
       
 
 app.get('/chat',(req,res)=>{

@@ -28,17 +28,7 @@ export function ModerationChat() {
 				return res.json()
 			})
 			.then((res) => {
-				console.log(res)
-				const section = document.getElementById(
-					"espace-Moderation"
-				) as HTMLInputElement
-				section.innerHTML = ""
-				res.forEach((message: { message: string; pseudo: string }) => {
-					const text = `${message.pseudo}: ${message.message}`
-					const p = document.createElement("p")
-					p.textContent = text
-					section.appendChild(p)
-				})
+				setMessages(res)
 			})
 	}
 
@@ -50,7 +40,6 @@ export function ModerationChat() {
 				return res.json()
 			})
 			.then((res) => {
-				console.log(res)
 				setMessages(res)
 			})
 	}
@@ -58,11 +47,23 @@ export function ModerationChat() {
 	function handleInvisibleButtonClick() {
 		fetchMessages()
 	}
+
 	return (
-		<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
+		<div className='h-300 overflow-y-scroll border border-gray-300 p-10 bg-me-background rounded-xl'>
 			<form className='margin-top: 10px;'>
-				<label htmlFor='message-input'>Espace Modération:</label>
-				<section id='espace-Moderation'></section>
+				<label
+					htmlFor='message-input'
+					className='px-4 py-2 rounded-md bg-me-colorprimary text-me-white font-bold'
+				>
+					Espace Modération :
+				</label>
+				<section id='espace-Moderation' className='text-white mt-3'>
+					{messages.map((msg) => (
+						<p className='text-me-white' key={msg.id}>
+							{msg.pseudo}: {msg.message}
+						</p>
+					))}
+				</section>
 			</form>
 			<button
 				ref={invisibleButtonRef}

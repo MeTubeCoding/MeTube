@@ -19,9 +19,9 @@ const nombreViewer = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Nombre de spectateurs :</h2>
-      <p>{viewerCount}</p>
+    <div >
+      <h2 className='text-me-colorprimary font-bold'>Nombre de spectateurs :</h2>
+      <p className='text-me-white'>{viewerCount}</p>
     </div>
   );
 };
