@@ -1,31 +1,24 @@
 import React, { useState } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface OutilTexteProps {
-  // Ajouter les props nécessaires ici
-}
-
-// eslint-disable-next-line no-empty-pattern
-const OutilTexte: React.FC<OutilTexteProps> = ({}) => {
+const OutilTexte: React.FC = () => {
   const [texte, setTexte] = useState('')
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>): any => {
     setTexte(e.target.value)
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4">
-      <h3 className="text-lg font-medium text-gray-800 mb-2">Outil de texte</h3>
+    <div className="bg-me-white rounded-lg shadow-lg p-4">
+      <h3 className="text-lg font-medium text-me-black mb-2">Outil de texte</h3>
       <div className="flex flex-col">
         <input
           type="text"
           placeholder="Tapez votre texte ici"
-          className="border border-gray-400 rounded-md p-2 mb-2"
+          className="border border-me-black rounded-md p-2 mb-2"
           value={texte}
           onChange={handleTexteChange}
         />
-        <button className="bg-gray-600 text-white font-bold py-1 px-2 rounded-md hover:bg-gray-700">
+        <button className="bg-me-black text-me-white font-bold py-1 px-2 rounded-md hover:bg-me-black">
           Ajouter le texte
         </button>
       </div>
