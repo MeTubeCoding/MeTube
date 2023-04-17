@@ -45,10 +45,12 @@ const MusicPlayer = () => {
             <source src={URL.createObjectURL(file)} />
           </audio>
           <button onClick={() => { handleRemove(index) }}>Remove</button>
+          <button onClick={() => { props.setSelectedMusic([...props.selectedMusic, file]) }}>Superposer</button> {/* Ajouter ce bouton pour superposer la musique */}
         </div>
       ))}
     </div>
   )
+  
 }
 
 export default MusicPlayer

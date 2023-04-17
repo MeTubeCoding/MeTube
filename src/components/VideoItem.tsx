@@ -1,22 +1,31 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react'
+import React, { useRef } from "react";
 
-interface Props {
-  video: File
-}
+const VideoItem = ({ video }: { video: File }) => {
+  const videoElement = useRef<HTMLVideoElement | null>(null);
 
-const VideoItem = ({ video }: Props) => {
-  const videoUrl = URL.createObjectURL(video)
+  // Function to handle play button click
+  const handlePlay = () => {
+    if (videoElement.current) {
+      videoElement.current.play();
+    }
+  };
+
+  // Function to handle pause button click
+  const handlePause = () => {
+    if (videoElement.current) {
+      videoElement.current.pause();
+    }
+  };
 
   return (
-    <div className="video-item">
-      <video controls width="560" height="315">
-        <source src={videoUrl} type={video.type} />
-        Your browser does not support the video tag.
-      </video>
-      <h3>{video.name}</h3>
+    <div>
+      <video ref={videoElement} src={URL.createObjectURL(video)} controls />
+      <button onClick={handlePlay}>Play</button>
+      <button onClick={handlePause}>Pause</button>
     </div>
-  )
-}
+  );
+};
 
-export default VideoItem
+export default VideoItem;
+
+

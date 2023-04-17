@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import VideoItem from "../components/VideoItem";
 import VideoEditor from "../components/VideoEditor";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";
+
+const [selectedMusic, setSelectedMusic] = useState<File[]>([]);
 
 const VideoPage = () => {
   const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
@@ -11,6 +14,7 @@ const VideoPage = () => {
       setSelectedVideo(event.target.files[0]);
     }
   };
+
 
   return (
     <div className="flex flex-col h-screen">
@@ -43,6 +47,7 @@ const VideoPage = () => {
         <div className="w-1/3 flex items-center justify-center">
           <div className="w-full max-w-xs px-4">
             <VideoEditor />
+            <MusicPlayer selectedMusic={selectedMusic} setSelectedMusic={setSelectedMusic} />
           </div>
         </div>
       </div>
