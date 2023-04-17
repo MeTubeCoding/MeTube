@@ -30,7 +30,9 @@ export function ModerationChat() {
 			})
 			.then((res) => {
 				console.log(res)
-				const section = document.getElementById("espace-Moderation") as HTMLInputElement
+				const section = document.getElementById(
+					"espace-Moderation"
+				) as HTMLInputElement
 				section.innerHTML = ""
 				res.forEach((message: { message: string; pseudo: string }) => {
 					const text = `${message.pseudo}: ${message.message}`
@@ -59,15 +61,15 @@ export function ModerationChat() {
 	}
 	return (
 		<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
-			<section id="espace-Moderation"></section>
 			<form className='margin-top: 10px;'>
 				<label htmlFor='message-input'>Espace Modération:</label>
-				<button
-					ref={invisibleButtonRef}
-					onClick={handleInvisibleButtonClick}
-					style={{ display: "none" }}
-				></button>
+				<section id='espace-Moderation'></section>
 			</form>
+			<button
+				ref={invisibleButtonRef}
+				onClick={handleInvisibleButtonClick}
+				style={{ display: "none" }}
+			></button>
 		</div>
 	)
 }

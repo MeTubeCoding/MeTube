@@ -52,27 +52,39 @@ export function Live() {
 	return (
 		<>
 			<LiveNavBar />
-			<Chat />
-			<ModerationChat/>
-			<Description />
+			<div className='flex flex-row'>
+				<ModerationChat />
+				<section className='flex flex-row'>
+					<div className='flex flex-col items-center'>
+						<div className='relative'>
+							<div id='videos' className='w-max h-max px-20'>
+								<video
+									className='transform scale-x-[-1] '
+									id='webcam'
+									width='400'
+									height='400'
+									autoPlay
+									playsInline
+								></video>
+							<div className="absolute top-2 left-2">
+								<video
+									className=''
+									id='partageEcran'
+									width='400'
+									height='400'
+									autoPlay
+									playsInline
+								></video>
+								</div>
+							</div>
+						</div>
+						<div className='flex flex-col items-center mt-4'>
+							<Description />
+						</div>
+					</div>
+				</section>
 
-			<div id='videos' className='w-max h-max px-20'>
-				<video
-					className='transform scale-x-[-1] '
-					id='webcam'
-					width='500'
-					height='500'
-					autoPlay
-					playsInline
-				></video>
-				<video
-					className=''
-					id='partageEcran'
-					width='500'
-					height='500'
-					autoPlay
-					playsInline
-				></video>
+				<Chat />
 			</div>
 		</>
 	)

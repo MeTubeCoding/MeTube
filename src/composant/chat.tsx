@@ -150,7 +150,7 @@ export function Chat() {
 	return (
 		<>
 			<div className='height: 300px;overflow-y: scroll;border: 1px solid #ccc;padding: 10px;'>
-				<section id="Chat"></section>
+				<section id='Chat'></section>
 				<form className='margin-top: 10px;'>
 					<label htmlFor='message-input'>Message:</label>
 					<input
