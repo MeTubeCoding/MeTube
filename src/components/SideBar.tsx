@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { TbMusic, TbDeviceGamepad2 } from 'react-icons/tb'
 import { FaRegCompass } from 'react-icons/fa'
 import { GiFilmStrip } from 'react-icons/gi'
@@ -18,9 +18,13 @@ import {
   MdOutlineBolt
 } from 'react-icons/md'
 
-let isOpen = true
+interface SideBarProps {
+  visible: boolean
+}
 
-function SideBar() {
+function SideBar(props: SideBarProps) {
+  const bar = useRef<HTMLDivElement>(null)
+
   const mainpart = [
     {
       icon: <MdHomeFilled className="text-xl" />,
@@ -121,8 +125,9 @@ function SideBar() {
   return (
     <div
       className={`mt-4 w-2/12 bg-me-darkpurple pr-5 overflow-auto pb-8 sidebar ${
-        isOpen ? 'block' : 'hidden'
+        props.visible ? 'block' : 'hidden'
       }`}
+      ref={bar}
     >
       <ul className="flex flex-col border-b-2 text-me-yellow">
         {mainpart.map(({ icon, name, href }) => {
@@ -176,8 +181,4 @@ function SideBar() {
   )
 }
 
-export function toggleBoolean() {
-  isOpen = !isOpen
-  console.log(isOpen)
-}
 export default SideBar
