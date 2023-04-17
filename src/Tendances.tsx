@@ -15,46 +15,76 @@ import {
 function trend_new() {
   const trend_new = mockData.new
   return (
-    <div className='ml-3.5% mr-5/100 p-0 text-center flex flex-col'>
+    <div className='mr-5 p-0 text-center flex flex-col h-full'>
       <h4>NOUVEAUTES</h4>
-      {trend_new.map((trend_new) => (
-        <div className='flex flex-row justify-between items-center'>
-          <div className='flex flex-row justify-between items-center'>
-            <img className='w-1/6' src={trend_new.minia} />
-            <div className='flex flex-col justify-between items-center'>
-              <h5 className='text-left'>{trend_new.titre}</h5>
-              <p className='text-left'>{trend_new.chaine}</p>
-              </div>
-              </div>
-              </div>)
-              )}
+      {trend_new.map(trend_new => (
+        <div className='flex flex-col'>
+          <div className='flex flex-col'>
+            <img className='mr-1% rounded-lg' src={trend_new.minia} />
+            <div className='flex flex-col'>
+              <h5 className='text-left py-2 font-sans'>{trend_new.titre}</h5>
+              <p className='text-left pb-5'>{trend_new.chaine}</p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 function trend_music() {
   const trend_music = mockData.music
   return (
-    <div className='mr-5/100 p-0 text-center flex flex-col'>
+    <div className='mr-5 p-0 text-center flex flex-col h-full'>
       <h4>MUSIQUE</h4>
-      
+      {trend_music.map(trend_music => (
+        <div className='flex flex-col'>
+          <div className='flex flex-col'>
+            <img className='mr-1% rounded-lg' src={trend_music.minia} />
+            <div className='flex flex-col'>
+              <h5 className='text-left py-2'>{trend_music.titre}</h5>
+              <p className='text-left pb-5'>{trend_music.chaine}</p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 function trend_movies() {
   const trend_movies = mockData.movies
   return (
-    <div className='mr-5/100 p-0 text-center flex flex-col'>
+    <div className='mr-5 p-0 text-center flex flex-col h-full'>
       <h4>FILMS</h4>
-      
+      {trend_movies.map(trend_movies => (
+        <div className='flex flex-col'>
+          <div className='flex flex-col'>
+            <img className='mr-1% rounded-lg' src={trend_movies.minia} />
+            <div className='flex flex-col'>
+              <h5 className='text-left py-2'>{trend_movies.titre}</h5>
+              <p className='text-left pb-5'>{trend_movies.chaine}</p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 function trend_gaming() {
   const trend_gaming = mockData.gaming
   return (
-    <div className='mr-5/100 p-0 text-center flex flex-col'>
+    <div className='mr-5 p-0 text-center flex flex-col h-full'>
       <h4>JEUX VIDEOS</h4>
-      
+      {trend_gaming.map(trend_gaming => (
+        <div className='flex flex-col'>
+          <div className='flex flex-col'>
+            <img className='mr-1% rounded-lg' src={trend_gaming.minia} />
+            <div className='flex flex-col'>
+              <h5 className='text-left py-2'>{trend_gaming.titre}</h5>
+              <p className='text-left pb-5'>{trend_gaming.chaine}</p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -130,7 +160,7 @@ const Menu = () => {
 
 function Tendances() {
   return (
-    <div className='h-screen bg-me-darkpurple text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
+    <div className='h-screen text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
       <div className='text-center flex flex-row bg-neutral-800 text-white p-4 flex justify-around items-center'>
         <div className='flex flex-row justify-between items-center mr-auto'>
           <div className='titre'>
@@ -165,7 +195,7 @@ function Tendances() {
               TENDANCES
             </h3>
           </div>
-          <div className='flex  items-center justify-center bg-neutral-900'>
+          <div className='flex flex_col items-center justify-center bg-neutral-900'>
             {trend_new()}
             {trend_music()}
             {trend_movies()}
