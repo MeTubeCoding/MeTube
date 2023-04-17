@@ -1,9 +1,10 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import NavigationBar from './components/NavigationBar'
 import VideoPage from './pages/VideoPage'
 
-function App () {
+function App (): JSX.Element {
   return (
     <div className="App">
       <BrowserRouter>

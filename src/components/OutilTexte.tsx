@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 
-interface OutilTexteProps {
-  // Ajouter les props nécessaires ici
-}
-
-const OutilTexte: React.FC<OutilTexteProps> = ({}) => {
+const OutilTexte: React.FC = () => {
   const [texte, setTexte] = useState('')
 
-  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>): any => {
     setTexte(e.target.value)
   }
 

@@ -4,7 +4,7 @@ interface Props {
   video: File
 }
 
-const VideoItem = ({ video }: Props) => {
+const VideoItem = ({ video }: Props): JSX.Element => {
   const videoUrl = URL.createObjectURL(video)
 
   return (
