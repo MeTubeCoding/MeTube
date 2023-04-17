@@ -10,7 +10,37 @@ export function Chat() {
 	const [messages, setMessages] = useState<Message[]>([])
 	const invisibleButtonRef = useRef<HTMLButtonElement>(null)
 	const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
-	const motsInterdit = ["test"]
+	const motsInterdit = [
+		"ta race",
+		"chatte",
+		"couille",
+		"couille",
+		"bite",
+		"zizi",
+		"nique ta mère",
+		"merde",
+		"imbécile",
+		"bordel",
+		"enfoiré",
+		"connard",
+		"bouffon",
+		"boloss",
+		"abrutti",
+		"salope",
+		"pd",
+		"fdp",
+		"ta grand mère la pute",
+		"fils de pute",
+		"negro",
+		"nigger",
+		"hitler",
+		"staline",
+		"nique la coding",
+		"fuck",
+		"test",
+		"pute",
+		"gay",
+	]
 	useEffect(() => {
 		const interval = setInterval(() => {
 			getChat()
