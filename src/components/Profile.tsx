@@ -1,68 +1,44 @@
-import React, { useState } from 'react'
-import { loginFields } from '../constants/formFields'
-import FormAction from './FormAction'
-import FormExtra from './FormExtra'
-import Input from './Input'
+import React, { useEffect, useState } from 'react'
 
-type ProfileState = Record<string, string>
+interface Profile {
+  username: string
+  email: string
+}
 
-const fields = loginFields
-const fieldsState: ProfileState = {}
-fields.forEach(field => {
-  fieldsState[field.id] = ''
-})
+export default function Profile() {
+  const [profile, setProfile] = useState<Profile | null>(null)
 
-export default function Profile(): JSX.Element {
-  const [loginState, setLoginState] = useState<ProfileState>(fieldsState)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setLoginState({ ...loginState, [e.target.id]: e.target.value })
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-    authenticateUser()
-  }
-
-  // Handle Login API Integration here
-  const authenticateUser = (): void => {
-    fetch('http://localhost:5600/data', {
-      method: 'GET', // Utiliser la méthode GET pour récupérer des données
-      headers: {
-        'Content-Type': 'application/json'
-      }
+  useEffect(() => {
+    // Fetch user data from your backend API
+    fetch('http://localhost:5600/profile', {
+      method: 'GET',
+      credentials: 'include' // Send cookies along with the request
     })
-      .then(async response => await response.json()) // Convertir la réponse en JSON
-      .then(data => {
-        console.log(data)
-      }) // Utiliser les données récupérées
-      .catch(error => {
-        console.error(error)
-      }) // Gérer les erreurs éventuelles
-  }
+      .then(res => {
+        if (res.status === 401) {
+          throw new Error('Unauthorized')
+        }
+        return res.json()
+      })
+      .then(res => {
+        setProfile({ username: res.username, email: res.email })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, []) // Only fetch the data once, on component mount
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      <div className="-space-y-px">
-        {fields.map(field => (
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={loginState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            type={field.type}
-            name=""
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-            customClass={undefined}
-          />
-        ))}
-      </div>
-
-      <FormExtra />
-      <FormAction handleSubmit={handleSubmit} text="Login" />
-    </form>
+    <div>
+      {profile ? (
+        <section>
+          <p>
+            {profile.email}: {profile.username}
+          </p>
+        </section>
+      ) : (
+        <p>Not logged in</p>
+      )}
+    </div>
   )
 }

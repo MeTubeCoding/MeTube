@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Signup from '../components/Signup'
 
-export default function SignupPage(): JSX.Element {
+function SignupPage(): JSX.Element {
   {
     return (
       <>
@@ -17,3 +17,5 @@ export default function SignupPage(): JSX.Element {
     )
   }
 }
+
+export default SignupPage

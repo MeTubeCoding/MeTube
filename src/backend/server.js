@@ -1,5 +1,8 @@
+/* eslint-disable padded-blocks */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable camelcase */
+/* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 
 // Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
@@ -24,8 +27,14 @@ const client = new MongoClient(uri, {
 })
 
 const fs = require('fs')
+const { channel } = require('diagnostics_channel')
 
 const publi = path.join(__dirname, 'nom du dossier Public')
+
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
 
 app.use(bodyparser.json())
 app.use(
@@ -64,12 +73,264 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/data', (req, res) => {
+app.post('/signup', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
         const database = client.db('profile')
-        const movies = database.collection('users')
+        const users = database.collection('users')
+        const query = req.body
+        await users.insertOne(query)
+      } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  //coucou
+  res.end('trop cool')
+})
+
+const bcrypt = require('bcryptjs')
+
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body
+
+  try {
+    const database = client.db('profile')
+    const users = database.collection('users')
+
+    const user = await users.findOne({ 'emailaddress': email })
+
+    if (user) {
+      const isPasswordCorrect = await bcrypt.compare(password, user.password)
+      if (isPasswordCorrect) {
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
+      } else {
+        res.status(401).json({ success: false, message: 'Incorrect password' })
+      }
+    } else {
+      res.status(404).json({ success: false, message: 'Email does not exist' })
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error while connecting' })
+  }
+})
+
+app.get('/check-email', async (req, res) => {
+  const { email } = req.query
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'emailaddress': email })
+  res.json({ exists: !!user })
+})
+
+app.post('/reset-password', async (req, res) => {
+
+  console.log("je suis rentré !!")
+
+  const { email, newPassword } = req.body;
+
+  const database = client.db('profile')
+  const users = database.collection('users')
+
+  // Vérifier si l'utilisateur existe avec l'adresse e-mail donnée
+  const user = await users.findOne({ 'email-address': email })
+  if (!user) {
+    console.log("pas de User")
+    return res.status(404).json({ message: 'Utilisateur introuvable' });
+  }
+  console.log("User")
+
+  console.log("newPassword : " + newPassword)
+
+  if (!newPassword) {
+    console.log("pas de password")
+    return res.status(400).json({ message: 'Le champ "password" est obligatoire' });
+  }
+
+  // Hacher le nouveau mot de passe
+  const salt = await bcrypt.genSalt(10);
+  console.log("salt :" + salt)
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
+  console.log("hashedPassword : " + hashedPassword)
+
+  // Mettre à jour le mot de passe utilisateur dans la base de données
+  await updateUserPassword(user.id, hashedPassword);
+
+  res.json({ message: 'Le mot de passe a été mis à jour avec succès' });
+});
+
+
+
+app.get('/demo', (req, res) => {
+  console.log('test')
+  res.end('reponse du serveur')
+})
+
+app.get('/profile', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('profile')
+        const messages = database.collection('users')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+// app.use('/', express.static(public));
+
+app.use(cors())
+
+app.post('/videos', function (req, res) {
+  const fakeVideos = [
+    {
+      id: 1,
+      title: 'Nabil a cassé mon bong',
+      miniature:
+        'https://imgs.search.brave.com/5KvnUyLxAcJHuuU_Ry7pJksq9llJ1Cf0XXfyuKJ7IM0/rs:fit:1200:900:1/g:ce/aHR0cDovL2kuaW1n/dXIuY29tL3ExMmgy/LmpwZw',
+      channel: 'Roro',
+      video:
+        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+      tags: ['défonce', 'réaction'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false,
+      duration: ''
+    },
+    {
+      id: 2,
+      title: 'Gros bartsimpson avec Narbok',
+      miniature:
+        'https://imgs.search.brave.com/FjKYVIUEMX-Rtp38q3Ztm3a7j6bsX5rOpQGK5BGms5g/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDgxMTc0/OTcucG5n',
+      channel: 'Ludwig',
+      video:
+        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+      tags: ['défonce', 'macron'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false,
+      duration: ''
+    },
+    {
+      id: 3,
+      title: 'Nabil est parti sans fumer...',
+      miniature:
+        'https://imgs.search.brave.com/H4X-HS4LrQqKVL9iot-eS6yt_uyWTNvu-KZfjO_i9RI/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9oaWdo/dGltZXMuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE3LzAx/L0xvdHNPZkpvaW50/cy5qcGc',
+      channel: 'Maxime',
+      video:
+        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+      tags: ['défonce'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false,
+      duration: ''
+    },
+    {
+      id: 4,
+      title: 'Il a mangé tout le tramadole omg !',
+      miniature:
+        'https://imgs.search.brave.com/sQassPoRQw3-kmZKo4fGSGpSGyCxjdlyDQmobfn-YYY/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cHVibGljZG9tYWlu/cGljdHVyZXMubmV0/L3BpY3R1cmVzLzQw/MDAwL3ZlbGthL2xl/bnRpbGt5LmpwZw',
+      channel: 'Roro',
+      video:
+        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+      tags: ['défonce', 'macron', 'fun', 'réaction'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: false,
+      duration: ''
+    },
+    {
+      id: 5,
+      title: 'Il a une calvitie',
+      miniature:
+        'https://imgs.search.brave.com/Mzd1G1UAR4KtlSpOFaL5bLw8jY4YabGntaZq_3qM78Y/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4w/U0hscC16THhYTmg1/a29hUFhHdk9RSGFI/YSZwaWQ9QXBp',
+      channel: 'Roro',
+      video:
+        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
+      tags: ['macron'],
+      views: 10,
+      release: '2022-03-23',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      short: true,
+      duration: ''
+    }
+  ]
+
+  const fakeChannels = [
+    {
+      id: 1,
+      name: 'Roro',
+      pfp: '',
+      subs: 200
+    },
+    {
+      id: 2,
+      name: 'Maxime',
+      pfp: '',
+      subs: 1
+    },
+    {
+      id: 3,
+      name: 'Ludwig',
+      pfp: '',
+      subs: 60000
+    }
+  ]
+
+  const requestString = req.body.data
+  const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+  const regex = new RegExp(regexString, 'i')
+  const requestedVideos = fakeVideos.filter(
+    video =>
+      regex.test(video.title) ||
+      regex.test(video.channel) ||
+      video.tags.some(tag => regex.test(tag))
+  )
+
+  const requestedChannels = fakeChannels.filter(channel =>
+    regex.test(channel.name)
+  )
+
+  if (requestedVideos.length > 0) {
+    res.json(requestedVideos)
+  }
+})
+
+// Optionnel a vous de voir pour vous adapter à votre problématique :
+
+// app.get('/',(req,res)=>{
+
+//     res.sendFile(path.join('nomDuDossierOuLeUserArrive', 'nomDuFichierSurLequelLeUserEstCenséAtterirDèsQuilEstSurLeSite.html'));
+// })
+
+app.post('/node/sub', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('BigOne')
+        const movies = database.collection('enAttente')
         //   console.log("mongo connect")
         const query = req.body
         //   console.log(query);
@@ -83,33 +344,7 @@ app.post('/data', (req, res) => {
     run().catch(console.dir)
   })
 
-  res.end('trop cool')
-})
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body
-
-  try {
-    const database = client.db('profile')
-    const users = database.collection('users')
-
-    const user = await users.findOne({ 'email-address': email })
-
-    if (user) {
-      if (password === user.password) {
-        res.json({ success: true, message: 'Connexion réussie' })
-      } else {
-        res
-          .status(401)
-          .json({ success: false, message: 'Mot de passe incorrect' })
-      }
-    } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" })
-    }
-  } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: 'Erreur lors de la connexion' })
-  }
+  res.end()
 })
 
 app.get('/demo', (req, res) => {
@@ -118,6 +353,6 @@ app.get('/demo', (req, res) => {
 })
 
 app.listen(5600, () => {
-  console.log(console.clear())
+  console.log(console.clear)
   console.log('Server app listening on port 5600')
 })

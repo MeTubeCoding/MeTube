@@ -1,32 +1,28 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useEffect, useState } from 'react'
-import SearchBar from '../components/SearchBar'
-import Results, { type IResults } from '../components/Results'
+import React, { useState } from 'react'
+import ResultsV from '../components/Results'
+import Navbar from '../components/Navbar'
+import { useOnSearch } from '../components/useOnSearch'
+import SideBar from '../components/SideBar'
+import Filters from '../components/Filters'
 
 const Main = () => {
-  const [videos, setVideos] = useState<IResults | []>([])
-  useEffect(() => {}, [])
-  const [searchDatas, setSearchDatas] = useState('')
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const { videos, onSearch } = useOnSearch()
 
-  const onSearch = (data: string) => {
-    console.log(JSON.stringify(data))
-
-    fetch('http://localhost:5600/videos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ data })
-    })
-      .then(async response => await response.json())
-      .then((response: IResults) => {
-        setVideos(response)
-      })
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
   }
+
   return (
-    <div>
-      <SearchBar onSearch={onSearch} />
-      <Results videos={videos} />
+    <div className="max-h-screen">
+      <div style={{ height: '8.5vh' }}>
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+      </div>
+      <div className="flex flex-col" style={{ height: '92.5vh' }}>
+        <SideBar visible={isSideBarVisible} />
+        <Filters visible={isSideBarVisible}></Filters>
+        <ResultsV visible={isSideBarVisible} videos={videos} />
+      </div>
     </div>
   )
 }
