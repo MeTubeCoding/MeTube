@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react'
-import PlayMusicWithVideo from './PlayMusicWithVideo';
+import PlayMusicWithVideo from './PlayMusicWithVideo'
 
-
-
-
+export const audioRefs = useRef<HTMLAudioElement[]>([])
 
 const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
@@ -16,8 +14,6 @@ const MusicPlayer = () => {
       setSelectedAudios([...selectedAudios, ...fileList])
     }
   }
-  
-
 
   // const handlePlay = (index: number) => {
   //   if (audioRefs.current[index] != null) {
@@ -49,12 +45,24 @@ const MusicPlayer = () => {
       <input type="file" onChange={handleMusicChange} multiple />
       {selectedAudios.map((file, index) => (
         <div key={index}>
-          <audio ref={(ref) => (audioRefs.current[index] = ref)} controls>
+          <audio ref={ref => (audioRefs.current[index] = ref)} controls>
             <source src={URL.createObjectURL(file)} />
           </audio>
-          <button onClick={() =>{handlePlayWithVideo}}>Jouer la musique sur la vidéo</button>
+          <button
+            onClick={() => {
+              handlePlayWithVideo
+            }}
+          >
+            Jouer la musique sur la vidéo
+          </button>
           <br></br>
-          <button onClick={() => { handleRemove(index) }}>Enlever la musique</button>
+          <button
+            onClick={() => {
+              handleRemove(index)
+            }}
+          >
+            Enlever la musique
+          </button>
         </div>
       ))}
     </div>
