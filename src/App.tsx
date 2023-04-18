@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage'
 import NavigationBar from './components/NavigationBar'
 import VideoPage from './pages/VideoPage'
 
-function App (): JSX.Element {
+function App(): JSX.Element {
   return (
     <div className="App">
       <BrowserRouter>
