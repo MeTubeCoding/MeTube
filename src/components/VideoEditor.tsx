@@ -1,132 +1,99 @@
-import React, { useState, useRef } from 'react'
-import { Button, Input, Slider } from 'antd'
-import ReactPlayer from 'react-player'
+import React, { useState } from 'react'
 import MusicPlayer from '../components/MusicPlayer'
+import Cropper from './fonction/CropVideo'
 
-const VideoEditor = () => {
-  const [videoUrl, setVideoUrl] = useState('')
-  const [startTime, setStartTime] = useState(0)
-  const [endTime, setEndTime] = useState(0)
-  const [playing, setPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.5)
-  const [speed, setSpeed] = useState(1)
-  const [loop, setLoop] = useState(false)
-  const [muted, setMuted] = useState(false)
-  const [playedSeconds, setPlayedSeconds] = useState(0)
-  const playerRef = useRef(null)
-  const [musicPlayerActive, setMusicPlayerActive] = useState(false)
+interface VideoEditorProps {
+  selectedVideo: string | undefined
+  handleVideoUpload: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
 
-  const handleVideoUrlChange = (event: { target: { value: React.SetStateAction<string> } }) => {
-    setVideoUrl(event.target.value)
+const VideoEditor = ({
+  selectedVideo,
+  handleVideoUpload
+}: VideoEditorProps) => {
+  const [cropMode, setCropMode] = useState<boolean>(false)
+  const [croppedVideo, setCroppedVideo] = useState<string | undefined>(
+    undefined
+  )
+
+  const handleCrop = () => {
+    if (selectedVideo) {
+      // Entrer en mode de sélection de la zone de recadrage
+      setCropMode(true)
+    }
   }
 
-  const handlePlayPause = () => {
-    setPlaying(!playing)
+  const handleCropDone = (croppedSrc: string) => {
+    // Sortir du mode de sélection de la zone de recadrage
+    setCropMode(false)
+    // Mettre à jour le vidéo sélectionné avec le vidéo recadré
+    setCroppedVideo(croppedSrc)
   }
 
-  const handleVolumeChange = (value: React.SetStateAction<number>) => {
-    setVolume(value)
-  }
-
-  const handleSpeedChange = (value: React.SetStateAction<number>) => {
-    setSpeed(value)
-  }
-
-  const handleLoopChange = () => {
-    setLoop(!loop)
-  }
-
-  const handleMutedChange = () => {
-    setMuted(!muted)
-  }
-
-  const handleSeek = (value: any) => {
-    playerRef.current.seekTo(value)
-  }
-
-  const handleTrimVideo = () => {
-    playerRef.current.seekTo(startTime)
-    playerRef.current.pause()
-  }
-
-  const handleRotateLeft = () => {
-    const currentRotation = playerRef.current.getInternalPlayer().style.transform
-    playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} -90deg)`
-  }
-
-  const handleRotateRight = () => {
-    const currentRotation = playerRef.current.getInternalPlayer().style.transform
-    playerRef.current.getInternalPlayer().style.transform = `rotate(${currentRotation} 90deg)`
-  }
-
-  const handleCropVideo = () => {
-    // TODO: Implement crop functionality
-  }
-
-  const handleMergeVideos = () => {
-    // TODO: Implement merge functionality
-  }
-
-  const handleProgress = ({ playedSeconds }) => {
-    setPlayedSeconds(playedSeconds)
-  }
-
-  const handleActivateMusicPlayer = () => {
-    setMusicPlayerActive(true)
-  }
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-  }
-
-  const handleSaveVideo = () => {
-    // TODO: Implement save functionality
+  const handleCancelCrop = () => {
+    // Sortir du mode de sélection de la zone de recadrage
+    setCropMode(false)
   }
 
   return (
-        <div>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', marginRight: 20 }}>
-                <Input value={videoUrl} onChange={handleVideoUrlChange} />
-                <Button onClick={handlePlayPause}>{playing ? 'Pause' : 'Play'}</Button>
-                <Button onClick={handleTrimVideo}>Trim</Button>
-                <Button onClick={handleMergeVideos}>Merge</Button>
-                <Button onClick={handleRotateLeft}>Rotate Left</Button>
-                <Button onClick={handleRotateRight}>Rotate Right</Button>
-                <Button onClick={handleCropVideo}>Crop</Button>
-                <Button onClick={handleSaveVideo}>Save</Button>
-                <Button onClick={handleActivateMusicPlayer}>Activer MusicPlayer</Button>
-                <Slider min={0} max={1} step={0.01} onChange={handleVolumeChange} value={volume} />
-                <Slider min={0.5} max={2} step={0.1} onChange={handleSpeedChange} value={speed} />
-                <Button onClick={handleLoopChange}>{loop ? 'Disable Loop' : 'Enable Loop'}</Button>
-                <Button onClick={handleMutedChange}>{muted ? 'Unmute' : 'Mute'}</Button>
-                <Slider min={0} max={playerRef.current ? playerRef.current.getDuration() : 0} step={0.01} onChange={handleSeek} value={playedSeconds} />
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <div>{formatTime(playedSeconds)}</div>
-                <div>{formatTime(playerRef.current ? playerRef.current.getDuration() : 0)}</div>
-                </div>
-                <div><MusicPlayer/></div>
-            </div>
+    <div>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', marginRight: 20 }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}
+          >
             <div>
+              <MusicPlayer />
             </div>
-            <div style={{ flex: 1 }}>
-                <ReactPlayer
-                ref={playerRef}
-                url={videoUrl}
-                playing={playing}
-                volume={volume}
-                playbackRate={speed}
-                loop={loop}
-                muted={muted}
-                onProgress={handleProgress}
-                width="100%"
-                height="auto"
+          </div>
+          <div>
+            {cropMode ? (
+              selectedVideo && (
+                <Cropper
+                  src={selectedVideo}
+                  onDone={handleCropDone}
+                  oncancel={handleCancelCrop}
                 />
-            </div>
-            </div>
+              )
+            ) : croppedVideo ? (
+              <video controls src={croppedVideo}></video>
+            ) : selectedVideo ? (
+              <div>
+                <video controls src={selectedVideo}></video>
+                <div>
+                  <button onClick={handleCrop}>Crop</button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center space-y-4">
+                <h2 className="text-xl font-medium text-me-black">
+                  No video selected
+                </h2>
+                <label
+                  htmlFor="video-upload"
+                  className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
+                >
+                  Choose a file
+                </label>
+                <input
+                  id="video-upload"
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoUpload}
+                  className="sr-only"
+                />
+              </div>
+            )}
+          </div>
         </div>
+      </div>
+    </div>
   )
 }
 
