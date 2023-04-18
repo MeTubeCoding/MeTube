@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
-import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
@@ -14,6 +14,8 @@ const fieldsState: Record<string, string> = {}
 
 fields.forEach(field => (fieldsState[field.id] = ''))
 
+const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s:])([^\s]){8,}$/;
+
 export default function Signup() {
   const [signupState, setSignupState] =
     useState<Record<string, string>>(fieldsState)
@@ -26,6 +28,7 @@ export default function Signup() {
   };
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
+  const [passwordsValid, setPasswordsValid] = useState(true)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,13 +40,16 @@ export default function Signup() {
       return;
     }
 
-    if (arePasswordsEqual()) {
+    if (arePasswordsEqual() && isPasswordValid()) {
       console.log(signupState);
       createAccount();
     } else if (!arePasswordsEqual()) {
       console.log('Passwords do not match');
       setPasswordsMatch(false);
-    } 
+    } else if (!isPasswordValid()) {
+      console.log('Password is not valid');
+      setPasswordsValid(false);
+    }
   };
 
 
@@ -57,6 +63,9 @@ export default function Signup() {
     return signupState.password === signupState.confirmpassword
   }
 
+  const isPasswordValid = (): boolean => {
+    return PASSWORD_REGEX.test(signupState.password);
+  }
 
 
   const createAccount = async () => {
@@ -105,6 +114,12 @@ export default function Signup() {
         ))}
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
+        )}
+        {!isPasswordValid && (
+          <p className="text-me-yellow">
+            Password must contain at least 8 characters, one uppercase letter,
+            one number and one special character
+          </p>
         )}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
