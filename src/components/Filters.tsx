@@ -112,9 +112,11 @@ const Filters = (props: Props) => {
   const dropDown = () => {
     if (dropMenu.current instanceof HTMLDivElement) {
       if (dropMenu.current.classList.contains('hidden')) {
+        // dropMenu.current.classList.add('flex')
         dropMenu.current.classList.remove('hidden')
       } else {
         dropMenu.current.classList.add('hidden')
+        // dropMenu.current.classList.remove('flex')
       }
     }
   }
@@ -141,25 +143,25 @@ const Filters = (props: Props) => {
 
   return (
     <div
-      className={`mt-5 text-me-yellow font-semibold ${
+      className={`mt-5 text-me-yellow font-semibold flex flex-col ${
         props.visible ? 'ml-96' : 'ml-60'
       }`}
     >
-      <button className="flex flex-row" onClick={dropDown}>
-        <MdOutlineTune className="text-xl" />
-
-        <p className="ml-5">Filters, currently filtering by: {props.filter}</p>
-      </button>
+      <div className="flex flex-row items-center">
+        <button
+          className="flex flex-row justify-center items-center w-8 h-8 left-3 relative hover:bg-me-lightpurple rounded-lg"
+          onClick={dropDown}
+        >
+          <MdOutlineTune className="text-xl" />
+        </button>
+        <p className="ml-4">Filters</p>
+      </div>
 
       <div ref={dropMenu} className="ml-5 hidden">
-        <div className="flex flex-row justify-evenlyv">
+        <div className="flex flex-row">
           <ul className="flex flex-col text-me-yellow p-4">
             <p>UPLOAD DATE</p>
-            <hr
-              className={`m-3 border-me-yellow ${
-                props.visible ? 'w-[74.96%]' : 'w-[78%]'
-              }`}
-            ></hr>
+            <hr className={`my-3 border-me-yellow w-36`}></hr>
             {uploadDate.map(({ name }) => {
               return (
                 <li key={name} className={`rounded-lg py-1`}>
@@ -171,22 +173,9 @@ const Filters = (props: Props) => {
             })}
           </ul>
 
-          {/* <div>
-          <p>Type</p>
-          <hr className="w-10 m-3 border-me-yellow"></hr>
-          <a onClick={fVideo}>Video</a>
-          <a onClick={fChannel}>Channel</a>
-          <a onClick={fPlaylist}>Playlist</a>
-          <a onClick={fMovie}>Movie</a>
-        </div> */}
-
           <ul className="flex flex-col text-me-yellow p-4">
             <p>TYPE</p>
-            <hr
-              className={`m-3 border-me-yellow ${
-                props.visible ? 'w-[74.96%]' : 'w-[78%]'
-              }`}
-            ></hr>
+            <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Type.map(({ name }) => {
               return (
                 <li key={name} className={`rounded-lg py-1`}>
@@ -199,11 +188,7 @@ const Filters = (props: Props) => {
           </ul>
           <ul className="flex flex-col text-me-yellow p-4">
             <p>DURATION</p>
-            <hr
-              className={`m-3 border-me-yellow ${
-                props.visible ? 'w-[74.96%]' : 'w-[78%]'
-              }`}
-            ></hr>
+            <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Duration.map(({ name }) => {
               return (
                 <li key={name} className={` rounded-lg py-1`}>
@@ -216,11 +201,7 @@ const Filters = (props: Props) => {
           </ul>
           <ul className="flex flex-col text-me-yellow p-4">
             <p>FEATURES</p>
-            <hr
-              className={`m-3 border-me-yellow ${
-                props.visible ? 'w-[74.96%]' : 'w-[78%]'
-              }`}
-            ></hr>
+            <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Features.map(({ name }) => {
               return (
                 <li key={name} className={` rounded-lg py-1`}>
@@ -233,11 +214,7 @@ const Filters = (props: Props) => {
           </ul>
           <ul className="flex flex-col text-me-yellow p-4">
             <p>SORT BY</p>
-            <hr
-              className={`m-3 border-me-yellow ${
-                props.visible ? 'w-[74.96%]' : 'w-[78%]'
-              }`}
-            ></hr>
+            <hr className={`my-3 border-me-yellow w-36`}></hr>
             {sortBy.map(({ name }) => {
               return (
                 <li key={name} className={` rounded-lg py-1`}>
