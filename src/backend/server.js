@@ -131,26 +131,34 @@ app.get('/check-email', async (req, res) => {
 })
 
 app.post('/reset-password', async (req, res) => {
-  const { email, password } = req.body;
 
-  // Vérifier que le mot de passe respecte les exigences de complexité
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.*[^\w\d\s:])([^\s]){8,}$/;
-  if (!passwordRegex.test(password)) {
-    return res.status(400).json({ message: 'Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.' });
-  }
+  console.log("je suis rentré !!")
+
+  const { email, newPassword } = req.body;
 
   const database = client.db('profile')
   const users = database.collection('users')
 
   // Vérifier si l'utilisateur existe avec l'adresse e-mail donnée
-  const user = await users.findOne({ 'emailaddress': email })
+  const user = await users.findOne({ 'email-address': email })
   if (!user) {
+    console.log("pas de User")
     return res.status(404).json({ message: 'Utilisateur introuvable' });
+  }
+  console.log("User")
+
+  console.log("newPassword : " + newPassword)
+
+  if (!newPassword) {
+    console.log("pas de password")
+    return res.status(400).json({ message: 'Le champ "password" est obligatoire' });
   }
 
   // Hacher le nouveau mot de passe
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  console.log("salt :" + salt)
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
+  console.log("hashedPassword : " + hashedPassword)
 
   // Mettre à jour le mot de passe utilisateur dans la base de données
   await updateUserPassword(user.id, hashedPassword);
@@ -164,6 +172,7 @@ app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
+
 app.get('/profile', (req, res) => {
   client.connect(err => {
     async function runy() {
