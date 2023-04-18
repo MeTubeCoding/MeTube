@@ -8,7 +8,7 @@ import { LiveNavBar } from "./composant/LiveNavBar"
 function App() {
 	return (
 		<>
-			<div className='bg-me-background'>
+			<div className='bg-me-background h-screen w-screen'>
 				<Live />
 			</div>
 		</>
