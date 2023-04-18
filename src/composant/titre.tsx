@@ -1,21 +1,21 @@
 import React from "react"
 
-export function Description() {
-	const [description, setDescription] = React.useState("")
+export function Titre() {
+	const [titre, settitre] = React.useState("")
 
 	function handleInputChange(event: {
 		target: { value: React.SetStateAction<string> }
 	}) {
-		setDescription(event.target.value)
+		settitre(event.target.value)
 	}
 	function post() {
 		console.log("log")
-		const message = document.getElementById("description") as HTMLInputElement
+		const message = document.getElementById("titre") as HTMLInputElement
 		const local = {
 			description: message.value,
 			live: "Zerator",
 		}
-		fetch("http://127.0.0.1:5600/desc", {
+		fetch("http://127.0.0.1:5600/titre", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -31,16 +31,18 @@ export function Description() {
 	}
 
 	return (
-		<div className='p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md border'>
+		<div className='p-4 max-w-full mx-auto bg-white rounded-xl shadow-md border h-auto'>
 			<div className='mt-3 text-center'>
-				<h3 className='text-lg font-medium text-red-500 text-me-colorprimary font-bold'>Description</h3>
-				<p className='mt-2 text-sm text-black-900 text-me-white'>{description}</p>
+				<h3 className='text-lg font-medium text-red-500 text-me-colorprimary font-bold'>
+					Titre
+				</h3>
+				<p className='mt-2 text-sm text-black-900 text-me-white'>{titre}</p>
 			</div>
 			<textarea
-				className="mt-4 px-3 py-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-me-background text-me-white"
-				id='description'
-				style={{resize : "none" }}
-				value={description}
+				className='mt-4 px-3 py-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-me-background text-me-white'
+				id='titre'
+				style={{ resize: "none" }}
+				value={titre}
 				onChange={handleInputChange}
 				placeholder='Enter your description here'
 			/>

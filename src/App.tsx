@@ -7,6 +7,7 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import Tendances from './pages/feed/trending'
+import { Live } from './composant/Live'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/feed/trending" element={<Tendances />} />
+            <Route path="/live" element={<Live/>} />
           </Routes>
         </BrowserRouter>
       </div>
@@ -29,3 +31,4 @@ function App() {
 }
 
 export default App
+

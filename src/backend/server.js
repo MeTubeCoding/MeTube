@@ -42,6 +42,15 @@ app.use(
     extended: true
   })
 )
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.header('Access-Control-Allow-Credentials', true)
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
 
 app.use('/', express.static(publi))
 
@@ -78,18 +87,16 @@ app.post('/signup', (req, res) => {
     async function run() {
       try {
         const database = client.db('profile')
-        const users = database.collection('users')
+        const messages = database.collection('users')
         const query = req.body
-        await users.insertOne(query)
+        await messages.insertOne(query)
       } finally {
-        // Ensures that the client will close when you finish/error
         await client.close()
       }
     }
     run().catch(console.dir)
   })
-  //coucou
-  res.end('trop cool')
+  res.end()
 })
 
 const bcrypt = require('bcryptjs')
@@ -101,7 +108,7 @@ app.post('/login', async (req, res) => {
     const database = client.db('profile')
     const users = database.collection('users')
 
-    const user = await users.findOne({ 'emailaddress': email })
+    const user = await users.findOne({ emailaddress: email })
 
     if (user) {
       const isPasswordCorrect = await bcrypt.compare(password, user.password)
@@ -126,73 +133,77 @@ app.get('/check-email', async (req, res) => {
   const { email } = req.query
   const database = client.db('profile')
   const users = database.collection('users')
-  const user = await users.findOne({ 'emailaddress': email })
+  const user = await users.findOne({ 'email-address': email })
   res.json({ exists: !!user })
 })
-
-app.post('/reset-password', async (req, res) => {
-
-  console.log("je suis rentré !!")
-
-  const { email, newPassword } = req.body;
-
-  const database = client.db('profile')
-  const users = database.collection('users')
-
-  // Vérifier si l'utilisateur existe avec l'adresse e-mail donnée
-  const user = await users.findOne({ 'email-address': email })
-  if (!user) {
-    console.log("pas de User")
-    return res.status(404).json({ message: 'Utilisateur introuvable' });
-  }
-  console.log("User")
-
-  console.log("newPassword : " + newPassword)
-
-  if (!newPassword) {
-    console.log("pas de password")
-    return res.status(400).json({ message: 'Le champ "password" est obligatoire' });
-  }
-
-  // Hacher le nouveau mot de passe
-  const salt = await bcrypt.genSalt(10);
-  console.log("salt :" + salt)
-  const hashedPassword = await bcrypt.hash(newPassword, salt);
-  console.log("hashedPassword : " + hashedPassword)
-
-  // Mettre à jour le mot de passe utilisateur dans la base de données
-  await updateUserPassword(user.id, hashedPassword);
-
-  res.json({ message: 'Le mot de passe a été mis à jour avec succès' });
-});
-
-
 
 app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
+app.get('/profile', async (req, res) => {
+  const userEmail = req.cookies.email
+  const database = client.db('profile')
+  const users = database.collection('users')
+  const user = await users.findOne({ 'email-address': userEmail })
 
-app.get('/profile', (req, res) => {
-  client.connect(err => {
-    async function runy() {
-      try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
-        let search = await messages.find({}).toArray()
-        const reponseSearch = JSON.stringify(search)
-        res.end(reponseSearch)
-      } finally {
-        await client.close()
-      }
-    }
-    runy().catch(console.dir)
-  })
+  if (user) {
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.setHeader('Access-Control-Allow-Methods', 'GET')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-Requested-With,content-type'
+    )
+    res.json({ username: user.username, email: user.emailAddress })
+  } else {
+    res.status(401).send('Unauthorized')
+  }
 })
 
 // app.use('/', express.static(public));
 
-app.use(cors())
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Remplacez par l'URL de votre application frontend
+    credentials: true // Permet l'envoi de cookies avec les requêtes CORS
+  })
+)
+app.post('/channels'),
+  function (req, res) {
+    const fakeChannels = [
+      {
+        id: 1,
+        name: 'Roro',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png',
+        subs: 200
+      },
+      {
+        id: 2,
+        name: 'Maxime',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029117988914/Capture_decran_2023-04-17_a_10.36.13.png',
+        subs: 1
+      },
+      {
+        id: 3,
+        name: 'Ludwig',
+        pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029751316550/Capture_decran_2023-03-29_a_16.17.11.png',
+        subs: 60000
+      }
+    ]
+
+    const requestString = req.body.data
+    const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+    const regex = new RegExp(regexString, 'i')
+
+    const requestedChannels = fakeChannels.filter(channel =>
+      regex.test(channel.name)
+    )
+
+    if (requestedChannels.length > 0) {
+      res.json(requestedChannels)
+    }
+  }
 
 app.post('/videos', function (req, res) {
   const fakeVideos = [
@@ -278,27 +289,6 @@ app.post('/videos', function (req, res) {
     }
   ]
 
-  const fakeChannels = [
-    {
-      id: 1,
-      name: 'Roro',
-      pfp: '',
-      subs: 200
-    },
-    {
-      id: 2,
-      name: 'Maxime',
-      pfp: '',
-      subs: 1
-    },
-    {
-      id: 3,
-      name: 'Ludwig',
-      pfp: '',
-      subs: 60000
-    }
-  ]
-
   const requestString = req.body.data
   const regexString = requestString.replace(/ /g, '|').split('').join('.*')
   const regex = new RegExp(regexString, 'i')
@@ -307,10 +297,6 @@ app.post('/videos', function (req, res) {
       regex.test(video.title) ||
       regex.test(video.channel) ||
       video.tags.some(tag => regex.test(tag))
-  )
-
-  const requestedChannels = fakeChannels.filter(channel =>
-    regex.test(channel.name)
   )
 
   if (requestedVideos.length > 0) {
@@ -346,6 +332,105 @@ app.post('/node/sub', (req, res) => {
 
   res.end()
 })
+app.post('/chat', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/moderation', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/desc', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('description')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/titre', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('titre')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.get('/chat', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/moderation', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
 
 app.get('/demo', (req, res) => {
   console.log('test')
@@ -353,6 +438,6 @@ app.get('/demo', (req, res) => {
 })
 
 app.listen(5600, () => {
-  console.log(console.clear)
+  console.clear()
   console.log('Server app listening on port 5600')
 })
