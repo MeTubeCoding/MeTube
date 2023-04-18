@@ -2,16 +2,7 @@
 import React from 'react'
 import mockData from './mocking.json'
 
-export function trend_tag() {
-    const trend_tag = mockData.chaine.tag_pref;
-    const videos = mockData.videos;
-    const vid_a_afficher = [];
-    for (let i = 0; i < videos.length; i++) {
-        for (let j = 0; j < trend_tag.length; j++) {
-            if (videos[i].tags[j] === trend_tag.tag_pref[j]) {
-                vid_a_afficher.push(videos[i]);
-            }
-        }
+
 export function trend_new() {
   const trend_new = mockData.new
   return (
