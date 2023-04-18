@@ -2,6 +2,10 @@ import React from 'react'
 
 // import composant  :
 import {
+  trend_gaming,
+  trend_movies,
+  trend_music,
+  trend_new,
   trend_tag
 } from '../../timeline_components/trending_categories'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
@@ -26,7 +30,10 @@ function Tendances() {
             </h3>
           </div>
           <div className="ml-5 flex flex_col justify-center">
-            {trend_tag()}
+            {trend_new()}
+            {trend_music()}
+            {trend_gaming()}
+            {trend_movies()}
           </div>
         </div>
       </div>
