@@ -1,21 +1,39 @@
-import React from 'react';
+
+import React, { useState } from 'react'
+import ResultsV from '../../components/Results'
+import Navbar from '../../components/Navbar'
+import { useOnSearch } from '../../components/useOnSearch'
+import SideBar from '../../components/SideBar'
+import Filters from '../../components/Filters'
 
 function History() {
+
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const { videos, onSearch } = useOnSearch()
+
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
+  }
+
   return (
-    <div className="History">
-      <div className="bg-neutral-900 object-cover absolute top-0 left-0 right-0">
-        <img src="menu-btn.png" className="object-cover w-5 m-5"></img>
-        <div className="rounded-full absolute top-0 left-0 right-0 bottom-0 hover:bg-white opacity-25 object-cover w-9 m-3"></div>
+    <div className="History text-me-orange">
+      <div style={{ height: '8.5vh' }}>
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+      </div>
+      <div className="flex flex-col" style={{ height: '92.5vh' }}>
+        <SideBar visible={isSideBarVisible} />
+        <Filters visible={isSideBarVisible}></Filters>
+        <ResultsV visible={isSideBarVisible} videos={videos} />
       </div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-0 bottom-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-0 bottom-0 ml-60 w-20"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-0 bottom-0 ml-60 w-96"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 bottom-0 right-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-96 w-20 bottom-0"></div>
-      <div className="bg-neutral-900 object-cover absolute top-14 left-80 right-96 mr-20 bottom-0 overflow-y-auto max-h-[1000px]">
-        <p className="font-bold text-base text-white relative top-5">Historique de visionage</p>
-        <div>
-          <p className="font-bold text-base text-white relative mt-12 mb-5">Aujourd'hui</p>
+      <div className="bg-neutral-900 object-cover absolute top-36 left-96 right-96 mr-20 bottom-0 overflow-y-auto max-h-[1000px]">
+        <p className="font-bold text-base relative top-5">Historique de visionage</p>
+      <div>
+          <p className="font-bold text-base relative mt-12 mb-5">Aujourd&apos;hui</p>
           <div className="relative mb-4 overflow-hidden group">
             <iframe
               className="rounded-xl"
@@ -33,7 +51,7 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
             David fils de Momone • 2,9 M de vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
               Mon dernier single est disponible absolument partout 
               👉https://bfan.link/j-ai-mange-une-pomme-et-j-ai-plein-d-energie
 
@@ -76,12 +94,12 @@ function History() {
               allowFullScreen
             ></iframe>
             <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
-              J'ai Survécu 100 Jours Sur Terraria en Mode Master...
+              J&apos;ai Survécu 100 Jours Sur Terraria en Mode Master...
             </div>
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Ekyoten • 72 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
               Il y a 10 mois je sortais ma toute première vidéo, survivre 100 jours en expert sur terraria, 10 mois plus tard je me sens enfin prêt à relever le plus gros défi de terraria, survivre 100 jours en MASTER !
 
               -- Réseaux--
@@ -129,7 +147,7 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Timy’s adventures • 127 vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1text-gray-400">
               salut! Aujourd’hui je vous palre du jeu vidéo
               Bon visonnage!
 
@@ -137,7 +155,7 @@ function History() {
 
                / @timy1411  
 
-              ejoind l'aventure:
+              ejoind l&apos;aventure:
 
               100 abonner: novembre 2022
               200 abonner: dimanche 26 mars 2023
@@ -160,8 +178,7 @@ function History() {
         <div>
           <p className="font-bold text-base text-white relative mt-12 mb-6">Hier</p>
           <div>
-            <img src="short.png" className="absolute object-cover w-5 mt-0 w-6 h-6"></img>
-            <p className="absolute font-bold text-base text-white relative mt-10 mb-5 ml-8">
+            <p className="absolute font-bold text-base text-white relative mt-10 mb-5">
               Shorts
               <div className="bg-neutral-100 absolute right-0 top-2 w-1 h-1 bg-gray-500 rounded-full"></div>
               <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
@@ -181,7 +198,7 @@ function History() {
                     allowFullScreen
                   ></iframe>
                   <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
-                    L'EXPOSÉ CATASTROPHIQUE de CHOSS
+                    L&apos;EXPOSÉ CATASTROPHIQUE de CHOSS
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
                     <div className="bg-neutral-100 absolute right-0 top-2 w-1 h-1 bg-gray-500 rounded-full"></div>
@@ -315,9 +332,9 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Lamatrak • 58 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
-              Si je meurs, je recommence tout le jeu ! C'est le défi que je me suis lancé aujourd'hui et que j'ai réalisé en live sur twitch: https://www.twitch.tv/lamatrak
-              Il s'agit de ma première vidéo Youtube, j'ai tout fait tout seul, de la minia au montage, n'hésitez pas à me dire ce que vous en pensez ! 
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+              Si je meurs, je recommence tout le jeu ! C&apos;est le défi que je me suis lancé aujourd&apos;hui et que j&apos;ai réalisé en live sur twitch: https://www.twitch.tv/lamatrak
+              Il s&apos;agit de ma première vidéo Youtube, j&apos;ai tout fait tout seul, de la minia au montage, n&apos;hésitez pas à me dire ce que vous en pensez ! 
               biz.
             </div>
             <div className="bg-neutral-900 object-cover absolute top-28 ml-72 left-0 bottom-0 right-0"></div>
@@ -346,13 +363,13 @@ function History() {
               allowFullScreen
             ></iframe>
             <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
-              Ce Speedrunneur n'est Littéralement pas Humain...
+              Ce Speedrunneur n&apos;est Littéralement pas Humain...
             </div>
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Julgane • 682 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
-              On regarde PLEINS de Records du Monde de Speedrun sur pleins de Jeux ! Y a d'ailleurs des ordinateurs qui jouent parfaitement, bref likez commentez si vous aimez svp.......
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+              On regarde PLEINS de Records du Monde de Speedrun sur pleins de Jeux ! Y a d&apos;ailleurs des ordinateurs qui jouent parfaitement, bref likez commentez si vous aimez svp.......
 
               Liste des vidéos regardées: https://pastebin.com/CFiM8LFH
 
@@ -396,7 +413,7 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Cinéma Trash • 363 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
               Est ce que vous connaissez vraiment tout des Simpson ?
               La série va fêter son 750ème épisode, regarder les 34 saisons entier vous demanderait plus de 273 heures !
               La naissance de Bart, le père secret de Lisa… il y a forcément des choses que vous avez manqué. Des épisodes légendaires, que vous devez              absolument aller voir !
@@ -442,15 +459,15 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               Savun • 302 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
               - Chaîne Twitch : https://www.twitch.tv/savun
               - Chaîne rediff VOD :   
 
                / @vayke  
-              - S'abonner l Twitter : https://twitter.com/Savunew
+              - S&apos;abonner l Twitter : https://twitter.com/Savunew
               - Facebook : https://www.facebook.com/Savun-211958...
 
-              Présentation de, apparemment, "l'exceptionnel Hogwarts Legacy : l'héritage de Poudlard" (spoiler : non) le jeu Harry Potter
+              Présentation de, apparemment, &quot;l&apos;exceptionnel Hogwarts Legacy : l&apos;héritage de Poudlard&quot; (spoiler : non) le jeu Harry Potter
 
               Conditions de test :  version PS5 sur la PS5 
 
@@ -460,23 +477,23 @@ function History() {
               - 29h de jeu 
               - Jeu fait en mode Normal avec la maison Serpentard 
               - 61% de Progression globale 
-              - 83% de Progression pour "Combat"
-              - 94% de Progression pour "Quêtes" 
-              - 19% de Progression pour "Exploration"
-              - 86% de Progression pour "Guide du Sorcier" 
-              - 25% de Progression pour "Salle sur Demande" 
+              - 83% de Progression pour &quot;Combat&quot;
+              - 94% de Progression pour &quot;Quêtes&quot;
+              - 19% de Progression pour &quot;Exploration&quot;
+              - 86% de Progression pour &quot;Guide du Sorcier&quot; 
+              - 25% de Progression pour &quot;Salle sur Demande&quot;
 
               --------------------------------------------------------------------------
 
-              Musiques utilisées par ordre d'apparition :
+              Musiques utilisées par ordre d&apos;apparition :
 
               - Rugrats Intro / Razmoket thème 
               - Joakim Karud - Take It Easy
-              - Banjo-Kazooie - Mumbo's Moutain 
+              - Banjo-Kazooie - Mumbo&apos;s Moutain 
               - Joakim Karud - Waves (Thème de la chaîne) 
               - Rayman 3 - Globox 
               - Sonic Unleashed - Apotos Hub Day 
-              - Pokémon XD : Dr. Kaminko's Manor 
+              - Pokémon XD : Dr. Kaminko&apos;s Manor 
               - Joakim Karud - Enjoy 
               - Pokémon Colosseum - Normal Battle 
               - Dark Souls 3 - Iudex Gundyr
@@ -503,7 +520,7 @@ function History() {
 
               Gameplay :
 
-              Gameplay de Hogwarts Legacy : l'Héritage de Poudlard par moi-même 
+              Gameplay de Hogwarts Legacy : l&apos;Héritage de Poudlard par moi-même 
 
               S.
             </div>
@@ -538,7 +555,7 @@ function History() {
             <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
               EGO • 534 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
               On parle de LoL, on parle de Cs, on parle de Valo, mais tout le monde semble oublier Rocket League. Alors, moi, je vous explique.
 
 
@@ -554,7 +571,7 @@ function History() {
 
               _
                                                                                                                                                                                     
-              Musiques d'Epidemic Sound :
+              Musiques d&apos;Epidemic Sound :
 
               1. Daytona - BLUE STEEL
               2. Blue Dragon - Toby Tranter
