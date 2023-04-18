@@ -83,6 +83,11 @@ function SideBar(props: SideBarProps) {
       href: '/feed/trending'
     },
     {
+      icon: <MdOutlineBolt className="text-xl" />,
+      name: 'Live',
+      href: '/live'
+    },
+    {
       icon: <TbMusic className="text-xl" />,
       name: 'Music',
       href: '/musics'
