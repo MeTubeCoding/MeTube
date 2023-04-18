@@ -79,12 +79,12 @@ app.post('/desc',(req,res)=>{
   res.end();
 });
 
-app.post('/titre',(req,res)=>{
+app.post('/dataLive',(req,res)=>{
   client.connect(err => {
     async function run() {
       try {
         const database = client.db('LiveBdd');
-        const messages = database.collection('titre');
+        const messages = database.collection('dataLive');
         const query = req.body;
         await messages.insertOne(query);
       } finally {

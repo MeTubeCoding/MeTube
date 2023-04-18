@@ -14,12 +14,12 @@ export function Live() {
 	let showEcran: MediaStream
 	let peerConnection: RTCPeerConnection
 	let remoteStream: MediaStream
-	
+
 	const [mode, setMode] = useState("streamer");
 
-    const handleModeChange = (newMode: string) => {
-        setMode(newMode);
-    }
+	const handleModeChange = (newMode: string) => {
+		setMode(newMode);
+	}
 
 	const init = async () => {
 		console.log("exec")
@@ -36,8 +36,8 @@ export function Live() {
 
 		(document.getElementById("webcam") as HTMLVideoElement).srcObject =
 			localStream
-		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
-			showEcran
+			; (document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
+				showEcran
 
 		createOffer()
 	}
@@ -53,6 +53,30 @@ export function Live() {
 		console.log("Offer", offer)
 	}
 
+	function post() {
+		console.log("log")
+		const titre = document.getElementById("titre") as HTMLInputElement
+		const description = document.getElementById("description") as HTMLInputElement
+		const local = {
+			titre: titre.value,
+			description: description.value,
+			date: new Date().toISOString()
+		}
+		fetch("http://127.0.0.1:5600/dataLive", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(local),
+		})
+			.then((res) => {
+				return res.text()
+			})
+			.then((res) => {
+				console.log(res)
+			})
+	}
+
 	useEffect(() => {
 		init()
 		console.log("init")
@@ -60,7 +84,7 @@ export function Live() {
 
 	return (
 		<>
-		
+
 			<LiveNavBar onModeChange={handleModeChange} />
 
 			{mode === "streamer" && (
@@ -87,6 +111,12 @@ export function Live() {
 									<ListeViewer />
 								</div>
 							</div>
+							<button
+								className='mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-md hover:bg-neutral-300 hover:text-red-600 bg-opacity-90 bg-me-colorprimary'
+								onClick={post}
+							>
+								Send
+							</button>
 						</div>
 					}
 				</div>
