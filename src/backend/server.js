@@ -6,8 +6,17 @@ const app = express();
 const cors = require('cors');
 const bodyparser = require("body-parser");
 const path = require('path');
-
 const { MongoClient, ServerApiVersion} = require('mongodb');
+const httpServer = require('http').createServer(app);
+
+const io = require('socket.io')(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+app.use(cors());
 
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 require('./db');
@@ -16,17 +25,24 @@ const uri = process.env.URI;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200 
-}
-
 app.use(bodyparser.json()); 
 app.use(bodyparser.urlencoded({
   extended: true
 }));
 
-app.use(cors(corsOptions));
+
+io.on('connection', (socket) => {
+  console.log('Un utilisateur s\'est connecté');
+
+  socket.on('disconnect', () => {
+    console.log('Un utilisateur s\'est déconnecté');
+  });
+
+  socket.on('chat message', (msg) => {
+    console.log('Message: ' + msg);
+    io.emit('chat message', msg);
+  });
+});
 
 app.post('/chat',(req,res)=>{
   client.connect(err => {
@@ -81,7 +97,7 @@ app.get('/chat',(req,res)=>{
 });
 
 
-app.listen(5600,() => {
+httpServer.listen(5600,() => {
   console.clear();
   console.log('Server app listening on port 5600');
 });
