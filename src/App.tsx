@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import Video from './components/Video'
-import mtVideos from './components/Videos'
-import './App.css'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import NavigationBar from './components/NavigationBar'
+import VideoPage from './pages/VideoPage'
 
-function App(): JSX.Element {
-  const [video, setVideo] = useState([])
-  useEffect(() => {
-    setVideo(mtVideos)
-  }, [])
+function App (): JSX.Element {
   return (
-    <>
-      <div className="App">
-        <div className="app_video">
-          {video.map(vid => (
-            <Video id={vid.id} src={vid.url} />
-          ))}
-        </div>
-      </div>
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/short" element={<HomePage />} />
+          <Route path="/" element={<NavigationBar />} />
+          <Route path="/videopage" element={<VideoPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 

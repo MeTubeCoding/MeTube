@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,10 +22,6 @@
   },
   // a modif : 
   "include": [
-    "src",
-    "server.js", 
-    "setupTests.ts",
-    "tailwind.config.js",
-    "postcss.config.js"
-  ]
+    "src"
+, "serverBackEnd.js", "setupTests.ts"  ]
 }

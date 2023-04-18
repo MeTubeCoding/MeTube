@@ -4,7 +4,7 @@
     width: 400px;
     scroll-snap-align: start;
     border-radius: 20px;
-    box-shadow: 0px 2px 8px 4px rgb(84, 84, 84);
+    box-shadow: 0px 2px 8px 4px red;
 }
 
 .video_player {
@@ -101,7 +101,7 @@
 }
 
 .shortsVideoSideIcon > .MuiSvgIcon-root:hover {
-    color:blue;
+    color: red;
 }
 
 .shortsDesc > .ticker {
