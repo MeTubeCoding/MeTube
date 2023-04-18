@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react'
 import PlayMusicWithVideo from './PlayMusicWithVideo'
 
-export const audioRefs = useRef<HTMLAudioElement[]>([])
-
 const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
@@ -14,18 +12,6 @@ const MusicPlayer = () => {
       setSelectedAudios([...selectedAudios, ...fileList])
     }
   }
-
-  // const handlePlay = (index: number) => {
-  //   if (audioRefs.current[index] != null) {
-  //     void audioRefs.current[index]?.play()
-  //   }
-  // }
-
-  // const handlePause = (index: number) => {
-  //   if (audioRefs.current[index] != null) {
-  //     audioRefs.current[index]?.pause()
-  //   }
-  // }
 
   const handleRemove = (index: number) => {
     const updatedFiles = [...selectedAudios]
@@ -50,7 +36,7 @@ const MusicPlayer = () => {
           </audio>
           <button
             onClick={() => {
-              handlePlayWithVideo
+              handlePlayWithVideo()
             }}
           >
             Jouer la musique sur la vidéo
