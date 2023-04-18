@@ -5,6 +5,7 @@ import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
+import { type } from 'os'
 
 interface LoginState {
   email: string
@@ -59,6 +60,7 @@ const Login: React.FC = () => {
           )
           if (passwordMatch) {
             // Connexion réussie
+            localStorage.setItem("test",JSON.stringify(data));
             navigate('/profile')
           } else {
             // Échec de la connexion

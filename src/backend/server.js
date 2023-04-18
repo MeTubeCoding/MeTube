@@ -116,7 +116,10 @@ app.post('/login', async (req, res) => {
         res.json({
           success: true,
           message: 'Connexion réussie',
-          hashedPassword: user.password
+          hashedPassword: user.password,
+          email: `${email}`,
+          password: `${password}`
+
         })
       } else {
         res.status(401).json({ success: false, message: 'Incorrect password' })
