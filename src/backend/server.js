@@ -130,6 +130,7 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error while connecting' })
   }
+  res.end()
 })
 
 app.get('/check-email', async (req, res) => {
@@ -138,6 +139,7 @@ app.get('/check-email', async (req, res) => {
   const users = database.collection('users')
   const user = await users.findOne({ 'email-address': email })
   res.json({ exists: !!user })
+  res.end()
 })
 
 app.get('/demo', (req, res) => {
@@ -162,6 +164,7 @@ app.get('/profile', async (req, res) => {
   } else {
     res.status(401).send('Unauthorized')
   }
+  res.end()
 })
 
 // app.use('/', express.static(public));
