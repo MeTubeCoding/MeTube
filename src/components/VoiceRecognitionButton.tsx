@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { MdOutlineKeyboardVoice } from 'react-icons/md'
 
 interface IProps {
   setSearchValue: (value: string) => void
@@ -51,22 +52,15 @@ const VoiceRecognitionButton = (props: IProps) => {
   }
 
   return window.SpeechRecognition || (window as any).webkitSpeechRecognition ? (
-    <button onClick={handleClick}>
-      <svg
-        aria-hidden="true"
-        className="w-5 h-5 bg-me-yellow"
-        fill="none"
-        stroke="white"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M6 18L18 6M6 6l12 12"
-        ></path>
-      </svg>
+    <button
+      onClick={handleClick}
+      className="flex items-center justify-center bg-me-purple rounded-full w-12 h-12 outline-none focus:outline-none"
+    >
+      <MdOutlineKeyboardVoice
+        size={20}
+        color="bg-me-yellow"
+        className={isListening ? 'animate-pulse' : ''}
+      />
       <span className="sr-only">
         {isListening ? 'Stop' : 'Start'} listening
       </span>

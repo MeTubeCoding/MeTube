@@ -45,13 +45,13 @@ const SearchBar = (props: IProps) => {
   const nBorder = () => {
     btn.current?.classList.remove('border-me-yellow')
     btn.current?.classList.add('border-me-lightpurple')
-    setShowHistory(false)
+    setShowHistory(true)
   }
 
   const yColor = () => {
     logo.current?.classList.remove('stroke-me-yellow')
     logo.current?.classList.add('stroke-me-darkpurple')
-    setShowHistory(false)
+    setShowHistory(true)
   }
 
   const nColor = () => {

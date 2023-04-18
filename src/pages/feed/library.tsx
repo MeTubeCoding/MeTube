@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-let test = document.getElementById('test')
+const test = document.getElementById('test')
 
 test?.addEventListener('click', () => {
   fetch('http://localhost:5600/demo')
@@ -15,7 +15,7 @@ function Bibliotheque() {
       <h1 className='text-5xl sm:mb-16'>Bibliothèque</h1>
 
       <ul>
-        <h1 className='text-4xl sm:mb-10'>J'aime</h1>
+        <h1 className='text-4xl sm:mb-10'>J`aime</h1>
 
         <div className='flex justify-around flex-row sm:mb-12'>
           <iframe
