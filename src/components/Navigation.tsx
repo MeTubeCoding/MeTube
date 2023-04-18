@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface NavigationProps {
-  // Ajoutez les props nécessaires ici
-}
-
-const Navigation: React.FC<NavigationProps> = ({}) => {
+const Navigation: React.FC = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-me-black p-6">
       <div className="flex items-center flex-shrink-0 text-me-white mr-6">
@@ -20,9 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({}) => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <title>Menu</title>
-            <path
-              d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
-            />
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
       </div>
