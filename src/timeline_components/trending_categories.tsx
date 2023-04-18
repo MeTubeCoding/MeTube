@@ -3,15 +3,50 @@ import React from 'react'
 import mockData from './mocking.json'
 
 export function trend_tag() {
-    const trend_tag = mockData.chaine.tag_pref;
+    const chaine = mockData.chaine;
     const videos = mockData.videos;
     const vid_a_afficher = [];
-    for (let i = 0; i < videos.length; i++) {
-        for (let j = 0; j < trend_tag.length; j++) {
-            if (videos[i].tags[j] === trend_tag.tag_pref[j]) {
-                vid_a_afficher.push(videos[i]);
-            }
+  
+    for (let i = 0; i < chaine.length; i++) {
+      const trend_tag = mockData.chaine[i].tag_pref;
+  
+      for (let j = 0; j < videos.length; j++) {
+        const videos_tags = mockData.videos[j].tags;
+        let tag_found = false;
+  
+        for (let k = 0; k < videos_tags.length; k++) {
+          if (trend_tag.includes(videos_tags[k])) {
+            tag_found = true;
+            break;
+          }
         }
+  
+        if (tag_found) {
+          vid_a_afficher.push(videos[j]);
+        }
+      }
+    }
+  
+    // Afficher les vidéos ayant des tags en commun avec les chaînes
+    return (
+      <div className="mr-5 p-0 text-center flex flex-col h-full">
+        <h4 className="mb-5">VIDEOS A AFFICHER</h4>
+        {vid_a_afficher.map(video => (
+          <div className="flex flex-col">
+            <div className="flex flex-col w-64">
+              <img
+                className="mr-1% rounded-lg object-cover w-64 h-[144px]"
+                src={video.minia}
+              />
+              <h5 className="text-left py-2">{video.titre}</h5>
+              <p className="text-left pb-5">{video.chaine}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  
 export function trend_new() {
   const trend_new = mockData.new
   return (
