@@ -16,12 +16,12 @@ import {
 
 function Tendances() {
   return (
-      <div className="flex flex-row justify-start h-screen bg-neutral-900">
-        <div className="bg-neutral-700 px-8 mr-20 "></div>
+      <div className="flex flex-row justify-start text-me-yellow">
+        <div className=""></div>
         <div>
-          <div className="flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
+          <div className="flex flex-row justify-center items-center my-3">
             <img
-              className="rounded-full mr-2%"
+              className="rounded-full"
               src="https://www.youtube.com/img/trending/avatar/trending.png"
             ></img>
             <h3 className="m-0 p-0 text-center leading-normal text-3xl">

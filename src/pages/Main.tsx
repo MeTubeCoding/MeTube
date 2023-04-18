@@ -25,7 +25,7 @@ const Main = () => {
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        {HasSearched ? <div><Recherche filter={filter} visible={isSideBarVisible} setFilter={setFilter}/><Results videos={videos} channels={channels} filter={filter} visible={isSideBarVisible}></Results></div>: <Tendances></Tendances> }
+        {HasSearched ? <div><Recherche filter={filter} visible={isSideBarVisible} setFilter={setFilter}/><Results videos={videos} channels={channels} filter={filter} visible={isSideBarVisible}></Results></div> : <Tendances></Tendances> }
       </div>
     </div>
   )

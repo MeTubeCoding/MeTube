@@ -12,7 +12,7 @@ export function trend_new() {
         <div className="flex flex-col">
           <div className="flex flex-col">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="rounded-lg object-cover"
               src={trend_new.minia}
             />
             <h5 className="text-left font-sans py-2">{trend_new.titre}</h5>
@@ -32,7 +32,7 @@ export function trend_music() {
         <div className="flex flex-col">
           <div className="flex flex-col">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="rounded-lg object-cover"
               src={trend_music.minia}
             />
             <h5 className="text-left py-2">
@@ -54,7 +54,7 @@ export function trend_movies() {
         <div className="flex flex-col">
           <div className="flex flex-col">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="rounded-lg object-cover"
               src={trend_movies.minia}
             />
             <h5 className="text-left py-2">{trend_movies.titre}</h5>
@@ -74,7 +74,7 @@ export function trend_gaming() {
         <div className="flex flex-col">
           <div className="flex flex-col">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="rounded-lg object-cover"
               src={trend_gaming.minia}
             />
             <h5 className="text-left py-2">{trend_gaming.titre}</h5>
