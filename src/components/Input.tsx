@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/react-in-jsx-scope */
 import React from 'react'
 import { type ChangeEvent } from 'react'
 
@@ -32,7 +28,7 @@ export default function Input({
   isRequired = false,
   placeholder,
   customClass
-}: InputProps) {
+}: InputProps): JSX.Element {
   return (
     <div className="my-5">
       <label htmlFor={labelFor} className="sr-only">
