@@ -19,21 +19,9 @@ import { useOnSearch } from '../../components/useOnSearch'
 // ================================================================================================
 
 function Tendances() {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const { videos, onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
-
   return (
-    <div className="h-screen text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
+    <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+      
       <div className="flex flex-row justify-start h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
