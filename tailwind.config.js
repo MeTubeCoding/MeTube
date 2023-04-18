@@ -13,5 +13,6 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [],
+  include: ['tailwind.config.js']
 }
