@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { MdOutlineTune } from 'react-icons/md'
 
 interface Props {
@@ -12,6 +12,35 @@ interface Props {
 
 const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
+
+  const [ChannelF, setChannelF] = useState(false)
+  const [VideoF, setVideoF] = useState(false)
+  const [PlayF, setPlayF] = useState(false)
+  const [MovieF, setMovieF] = useState(false)
+
+  const fVideo = () => {
+    console.log('filter by ' + props.filter)
+    setVideoF(prevState => !prevState)
+    props.filterVideo()
+  }
+
+  const fChannel = () => {
+    console.log('filter by ' + props.filter)
+    setChannelF(prevState => !prevState)
+    props.filterChannel()
+  }
+
+  const fPlaylist = () => {
+    console.log('filter by ' + props.filter)
+    setPlayF(prevState => !prevState)
+    props.filterPlaylist()
+  }
+
+  const fMovie = () => {
+    console.log('filter by ' + props.filter)
+    setMovieF(prevState => !prevState)
+    props.filterMovie()
+  }
 
   const uploadDate = [
     {
@@ -32,16 +61,24 @@ const Filters = (props: Props) => {
   ]
   const Type = [
     {
-      name: 'Video'
+      name: 'Video',
+      filter: fVideo,
+      bool: VideoF
     },
     {
-      name: 'Channel'
+      name: 'Channel',
+      filter: fChannel,
+      bool: ChannelF
     },
     {
-      name: 'Playlist'
+      name: 'Playlist',
+      filter: fPlaylist,
+      bool: PlayF
     },
     {
-      name: 'Movie'
+      name: 'Movie',
+      filter: fMovie,
+      bool: MovieF
     }
     //,
     // {
@@ -121,26 +158,6 @@ const Filters = (props: Props) => {
     }
   }
 
-  const fVideo = () => {
-    console.log('filter by ' + props.filter)
-    props.filterVideo()
-  }
-
-  const fChannel = () => {
-    console.log('filter by ' + props.filter)
-    props.filterChannel()
-  }
-
-  const fPlaylist = () => {
-    console.log('filter by ' + props.filter)
-    props.filterPlaylist()
-  }
-
-  const fMovie = () => {
-    console.log('filter by ' + props.filter)
-    props.filterMovie()
-  }
-
   return (
     <div
       className={`mt-5 text-me-yellow font-semibold flex flex-col ${
@@ -164,8 +181,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {uploadDate.map(({ name }) => {
               return (
-                <li key={name} className={`rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={`rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs text-me-yellow text-opacity-50 tracking-wider hover:text-opacity-100">
                     {name}
                   </span>
                 </li>
@@ -176,10 +193,15 @@ const Filters = (props: Props) => {
           <ul className="flex flex-col text-me-yellow p-4">
             <p>TYPE</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {Type.map(({ name }) => {
+            {Type.map(({ name, filter, bool }) => {
               return (
-                <li key={name} className={`rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={`rounded-lg`}>
+                  <span
+                    className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
+                      bool === true ? 'text-opacity-100' : 'text-opacity-50'
+                    }`}
+                    onClick={filter}
+                  >
                     {name}
                   </span>
                 </li>
@@ -191,8 +213,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Duration.map(({ name }) => {
               return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={` rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs tracking-wider text-me-yellow text-opacity-50 hover:text-opacity-100">
                     {name}
                   </span>
                 </li>
@@ -204,8 +226,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Features.map(({ name }) => {
               return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={` rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
                     {name}
                   </span>
                 </li>
@@ -217,8 +239,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {sortBy.map(({ name }) => {
               return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={` rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
                     {name}
                   </span>
                 </li>

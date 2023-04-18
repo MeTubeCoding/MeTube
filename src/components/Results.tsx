@@ -47,7 +47,12 @@ const Results = (props: Props): any => {
       ) : (
         <div className="pb-6">
           {props.videos.map(video => (
-            <Result key={video.id} video={video} visible={props.visible} />
+            <Result
+              key={video.id}
+              video={video}
+              visible={props.visible}
+              filter={props.filter}
+            />
           ))}
         </div>
       )}
