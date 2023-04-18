@@ -31,6 +31,7 @@ app.use(
   })
 )
 
+app.use('/uploads', express.static)
 app.use(cors(corsOptions))
 
 app.post('/chat', (req, res) => {
