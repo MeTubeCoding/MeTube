@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useOnSearch } from '../components/useOnSearch'
 import Results from '../components/Results'
 import Filters from '../components/Filters'
