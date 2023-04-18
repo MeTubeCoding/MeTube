@@ -6,6 +6,7 @@ import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
+import Tendances from './pages/feed/trending'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/feed/trending" element={<Tendances />} />
           </Routes>
         </BrowserRouter>
       </div>

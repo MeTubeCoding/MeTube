@@ -10,12 +10,16 @@ export interface IResult {
 }
 interface Props {
   video: IResult
+  visible: boolean
 }
 
 const Result = (props: Props) => {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   const playVid = () => {
+    videoRef.current?.classList.remove('hidden')
+    imgRef.current?.classList.add('hidden')
     if (videoRef.current != null) {
       videoRef.current.currentTime = 0
       void videoRef.current.play()
@@ -23,22 +27,31 @@ const Result = (props: Props) => {
   }
 
   const pauseVid = () => {
+    imgRef.current?.classList.remove('hidden')
+    videoRef.current?.classList.add('hidden')
     if (videoRef.current != null) {
       void videoRef.current.play()
     }
   }
+
   return (
-    <div className="ml-80 flex">
+    <div
+      className={`flex mt-4 overflow-auto ${props.visible ? 'ml-96' : 'ml-60'}`}
+    >
       <div className="max-w-fit rounded-lg bg-[#000000] m-2">
-        <a className="w-72 h-40 flex rounded-lg justify-center" href="#">
+        <a
+          className="w-72 h-40 flex rounded-lg relative justify-center overflow-hidden"
+          href="#"
+          onMouseEnter={playVid}
+          onMouseLeave={pauseVid}
+        >
           <img
-            className=" hover:opacity-0 transition-opacity duration-500 h-40 absolute z-10"
-            onMouseEnter={playVid}
-            onMouseLeave={pauseVid}
+            className="h-40"
             src={props.video.miniature}
             alt=""
+            ref={imgRef}
           />
-          <video muted className="w-72 h-40 absolute" ref={videoRef}>
+          <video muted className="w-72 h-40 hidden" ref={videoRef}>
             <source src={props.video.video} type="video/mp4" />
           </video>
         </a>
