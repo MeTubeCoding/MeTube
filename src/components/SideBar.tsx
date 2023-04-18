@@ -16,7 +16,8 @@ import {
   MdOutlineHelpOutline,
   MdOutlineFeedback,
   MdOutlineBolt,
-  MdOutlineLanguage
+  MdOutlineLanguage,
+  MdOutlineLiveTv
 } from 'react-icons/md'
 
 interface SideBarProps {
@@ -56,7 +57,7 @@ function SideBar(props: SideBarProps) {
       href: '/feed/library'
     },
     {
-      icon: <MdOutlineLanguage className="text-xl" />,
+      icon: <MdOutlineLiveTv className="text-xl" />,
       name: 'Live',
       href: '/live'
     },
