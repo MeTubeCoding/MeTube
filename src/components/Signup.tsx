@@ -7,7 +7,6 @@ import FormAction from './FormAction'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
 import axios from 'axios'
-import zxcvbn from 'zxcvbn';
 import React from 'react'
 
 const fields = signupFields
@@ -23,36 +22,29 @@ export default function Signup() {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setSignupState({ ...signupState, [id]: value });
+    
   };
-  
 
   const [passwordsMatch, setPasswordsMatch] = useState(true)
 
-  const [passwordStrong, setPasswordStrong] = useState(true);
-
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Vérifier si l'e-mail existe déjà
     const emailExists = await checkEmailExists(signupState.emailaddress);
     if (emailExists) {
       console.log('Email already exists');
       return;
     }
-    
-    if (arePasswordsEqual() && isPasswordStrong(signupState.password)) {
+
+    if (arePasswordsEqual()) {
       console.log(signupState);
       createAccount();
     } else if (!arePasswordsEqual()) {
       console.log('Passwords do not match');
       setPasswordsMatch(false);
-    } else {
-      console.log('Password is not strong enough');
-      setPasswordStrong(false);
-    }
+    } 
   };
-  
 
 
   const checkEmailExists = async (email: string) => {
@@ -65,12 +57,7 @@ export default function Signup() {
     return signupState.password === signupState.confirmpassword
   }
 
-  const isPasswordStrong = (password: string): boolean => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-    // Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et faire au moins 8 caractères de long
-    return regex.test(password)
-  }
-  
+
 
   const createAccount = async () => {
     const salt = await bcrypt.genSalt(10)
@@ -116,9 +103,6 @@ export default function Signup() {
             customClass={undefined}
           />
         ))}
-        {!passwordStrong && (
-          <p className="text-me-yellow">Password must contain at least one lowercase letter, one uppercase letter, one special character, one number and be at least 8 characters</p>
-        )}
         {!passwordsMatch && (
           <p className="text-me-yellow">Passwords do not match</p>
         )}

@@ -78,12 +78,9 @@ app.post('/signup', (req, res) => {
     async function run() {
       try {
         const database = client.db('profile')
-        const movies = database.collection('users')
-        //   console.log("mongo connect")
+        const users = database.collection('users')
         const query = req.body
-        //   console.log(query);
-        await movies.insertOne(query)
-        //   console.log(movie);
+        await users.insertOne(query)
       } finally {
         // Ensures that the client will close when you finish/error
         await client.close()
@@ -132,6 +129,32 @@ app.get('/check-email', async (req, res) => {
   const user = await users.findOne({ 'emailaddress': email })
   res.json({ exists: !!user })
 })
+
+app.post('/reset-password', async (req, res) => {
+  const { email, password } = req.body;
+
+  const database = client.db('profile');
+  const users = database.collection('users');
+
+  // Vérifier si l'utilisateur existe avec l'adresse e-mail donnée
+  const user = await users.findOne({ 'emailaddress': email });
+  if (!user) {
+    return res.status(404).json({ message: 'Utilisateur introuvable' });
+  }
+
+  // Récupérer l'identifiant de l'utilisateur
+  const userId = user._id;
+
+  // Hacher le nouveau mot de passe
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Mettre à jour le mot de passe utilisateur dans la base de données
+  await users.updateOne({ '_id': userId }, { $set: { 'password': hashedPassword } });
+
+  res.json({ message: 'Le mot de passe a été mis à jour avec succès' });
+});
+
 
 app.get('/demo', (req, res) => {
   console.log('test')
