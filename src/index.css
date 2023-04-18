@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 body {
   background-color: #24152c;
 
@@ -11,12 +16,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
