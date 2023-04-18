@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar'
 import SideBar from '../components/SideBar'
 import Recherche from './Recherche'
 import Tendances from './feed/trending'
-import Result from '../components/Result/Result'
 import Results from '../components/Results'
 
 
@@ -26,7 +25,7 @@ const Main = () => {
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        {HasSearched ? <div><Recherche filter={filter} visible={isSideBarVisible} setFilter={setFilter}/><Results videos={videos} channels={channels} filter={filter} visible={isSideBarVisible}></Results></div>: <Tendances/> }
+        {HasSearched ? <div><Recherche filter={filter} visible={isSideBarVisible} setFilter={setFilter}/><Results videos={videos} channels={channels} filter={filter} visible={isSideBarVisible}></Results></div>: <Tendances></Tendances> }
       </div>
     </div>
   )
