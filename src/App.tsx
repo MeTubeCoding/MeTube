@@ -7,6 +7,7 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import Tendances from './pages/feed/trending'
+import History from './pages/feed/history'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/feed/trending" element={<Tendances />} />
+            <Route path="/feed/history" element={<History />} />
           </Routes>
         </BrowserRouter>
       </div>

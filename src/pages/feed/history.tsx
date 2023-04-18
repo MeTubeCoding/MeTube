@@ -2,20 +2,16 @@ import React from 'react';
 
 function History() {
   return (
-    <div className="History">
-      <div className="bg-neutral-900 object-cover absolute top-0 left-0 right-0">
-        <img src="menu-btn.png" className="object-cover w-5 m-5"></img>
-        <div className="rounded-full absolute top-0 left-0 right-0 bottom-0 hover:bg-white opacity-25 object-cover w-9 m-3"></div>
-      </div>
+    <div className="History text-me-orange">
       <div className="bg-neutral-900 object-cover absolute top-14 left-0 bottom-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-0 bottom-0 ml-60 w-20"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-0 bottom-0 ml-60 w-96"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 bottom-0 right-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-96 w-20 bottom-0"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 right-96 mr-20 bottom-0 overflow-y-auto max-h-[1000px]">
-        <p className="font-bold text-base text-white relative top-5">Historique de visionage</p>
-        <div>
-          <p className="font-bold text-base text-white relative mt-12 mb-5">Aujourd'hui</p>
+        <p className="font-bold text-base relative top-5">Historique de visionage</p>
+      <div>
+          <p className="font-bold text-base relative mt-12 mb-5">Aujourd'hui</p>
           <div className="relative mb-4 overflow-hidden group">
             <iframe
               className="rounded-xl"
