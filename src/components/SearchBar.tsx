@@ -35,6 +35,21 @@ const SearchBar = (props: IProps) => {
     setShowHistory(true)
   }
 
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (!target.closest('#search-dropdown') && !target.closest('.search-history')) {
+        setShowHistory(false)
+      }
+    }
+
+    document.addEventListener('click', handleDocumentClick)
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick)
+    }
+  }, [])
+
   const btn = useRef<HTMLButtonElement>(null)
   const logo = useRef<SVGSVGElement>(null)
   const yBorder = () => {
@@ -45,13 +60,11 @@ const SearchBar = (props: IProps) => {
   const nBorder = () => {
     btn.current?.classList.remove('border-me-yellow')
     btn.current?.classList.add('border-me-lightpurple')
-    setShowHistory(false)
   }
 
   const yColor = () => {
     logo.current?.classList.remove('stroke-me-yellow')
     logo.current?.classList.add('stroke-me-darkpurple')
-    setShowHistory(false)
   }
 
   const nColor = () => {
@@ -119,7 +132,9 @@ const SearchBar = (props: IProps) => {
                   className="cursor-pointer hover:bg-me-lightpurple text-me-yellow text-opacity-50 hover:text-opacity-100 rounded-xl my-2 p-2"
                   onClick={() => handleHistoryClick(searchItem.term)}
                 >
-                  {searchItem.term}
+                {searchItem.term.length > 50
+                 ? `${searchItem.term.slice(0, 50)}...`
+                 : searchItem.term}
                 </li>
               ))}
               <li className="border-t lex justify-start items-center">
