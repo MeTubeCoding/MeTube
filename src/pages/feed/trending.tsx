@@ -12,8 +12,8 @@ import {
 
 function Tendances() {
   return (
-    <div className=" ml-[9.5%] h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div className="flex flex-row justify-start h-screen bg-neutral-900">
+    <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+      <div className="flex flex-row justify-center h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
           <div className="mb-5 flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
