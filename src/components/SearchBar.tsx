@@ -1,4 +1,5 @@
 import React, { useState, useRef, HTMLAttributes, useEffect } from 'react'
+import VoiceRecognitionButton from './VoiceRecognitionButton'
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   onSearch: (input: string) => any
@@ -104,6 +105,9 @@ const SearchBar = (props: IProps) => {
             ></path>
           </svg>
           <span className="sr-only">Search</span>
+        </button>
+        <button>
+          <VoiceRecognitionButton setSearchValue={setSearchInput} />
         </button>
         {searchHistory.length > 0 && showHistory && (
           <div className="absolute w-full bg-[#ffff] shadow-lg mt-1 rounded-md top-12 z-20">
