@@ -26,6 +26,12 @@
     "server.js", 
     "setupTests.ts",
     "tailwind.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "Live.tsx",
+    "App.tsx",
+    "Chat.tsx",
+    "ModerationChat.tsx",
+    "Description.tsx",
   ]
+  
 }
