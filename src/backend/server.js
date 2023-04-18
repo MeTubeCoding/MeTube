@@ -87,21 +87,16 @@ app.post('/signup', (req, res) => {
     async function run() {
       try {
         const database = client.db('profile')
-        const movies = database.collection('users')
-        //   console.log("mongo connect")
+        const messages = database.collection('users')
         const query = req.body
-        //   console.log(query);
-        await movies.insertOne(query)
-        //   console.log(movie);
+        await messages.insertOne(query)
       } finally {
-        // Ensures that the client will close when you finish/error
         await client.close()
       }
     }
     run().catch(console.dir)
   })
-  //coucou
-  res.end('trop cool')
+  res.end()
 })
 
 const bcrypt = require('bcryptjs')
