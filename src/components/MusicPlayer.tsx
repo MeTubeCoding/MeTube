@@ -1,6 +1,13 @@
 import React, { useState, useRef } from 'react'
+import  VideoPageProps  from '../pages/VideoPage';
 
-const MusicPlayer = () => {
+
+
+interface Props {
+  playMusicWithVideo: (audioFile: File) => void;
+}
+
+const MusicPlayer = (props : Props) => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
   const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
 
@@ -12,17 +19,18 @@ const MusicPlayer = () => {
     }
   }
 
-  const handlePlay = (index: number) => {
-    if (audioRefs.current[index] != null) {
-      void audioRefs.current[index]?.play()
-    }
-  }
 
-  const handlePause = (index: number) => {
-    if (audioRefs.current[index] != null) {
-      audioRefs.current[index]?.pause()
-    }
-  }
+  // const handlePlay = (index: number) => {
+  //   if (audioRefs.current[index] != null) {
+  //     void audioRefs.current[index]?.play()
+  //   }
+  // }
+
+  // const handlePause = (index: number) => {
+  //   if (audioRefs.current[index] != null) {
+  //     audioRefs.current[index]?.pause()
+  //   }
+  // }
 
   const handleRemove = (index: number) => {
     const updatedFiles = [...selectedAudios]
@@ -38,7 +46,6 @@ const MusicPlayer = () => {
         <div key={index}>
           <audio ref={(ref) => (audioRefs.current[index] = ref)} controls>
             <source src={URL.createObjectURL(file)} />
-
           </audio>
           <button onClick={() => { handleRemove(index) }}>Remove</button>
         </div>
