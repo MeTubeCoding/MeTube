@@ -3,6 +3,7 @@ import React from 'react'
 // import composant  :
 import {
   trend_gaming,
+  trend_movies,
   trend_music,
   trend_new,
   trend_tag
@@ -32,7 +33,7 @@ function Tendances() {
             {trend_new()}
             {trend_music()}
             {trend_gaming()}
-            {trend_music()}
+            {trend_movies()}
           </div>
         </div>
       </div>
