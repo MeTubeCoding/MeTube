@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import SideBar from '../../components/SideBar'
-import ResultsV from '../../components/Results'
 
 // import composant  :
 
-import { PassThrough } from 'stream'
 import Navbar from '../../components/Navbar'
 import { useOnSearch } from '../../components/useOnSearch'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
@@ -16,7 +14,7 @@ import { useOnSearch } from '../../components/useOnSearch'
 function Tendances() {
 
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const { videos, onSearch } = useOnSearch()
+  const { onSearch } = useOnSearch()
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(prevState => !prevState)
