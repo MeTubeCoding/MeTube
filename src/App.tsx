@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.css'
-import Main from './pages/Main'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import Tendances from './pages/feed/trending'
+import Main from './pages/Main'
 
 function App() {
   return (
