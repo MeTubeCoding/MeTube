@@ -25,7 +25,7 @@ const CreateChannel: React.FC = () => {
     e.preventDefault();
     console.log('Channel created:', formData);
     try {
-      const response = await fetch('/api/channels', {
+      const response = await fetch('http://localhost:5600/api/channels', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
