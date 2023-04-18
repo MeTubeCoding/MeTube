@@ -27,7 +27,6 @@ const client = new MongoClient(uri, {
 })
 
 const fs = require('fs')
-const { channel } = require('diagnostics_channel')
 
 const publi = path.join(__dirname, 'nom du dossier Public')
 
@@ -73,7 +72,7 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/signup', (req, res) => {
+app.post('/data', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
@@ -91,12 +90,9 @@ app.post('/signup', (req, res) => {
     }
     run().catch(console.dir)
   })
-  //coucou
+
   res.end('trop cool')
 })
-
-const bcrypt = require('bcryptjs')
-
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
@@ -107,106 +103,43 @@ app.post('/login', async (req, res) => {
     const user = await users.findOne({ 'email-address': email })
 
     if (user) {
-      const isPasswordCorrect = await bcrypt.compare(password, user.password)
-      if (isPasswordCorrect) {
-        res.json({
-          success: true,
-          message: 'Connexion réussie',
-          hashedPassword: user.password
-        })
+      if (password === user.password) {
+        res.json({ success: true, message: 'Connexion réussie' })
       } else {
-        res.status(401).json({ success: false, message: 'Incorrect password' })
+        res
+          .status(401)
+          .json({ success: false, message: 'Mot de passe incorrect' })
       }
     } else {
-      res.status(404).json({ success: false, message: 'Email does not exist' })
+      res.status(404).json({ success: false, message: "L'email n'existe pas" })
     }
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Error while connecting' })
+    res
+      .status(500)
+      .json({ success: false, message: 'Erreur lors de la connexion' })
   }
-})
-
-app.get('/check-email', async (req, res) => {
-  const { email } = req.query
-  const database = client.db('profile')
-  const users = database.collection('users')
-  const user = await users.findOne({ 'email-address': email })
-  res.json({ exists: !!user })
 })
 
 app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
-app.get('/profile', (req, res) => {
-  client.connect(err => {
-    async function runy() {
-      try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
-        let search = await messages.find({}).toArray()
-        const reponseSearch = JSON.stringify(search)
-        res.end(reponseSearch)
-      } finally {
-        await client.close()
-      }
-    }
-    runy().catch(console.dir)
-  })
-})
 
 // app.use('/', express.static(public));
 
 app.use(cors())
 
-app.post('/channels', function (req, res) {
-  const fakeChannels = [
-    {
-      id: 1,
-      name: 'Roro',
-      pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png',
-      subs: 200,
-      about: 'Grape fan'
-    },
-    {
-      id: 2,
-      name: 'Maxime',
-      pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029117988914/Capture_decran_2023-04-17_a_10.36.13.png',
-      subs: 2,
-      about: 'MTG fan'
-    },
-    {
-      id: 3,
-      name: 'Ludwig',
-      pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029751316550/Capture_decran_2023-03-29_a_16.17.11.png',
-      subs: 60000,
-      about: 'AAAAAAAAAAAAAAA'
-    }
-  ]
-
-  const requestString = req.body.data
-  const regexString = requestString.replace(/ /g, '|').split('').join('.*')
-  const regex = new RegExp(regexString, 'i')
-
-  const requestedChannels = fakeChannels.filter(channel =>
-    regex.test(channel.name)
-  )
-
-  if (requestedChannels.length > 0) {
-    res.json(requestedChannels)
-  }
-})
-
 app.post('/videos', function (req, res) {
   const fakeVideos = [
     {
       id: 1,
-      title: 'Nabil a cassé mon bong',
+      title: 'Journey Through The Universe - HD Documentary',
       miniature:
-        'https://imgs.search.brave.com/5KvnUyLxAcJHuuU_Ry7pJksq9llJ1Cf0XXfyuKJ7IM0/rs:fit:1200:900:1/g:ce/aHR0cDovL2kuaW1n/dXIuY29tL3ExMmgy/LmpwZw',
+        'https://imgs.search.brave.com/j_w-SCcubajyNDPpXf6TgVw3bReenqnQtJ8E9eDmO1M/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5H/c0pjYVNyallFSWEt/TTRhamRWZm5BSGFF/SyZwaWQ9QXBp',
       channel: 'Roro',
       video:
-        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'réaction'],
+        'https://cdn.discordapp.com/attachments/673800952599281684/951416952008634418/T-T_1.mp4',
+      tags: ['documentary', 'space'],
       views: 10,
       release: '2022-03-23',
       description:
@@ -216,13 +149,13 @@ app.post('/videos', function (req, res) {
     },
     {
       id: 2,
-      title: 'Gros bartsimpson avec Narbok',
+      title: 'Journey Through The Universe - HD Documentary',
       miniature:
-        'https://imgs.search.brave.com/FjKYVIUEMX-Rtp38q3Ztm3a7j6bsX5rOpQGK5BGms5g/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDgxMTc0/OTcucG5n',
+        'https://imgs.search.brave.com/9lZjZtg--YsJPBSoOlhNUD00_gb4SsoQCASJLPaT-Ic/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Q/cUpTNTNiRkJLUldx/UlpFakhMY1R3SGFF/SyZwaWQ9QXBp',
       channel: 'Ludwig',
       video:
-        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'macron'],
+        'https://cdn.discordapp.com/attachments/673800952599281684/951416952008634418/T-T_1.mp4',
+      tags: ['planet'],
       views: 10,
       release: '2022-03-23',
       description:
@@ -232,13 +165,14 @@ app.post('/videos', function (req, res) {
     },
     {
       id: 3,
-      title: 'Nabil est parti sans fumer...',
+      title:
+        'Stunning New Universe Fly-Through Really Puts Things Into Perspective',
       miniature:
-        'https://imgs.search.brave.com/H4X-HS4LrQqKVL9iot-eS6yt_uyWTNvu-KZfjO_i9RI/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9oaWdo/dGltZXMuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE3LzAx/L0xvdHNPZkpvaW50/cy5qcGc',
+        'https://imgs.search.brave.com/dwikNKmv1gJpotOSRd7TLUMUY-xeCBxP6FORMumoXqI/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5x/T1ZCZ1NHdUFFVUtt/RHJkMFRMeGtnSGFF/SyZwaWQ9QXBp',
       channel: 'Maxime',
       video:
-        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce'],
+        'https://cdn.discordapp.com/attachments/673800952599281684/951416952008634418/T-T_1.mp4',
+      tags: ['galaxy', 'space'],
       views: 10,
       release: '2022-03-23',
       description:
@@ -248,13 +182,14 @@ app.post('/videos', function (req, res) {
     },
     {
       id: 4,
-      title: 'Il a mangé tout le tramadole omg !',
+      title:
+        '"Celestial Relaxation" 1 HR of 4K NASA Space/Galaxy Footage + 432HZ Ambient Music',
       miniature:
-        'https://imgs.search.brave.com/sQassPoRQw3-kmZKo4fGSGpSGyCxjdlyDQmobfn-YYY/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cHVibGljZG9tYWlu/cGljdHVyZXMubmV0/L3BpY3R1cmVzLzQw/MDAwL3ZlbGthL2xl/bnRpbGt5LmpwZw',
+        'https://imgs.search.brave.com/xrBPkPfs0RQj4PC259B81t-N_wefuBqtvhm2001eXg8/rs:fit:1200:1080:1/g:ce/aHR0cDovL2dldHdh/bGxwYXBlcnMuY29t/L3dhbGxwYXBlci9m/dWxsLzIvNi8yLzMy/NjM1OC5qcGc',
       channel: 'Roro',
       video:
-        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['défonce', 'macron', 'fun', 'réaction'],
+        'https://cdn.discordapp.com/attachments/673800952599281684/951416952008634418/T-T_1.mp4',
+      tags: ['music'],
       views: 10,
       release: '2022-03-23',
       description:
@@ -264,13 +199,13 @@ app.post('/videos', function (req, res) {
     },
     {
       id: 5,
-      title: 'Il a une calvitie',
+      title: 'Starship Mission to Mars',
       miniature:
-        'https://imgs.search.brave.com/Mzd1G1UAR4KtlSpOFaL5bLw8jY4YabGntaZq_3qM78Y/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4w/U0hscC16THhYTmg1/a29hUFhHdk9RSGFI/YSZwaWQ9QXBp',
+        'https://imgs.search.brave.com/H-9x8yEqk2DmU-x9DfbrpZkQ7bt7DlCkXzetQRhnbxw/rs:fit:1200:1080:1/g:ce/aHR0cDovL3dhbGxw/YXBlcmNhdmUuY29t/L3dwL2NmQkFCQXgu/anBn',
       channel: 'Roro',
       video:
-        'https://cdn.discordapp.com/attachments/935989994735169546/1082443934741053530/redditsave.com_real_hol_up-pvq9he9jok571.mp4',
-      tags: ['macron'],
+        'https://cdn.discordapp.com/attachments/673800952599281684/951416952008634418/T-T_1.mp4',
+      tags: ['ship'],
       views: 10,
       release: '2022-03-23',
       description:
