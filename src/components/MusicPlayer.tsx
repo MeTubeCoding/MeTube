@@ -36,11 +36,16 @@ const MusicPlayer = () => {
       <input type="file" onChange={handleFileChange} multiple />
       {selectedAudios.map((file, index) => (
         <div key={index}>
-          <audio ref={(ref) => (audioRefs.current[index] = ref)} controls>
+          <audio ref={ref => (audioRefs.current[index] = ref)} controls>
             <source src={URL.createObjectURL(file)} />
-
           </audio>
-          <button onClick={() => { handleRemove(index) }}>Remove</button>
+          <button
+            onClick={() => {
+              handleRemove(index)
+            }}
+          >
+            Remove
+          </button>
         </div>
       ))}
     </div>
