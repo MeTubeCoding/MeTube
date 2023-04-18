@@ -15,7 +15,8 @@ import {
   MdOutlinedFlag,
   MdOutlineHelpOutline,
   MdOutlineFeedback,
-  MdOutlineBolt
+  MdOutlineBolt,
+  MdOutlineLanguage
 } from 'react-icons/md'
 
 interface SideBarProps {
@@ -53,6 +54,11 @@ function SideBar(props: SideBarProps) {
       icon: <MdOutlineVideoLibrary className="text-xl" />,
       name: 'Library',
       href: '/feed/library'
+    },
+    {
+      icon: <MdOutlineLanguage className="text-xl" />,
+      name: 'Live',
+      href: '/live'
     },
     {
       icon: <MdHistory className="text-xl" />,
