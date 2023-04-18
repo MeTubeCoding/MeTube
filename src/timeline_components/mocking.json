@@ -1,4 +1,11 @@
 {
+  "chaine": [
+    {
+      "id": "1",
+      "nom": "test",
+      "tag_pref": "anime"
+    }
+  ]
   "new": [
     {
       "minia": "https://i.ytimg.com/vi/PExjHWbkafk/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDlckMe_GSZq42l_Il3clU_LnOCuA",
