@@ -23,6 +23,7 @@ export function trend_new() {
     </div>
   )
 }
+
 export function trend_music() {
   const trend_music = mockData.music
   return (
@@ -45,6 +46,7 @@ export function trend_music() {
     </div>
   )
 }
+
 export function trend_movies() {
   const trend_movies = mockData.movies
   return (
@@ -65,6 +67,7 @@ export function trend_movies() {
     </div>
   )
 }
+
 export function trend_gaming() {
   const trend_gaming = mockData.gaming
   return (
