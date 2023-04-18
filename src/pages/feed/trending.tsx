@@ -15,7 +15,7 @@ import {
 
 function Tendances() {
   return (
-    <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+    <div className=" ml-[9%] h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
       <div className="flex flex-row justify-start h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
@@ -24,11 +24,11 @@ function Tendances() {
               className="rounded-full mr-2%"
               src="https://www.youtube.com/img/trending/avatar/trending.png"
             ></img>
-            <h3 className="m-0 p-0 text-center leading-normal text-3xl">
-              TENDANCES
+            <h3 className="ml-5 p-0 text-center leading-normal text-3xl">
+              RECOMMANDATIONS
             </h3>
           </div>
-          <div className="flex flex_col justify-center">
+          <div className="ml-5 flex flex_col justify-center">
             {trend_new()}
             {trend_music()}
             {trend_movies()}
