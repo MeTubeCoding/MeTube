@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import SideBar from '../../components/SideBar'
+import Navbar from '../../components/Navbar'
+import { useOnSearch } from '../../components/useOnSearch'
 
 // import composant  :
 import {
@@ -8,9 +10,6 @@ import {
   trend_new,
   trend_music
 } from '../../timeline_components/trending_categories'
-import { PassThrough } from 'stream'
-import Navbar from '../../components/Navbar'
-import { useOnSearch } from '../../components/useOnSearch'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
 // ================================================================================================
