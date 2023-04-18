@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import SideBar from '../../components/SideBar'
-import Navbar from '../../components/Navbar'
-import { useOnSearch } from '../../components/useOnSearch'
 
 // import composant  :
 import {
@@ -17,21 +14,9 @@ import {
 // ================================================================================================
 
 function Tendances() {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const { onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
 
   return (
-    <div className='h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
+    <div className="h-screen bg-neutral-900 text-me-orange font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
       <div className="flex flex-row justify-start h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
