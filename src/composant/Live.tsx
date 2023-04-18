@@ -1,19 +1,25 @@
-import React, { useEffect } from "react"
-import "../index.css" // Importez le fichier CSS
-import "./LiveNavBar"
+import React, { useEffect, useState } from "react"
+import "../index.css"
 import { Chat } from "./Chat"
 import { LiveNavBar } from "./LiveNavBar"
 import { ModerationChat } from "./ModerationChat"
 import { Description } from "./Description"
 import NombreViewer from "./NombreViewer"
 import ListeViewer from "./ListeViewer"
-import { Titre} from "./Titre"
+import { Titre } from "./Titre"
+import { Stream } from "./Stream"
 
 export function Live() {
 	let localStream: MediaStream
 	let showEcran: MediaStream
 	let peerConnection: RTCPeerConnection
 	let remoteStream: MediaStream
+	
+	const [mode, setMode] = useState("streamer");
+
+    const handleModeChange = (newMode: string) => {
+        setMode(newMode);
+    }
 
 	const init = async () => {
 		console.log("exec")
@@ -54,53 +60,80 @@ export function Live() {
 
 	return (
 		<>
-			
-				<LiveNavBar />
+		
+			<LiveNavBar onModeChange={handleModeChange} />
 
-				<div className='flex flex-row text-white'>
-					<ModerationChat />
-					<section className='flex flex-row'>
-						<div className='flex flex-col items-center'>
-							<div className='relative'>
-								<div id='videos' className='w-max h-max px-20 w-full '>
-									<video
-										className='border rounded-md'
-										id='partageEcran'
-										width='500'
-										height='500'
-										autoPlay
-										playsInline
-									></video>
-									<div className='absolute top-1 right-[64%] '>
-										<video
-											className='transform scale-x-[-1] scale-y-[95%] border rounded-md'
-											id='webcam'
-											width='150'
-											height='150'
-											autoPlay
-											playsInline
-										></video>
+			{mode === "streamer" && (
+				<div className='streamer-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<ModerationChat />
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+									<div className='flex flex-col items-center mt-4'>
+										<Description />
 									</div>
+									<Titre />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+								<div className='live-info'>
+									<ListeViewer />
 								</div>
 							</div>
-							<div className='flex flex-col items-center mt-4'>
-								<Description />
-							</div>
-							<Titre/>
 						</div>
-					</section>
-
-					<Chat />
-					<div>
-						<div className='live-info'>
-							<NombreViewer /> {/* Ajoutez le composant ListeViewer */}
-						</div>
-						<div className='live-info'>
-							<ListeViewer /> {/* Ajoutez le composant ListeViewer */}
-						</div>
-					</div>
+					}
 				</div>
-			
+			)}
+
+			{mode === "moderateur" && (
+				<div className='moderateur-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<ModerationChat />
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
+
+			{mode === "viewer" && (
+				<div className='viewer-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
 		</>
 	)
 }
