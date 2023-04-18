@@ -24,7 +24,7 @@ const SearchBar = (props: IProps) => {
     const newSearchHistory = [
       { term: searchInput, timestamp: new Date().toString() },
       ...searchHistory.filter((item, index) => index !== existingSearchIndex)
-    ].slice(0, 10)
+    ].slice(0, 6)
     setSearchHistory(newSearchHistory)
     setShowHistory(true)
   }
@@ -45,13 +45,13 @@ const SearchBar = (props: IProps) => {
   const nBorder = () => {
     btn.current?.classList.remove('border-me-yellow')
     btn.current?.classList.add('border-me-lightpurple')
-    setShowHistory(true)
+    setShowHistory(false)
   }
 
   const yColor = () => {
     logo.current?.classList.remove('stroke-me-yellow')
     logo.current?.classList.add('stroke-me-darkpurple')
-    setShowHistory(true)
+    setShowHistory(false)
   }
 
   const nColor = () => {
@@ -79,6 +79,7 @@ const SearchBar = (props: IProps) => {
           className="bg-me-mediumpurple border border-me-lightpurple text-me-yellow font-semibold placeholder:text-me-yellow placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none  focus:border-me-yellow h-10 w-11/12"
           onFocus={yBorder}
           onBlur={nBorder}
+          autoComplete='off'
           placeholder="Search..."
           required
         />
@@ -110,21 +111,21 @@ const SearchBar = (props: IProps) => {
           <VoiceRecognitionButton setSearchValue={setSearchInput} />
         </button>
         {searchHistory.length > 0 && showHistory && (
-          <div className="absolute w-full bg-[#ffff] shadow-lg mt-1 rounded-md top-12 z-20">
+          <div className="absolute w-[89.5%] bg-me-darkpurple text-me-yellow shadow-lg mt-1 top-12 z-20 rounded-lg">
             <ul className="p-2">
               {searchHistory.map((searchItem, index) => (
                 <li
                   key={index}
-                  className="py-1 cursor-pointer hover:bg-gray-100"
+                  className="cursor-pointer hover:bg-me-lightpurple text-me-yellow text-opacity-50 hover:text-opacity-100 rounded-xl my-2 p-2"
                   onClick={() => handleHistoryClick(searchItem.term)}
                 >
                   {searchItem.term}
                 </li>
               ))}
-              <li className="border-t mt-2">
+              <li className="border-t lex justify-start items-center">
                 <button
                   type="button"
-                  className="text-xs text-gray-600 hover:text-gray-900"
+                  className="text-xs text-me-yellow text-opacity-75 hover:text-opacity-100 mt-2 ml-2"
                   onClick={clearHistory}
                 >
                   Clear history
