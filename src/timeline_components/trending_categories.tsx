@@ -10,9 +10,9 @@ export function trend_new() {
       <h4 className="mb-5">NOUVEAUTES</h4>
       {trend_new.map(trend_new => (
         <div className="flex flex-col">
-          <div className="flex flex-col">
+          <div className="flex flex-col w-64">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="mr-1% rounded-lg object-cover  w-64 h-[144px]"
               src={trend_new.minia}
             />
             <h5 className="text-left font-sans py-2">{trend_new.titre}</h5>
@@ -23,6 +23,7 @@ export function trend_new() {
     </div>
   )
 }
+
 export function trend_music() {
   const trend_music = mockData.music
   return (
@@ -30,9 +31,9 @@ export function trend_music() {
       <h4 className="mb-5">MUSIQUE</h4>
       {trend_music.map(trend_music => (
         <div className="flex flex-col">
-          <div className="flex flex-col">
+          <div className="flex flex-col w-64">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="mr-1% rounded-lg object-cover  w-64 h-[144px]"
               src={trend_music.minia}
             />
             <h5 className="text-left py-2">
@@ -45,6 +46,7 @@ export function trend_music() {
     </div>
   )
 }
+
 export function trend_movies() {
   const trend_movies = mockData.movies
   return (
@@ -52,9 +54,9 @@ export function trend_movies() {
       <h4 className="mb-5">FILMS</h4>
       {trend_movies.map(trend_movies => (
         <div className="flex flex-col">
-          <div className="flex flex-col">
+          <div className="flex flex-col w-64">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="mr-1% rounded-lg object-cover w-64 h-[144px]"
               src={trend_movies.minia}
             />
             <h5 className="text-left py-2">{trend_movies.titre}</h5>
@@ -65,6 +67,7 @@ export function trend_movies() {
     </div>
   )
 }
+
 export function trend_gaming() {
   const trend_gaming = mockData.gaming
   return (
@@ -72,9 +75,9 @@ export function trend_gaming() {
       <h4 className="mb-5">JEUX VIDEOS</h4>
       {trend_gaming.map(trend_gaming => (
         <div className="flex flex-col">
-          <div className="flex flex-col">
+          <div className="flex flex-col w-64">
             <img
-              className="mr-1% rounded-lg object-cover"
+              className="mr-1% rounded-lg object-cover w-64 h-[144px]"
               src={trend_gaming.minia}
             />
             <h5 className="text-left py-2">{trend_gaming.titre}</h5>

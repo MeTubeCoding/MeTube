@@ -10,6 +10,7 @@ export interface IResult {
 }
 interface Props {
   video: IResult
+  filter: string
   visible: boolean
 }
 

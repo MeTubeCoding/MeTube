@@ -1,13 +1,12 @@
 import React from 'react'
 import './index.css'
-import Main from './pages/Main'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import Tendances from './pages/feed/trending'
-import History from './pages/feed/history'
+import Main from './pages/Main'
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/feed/trending" element={<Tendances />} />
-            <Route path="/feed/history" element={<History />} />
           </Routes>
         </BrowserRouter>
       </div>
