@@ -16,7 +16,6 @@ import {
   MdOutlineHelpOutline,
   MdOutlineFeedback,
   MdOutlineBolt,
-  MdOutlineLanguage,
   MdOutlineLiveTv
 } from 'react-icons/md'
 
