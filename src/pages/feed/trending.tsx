@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import SideBar from '../../components/SideBar'
+import ResultsV from '../../components/Results'
 
 // import composant  :
 import {
@@ -7,6 +9,9 @@ import {
   trend_new,
   trend_music
 } from '../../timeline_components/trending_categories'
+import { PassThrough } from 'stream'
+import Navbar from '../../components/Navbar'
+import { useOnSearch } from '../../components/useOnSearch'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
 // ================================================================================================
@@ -14,9 +19,9 @@ import {
 // ================================================================================================
 
 function Tendances() {
-
   return (
-    <div className="h-screen bg-neutral-900 text-me-orange font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+    <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+      
       <div className="flex flex-row justify-start h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
