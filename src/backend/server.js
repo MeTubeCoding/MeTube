@@ -160,9 +160,7 @@ app.get('/profile', async (req, res) => {
       'Access-Control-Allow-Headers',
       'X-Requested-With,content-type'
     )
-    res.json({ username: user.username, email: user.emailAddress })
-  } else {
-    res.status(401).send('Unauthorized')
+    res.json({ username: user.username, email: user.emailaddress })
   }
 })
 

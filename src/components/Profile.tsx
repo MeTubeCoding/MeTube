@@ -1,44 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
 interface Profile {
-  username: string
-  email: string
+  username: string;
+  emailaddress: string;
 }
 
 export default function Profile() {
-  const [profile, setProfile] = useState<Profile | null>(null)
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
-    // Fetch user data from your backend API
     fetch('http://localhost:5600/profile', {
       method: 'GET',
-      credentials: 'include' // Send cookies along with the request
     })
-      .then(res => {
-        if (res.status === 401) {
-          throw new Error('Unauthorized')
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.length > 0) {
+          setProfile(res[0]); // set the first profile object returned
         }
-        return res.json()
       })
-      .then(res => {
-        setProfile({ username: res.username, email: res.email })
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }, []) // Only fetch the data once, on component mount
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div>
       {profile ? (
         <section>
           <p>
-            {profile.email}: {profile.username}
+            {profile.emailaddress}: {profile.username}
           </p>
         </section>
       ) : (
         <p>Not logged in</p>
       )}
     </div>
-  )
+  );
 }
