@@ -19,7 +19,7 @@ function Tendances() {
       <div className="flex flex-row justify-start h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
-          <div className="flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
+          <div className="mb-5 flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
             <img
               className="rounded-full mr-2%"
               src="https://www.youtube.com/img/trending/avatar/trending.png"
