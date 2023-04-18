@@ -16,7 +16,7 @@ function App(): JSX.Element {
           <nav>
             <ul>
               <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/prout'>Login</Link>
               </li>
               <li>
                 <Link to='/signup'>Signup</Link>
@@ -31,7 +31,7 @@ function App(): JSX.Element {
           </nav>
 
           <Routes>
-            <Route path='/login' element={<LoginPage />} />
+            <Route path='/prout' element={<LoginPage />} />
             <Route path='/signup' element={<SignupPage />} />
             <Route path='/channel-creation' element={<ChannelCreationPage />} />
             <Route
