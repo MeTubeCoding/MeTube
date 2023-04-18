@@ -17,7 +17,7 @@ const VideoPage: React.FC = () => {
     <div className="flex flex-col h-screen">
       <NavigationBar />
       <div className="flex-1 flex flex-row">
-        <div className="flex-1 flex items-center justify-center bg-me-black">
+        <div className="flex-1 flex items-center justify-center bg-me-darkpurple">
           {selectedVideos.length > 0
             ? (
                 selectedVideos.map((video, index) => (
@@ -26,12 +26,12 @@ const VideoPage: React.FC = () => {
               )
             : (
             <div className="flex flex-col items-center justify-center space-y-4">
-              <h2 className="text-xl font-medium text-me-black">
+              <h2 className="text-xl font-medium text-me-yellow">
                 Select one or more videos to get started:
               </h2>
               <label
                 htmlFor="video-upload"
-                className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
+                className="px-4 py-2 text-sm font-medium text-me-yellow bg-me-lightpurple rounded-md cursor-pointer hover:bg-me-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
               >
                 Choose files
               </label>

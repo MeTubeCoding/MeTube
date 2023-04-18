@@ -39,7 +39,7 @@ const NavigationBar = () => {
                   <div
                     onClick={handleClick}
                     style={{ cursor: 'pointer' }}
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-me-yellow hover:bg-me-orange hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Video Editor
                   </div>
@@ -47,13 +47,13 @@ const NavigationBar = () => {
 
                 <Link
                   to="/music"
-                  className="text-me-black hover:bg-me-black hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-me-yellow hover:bg-me-orange hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Music Library
                 </Link>
                 <Link
                   to="/slideshow"
-                  className="text-me-black hover:bg-me-black hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-me-yellow hover:bg-me-orange hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Slideshow Editor
                 </Link>
