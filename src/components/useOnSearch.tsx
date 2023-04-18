@@ -6,8 +6,9 @@ const useOnSearch = () => {
   const [videos, setVideos] = useState<IResults | []>([])
   const [channels, setChannels] = useState<CIResults | []>([])
 
-  const onSearch = (data: string) => {
+  const onSearch = (data: string, setSearched: React.Dispatch<React.SetStateAction<boolean>>) => {
     console.log(JSON.stringify(data))
+    setSearched(true)
 
     fetch('http://localhost:5600/videos', {
       method: 'POST',

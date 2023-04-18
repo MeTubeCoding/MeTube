@@ -4,13 +4,18 @@ import SearchBar from './SearchBar'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 interface Props {
-  onSearch: (data: string) => void
+  onSearch: (data: string, setSearched: React.Dispatch<React.SetStateAction<boolean>>) => void
+  setSearched: React.Dispatch<React.SetStateAction<boolean>>
   onToggleSideBar: () => void
 }
 
 const Navbar = (props: Props) => {
   const handleHamburgerClick = () => {
     props.onToggleSideBar()
+  }
+
+  const backToHome = () => {
+    props.setSearched(false)
   }
 
   return (
@@ -25,7 +30,7 @@ const Navbar = (props: Props) => {
             />
           </div>
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
+            <Link to="/" className="flex-shrink-0 flex items-center" onClick={backToHome}>
               <svg
                 className="h-10 w-10 fill-me-orange"
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +46,7 @@ const Navbar = (props: Props) => {
             </Link>
           </div>
           <div className="flex justify-center items-center flex-grow">
-            <SearchBar onSearch={data => props.onSearch(data)} />
+            <SearchBar onSearch={data => props.onSearch(data, props.setSearched)} />
           </div>
           <div className="flex items-center">
             <Link

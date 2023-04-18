@@ -20,24 +20,36 @@ const Filters = (props: Props) => {
 
   const fVideo = () => {
     console.log('filter by ' + props.filter)
+    setChannelF(false)
+    setPlayF(false)
     setVideoF(prevState => !prevState)
+    setMovieF(false)
     props.filterVideo()
   }
 
   const fChannel = () => {
     console.log('filter by ' + props.filter)
     setChannelF(prevState => !prevState)
+    setPlayF(false)
+    setVideoF(false)
+    setMovieF(false)
     props.filterChannel()
   }
 
   const fPlaylist = () => {
     console.log('filter by ' + props.filter)
+    setChannelF(false)
     setPlayF(prevState => !prevState)
+    setVideoF(false)
+    setMovieF(false)
     props.filterPlaylist()
   }
 
   const fMovie = () => {
     console.log('filter by ' + props.filter)
+    setChannelF(false)
+    setPlayF(false)
+    setVideoF(false)
     setMovieF(prevState => !prevState)
     props.filterMovie()
   }

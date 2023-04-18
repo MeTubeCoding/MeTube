@@ -58,7 +58,7 @@ const Result = (props: Props) => {
         </a>
       </div>
       <div className="m-3 max-w-3/12">
-        <p className="text-me-yellow font-semibold">{props.filter}</p>
+        <p className="text-me-yellow font-semibold">{props.video.title}</p>
         <p className="text-me-yellow text-opacity-75">{props.video.channel}</p>
       </div>
     </div>

@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
-import SideBar from '../../components/SideBar'
-import ResultsV from '../../components/Results'
 
 // import composant  :
-
-import { PassThrough } from 'stream'
-import Navbar from '../../components/Navbar'
 import { useOnSearch } from '../../components/useOnSearch'
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
@@ -14,23 +9,8 @@ import { useOnSearch } from '../../components/useOnSearch'
 // ================================================================================================
 
 function Tendances() {
-
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const { videos, onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
-
   return (
-    <div className='h-screen bg-neutral-900 text-white font-sans font-normal text-base leading-relaxed text-left m-0 p-0 h-screen'>
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
-      <div className='flex flex-row justify-start h-screen bg-neutral-900'>
+      <div className='flex flex-row justify-start'>
         <div>
           <div className='flex flex-row justify-center items-center my-3 mt-10 mb-10 mx-1/100 lg:mx-5/100'>
             <img
@@ -41,7 +21,7 @@ function Tendances() {
               RECOMMANDATIONS
             </h1>
           </div>
-          <div className='flex  items-center justify-center bg-neutral-900'>
+          <div className='flex items-center justify-center'>
             <div className='ml-5 mr-5/100 p-0 text-center flex flex-col'>
               <h4 className='mb-5'>NOUVEAUTES</h4>
               <iframe
@@ -130,7 +110,6 @@ function Tendances() {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 export default Tendances

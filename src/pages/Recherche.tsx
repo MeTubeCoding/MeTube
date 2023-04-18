@@ -1,73 +1,65 @@
 import React, { useState } from 'react'
 import { useOnSearch } from '../components/useOnSearch'
 import Results from '../components/Results'
-import Navbar from '../components/Navbar'
-import SideBar from '../components/SideBar'
 import Filters from '../components/Filters'
 
-const Recherche = () => {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const [filter, setFilter] = useState('none')
-  const { videos, channels, onSearch } = useOnSearch()
+interface Props {
+    setFilter: React.Dispatch<React.SetStateAction<string>>
+    filter: string
+    visible: boolean
+  }
+
+const Recherche = (props: Props) => {
+  const { videos, channels } = useOnSearch()
 
   const filterChannel = () => {
-    if (filter != 'channel') {
-      setFilter('channel')
+    if (props.filter != 'channel') {
+      props.setFilter('channel')
     } else {
-      setFilter('none')
+      props.setFilter('none')
     }
   }
 
   const filterMovie = () => {
-    if (filter != 'movie') {
-      setFilter('movie')
+    if (props.filter != 'movie') {
+      props.setFilter('movie')
     } else {
-      setFilter('none')
+      props.setFilter('none')
     }
   }
 
   const filterVideo = () => {
-    if (filter != 'video') {
-      setFilter('video')
+    if (props.filter != 'video') {
+      props.setFilter('video')
     } else {
-      setFilter('none')
+      props.setFilter('none')
     }
   }
 
   const filterPlaylist = () => {
-    if (filter != 'playlist') {
-      setFilter('playlist')
+    if (props.filter != 'playlist') {
+      props.setFilter('playlist')
     } else {
-      setFilter('none')
+      props.setFilter('none')
     }
   }
 
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
-
   return (
-    <div className="max-h-screen">
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
+    <div>
         <Filters
-          visible={isSideBarVisible}
+          visible={props.visible}
           filterChannel={filterChannel}
           filterVideo={filterVideo}
           filterMovie={filterMovie}
           filterPlaylist={filterPlaylist}
-          filter={filter}
+          filter={props.filter}
         ></Filters>
         <Results
-          visible={isSideBarVisible}
-          filter={filter}
+          visible={props.visible}
+          filter={props.filter}
           videos={videos}
           channels={channels}
         />
-      </div>
     </div>
   )
 }

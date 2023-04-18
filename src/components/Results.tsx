@@ -14,10 +14,10 @@ interface Props {
 const Results = (props: Props): any => {
   return (
     <>
-      {props.channels.length === 0 &&
-      props.filter != 'video' &&
-      props.filter != 'movie' &&
-      props.filter != 'playlist' ? (
+      {props.channels.length === 0 || 
+      props.filter === 'video' || 
+      props.filter === 'playlist' || 
+      props.filter === 'movie' ? (
         <div></div>
       ) : (
         <div>
@@ -39,10 +39,10 @@ const Results = (props: Props): any => {
           ></hr>
         </div>
       )}
-      {props.videos.length === 0 &&
-      props.filter != 'channel' &&
-      props.filter != 'movie' &&
-      props.filter != 'playlist' ? (
+      {props.videos.length === 0 ||
+      props.filter === 'channel' || 
+      props.filter === 'playlist' || 
+      props.filter === 'movie'? (
         <div></div>
       ) : (
         <div className="pb-6">
