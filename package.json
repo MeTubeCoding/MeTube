@@ -66,7 +66,7 @@
     "@typescript-eslint/parser": "^5.56.0",
     "autoprefixer": "^10.4.14",
     "concurrently": "^7.6.0",
-    "cypress": "^12.8.1",
+    "cypress": "^12.10.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
     "nodemon": "^2.0.20",
