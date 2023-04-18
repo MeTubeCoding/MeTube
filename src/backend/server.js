@@ -123,12 +123,15 @@ app.post('/login', async (req, res) => {
         })
       } else {
         res.status(401).json({ success: false, message: 'Incorrect password' })
+        res.end()
       }
     } else {
       res.status(404).json({ success: false, message: 'Email does not exist' })
+      res.end()
     }
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error while connecting' })
+    res.end()
   }
   res.end()
 })
@@ -163,6 +166,7 @@ app.get('/profile', async (req, res) => {
     res.json({ username: user.username, email: user.emailAddress })
   } else {
     res.status(401).send('Unauthorized')
+    res.end()
   }
   res.end()
 })
