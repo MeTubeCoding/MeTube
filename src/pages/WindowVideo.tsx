@@ -1,45 +1,67 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable prettier/prettier */
 import React from 'react';
+import { BsPatchCheck } from 'react-icons/bs';
+import { FaThumbsUp, FaThumbsDown, FaShareAlt } from 'react-icons/fa';
 import 'tailwindcss/tailwind.css';
 
-interface VideoPlayerProps {
-    videoId: string;
-}
+const WindowVideo = () => {
 
-const WindowVideo: React.FC = () => {
-    
-    return (
-
-        <div className="bg-gray-100 min-h-screen">
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <div className="lg:flex lg:items-start lg:justify-between">
-                    <div className="flex-1 min-w-0">
-                        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-                            Titre de la vidéo
-                        </h2>
-                        <div className="flex mt-1">
-                            <span className="inline-flex items-center text-sm leading-5 font-medium text-gray-500 mr-6">
-                            1 234 vues
-                            </span>
-                            <span className="inline-flex items-center text-sm leading-5 font-medium text-gray-500 mr-6">
-                            Publié le 12 mars 2022
-                            </span>
-                        </div>
-                        <div className="mt-6">
-                            <div className="relative h-0 overflow-hidden pb-9/16">
-                                <iframe
-                                    className="absolute top-0 left-0 w-full h-full"
-                                    src="https://www.youtube.com/embed/N-TCJquxeFk"
-                                    allow="autoplay; encrypted-media"
-                                    allowFullScreen
-                                />
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <body className="bg-me-darkpurple min-h-screen">
+      <div className="max-w-screen-lg mx-auto mt-0" style={{ marginLeft: "10%" }}>
+        <div className="flex flex-col items-start">
+          <video
+            className="w-full flex-grow-1 transform -translate-x-1/2 translate-x-5"
+            controls
+            width="560"
+            height="315"
+          >
+            <source src="https://www.youtube.com/watch?v=UbFOU_XR85E" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <h2 className="mt-4 text-xl font-bold pl-4 text-me-yellow">CODING FACTORY DE CERGY : LA CALIFORNIE !</h2>
+          <div className="flex items-center justify-between mt-4 pl-4 w-full">
+            <div className="flex items-center">
+              <div className="flex items-center">
+                <div
+                  className="w-14 h-14 bg-me-yellow rounded-full"
+                  style={{ backgroundImage: "url('https://via.placeholder.com/150')" }}
+                ></div>
+                <div className="ml-2">
+                  <h3 className="text-lg font-bold text-me-yellow">André From The Valley</h3>
+                  <p className="text-sm text-me-yellow">100 000 abonnés</p>
                 </div>
+              </div>
+              <button className="ml-4 px-4 py-2 text-me-yellow bg-me-lightpurple rounded-full shadow-md hover:shadow-lg h-10">
+                S&apos;abonner
+              </button>
             </div>
+            <div className="flex flex-col items-end">
+              <div className="flex flex-row items-center mt-3">
+                <div className="mr-2 flex items-center">
+                  <button className="p-2 rounded-full bg-me-lightpurple shadow-md hover:shadow-lg">
+                    <FaThumbsUp className="text-me-yellow w-4 h-4" />
+                  </button>
+                  <span className="text-me-yellow font-medium ml-2">500 k</span>
+                </div>
+                <span className="text-me-yellow mx-2">|</span>
+                <button className="p-2 rounded-full bg-me-lightpurple shadow-md hover:shadow-lg">
+                  <FaThumbsDown className="text-me-yellow w-4 h-4" />
+                </button>
+                <span className="text-me-yellow mx-2">|</span>
+                  <button className="p-2 rounded-full bg-me-lightpurple shadow-md hover:shadow-lg">
+                    <FaShareAlt className="text-me-yellow w-4 h-4" />
+                  </button>
+                <span className="text-me-yellow ml-2">Partager</span>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </body>
+  );
 };
 
 export default WindowVideo;

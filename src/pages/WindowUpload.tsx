@@ -4,7 +4,7 @@
 import React, { useState } from 'react'
 import 'tailwindcss/tailwind.css'
 
-const WindowUploadFusion = () => {
+const WindowUpload = () => {
   const [file, setFile] = useState<File | null>(null)
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -72,25 +72,25 @@ const WindowUploadFusion = () => {
   }
 
   return (
-    <div className='bg-me-white min-h-screen'>
-      <header className='bg-yt-bg-primary bg-me-colorprimary flex justify-between items-center p-2 md:p-3'>
-        <h2 className='text-me-white text-lg md:text-xl lg:text-2xl font-bold'>
+    <div className='bg-me-mediumpurple min-h-screen'>
+      <header className='bg-yt-bg-primary bg-me-lightpurple flex justify-between items-center p-2 md:p-3'>
+        <h2 className='text-white text-lg text-me-yellow md:text-xl lg:text-2xl font-bold'>
           Upload and Publish Video
         </h2>
         <nav className='hidden text-me-yellow md:block'>
           <ul className='flex space-x-6 text-sm md:text-base font-medium'>
             <li>
-              <a href='#' className='text-me-white hover:text-gray-300'>
+              <a href='#' className='text-white hover:text-gray-300'>
                 Home
               </a>
             </li>
             <li>
-              <a href='#' className='text-me-white hover:text-gray-300'>
+              <a href='#' className='text-white hover:text-gray-300'>
                 About
               </a>
             </li>
             <li>
-              <a href='#' className='text-me-white hover:text-gray-300'>
+              <a href='#' className='text-white hover:text-gray-300'>
                 Contact
               </a>
             </li>
@@ -100,22 +100,22 @@ const WindowUploadFusion = () => {
           className='block md:hidden focus:outline-none'
           aria-label='Menu'
         >
-          <svg className='w-6 h-6 fill-current text-me-white' viewBox='0 0 24 24'>
+          <svg className='w-6 h-6 fill-current text-white' viewBox='0 0 24 24'>
             <path d='M4 6h16M4 12h16M4 18h16'></path>
           </svg>
         </button>
       </header>
-      <div className='flex bg-me-background justify-center items-center'>
+      <div className='flex justify-center items-center'>
         <div className='w-full md:w-1/2 pl-24 max-w-xl mx-auto px-2 py-8'>
           <form onSubmit={handleSubmit} className='max-w-md w-full px-6'>
-            <div className='flex flex-col items-center justify-center bg-me-white rounded-lg shadow-lg p-10'>
+            <div className='flex flex-col items-center justify-center bg-me-lightpurple rounded-lg shadow-lg p-10'>
               <label
                 htmlFor='file-upload'
                 className='relative cursor-pointer bg-gray-100 rounded-lg font-medium text-red-600 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500 px-6 py-24'
               >
                 <div className='flex flex-col items-center justify-center space-y-4'>
                   <svg
-                    className='w-16 h-16 text-me-colorprimary'
+                    className='w-16 h-16 text-me-orange'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -128,14 +128,14 @@ const WindowUploadFusion = () => {
                       d='M16 17l-4 4m0 0l-4-4m4 4V3'
                     />
                   </svg>
-                  <span className='text-xl text-me-colorprimary font-bold'>
+                  <span className='text-xl text-me-orange font-bold'>
                     Select files to upload
                   </span>
-                  <span className='text-me-background text-sm'>
+                  <span className='text-me-yellow text-sm'>
                     (MP4, WebM, AVI, MOV, MPEG, FLV, 3GPP, WMV, Maximum file
                     size: 50 MB)
                   </span>
-                  <span className='text-sm font-medium text-me-background'>
+                  <span className='text-sm font-medium text-me-yellow'>
                     or drag and drop files here
                   </span>
                   <input
@@ -148,27 +148,27 @@ const WindowUploadFusion = () => {
                   />
                 </div>
               </label>
-              <p className='pl-1 mt-5 text-sm text-me-background'>
+              <p className='pl-1 mt-5 text-sm text-me-yellow'>
                 {file ? file.size + ' file(s) selected' : 'No files selected'}
               </p>
               <div className='mt-8 flex justify-center'>
                 <button
                   type='submit'
                   disabled={!file}
-                  className='px-4 py-2 text-me-white bg-me-background rounded-lg hover:bg-me-red focus:outline-none focus:bg-me-red'
+                  className='px-4 py-2 text-me-yellow bg-me-orange rounded-lg hover:bg-me-orange focus:outline-none focus:bg-me-orange'
                 >
                   Upload
                 </button>
               </div>
               <div className='mt-8 text-center'>
-                <span className='text-me-black text-sm'>
+                <span className='text-me-yellow text-sm'>
                   By submitting your videos to MeTube, you acknowledge that you
                   agree to MeTube's{' '}
-                  <a href='#' className='underline hover:text-me-colorprimary'>
+                  <a href='#' className='underline hover:text-me-orange'>
                     Terms of Service
                   </a>{' '}
                   and{' '}
-                  <a href='#' className='underline hover:text-me-colorprimary'>
+                  <a href='#' className='underline hover:text-me-orange'>
                     Community Guidelines
                   </a>
                   .
@@ -178,7 +178,7 @@ const WindowUploadFusion = () => {
           </form>
         </div>
         <div className='w-full md:w-2/3 max-w-4xl mx-auto py-8'>
-          <div className='bg-me-white rounded-md shadow-lg'>
+          <div className='bg-me-lightpurple rounded-md shadow-lg'>
             <div className='relative aspect-w-16 aspect-h-9 overflow-hidden'>
               <img
                 src='https://via.placeholder.com/640x360.png?text=Preview+Image'
@@ -190,7 +190,7 @@ const WindowUploadFusion = () => {
               <div className='mb-6'>
                 <label
                   htmlFor='video-title'
-                  className='block font-medium text-me-black mb-2'
+                  className='block font-medium text-me-yellow mb-2'
                   aria-label='Video title'
                   aria-required='true'
                 >
@@ -200,7 +200,7 @@ const WindowUploadFusion = () => {
                   type='text'
                   id='video-title'
                   name='video-title'
-                  className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                  className='w-full px-4 py-2 rounded-md border border-me-lightpurple focus:outline-none focus:border-me-lightpurple'
                 />
               </div>
               <div className='mb-6'>
@@ -216,20 +216,20 @@ const WindowUploadFusion = () => {
                   id='video-description'
                   name='video-description'
                   rows={4}
-                  className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                  className='w-full px-4 py-2 rounded-md border border-me-lightpurple focus:outline-none focus:border-me-lightpurple'
                 ></textarea>
               </div>
               <div className='mb-4'>
                 <label
                   htmlFor='video-playlist'
-                  className='block font-medium text-me-black mb-2'
+                  className='block font-medium text-me-yellow mb-2'
                 >
                   Add to Playlist
                 </label>
                 <select
                   id='video-playlist'
                   name='video-playlist'
-                  className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                  className='w-full px-4 py-2 rounded-md border border-me-lightpurple focus:outline-none focus:border-me-lightpurple'
                 >
                   <option value=''>Select a playlist</option>
                   <option value='create-playlist'>Create new playlist</option>
@@ -239,7 +239,7 @@ const WindowUploadFusion = () => {
                 </select>
               </div>
               <div className='flex mb-6'>
-                <div className='w-1/2 pr-2 flex items-center font-medium text-me-black mb-2'>
+                <div className='w-1/2 pr-2 flex items-center font-medium text-me-yellow mb-2'>
                   <input
                     type='checkbox'
                     id='video-children'
@@ -250,7 +250,7 @@ const WindowUploadFusion = () => {
                     This video is appropriate for children
                   </label>
                 </div>
-                <div className='w-1/2 pl-2 flex items-center font-medium text-me-black mb-2'>
+                <div className='w-1/2 pl-2 flex items-center font-medium text-me-yellow mb-2'>
                   <input
                     type='checkbox'
                     id='video-commercial'
@@ -288,23 +288,23 @@ const WindowUploadFusion = () => {
                 </div>
                 <br />
                 <details>
-                  <summary className='font-medium text-me-black cursor-pointer'>
+                  <summary className='font-medium text-me-yellow cursor-pointer'>
                     Click to see video details
                   </summary>
                   <div className='mt-4'>
-                    <div className='bg-me-colorprimary p-4 rounded-lg'>
+                    <div className='bg-me-orange p-4 rounded-lg'>
                       <div className='flex mb-6'>
                         <div className='w-1/2 pr-2'>
                           <label
                             htmlFor='video-language'
-                            className='block font-medium text-me-black mb-2'
+                            className='block font-medium text-me-yellow mb-2'
                           >
                             Language
                           </label>
                           <select
                             id='video-language'
                             name='video-language'
-                            className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                            className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                           >
                             <option value=''>Select a language</option>
                             <option value='other'>Other</option>
@@ -317,14 +317,14 @@ const WindowUploadFusion = () => {
                         <div className='w-1/2 pr-2'>
                           <label
                             htmlFor='video-language'
-                            className='block font-medium text-me-black mb-2'
+                            className='block font-medium text-me-yellow mb-2'
                           >
                             Subtitling certificate
                           </label>
                           <select
                             id='video-language'
                             name='video-language'
-                            className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                            className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                           >
                             <option value=''>None</option>
                             <option value=''>
@@ -357,7 +357,7 @@ const WindowUploadFusion = () => {
                         <div className='w-1/2 pl-2'>
                           <label
                             htmlFor='video-date'
-                            className='block font-medium text-me-black mb-2'
+                            className='block font-medium text-me-yellow mb-2'
                           >
                             Date of recording
                           </label>
@@ -366,7 +366,7 @@ const WindowUploadFusion = () => {
                             id='video-date'
                             defaultValue={'test'}
                             name='video-date'
-                            className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                            className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                             value=''
                             placeholder='None'
                           />
@@ -374,7 +374,7 @@ const WindowUploadFusion = () => {
                         <div className='w-1/3 pl-2'>
                           <label
                             htmlFor='video-location'
-                            className='block font-medium text-me-black mb-2'
+                            className='block font-medium text-me-yellow mb-2'
                           >
                             Location
                           </label>
@@ -382,7 +382,7 @@ const WindowUploadFusion = () => {
                             type='text'
                             id='video-location'
                             name='video-location'
-                            className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                            className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                           />
                         </div>
                       </div>
@@ -391,7 +391,7 @@ const WindowUploadFusion = () => {
                     <div className='mb-6'>
                       <label
                         htmlFor='video-tags'
-                        className='block font-medium text-me-black mb-2'
+                        className='block font-medium text-me-yellow mb-2'
                         aria-label='Video tags'
                       >
                         Tags
@@ -400,20 +400,20 @@ const WindowUploadFusion = () => {
                         type='text'
                         id='video-tags'
                         name='video-tags'
-                        className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                        className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                       />
                     </div>
                     <div className='w-1/2 pr-2'>
                       <label
                         htmlFor='video-license'
-                        className='block font-medium text-me-black mb-2'
+                        className='block font-medium text-me-yellow mb-2'
                       >
                         License
                       </label>
                       <select
                         id='video-license'
                         name='video-license'
-                        className='w-full px-4 py-2 rounded-md border border-me-black focus:ring-2 focus:ring-me-colorprimary focus:outline-none focus:border-me-black'
+                        className='w-full px-4 py-2 rounded-md border border-gray-400 focus:outline-none focus:border-red-600'
                       >
                         <option value=''>Metube License - Standard</option>
                         <option value=''>Creative Commons - Attribution</option>
@@ -421,7 +421,7 @@ const WindowUploadFusion = () => {
                     </div>
                     <br />
                     <div className='flex mb-6'>
-                      <div className='w-1/2 pr-2 flex items-center font-medium text-me-black mb-2'>
+                      <div className='w-1/2 pr-2 flex items-center font-medium text-me-yellow mb-2'>
                         <input
                           type='checkbox'
                           id='video-children'
@@ -432,7 +432,7 @@ const WindowUploadFusion = () => {
                           Allow integration
                         </label>
                       </div>
-                      <div className='w-1/2 pl-2 flex items-center font-medium text-me-black mb-2'>
+                      <div className='w-1/2 pl-2 flex items-center font-medium text-me-yellow mb-2'>
                         <input
                           type='checkbox'
                           id='video-commercial'
@@ -445,23 +445,23 @@ const WindowUploadFusion = () => {
                         </label>
                       </div>
                     </div>
-                    <div className='bg-me-colorprimary p-4 rounded-lg'>
-                      <h2 className='text-xl text-me-white font-semibold mb-2'>Category</h2>
-                      <p className='text-me-white mb-4'>
+                    <div className='bg-me-orange p-4 rounded-lg'>
+                      <h2 className='text-xl text-me-yellow font-semibold mb-2'>Category</h2>
+                      <p className='text-me-yellow mb-4'>
                         Add your video to a category to make it easier for
                         viewers to find it.
                       </p>
                       <div>
                         <label
                           htmlFor='category'
-                          className='block font-medium text-me-white mb-2'
+                          className='block font-medium text-me-yellow mb-2'
                         >
                           Category
                         </label>
                         <select
                           name='category'
                           id='category'
-                          className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-me-colorprimary focus:border-transparent'
+                          className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent'
                           value={selectedCategory}
                           onChange={handleCategoryChange}
                         >
@@ -475,13 +475,13 @@ const WindowUploadFusion = () => {
                       </div>
                       {selectedCategory === 'jeu-video' && (
                         <div className='mt-4'>
-                          <label className='block text-me-black font-medium mb-2'>
+                          <label className='block text-me-yellow font-medium mb-2'>
                             Video game
                           </label>
                           {games.map(game => (
                             <div
                               key={game.value}
-                              className='flex text-me-black items-center mb-2'
+                              className='flex text-me-yellow items-center mb-2'
                             >
                               <input
                                 type='radio'
@@ -498,14 +498,14 @@ const WindowUploadFusion = () => {
                         </div>
                       )}
                     </div>
-                    <div className='border-t border-me-colorprimary mt-8 pt-4 bg-me-colorprimary p-4 rounded-lg'>
-                      <h2 className='text-xl text-me-white font-semibold mb-2'>
+                    <div className='border-t border-me-yellow mt-8 pt-4 bg-me-orange p-4 rounded-lg'>
+                      <h2 className='text-xl text-me-yellow font-semibold mb-2'>
                         Comments and reviews
                       </h2>
                       <div>
                         <label
                           htmlFor='show-comments'
-                          className='flex items-center text-me-white cursor-pointer mb-2'
+                          className='flex items-center text-me-yellow cursor-pointer mb-2'
                         >
                           <input
                             type='radio'
@@ -521,7 +521,7 @@ const WindowUploadFusion = () => {
                       <div>
                         <label
                           htmlFor='check-comments'
-                          className='flex items-center text-me-white cursor-pointer mb-2 radio-button'
+                          className='flex items-center text-me-yellow cursor-pointer mb-2 radio-button'
                         >
                           <input
                             type='radio'
@@ -539,7 +539,7 @@ const WindowUploadFusion = () => {
                         <div>
                           <label
                             htmlFor='severe-comments'
-                            className='ml-5 flex text-me-white items-center cursor-pointer mb-2'
+                            className='ml-5 flex text-me-yellow items-center cursor-pointer mb-2'
                           >
                             <input
                               type='checkbox'
@@ -561,7 +561,7 @@ const WindowUploadFusion = () => {
                               }`}
                             >
                               Increase severity{' '}
-                              <span className='text-me-white bg-me-red px-1 rounded-md'>
+                              <span className='text-me-orange bg-me-yellow px-1 rounded-md'>
                                 Test
                               </span>
                             </span>
@@ -570,7 +570,7 @@ const WindowUploadFusion = () => {
                       </div>
                       <label
                         htmlFor='verify-all-comments'
-                        className='flex text-me-white items-center cursor-pointer mb-2'
+                        className='flex text-me-yellow items-center cursor-pointer mb-2'
                       >
                         <input
                           type='radio'
@@ -584,7 +584,7 @@ const WindowUploadFusion = () => {
                       </label>
                       <label
                         htmlFor='disable-comments'
-                        className='flex text-me-white items-center cursor-pointer mb-2'
+                        className='flex text-me-yellow items-center cursor-pointer mb-2'
                       >
                         <input
                           type='radio'
@@ -599,14 +599,14 @@ const WindowUploadFusion = () => {
                       <div>
                         <label
                           htmlFor='sort-comments'
-                          className='text-me-white block font-medium mb-2'
+                          className='text-me-yellow block font-medium mb-2'
                         >
                           Sort by
                         </label>
                         <select
                           name='sort-comments'
                           id='sort-comments'
-                          className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-me-colorprimary focus:border-transparent'
+                          className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-me-yellow focus:border-transparent'
                           value={sortComments}
                           onChange={handleSortCommentsChange}
                         >
@@ -617,7 +617,7 @@ const WindowUploadFusion = () => {
                       <div className='mt-4'>
                         <label
                           htmlFor='show-likes'
-                          className='flex items-center text-me-white cursor-pointer mb-2'
+                          className='flex items-center text-me-yellow cursor-pointer mb-2'
                         >
                           <input
                             type='checkbox'
@@ -636,7 +636,7 @@ const WindowUploadFusion = () => {
                 <div className='flex justify-end'>
                   <button
                     type='submit'
-                    className='px-6 py-2 bg-me-background text-me-white rounded-md hover:bg-me-red focus:outline-none focus:bg-me-red'
+                    className='px-6 py-2 bg-me-orange text-me-yellow rounded-md hover:bg-me-orange focus:outline-none focus:bg-me-orange'
                   >
                     Publish
                   </button>
@@ -650,4 +650,4 @@ const WindowUploadFusion = () => {
   )
 }
 
-export default WindowUploadFusion
+export default WindowUpload

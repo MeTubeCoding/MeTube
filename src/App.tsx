@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import WindowUploadFusion from './pages/WindowUploadFusion'
+import WindowVideo from'./pages/WindowVideo'
 
 const App = () => {
   return (
-    <WindowUploadFusion />
-  )
+    <WindowVideo /> )
 }
 
 export default App
