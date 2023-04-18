@@ -7,13 +7,17 @@ export type CIResults = Array<CIResult>
 interface Props {
   videos: IResults
   channels: CIResults
+  filter: string
   visible: boolean
 }
 
 const Results = (props: Props): any => {
   return (
     <>
-      {props.channels.length === 0 ? (
+      {props.channels.length === 0 || 
+      props.filter === 'video' || 
+      props.filter === 'playlist' || 
+      props.filter === 'movie' ? (
         <div></div>
       ) : (
         <div>
@@ -29,18 +33,26 @@ const Results = (props: Props): any => {
           <hr
             className={`my-8 border-me-yellow ${
               props.visible
-                ? 'w-[52.33%] ml-[24.75rem]'
-                : 'w-[62.42%] ml-[15.73rem]'
+                ? 'w-[54.76%] ml-[24.75rem]'
+                : 'w-[64.90%] ml-[15.73rem]'
             }`}
           ></hr>
         </div>
       )}
-      {props.videos.length === 0 ? (
+      {props.videos.length === 0 ||
+      props.filter === 'channel' || 
+      props.filter === 'playlist' || 
+      props.filter === 'movie'? (
         <div></div>
       ) : (
         <div className="pb-6">
           {props.videos.map(video => (
-            <Result key={video.id} video={video} visible={props.visible} />
+            <Result
+              key={video.id}
+              video={video}
+              visible={props.visible}
+              filter={props.filter}
+            />
           ))}
         </div>
       )}

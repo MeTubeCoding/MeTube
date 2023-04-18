@@ -4,7 +4,6 @@ import Login from '../components/Login'
 
 export default function LoginPage(): JSX.Element {
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <>
       <Header
         heading="Login to your account"

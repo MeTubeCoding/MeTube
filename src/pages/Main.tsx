@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
-import Results from '../components/Results'
-import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
+import Navbar from '../components/Navbar'
 import SideBar from '../components/SideBar'
-import Filters from '../components/Filters'
+import Recherche from './Recherche'
+import Tendances from './feed/trending'
+import Result from '../components/Result/Result'
+import Results from '../components/Results'
+
 
 const Main = () => {
+  const [HasSearched, setHasSearched] = useState(false)
+
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const [filter, setFilter] = useState('none')
   const { videos, channels, onSearch } = useOnSearch()
 
   const toggleSideBarVisibility = () => {
@@ -16,16 +22,11 @@ const Main = () => {
   return (
     <div className="max-h-screen">
       <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+        <Navbar setSearched={setHasSearched} onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        <Filters visible={isSideBarVisible}></Filters>
-        <Results
-          visible={isSideBarVisible}
-          videos={videos}
-          channels={channels}
-        />
+        {HasSearched ? <div><Recherche filter={filter} visible={isSideBarVisible} setFilter={setFilter}/><Results videos={videos} channels={channels} filter={filter} visible={isSideBarVisible}></Results></div>: <Tendances/> }
       </div>
     </div>
   )
