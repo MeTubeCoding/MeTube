@@ -1,14 +1,11 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Main from './pages/Main'
-import ChannelCreationPage from './pages/ChannelCreationPage'
-import WindowUploadFusion from './pages/WindowUploadFusion'
+import WindowCreateChannel from './pages/WindowCreateChannel'
+import ChannelCreation from './components/ChannelCreation'
 
 const App = () => {
   return (
     <div>
-      <ChannelCreationPage />
-      <WindowUploadFusion />
+      <WindowCreateChannel />
     </div>
   )
 }
