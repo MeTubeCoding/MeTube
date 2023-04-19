@@ -61,8 +61,14 @@ const Profile: React.FC = () => {
       <p className="mb-2"><span className="font-bold">City :</span> {user.city}</p>
       <p className="mb-2"><span className="font-bold">Username :</span> {user.username}</p>
       <p className="mb-4"><span className="font-bold">Email :</span> {user.email}</p>
+      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('email');
+        navigate('/login');
+      }}>Déconnexion</button>
     </div>
   );
+  
 };
 
 export default Profile;
