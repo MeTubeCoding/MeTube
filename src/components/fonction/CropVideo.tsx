@@ -21,11 +21,26 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
     x: 0,
     y: 0
   })
+  const [cropPosition, setCropPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0
+  })
+  const [cropSize, setCropSize] = useState<{ width: number; height: number }>({
+    width: 0,
+    height: 0
+  })
 
   const handleCrop = () => {
     if (videoRef.current && canvasRef.current) {
-      // Entrer en mode de sélection de la zone de recadrage
-      setCropMode(true)
+      if (!cropMode) {
+        // Entrer en mode de sélection de la zone de recadrage
+        setCropMode(true)
+      } else {
+        // Annuler la sélection de la zone de recadrage
+        setCropMode(false)
+        setCropPosition({ x: 0, y: 0 })
+        setCropSize({ width: 0, height: 0 })
+      }
     }
   }
 
@@ -63,26 +78,36 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
         : 1
       const x = event.clientX - rect.left
       const y = event.clientY - rect.top
-      const deltaX = x - mousePosition.x
-      const deltaY = y - mousePosition.y
-      setCropDimensions(prev => ({
-        ...prev,
+
+      // calculer la nouvelle position et la nouvelle taille de la zone de recadrage
+      const newPosition = {
         x: Math.max(
           Math.min(
-            prev.x + deltaX * scaleX,
-            videoRef.current ? videoRef.current.videoWidth - prev.width : 0
+            x,
+            videoRef.current ? videoRef.current.videoWidth - cropSize.width : 0
           ),
           0
         ),
         y: Math.max(
           Math.min(
-            prev.y + deltaY * scaleY,
-            videoRef.current ? videoRef.current.videoHeight - prev.height : 0
+            y,
+            videoRef.current
+              ? videoRef.current.videoHeight - cropSize.height
+              : 0
           ),
           0
         )
-      }))
-      setMousePosition({ x, y })
+      }
+      const newWidth =
+        Math.min(x, videoRef.current ? videoRef.current.videoWidth : 0) -
+        newPosition.x
+      const newHeight =
+        Math.min(y, videoRef.current ? videoRef.current.videoHeight : 0) -
+        newPosition.y
+
+      // mettre à jour l'état de la position et de la taille de la zone de recadrage
+      setCropPosition(newPosition)
+      setCropSize({ width: newWidth, height: newHeight })
     }
   }
 
@@ -98,14 +123,14 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
         // Calculer la taille de la zone de recadrage
         const scaleX = video.videoWidth / video.offsetWidth
         const scaleY = video.videoHeight / video.offsetHeight
-        const cropWidth = cropDimensions.width * scaleX
-        const cropHeight = cropDimensions.height * scaleY
+        const cropWidth = cropSize.width * scaleX
+        const cropHeight = cropSize.height * scaleY
 
         // Dessiner l'image recadrée sur le canvas
         context.drawImage(
           video,
-          cropDimensions.x * scaleX,
-          cropDimensions.y * scaleY,
+          cropPosition.x * scaleX,
+          cropPosition.y * scaleY,
           cropWidth,
           cropHeight,
           0,

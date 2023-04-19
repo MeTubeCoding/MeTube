@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MusicPlayer from '../components/MusicPlayer'
-import Cropper from './fonction/CropVideo'
+import VideoCrop from './fonction/CropVideo'
 
 interface VideoEditorProps {
   selectedVideo: string | undefined
@@ -18,20 +18,20 @@ const VideoEditor = ({
 
   const handleCrop = () => {
     if (selectedVideo) {
-      // Entrer en mode de sélection de la zone de recadrage
+      // Enter crop mode
       setCropMode(true)
     }
   }
 
   const handleCropDone = (croppedSrc: string) => {
-    // Sortir du mode de sélection de la zone de recadrage
+    // Exit crop mode
     setCropMode(false)
-    // Mettre à jour le vidéo sélectionné avec le vidéo recadré
+    // Update the selected video with the cropped video
     setCroppedVideo(croppedSrc)
   }
 
   const handleCancelCrop = () => {
-    // Sortir du mode de sélection de la zone de recadrage
+    // Exit crop mode
     setCropMode(false)
   }
 
@@ -55,7 +55,7 @@ const VideoEditor = ({
           <div>
             {cropMode ? (
               selectedVideo && (
-                <Cropper
+                <VideoCrop
                   src={selectedVideo}
                   onDone={handleCropDone}
                   oncancel={handleCancelCrop}
@@ -63,31 +63,32 @@ const VideoEditor = ({
               )
             ) : croppedVideo ? (
               <video controls src={croppedVideo}></video>
-            ) : selectedVideo ? (
-              <div>
-                <video controls src={selectedVideo}></video>
-                <div>
-                  <button onClick={handleCrop}>Crop</button>
-                </div>
-              </div>
             ) : (
               <div className="flex flex-col items-center justify-center space-y-4">
-                <h2 className="text-xl font-medium text-me-black">
-                  No video selected
-                </h2>
-                <label
-                  htmlFor="video-upload"
-                  className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
-                >
-                  Choose a file
-                </label>
-                <input
-                  id="video-upload"
-                  type="file"
-                  accept="video/*"
-                  onChange={handleVideoUpload}
-                  className="sr-only"
-                />
+                {selectedVideo ? (
+                  <div>
+                    <video controls src={selectedVideo}></video>
+                    <div>
+                      <button onClick={handleCrop}>Crop</button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <label
+                      htmlFor="video-upload"
+                      className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
+                    >
+                      Choose a file
+                    </label>
+                    <input
+                      id="video-upload"
+                      type="file"
+                      accept="video/*"
+                      onChange={handleVideoUpload}
+                      className="sr-only"
+                    />
+                  </>
+                )}
               </div>
             )}
           </div>

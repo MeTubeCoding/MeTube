@@ -1,5 +1,6 @@
 import React from 'react'
 import NavigationBar from '../components/NavigationBar'
+import Video from '../components/Video'
 
 const HomePage = (): JSX.Element => {
   return (
@@ -12,7 +13,12 @@ const HomePage = (): JSX.Element => {
         height: 'calc(100vh - 60px)'
       }}
     >
-      <NavigationBar />
+      <div>
+        <NavigationBar />
+      </div>
+      <div className="mt-[15%]">
+        <Video />
+      </div>
     </div>
   )
 }

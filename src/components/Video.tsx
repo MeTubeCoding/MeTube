@@ -8,7 +8,7 @@ import InsertCommentIcon from '@mui/icons-material/InsertComment'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import { Avatar } from '@mui/material'
 
-function Video (): JSX.Element {
+function Video(): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
   // const [description] = useState('test description')
 
