@@ -11,7 +11,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import videoRoutes from "./routes/videos.js";
-
+import mongoose from "mongoose";
 import express from "express";
 const app = express();
 
@@ -22,6 +22,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import { query } from "express";
 
 const uri = process.env.DB_LINK;
+
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -45,11 +46,6 @@ app.use(cors(corsOptions));
 app.get("/", (req, res) => {
   res.send("SERVER IS RUNNING");
 });
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
 
 app.use("/videos", videoRoutes);
 
@@ -59,11 +55,8 @@ app.post("/node/sub", (req, res) => {
       try {
         const database = client.db("BigOne");
         const movies = database.collection("enAttente");
-        //   console.log("mongo connect")
         const query = req.body;
-        //   console.log(query);
         await movies.insertOne(query);
-        //   console.log(movie);
       } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
@@ -81,11 +74,8 @@ app.post("/data", (req, res) => {
       try {
         const database = client.db("profile");
         const movies = database.collection("users");
-        //   console.log("mongo connect")
         const query = req.body;
-        //   console.log(query);
         await movies.insertOne(query);
-        //   console.log(movie);
       } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
@@ -124,11 +114,10 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/demo", (req, res) => {
-  console.log("test");
   res.end("reponse du serveur");
 });
 
-app.post("/videos", function (req, res) {
+app.post("/fakevid", function (req, res) {
   const fakeVideos = [
     {
       id: 1,
@@ -242,11 +231,8 @@ app.post("/node/sub", (req, res) => {
       try {
         const database = client.db("BigOne");
         const movies = database.collection("enAttente");
-        //   console.log("mongo connect")
         const query = req.body;
-        //   console.log(query);
         await movies.insertOne(query);
-        //   console.log(movie);
       } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
@@ -262,8 +248,11 @@ app.get("/demo", (req, res) => {
   console.log("test");
   res.end("reponse du serveur");
 });
-
-app.listen(5600, () => {
-  console.log(console.clear);
-  console.log("Server app listening on port 5600");
-});
+// mongoose.set("useFindAndModify", false);
+// mongoose.set("useCreateIndex", true);
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() =>
+    app.listen(5600, () => console.log(`Server running on port: ${5600}`))
+  )
+  .catch((error) => console.log(error.message));

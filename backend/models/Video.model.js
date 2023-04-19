@@ -1,18 +1,18 @@
-import { mongoose } from 'mongoose'
+import { mongoose } from "mongoose";
 
 // Define schema
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const VideoModelSchema = new Schema({
   title: String,
   miniature: String,
   video: String,
-  release: Date,
+  release: String,
   description: String,
-  short: Boolean
-})
+  short: Boolean,
+});
 
 // Compile model from schema
-const VideoModel = mongoose.model('VideoModel', VideoModelSchema)
+const VideoModel = mongoose.model("videos", VideoModelSchema);
 
-export default VideoModel
+export default VideoModel;

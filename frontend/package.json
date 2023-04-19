@@ -38,7 +38,7 @@
     "zxcvbn": "^4.4.2"
   },
   "scripts": {
-    "start": "concurrently \"nodemon src/backend/server.js\" \"react-scripts start\" \"npm run eslint\"",
+    "start": "react-scripts start",
     "eslint": "nodemon --exec \"eslint src\"",
     "build": "react-scripts build",
     "test": "react-scripts test",

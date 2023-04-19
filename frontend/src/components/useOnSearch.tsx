@@ -9,7 +9,7 @@ const useOnSearch = () => {
   const onSearch = (data: string) => {
     console.log(JSON.stringify(data))
 
-    fetch('http://localhost:5600/videos', {
+    fetch('http://localhost:5600/videos/searchvideos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
