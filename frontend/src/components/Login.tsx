@@ -60,7 +60,7 @@ const Login: React.FC = () => {
           )
           if (passwordMatch) {
             // Connexion réussie
-            localStorage.setItem("test",JSON.stringify(data));
+            localStorage.setItem('test', JSON.stringify(data))
             navigate('/profile')
           } else {
             // Échec de la connexion
