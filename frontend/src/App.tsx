@@ -7,6 +7,7 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import HomePage from './pages/HomePage'
+import VideoPage from './pages/VideoPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/:id" element={<HomePage />} />
+            <Route path="/videopage" element={<VideoPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
