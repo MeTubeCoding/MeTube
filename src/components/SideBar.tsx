@@ -16,6 +16,7 @@ import {
   MdOutlineHelpOutline,
   MdOutlineFeedback,
   MdOutlineBolt,
+  MdOutlineLanguage,
   MdOutlineLiveTv
 } from 'react-icons/md'
 
@@ -85,7 +86,7 @@ function SideBar(props: SideBarProps) {
   const thirdpart = [
     {
       icon: <MdOutlineBolt className="text-xl" />,
-      name: 'For you',
+      name: 'Trending',
       href: '/feed/trending'
     },
     {

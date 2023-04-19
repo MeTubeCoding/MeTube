@@ -2,17 +2,10 @@
 import React from 'react'
 import mockData from './mocking.json'
 
-
-const old_tags: string[] = [];
-old_tags.push("musique");
-for (let i = 0; i < mockData.chaine.length; i++) {
-  old_tags.push(mockData.chaine[i].tag_pref[i]);
-}
-
 export function trend_tag() {
-  const chaine = mockData.chaine;
-  const videos = mockData.videos;
-  const vid_a_afficher = [];
+    const chaine = mockData.chaine;
+    const videos = mockData.videos;
+    const vid_a_afficher = [];
   
     for (let i = 0; i < chaine.length; i++) {
       const trend_tag = mockData.chaine[i].tag_pref;
