@@ -55,12 +55,12 @@ const Profile: React.FC = () => {
   return (
     <div className="max-w-lg mx-auto py-4 px-8 bg-white border-white border-2 shadow-lg rounded-lg my-20">
       <h1 className="text-3xl font-bold mb-4">Profile</h1>
-      <p className="mb-2"><span className="font-bold">Lastname:</span> {user.lastname}</p>
-      <p className="mb-2"><span className="font-bold">Firstname:</span> {user.firstname}</p>
-      <p className="mb-2"><span className="font-bold">Country:</span> {user.country}</p>
-      <p className="mb-2"><span className="font-bold">City:</span> {user.city}</p>
-      <p className="mb-2"><span className="font-bold">Username:</span> {user.username}</p>
-      <p className="mb-4"><span className="font-bold">Email:</span> {user.email}</p>
+      <p className="mb-2"><span className="font-bold">Lastname :</span> {user.lastname}</p>
+      <p className="mb-2"><span className="font-bold">Firstname :</span> {user.firstname}</p>
+      <p className="mb-2"><span className="font-bold">Country :</span> {user.country}</p>
+      <p className="mb-2"><span className="font-bold">City :</span> {user.city}</p>
+      <p className="mb-2"><span className="font-bold">Username :</span> {user.username}</p>
+      <p className="mb-4"><span className="font-bold">Email :</span> {user.email}</p>
     </div>
   );
 };
