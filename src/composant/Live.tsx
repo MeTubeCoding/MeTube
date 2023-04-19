@@ -164,6 +164,25 @@ export function Live() {
 					}
 				</div>
 			)}
+
+			{mode === "banned" && (
+				<div className='viewer-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+								</div>
+							</section>
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
 		</>
 	)
 }
