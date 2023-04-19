@@ -8,7 +8,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import { Avatar } from "@mui/material";
-import OutilTexte from "./OutilTexte";
+import OutilTexte from "./fonction/OutilTexte";
 
 function Video(): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState

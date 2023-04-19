@@ -1,7 +1,7 @@
 import React from "react";
 import OutilDecoupage from "./OutilDecoupage";
 import OutilAjoutEffets from "./OutilAjoutEffets";
-import OutilTexte from "./OutilTexte";
+import OutilTexte from "./fonction/OutilTexte";
 
 interface MontagePanneauProps {
   // Ajoutez les props nécessaires ici

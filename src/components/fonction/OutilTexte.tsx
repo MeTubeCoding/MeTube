@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./OutilTexte.css";
-import NavigationBar from "./NavigationBar";
-import VideoItem from "./VideoItem";
+import NavigationBar from "../NavigationBar";
+import VideoItem from "../VideoItem";
+
 
 type TitleProps = {
   text: string;
 };
 
-const OutilTexte: React.FC<TitleProps> = ({ text }) => {
+const OutilTexte:  React.FC<TitleProps> = ({ text }) => {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [caption, setCaption] = useState("");
@@ -29,7 +30,7 @@ const OutilTexte: React.FC<TitleProps> = ({ text }) => {
     setCaption(e.target.value);
   };
 
-  const handleTexteChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleTexteChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setTexte(e.target.value);
   };
 
@@ -76,7 +77,7 @@ const OutilTexte: React.FC<TitleProps> = ({ text }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default OutilTexte;

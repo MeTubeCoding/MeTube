@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import MusicPlayer from '../components/MusicPlayer'
 import Cropper from './fonction/CropVideo'
+import OutilTexte from './fonction/OutilTexte'
 
 interface VideoEditorProps {
   selectedVideo: string | undefined
@@ -53,6 +54,15 @@ const VideoEditor = ({
             </div>
           </div>
           <div>
+
+            {
+              < OutilTexte text={''} />
+              
+
+              
+            }
+          </div>
+          <div>
             {cropMode ? (
               selectedVideo && (
                 <Cropper
@@ -94,6 +104,7 @@ const VideoEditor = ({
         </div>
       </div>
     </div>
+
   );
 };
 
