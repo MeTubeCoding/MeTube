@@ -1,44 +1,68 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-interface Profile {
-  username: string
-  email: string
+interface User {
+  lastname: string;
+  firstname: string;
+  country: string;
+  city: string;
+  username: string;
+  email: string;
 }
 
-export default function Profile() {
-  const [profile, setProfile] = useState<Profile | null>(null)
+const Profile: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [user, setUser] = useState<User>({ lastname: '', firstname: '', country: '', city: '', username: '', email: '' });
+
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const email = localStorage.getItem('email');
+
+  console.log(email)
+
 
   useEffect(() => {
-    // Fetch user data from your backend API
-    fetch('http://localhost:5600/profile', {
+    const endpoint = `http://127.0.0.1:5600/profile?email=${email}`; // Remplacez par l'URL de votre serveur
+
+    fetch(endpoint, {
       method: 'GET',
-      credentials: 'include' // Send cookies along with the request
+      headers: {
+        'Content-Type': 'application/json'
+      },
     })
-      .then(res => {
-        if (res.status === 401) {
-          throw new Error('Unauthorized')
+      .then(async response => {
+        const data = await response.json();
+
+        if (response.ok && Boolean(data.success)) {
+          setUser({
+            lastname: data.user.lastname,
+            firstname: data.user.firstname,
+            country: data.user.country,
+            city: data.user.city,
+            username: data.user.username,
+            email: location.state.email || data.user.email
+          });
+        } else {
+          navigate('/login');
         }
-        return res.json()
       })
-      .then(res => {
-        setProfile({ username: res.username, email: res.email })
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }, []) // Only fetch the data once, on component mount
+      .catch(error => {
+        console.log(error);
+        navigate('/login');
+      });
+  }, []);
 
   return (
     <div>
-      {profile ? (
-        <section>
-          <p>
-            {profile.email}: {profile.username}
-          </p>
-        </section>
-      ) : (
-        <p>Not logged in</p>
-      )}
+      <h1>Profile</h1>
+      <p>Lastname : {user.lastname}</p>
+      <p>Firstname : {user.firstname}</p>
+      <p>Country : {user.country}</p>
+      <p>City : {user.city}</p>
+      <p>Username : {user.username}</p>
+      <p>Email : {user.email}</p>
     </div>
-  )
-}
+  );
+};
+
+export default Profile;

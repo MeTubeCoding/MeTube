@@ -82,22 +82,20 @@ app.post('/node/sub', (req, res) => {
   res.end()
 })
 
-app.post('/signup', (req, res) => {
-  client.connect(err => {
-    async function run() {
-      try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
-        const query = req.body
-        await messages.insertOne(query)
-      } finally {
-        await client.close()
-      }
-    }
-    run().catch(console.dir)
-  })
-  res.end()
+app.post('/signup', async (req, res) => {
+  try {
+    const database = client.db('profile')
+    const messages = database.collection('users')
+    const query = req.body
+    await messages.insertOne(query)
+    await client.close()
+    res.end() // Fermez la requête ici
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ success: false, message: 'Error while creating user profile' })
+  }
 })
+
 
 const bcrypt = require('bcryptjs')
 
@@ -141,25 +139,39 @@ app.get('/demo', (req, res) => {
   console.log('test')
   res.end('reponse du serveur')
 })
-app.get('/profile', async (req, res) => {
-  const userEmail = req.cookies.email
-  const database = client.db('profile')
-  const users = database.collection('users')
-  const user = await users.findOne({ 'email-address': userEmail })
 
-  if (user) {
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-    res.setHeader('Access-Control-Allow-Methods', 'GET')
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-Requested-With,content-type'
-    )
-    res.json({ username: user.username, email: user.emailAddress })
-  } else {
-    res.status(401).send('Unauthorized')
+app.get('/profile', async (req, res) => {
+  const { email } = req.query
+  const database = client.db('profile');
+  const users = database.collection('users');
+
+  try {
+    const user = await users.findOne({ emailaddress: email });
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+    } else {
+      const userData = {
+        lastname: user.lastname,
+        firstname: user.firstname,
+        country: user.country,
+        city: user.city,
+        username: user.username,
+        email: user.emailaddress,
+        // Autres données de profil à ajouter ici
+      };
+      res.json({ success: true, user: userData });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error while fetching user profile' });
   }
-})
+
+  // Fermer la requête en envoyant la réponse
+  res.end();
+});
+
+
+
 
 // app.use('/', express.static(public));
 
