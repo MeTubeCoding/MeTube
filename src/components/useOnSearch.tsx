@@ -9,8 +9,7 @@ const useOnSearch = () => {
   const onSearch = (data: string, setSearched: React.Dispatch<React.SetStateAction<boolean>>) => {
     console.log(JSON.stringify(data))
     setSearched(true)
-
-    fetch('http://localhost:5600/videos', {
+    fetch("http://127.0.0.1:5600/videos", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

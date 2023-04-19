@@ -19,39 +19,39 @@ const Filters = (props: Props) => {
   const [MovieF, setMovieF] = useState(false)
 
   const fVideo = () => {
-    console.log('filter by ' + props.filter)
     setChannelF(false)
     setPlayF(false)
     setVideoF(prevState => !prevState)
     setMovieF(false)
     props.filterVideo()
+    console.log('filter by ' + props.filter)
   }
 
   const fChannel = () => {
-    console.log('filter by ' + props.filter)
     setChannelF(prevState => !prevState)
     setPlayF(false)
     setVideoF(false)
     setMovieF(false)
     props.filterChannel()
+    console.log('filter by ' + props.filter)
   }
 
   const fPlaylist = () => {
-    console.log('filter by ' + props.filter)
     setChannelF(false)
     setPlayF(prevState => !prevState)
     setVideoF(false)
     setMovieF(false)
     props.filterPlaylist()
+    console.log('filter by ' + props.filter)
   }
 
   const fMovie = () => {
-    console.log('filter by ' + props.filter)
     setChannelF(false)
     setPlayF(false)
     setVideoF(false)
     setMovieF(prevState => !prevState)
     props.filterMovie()
+    console.log('filter by ' + props.filter)
   }
 
   const uploadDate = [

@@ -11,7 +11,7 @@ interface Props {
   visible: boolean
 }
 
-const Results = (props: Props): any => {
+const Results = (props: Props) => {
   return (
     <>
       {props.channels.length === 0 || 
@@ -34,7 +34,7 @@ const Results = (props: Props): any => {
             className={`my-8 border-me-yellow ${
               props.visible
                 ? 'w-[54.76%] ml-[24.75rem]'
-                : 'w-[64.90%] ml-[15.73rem]'
+                : 'w-[64.80%] ml-[15.73rem]'
             }`}
           ></hr>
         </div>
