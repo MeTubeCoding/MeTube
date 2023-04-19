@@ -2,7 +2,15 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES6",
+<<<<<<< HEAD
     "lib": ["dom", "dom.iterable", "esnext"],
+=======
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,6 +25,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+<<<<<<< HEAD
   "parserOptions": {
     "project": "tsconfig.json",
     "tsconfigRootDir": "frontend/.eslintrc.json",
@@ -24,4 +33,14 @@
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]
+=======
+  // a modif : 
+  "include": [
+    "src",
+    "server.js", 
+    "setupTests.ts",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ]
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 }

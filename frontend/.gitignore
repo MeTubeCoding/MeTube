@@ -131,6 +131,7 @@ dist
 
 .DS_Store
 node_modules
+<<<<<<< HEAD
 
 .env 
 
@@ -411,3 +412,5 @@ dist
 
 
 .prettierrc
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/react-in-jsx-scope */
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signupFields } from '../constants/formFields'
@@ -12,7 +17,11 @@ const fieldsState: Record<string, string> = {}
 
 fields.forEach(field => (fieldsState[field.id] = ''))
 
+<<<<<<< HEAD
 export default function Signup(): JSX.Element {
+=======
+export default function Signup() {
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
   const [signupState, setSignupState] =
     useState<Record<string, string>>(fieldsState)
   const navigate = useNavigate()

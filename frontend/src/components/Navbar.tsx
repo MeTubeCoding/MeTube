@@ -20,7 +20,11 @@ const Navbar = (props: Props) => {
           <div className="w-14 h-16">
             <GiHamburgerMenu
               size="10"
+<<<<<<< HEAD
               className="w-8 h-16 text-me-yellow"
+=======
+              className="hover:cursor-pointer w-8 h-16 text-me-yellow"
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
               onClick={handleHamburgerClick}
             />
           </div>

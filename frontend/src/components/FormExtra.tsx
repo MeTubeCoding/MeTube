@@ -1,5 +1,9 @@
 import React from 'react'
 
+<<<<<<< HEAD
+=======
+/* eslint-disable react/react-in-jsx-scope */
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 export default function FormExtra(): JSX.Element {
   return (
     <div className="flex items-center justify-between ">

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* eslint-disable react/jsx-key */
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/formFields'
@@ -5,7 +9,10 @@ import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
 import bcrypt from 'bcryptjs'
+<<<<<<< HEAD
 import { type } from 'os'
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 
 interface LoginState {
   email: string
@@ -60,7 +67,10 @@ const Login: React.FC = () => {
           )
           if (passwordMatch) {
             // Connexion réussie
+<<<<<<< HEAD
             localStorage.setItem('test', JSON.stringify(data))
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
             navigate('/profile')
           } else {
             // Échec de la connexion

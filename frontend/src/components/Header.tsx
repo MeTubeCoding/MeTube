@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -13,7 +18,11 @@ export default function Header({
   paragraph,
   linkName,
   linkUrl = '#'
+<<<<<<< HEAD
 }: HeaderProps): JSX.Element {
+=======
+}: HeaderProps) {
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
   return (
     <div className="mb-10">
       <div className="flex justify-center">

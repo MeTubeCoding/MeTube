@@ -6,8 +6,11 @@ import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
+<<<<<<< HEAD
 import Tendances from './pages/feed/trending'
 import Live from './composant/Live'
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 
 function App() {
   return (
@@ -21,8 +24,11 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+<<<<<<< HEAD
             <Route path="/feed/trending" element={<Tendances />} />
             <Route path="/live" element={<Live />} />
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
           </Routes>
         </BrowserRouter>
       </div>

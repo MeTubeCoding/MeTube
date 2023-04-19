@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "env": {
     "browser": true,
     "commonjs": true,
@@ -23,3 +24,32 @@
     "prettier/prettier": "error"
   }
 }
+=======
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "node":true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b

@@ -15,8 +15,12 @@ import {
   MdOutlinedFlag,
   MdOutlineHelpOutline,
   MdOutlineFeedback,
+<<<<<<< HEAD
   MdOutlineBolt,
   MdOutlineLiveTv
+=======
+  MdOutlineBolt
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
 } from 'react-icons/md'
 
 interface SideBarProps {
@@ -56,11 +60,14 @@ function SideBar(props: SideBarProps) {
       href: '/feed/library'
     },
     {
+<<<<<<< HEAD
       icon: <MdOutlineLiveTv className="text-xl" />,
       name: 'Live',
       href: '/live'
     },
     {
+=======
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
       icon: <MdHistory className="text-xl" />,
       name: 'History',
       href: '/feed/history'
@@ -89,6 +96,14 @@ function SideBar(props: SideBarProps) {
       href: '/feed/trending'
     },
     {
+<<<<<<< HEAD
+=======
+      icon: <MdOutlineBolt className="text-xl" />,
+      name: 'Live',
+      href: '/live'
+    },
+    {
+>>>>>>> 1366d026dfdbeba05e275a49417f8fd5c87b611b
       icon: <TbMusic className="text-xl" />,
       name: 'Music',
       href: '/musics'
