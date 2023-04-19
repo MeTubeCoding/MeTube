@@ -1,38 +1,65 @@
-import React, { useRef } from 'react'
-import VideoPage from '../pages/VideoPage'
+import React from 'react'
 import { audioRefs } from './MusicPlayer'
 import selectedAudios from './MusicPlayer'
 
-const PlayMusicWithVideo = (audioFile: File) => {
+const PlayMusicWithVideo = () => {
   const videoElement = document.getElementById(
     'video-element'
   ) as HTMLVideoElement
-  if (
-    audioRefs.current.length > 0 &&
-    selectedAudios.length > 0 &&
-    videoElement
-  ) {
-    const audioElement = audioRefs.current[audioRefs.current.length - 1]
-    audioElement.src = URL.createObjectURL(audioFile)
-    audioElement.play()
-    videoElement.addEventListener('play', () => {
-      if (audioElement) {
+
+  // Vérifier que audioRefs.current est défini avant de continuer
+  if (audioRefs.current && selectedAudios.length > 0 && videoElement) {
+    const lastAudioIndex = audioRefs.current.length - 1
+
+    // Utiliser la méthode slice() pour extraire les derniers éléments du tableau
+    const audioElements = audioRefs.current.slice(
+      lastAudioIndex - selectedAudios.length + 1
+    )
+
+    // Ajouter un événement "canplay" pour s'assurer que la lecture ne commence pas avant que l'audio soit prêt
+    audioElements.forEach(audioElement => {
+      audioElement.addEventListener('canplay', () => {
+        // Commencer la lecture de l'audio et de la vidéo en même temps
         audioElement.play()
-      }
+        videoElement.play()
+      })
     })
-    videoElement.addEventListener('pause', () => {
-      if (audioElement) {
-        audioElement.pause()
-      }
+
+    // Ajouter un événement "timeupdate" pour synchroniser la lecture de l'audio et de la vidéo
+    videoElement.addEventListener('timeupdate', () => {
+      audioElements.forEach(audioElement => {
+        audioElement.currentTime = videoElement.currentTime
+      })
     })
-    videoElement.addEventListener('ended', () => {
-      if (audioElement) {
-        audioElement.pause()
-      }
-    })
+
+    // Supprimer les événements lorsqu'ils ne sont plus nécessaires
+    const removeListeners = () => {
+      videoElement.removeEventListener('timeupdate', syncAudio)
+      audioElements.forEach(audioElement => {
+        audioElement.removeEventListener('canplay', playTogether)
+      })
+    }
+
+    videoElement.addEventListener('ended', removeListeners)
+    videoElement.addEventListener('pause', removeListeners)
   }
 
-  return <div>PlayMusicWithVideo</div>
+  // Retourner null car cette fonction ne rend rien
+  return null
 }
 
 export default PlayMusicWithVideo
+
+function syncAudio(this: HTMLVideoElement, ev: Event) {
+  const audioElements = audioRefs.current.slice(
+    audioRefs.current.length - selectedAudios.length
+  )
+
+  audioElements.forEach(audioElement => {
+    audioElement.currentTime = this.currentTime
+  })
+}
+
+function playTogether(this: HTMLAudioElement, ev: Event) {
+  this.play()
+}
