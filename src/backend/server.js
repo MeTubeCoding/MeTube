@@ -451,3 +451,7 @@ app.listen(5600, () => {
   console.clear()
   console.log('Server app listening on port 5600')
 })
+
+app.delete('/moderation/:id', (req, res) => {
+  const messageId = req.params.id;
+});
