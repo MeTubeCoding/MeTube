@@ -3,10 +3,10 @@ import React, { useState, useRef } from 'react'
 interface CropperProps {
   src: string
   onDone: (croppedSrc: string) => void
-  oncancel: () => void
+  onCancel: () => void
 }
 
-const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
+const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [cropMode, setCropMode] = useState<boolean>(false)
@@ -33,10 +33,10 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
   const handleCrop = () => {
     if (videoRef.current && canvasRef.current) {
       if (!cropMode) {
-        // Entrer en mode de sélection de la zone de recadrage
+        // Enter crop mode
         setCropMode(true)
       } else {
-        // Annuler la sélection de la zone de recadrage
+        // Cancel crop selection
         setCropMode(false)
         setCropPosition({ x: 0, y: 0 })
         setCropSize({ width: 0, height: 0 })
@@ -79,7 +79,7 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
       const x = event.clientX - rect.left
       const y = event.clientY - rect.top
 
-      // calculer la nouvelle position et la nouvelle taille de la zone de recadrage
+      // Calculate new crop position and size
       const newPosition = {
         x: Math.max(
           Math.min(
@@ -105,7 +105,7 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
         Math.min(y, videoRef.current ? videoRef.current.videoHeight : 0) -
         newPosition.y
 
-      // mettre à jour l'état de la position et de la taille de la zone de recadrage
+      // Update crop position and size state
       setCropPosition(newPosition)
       setCropSize({ width: newWidth, height: newHeight })
     }
@@ -113,20 +113,19 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
 
   const handleSelect = () => {
     if (videoRef.current && canvasRef.current) {
-      // Sortir du mode de sélection de la zone de recadrage
+      // Exit crop mode
       setCropMode(false)
       const video = videoRef.current
       const canvas = canvasRef.current
       const context = canvas.getContext('2d')
-
       if (context) {
-        // Calculer la taille de la zone de recadrage
+        // Calculate crop dimensions
         const scaleX = video.videoWidth / video.offsetWidth
         const scaleY = video.videoHeight / video.offsetHeight
         const cropWidth = cropSize.width * scaleX
         const cropHeight = cropSize.height * scaleY
 
-        // Dessiner l'image recadrée sur le canvas
+        // Draw the cropped image on the canvas
         context.drawImage(
           video,
           cropPosition.x * scaleX,
@@ -139,10 +138,10 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
           canvas.height
         )
 
-        // Convertir l'image recadrée en base64
+        // Convert cropped image to base64
         const croppedSrc = canvas.toDataURL()
 
-        // Appeler la fonction onDone avec l'image recadrée
+        // Call onDone function with the cropped image
         onDone(croppedSrc)
       }
     }
@@ -150,11 +149,10 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
 
   function handleLoad(): void {
     if (videoRef.current && canvasRef.current) {
-      // Charger la vidéo
+      // Load the video
       const video = videoRef.current
       video.load()
-
-      // Définir les dimensions du canvas en fonction de la taille de la vidéo
+      // Set canvas dimensions based on video size
       const canvas = canvasRef.current
       canvas.width = video.videoWidth
       canvas.height = video.videoHeight
@@ -173,15 +171,15 @@ const Cropper = ({ src, onDone, oncancel }: CropperProps) => {
       />
       {cropMode && (
         <div>
-          <p>Sélectionnez la zone à recadrer</p>
+          <p>Select area to crop</p>
           <p>
             Dimensions: {cropDimensions.width.toFixed(0)} x{''}
             {cropDimensions.height.toFixed(0)}
           </p>
         </div>
       )}
-      <button onClick={handleCrop}>Recadrer</button>
-      <button onClick={oncancel}>Annuler</button>
+      <button onClick={handleCrop}>Crop</button>
+      <button onClick={onCancel}>Cancel</button>
     </div>
   )
 }
