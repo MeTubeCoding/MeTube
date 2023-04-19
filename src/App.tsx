@@ -22,7 +22,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/feed/trending" element={<Tendances />} />
-            <Route path="/live" element={<Live/>} />
+            <Route path="/live" element={<Live />} />
           </Routes>
         </BrowserRouter>
       </div>
@@ -31,4 +31,3 @@ function App() {
 }
 
 export default App
-
