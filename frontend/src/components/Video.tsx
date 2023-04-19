@@ -1,4 +1,4 @@
-import React from 'react' // Importer useState pour gérer l'état local
+import React, { useRef, useState } from 'react' // Importer useState pour gérer l'état local
 import './Video.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
@@ -8,16 +8,22 @@ import InsertCommentIcon from '@mui/icons-material/InsertComment'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import { Avatar } from '@mui/material'
 
-function Video(): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const source = require('../video/drole.mp4')
+
+function Video(props: any): JSX.Element {
+  const [subscribe, setSubscribe] = useState(false)
+
+  const handleSubscribe = () => {
+    setSubscribe(!subscribe)
+  }
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
   // const [description] = useState('test description')
 
   return (
     <div className="video">
-      <video>
-        <source src="./cruise.mp4" type="video/mp4" />
-      </video>
       <div className="shortsContainer">
+        <video className="video_player" src={source} autoPlay muted loop />
         <div className="shortsVideoTop">
           <div className="shortsVideoTopIcon">
             <ArrowBackIcon />
@@ -45,11 +51,22 @@ function Video(): JSX.Element {
           </div>
         </div>
         <div className="shortsBottom">
-          <div className="shortsDesc"></div>
+          <div className="shortsDesc">
+            <p className="description">description</p>
+          </div>
           <div className="shortsDetails">
-            <Avatar />
-            <p>channel name</p>
-            <button>Subscribe</button>
+            <div className="pseudos">
+              <Avatar />
+              <p>channel</p>
+            </div>
+            <button
+              style={{
+                background: subscribe ? 'red' : 'hsla(0, 0%, 69.4%, .609'
+              }}
+              onClick={handleSubscribe}
+            >
+              {subscribe ? 'SUBSCRIBED' : 'SUBSCRIBE'}
+            </button>
           </div>
         </div>
       </div>

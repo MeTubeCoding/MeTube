@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavigationBar from '../components/NavigationBar'
 import Video from '../components/Video'
+import './HomePage.css'
+import Videos from '../components/Videos'
+
+interface VideoData {
+  id: number
+  url: string
+}
 
 const HomePage = (): JSX.Element => {
+  const [video, setVideo] = useState<VideoData[]>([])
+  useEffect(() => {
+    setVideo(Videos)
+  }, [])
   return (
     <div
       style={{
@@ -16,8 +27,10 @@ const HomePage = (): JSX.Element => {
       <div>
         <NavigationBar />
       </div>
-      <div className="mt-[15%]">
-        <Video />
+      <div className="mt-[15%] video">
+        {video.map(vid => (
+          <Video key={vid.id} id={vid.id} src={vid.url} />
+        ))}
       </div>
     </div>
   )
