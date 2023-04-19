@@ -3,57 +3,53 @@ import React from 'react'
 import mockData from './mocking.json'
 
 export function trend_tag() {
-    const chaine = mockData.chaine;
-    const videos = mockData.videos;
-    const vid_a_afficher = [];
-  
-    for (let i = 0; i < chaine.length; i++) {
-      const trend_tag = mockData.chaine[i].tag_pref;
-  
-      for (let j = 0; j < videos.length; j++) {
-        const videos_tags = mockData.videos[j].tags;
-        let tag_found = false;
-  
-        for (let k = 0; k < videos_tags.length; k++) {
-          if (trend_tag.includes(videos_tags[k])) {
-            tag_found = true;
-            break;
-          }
-        }
-  
-        if (tag_found) {
-          vid_a_afficher.push(videos[j]);
+  const chaine = mockData.chaine
+  const videos = mockData.videos
+  const vid_a_afficher = []
+
+  for (let i = 0; i < chaine.length; i++) {
+    const trend_tag = mockData.chaine[i].tag_pref
+
+    for (let j = 0; j < videos.length; j++) {
+      const videos_tags = mockData.videos[j].tags
+      let tag_found = false
+
+      for (let k = 0; k < videos_tags.length; k++) {
+        if (trend_tag.includes(videos_tags[k])) {
+          tag_found = true
+          break
         }
       }
+
+      if (tag_found) {
+        vid_a_afficher.push(videos[j])
+      }
     }
-  
-    // Afficher les vidéos ayant des tags en commun avec les chaînes
-    return (
-      <div className="mr-5 p-0 text-center flex flex-col h-full">
-        <h4 className="mb-5">VIDEOS A AFFICHER</h4>
-        {vid_a_afficher.map(video => (
-          <div className="flex flex-col">
-            <div className="flex flex-col w-64">
-              <img
-                className="mr-1% rounded-lg object-cover w-64 h-[144px]"
-                src={video.minia}
-              />
-              <h5 className="text-left py-2">{video.titre}</h5>
-              <p className="text-left pb-5">{video.chaine}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
   }
 
-
+  // Afficher les vidéos ayant des tags en commun avec les chaînes
+  return (
+    <div className="mr-5 p-0 text-center flex flex-col h-full">
+      <h4 className="mb-5">VIDEOS A AFFICHER</h4>
+      {vid_a_afficher.map(video => (
+        <div className="flex flex-col">
+          <div className="flex flex-col w-64">
+            <img
+              className="mr-1% rounded-lg object-cover w-64 h-[144px]"
+              src={video.minia}
+            />
+            <h5 className="text-left py-2">{video.titre}</h5>
+            <p className="text-left pb-5">{video.chaine}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 // ================================================================================================
 // ================================================================================================
 // ================================================================================================
-
-
 
 export function trend_new() {
   const trend_new = mockData.new
@@ -68,7 +64,13 @@ export function trend_new() {
               src={trend_new.minia}
             />
             <h5 className="text-left font-sans py-2">{trend_new.titre}</h5>
-            <p className="text-left pb-5">{trend_new.chaine}</p>
+            <div className="flex flex-row justify-start items-start">
+              <img
+                src={trend_new.img_chaine}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-left pb-5 pl-2">{trend_new.chaine}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -88,10 +90,14 @@ export function trend_music() {
               className="mr-1% rounded-lg object-cover  w-64 h-[144px]"
               src={trend_music.minia}
             />
-            <h5 className="text-left py-2">
-              {trend_music.titre}
-            </h5>
-            <p className="text-left pb-5">{trend_music.chaine}</p>
+            <h5 className="text-left py-2">{trend_music.titre}</h5>
+            <div className="flex flex-row justify-start items-start">
+              <img
+                src={trend_music.img_chaine}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-left pb-5 pl-2">{trend_music.chaine}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -112,7 +118,13 @@ export function trend_movies() {
               src={trend_movies.minia}
             />
             <h5 className="text-left py-2">{trend_movies.titre}</h5>
-            <p className="text-left pb-5">{trend_movies.chaine}</p>
+            <div className="flex flex-row justify-start items-start">
+              <img
+                src={trend_movies.img_chaine}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-left pb-5 pl-2">{trend_movies.chaine}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -133,7 +145,13 @@ export function trend_gaming() {
               src={trend_gaming.minia}
             />
             <h5 className="text-left py-2">{trend_gaming.titre}</h5>
-            <p className="text-left pb-5">{trend_gaming.chaine}</p>
+            <div className="flex flex-row justify-start items-start">
+              <img
+                src={trend_gaming.img_chaine}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-left pb-5 pl-2">{trend_gaming.chaine}</p>
+            </div>
           </div>
         </div>
       ))}

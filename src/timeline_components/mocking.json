@@ -6,41 +6,68 @@
       "tag_pref": ["anime", "gaming"]
     }
   ],
-  "videos":[
+  "videos": [
     {
       "minia": "https://i.ytimg.com/vi/PExjHWbkafk/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDlckMe_GSZq42l_Il3clU_LnOCuA",
       "titre": "Demon Slayer (saison 2) EN 19 MINUTES | RE: TAKE",
       "chaine": "RE: Take",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqM46c5NmKKXZ1ShyDb-oKdeUlQwFIKquYyx0UkDTw=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["anime", "demon slayer"]
     },
     {
       "minia": "https://i.ytimg.com/vi/nwo6gnOBVt4/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBFZPCSsVJrvaJBW3Zyhr2ubqElVA",
       "titre": "Le CLASH des animés",
       "chaine": "Cyprien",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqMxElWNrprX5uPpND2JAAEJHOClsXrTryE4NJ7L7Q=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["anime", "demon slayer", "dragon ball z", "naruto"]
+    },
+    {
+      "minia": "https://i.ytimg.com/vi/vzqqat6IMIw/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAxLhAeVGTJUfizUyrjfqRlclM1VA",
+      "titre": "QUI est le PIRE YOUTUBEUR ? (Tier list)",
+      "chaine": "Club Pingouin • Trash",
+      "img_chaine":"https://yt3.googleusercontent.com/ow9AssSjtwg9bwv2JsPxf7wTDdK36VDCSTjwnoPwNx0c4YFAcQpwjQRX01gsybEb51OP2FGdew=s176-c-k-c0x00ffffff-no-rj",
+      "tags": ["divertissement", "tier list"]
     },
     {
       "minia": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA6t_8gXhVJaexTSRAZ4rQm4iSlKQ",
       "titre": "Rick Astley - Never Gonna Give You Up (Video)",
-      "chaine": "RickAstleyVEVO",
+      "chaine": "Rick Astley ♪",
+      "img_chaine":"https://yt3.googleusercontent.com/BbWaWU-qyR5nfxxXclxsI8zepppYL5x1agIPGfRdXFm5fPEewDsRRWg4x6P6fdKNhj84GoUpUI4=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["rick astley", "never gonna give you up"]
     },
     {
       "minia": "https://i.ytimg.com/vi/3NoKAOTE_ZI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCAdiEnBXW-I-j2Q7jsmB4_IU3yXw",
       "titre": "Sonic Frontiers OST - 'Undefeatable'",
       "chaine": "Sonic The Hedgehog",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqPN5tV80QS01S1-n2oqZj15n4YQzSRKWuxXh9-4xg=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["sonic", "gaming", "sonic frontiers"]
+    },
+    {
+      "minia": "https://i.ytimg.com/vi/RjNcTBXTk4I/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCwQwOuRpSzIt89Y8ENvNugT4HJ8Q",
+      "titre": "The Super Mario Bros. Movie | Final Trailer",
+      "chaine": "Illumination",
+      "img_chaine":"https://yt3.ggpht.com/-AGJo5fWy7Eex7YQIO-vkf2NPzeHYq9T8BfO_lOFRycB83d2GOJBzge-uzqs1gnDymBHV4xDkg=s176-c-k-c0x00ffffff-no-rj-mo",
+      "tags": ["mario", "gaming", "super mario bros"]
+    },
+    {
+      "minia": "https://i.ytimg.com/vi/wK69QJ2ESO0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCk-2j7hQCtsOrPXrj8ulKjeuLlLw",
+      "titre": "DONJONS & DRAGONS Bande Annonce VF (2023) ᴴᴰ",
+      "chaine": "FilmActu",
+      "img_chaine":"https:////yt3.ggpht.com/jW1np_kah9hPLx-M2bScpiOQAlWzNJmBqKJzf3cEhKPQMb22_KFYXbekI2MSkIxeX-kkbKIc=s176-c-k-c0x00ffffff-no-rj-mo",
+      "tags": ["dungeons and dragons", "d&d", "rpg"]
     },
     {
       "minia": "https://i.ytimg.com/vi/loarI5X93wI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCBJ-1QJn9Urc63hmAtRq0-r8nqGw",
       "titre": "TEST EN CARTON #82 - Among Us",
       "chaine": "Savun",
+      "img_chaine":"https://yt3.ggpht.com/sbG-_XBcyfIOmwM8ei-02Uil_lF8yJblADZMD6w44WJUOFj73qiaZtNjnXZWNVZcssfod6lTEs8=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["among us", "gaming"]
     },
     {
       "minia": "https://i.ytimg.com/vi/QBBLxrvOmqw/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBuFlpbhqqYXMPjjF6Hyh88EviL-Q",
       "titre": "Joueur du grenier - Les jeux sur la BIBLE",
       "chaine": "Joueur Du Grenier",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqPvDHq_gAlVbxOJtbzdRo_MARdUDZW-wtcvSE8g=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["jdg", "gaming"]
     }
   ],
@@ -49,26 +76,37 @@
       "minia": "https://i.ytimg.com/vi/PExjHWbkafk/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDlckMe_GSZq42l_Il3clU_LnOCuA",
       "titre": "Demon Slayer (saison 2) EN 19 MINUTES | RE: TAKE",
       "chaine": "RE: Take",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqM46c5NmKKXZ1ShyDb-oKdeUlQwFIKquYyx0UkDTw=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["anime", "demon slayer"]
     },
     {
       "minia": "https://i.ytimg.com/vi/nwo6gnOBVt4/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBFZPCSsVJrvaJBW3Zyhr2ubqElVA",
       "titre": "Le CLASH des animés",
       "chaine": "Cyprien",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqMxElWNrprX5uPpND2JAAEJHOClsXrTryE4NJ7L7Q=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["anime", "demon slayer", "dragon ball z", "naruto"]
+    },
+    {
+      "minia": "https://i.ytimg.com/vi/vzqqat6IMIw/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAxLhAeVGTJUfizUyrjfqRlclM1VA",
+      "titre": "QUI est le PIRE YOUTUBEUR ? (Tier list)",
+      "chaine": "Club Pingouin • Trash",
+      "img_chaine":"https://yt3.googleusercontent.com/ow9AssSjtwg9bwv2JsPxf7wTDdK36VDCSTjwnoPwNx0c4YFAcQpwjQRX01gsybEb51OP2FGdew=s176-c-k-c0x00ffffff-no-rj",
+      "tags": ["divertissement", "tier list"]
     }
   ],
   "music": [
     {
       "minia": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA6t_8gXhVJaexTSRAZ4rQm4iSlKQ",
       "titre": "Rick Astley - Never Gonna Give You Up (Video)",
-      "chaine": "RickAstleyVEVO",
+      "chaine": "Rick Astley ♪",
+      "img_chaine":"https://yt3.googleusercontent.com/BbWaWU-qyR5nfxxXclxsI8zepppYL5x1agIPGfRdXFm5fPEewDsRRWg4x6P6fdKNhj84GoUpUI4=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["rick astley", "never gonna give you up"]
     },
     {
       "minia": "https://i.ytimg.com/vi/3NoKAOTE_ZI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCAdiEnBXW-I-j2Q7jsmB4_IU3yXw",
       "titre": "Sonic Frontiers OST - 'Undefeatable'",
       "chaine": "Sonic The Hedgehog",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqPN5tV80QS01S1-n2oqZj15n4YQzSRKWuxXh9-4xg=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["sonic", "gaming", "sonic frontiers"]
     }
   ],
@@ -77,12 +115,14 @@
       "minia": "https://i.ytimg.com/vi/RjNcTBXTk4I/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCwQwOuRpSzIt89Y8ENvNugT4HJ8Q",
       "titre": "The Super Mario Bros. Movie | Final Trailer",
       "chaine": "Illumination",
+      "img_chaine":"https://yt3.ggpht.com/-AGJo5fWy7Eex7YQIO-vkf2NPzeHYq9T8BfO_lOFRycB83d2GOJBzge-uzqs1gnDymBHV4xDkg=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["mario", "gaming", "super mario bros"]
     },
     {
       "minia": "https://i.ytimg.com/vi/wK69QJ2ESO0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCk-2j7hQCtsOrPXrj8ulKjeuLlLw",
       "titre": "DONJONS & DRAGONS Bande Annonce VF (2023) ᴴᴰ",
       "chaine": "FilmActu",
+      "img_chaine":"https:////yt3.ggpht.com/jW1np_kah9hPLx-M2bScpiOQAlWzNJmBqKJzf3cEhKPQMb22_KFYXbekI2MSkIxeX-kkbKIc=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["dungeons and dragons", "d&d", "rpg"]
     }
   ],
@@ -91,12 +131,14 @@
       "minia": "https://i.ytimg.com/vi/loarI5X93wI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCBJ-1QJn9Urc63hmAtRq0-r8nqGw",
       "titre": "TEST EN CARTON #82 - Among Us",
       "chaine": "Savun",
+      "img_chaine":"https://yt3.ggpht.com/sbG-_XBcyfIOmwM8ei-02Uil_lF8yJblADZMD6w44WJUOFj73qiaZtNjnXZWNVZcssfod6lTEs8=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["among us", "gaming"]
     },
     {
       "minia": "https://i.ytimg.com/vi/QBBLxrvOmqw/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBuFlpbhqqYXMPjjF6Hyh88EviL-Q",
       "titre": "Joueur du grenier - Les jeux sur la BIBLE",
       "chaine": "Joueur Du Grenier",
+      "img_chaine":"https://yt3.googleusercontent.com/ytc/AGIKgqPvDHq_gAlVbxOJtbzdRo_MARdUDZW-wtcvSE8g=s176-c-k-c0x00ffffff-no-rj-mo",
       "tags": ["jdg", "gaming"]
     }
   ]
