@@ -5,23 +5,25 @@ import NavigationBar from '../components/NavigationBar'
 import Cropper from '../components/fonction/CropVideo'
 
 const VideoPage = () => {
-  const [selectedVideo, setVideoUrl] = useState<string | undefined>(undefined)
+  const [selectedVideo, setSelectedVideo] = useState<string | undefined>(
+    undefined
+  )
 
   const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
       const videoUrl = URL.createObjectURL(file)
-      setVideoUrl(videoUrl)
+      setSelectedVideo(videoUrl)
     }
   }
-  const saveCroppedVideo = () => {
-    // Code to save the cropped video goes here
+
+  const saveCroppedVideo = (croppedSrc: string) => {
+    setSelectedVideo(croppedSrc)
     console.log('Cropped video saved successfully!')
   }
 
   const handleCropCancel = () => {
-    // Remove the cropped video and reset the component state
-    setVideoUrl(undefined)
+    setSelectedVideo(undefined)
     console.log('Crop cancelled successfully!')
   }
 
@@ -46,7 +48,7 @@ const VideoPage = () => {
               <Cropper
                 src={selectedVideo}
                 onDone={saveCroppedVideo}
-                oncancel={handleCropCancel}
+                onCancel={handleCropCancel}
               />
             )}
             <VideoEditor
