@@ -39,8 +39,13 @@ export function trend_tag() {
               src={video.minia}
             />
             <h5 className="text-left py-2">{video.titre}</h5>
-            <p className="text-left pb-5">{video.chaine}</p>
-          </div>
+            <div className="flex flex-row justify-start items-start">
+              <img
+                src={video.img_chaine}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-left pb-5 pl-2">{video.chaine}</p>
+            </div>          </div>
         </div>
       ))}
     </div>
