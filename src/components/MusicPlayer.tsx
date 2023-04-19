@@ -22,7 +22,10 @@ const MusicPlayer = () => {
 
   const handlePlayWithVideo = () => {
     if (audioRefs.current.length > 0 && selectedAudios.length > 0) {
-      PlayMusicWithVideo() // Récupérer le dernier fichier audio ajouté
+      ;<PlayMusicWithVideo
+        selectedAudios={selectedAudios}
+        audioRefs={audioRefs}
+      /> // Utiliser le composant PlayMusicWithVideo
     }
   }
 

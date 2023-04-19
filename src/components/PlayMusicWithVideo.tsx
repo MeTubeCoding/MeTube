@@ -4,10 +4,27 @@ interface Props {
   selectedAudios: File[]
   audioRefs: React.MutableRefObject<Array<HTMLAudioElement | null>>
 }
+
 const PlayMusicWithVideo = ({ selectedAudios, audioRefs }: Props) => {
   const videoElement = document.getElementById(
     'video-element'
   ) as HTMLVideoElement
+
+  const syncAudio = (ev: Event) => {
+    const audioElements = audioRefs.current.slice(
+      audioRefs.current.length - selectedAudios.length
+    )
+
+    audioElements.forEach((audioElement: HTMLAudioElement | null) => {
+      if (audioElement) {
+        audioElement.currentTime = videoElement.currentTime
+      }
+    })
+  }
+
+  const playTogether = (ev: Event) => {
+    ;(ev.target as HTMLAudioElement).play()
+  }
 
   // Vérifier que audioRefs.current est défini avant de continuer
   if (audioRefs.current && selectedAudios.length > 0 && videoElement) {
@@ -21,22 +38,12 @@ const PlayMusicWithVideo = ({ selectedAudios, audioRefs }: Props) => {
     // Ajouter un événement "canplay" pour s'assurer que la lecture ne commence pas avant que l'audio soit prêt
     audioElements.forEach(audioElement => {
       if (audioElement) {
-        audioElement.addEventListener('canplay', () => {
-          // Commencer la lecture de l'audio et de la vidéo en même temps
-          audioElement.play()
-          videoElement.play()
-        })
+        audioElement.addEventListener('canplay', playTogether)
       }
     })
 
     // Ajouter un événement "timeupdate" pour synchroniser la lecture de l'audio et de la vidéo
-    videoElement.addEventListener('timeupdate', () => {
-      audioElements.forEach(audioElement => {
-        if (audioElement) {
-          audioElement.currentTime = videoElement.currentTime
-        }
-      })
-    })
+    videoElement.addEventListener('timeupdate', syncAudio)
 
     // Supprimer les événements lorsqu'ils ne sont plus nécessaires
     const removeListeners = () => {
@@ -57,19 +64,3 @@ const PlayMusicWithVideo = ({ selectedAudios, audioRefs }: Props) => {
 }
 
 export default PlayMusicWithVideo
-
-function syncAudio(this: HTMLVideoElement, ev: Event) {
-  const audioElements = audioRefs.current.slice(
-    audioRefs.current.length - selectedAudios.length
-  )
-
-  audioElements.forEach(audioElement => {
-    if (audioElement) {
-      audioElement.currentTime = this.currentTime
-    }
-  })
-}
-
-function playTogether(this: HTMLAudioElement, ev: Event) {
-  this.play()
-}
