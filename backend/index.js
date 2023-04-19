@@ -8,14 +8,18 @@
 // Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
 // commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
 // problème
-import mongoose from "backend/config/db.js";
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const bodyparser = require("body-parser");
-const path = require("path");
-const { MongoClient, ServerApiVersion, ObjectID } = require("mongodb");
-const { query } = require("express");
+import mongoose from "./config/db.js";
+import express from "express";
+import cors from "cors";
+import bodyparser from "body-parser";
+import path from "path";
+import query from "express";
+import fs from "fs";
+import channel from "diagnostics_channel";
+import bcrypt from "bcryptjs";
+import pkg from "mongodb";
+import app from "mongodb";
+const { MongoClient, ServerApiVersion, ObjectID } = pkg;
 
 const uri =
   "mongodb+srv://SM_des_SM:meilleurSM@metube.1cfbpke.mongodb.net/?retryWrites=true&w=majority";
@@ -25,11 +29,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
-
-const fs = require("fs");
-const { channel } = require("diagnostics_channel");
-
-const publi = path.join(__dirname, "nom du dossier Public");
 
 const corsOptions = {
   origin: "*",
@@ -51,8 +50,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-
-app.use("/", express.static(publi));
 
 app.use(
   cors({
@@ -98,8 +95,6 @@ app.post("/signup", (req, res) => {
   });
   res.end();
 });
-
-const bcrypt = require("bcryptjs");
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
