@@ -1,64 +1,63 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react'
 
 interface Message {
-  id: string;
-  pseudo: string;
-  message: string;
+  id: string
+  pseudo: string
+  message: string
 }
 
 export function ModerationChat() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const invisibleButtonRef = useRef<HTMLButtonElement>(null);
-  const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([])
+  const invisibleButtonRef = useRef<HTMLButtonElement>(null)
+  const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
 
   useEffect(() => {
-    getChat();
+    getChat()
     const interval = setInterval(() => {
-      getChat();
-    }, 5000);
+      getChat()
+    }, 5000)
 
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   function getChat() {
-    fetch("http://127.0.0.1:5600/moderation", {
-      method: "GET",
+    fetch('http://127.0.0.1:5600/moderation', {
+      method: 'GET'
     })
-      .then((res) => {
-        return res.json();
+      .then(res => {
+        return res.json()
       })
-      .then((res) => {
-        setMessages(res);
-      });
+      .then(res => {
+        setMessages(res)
+      })
   }
 
   function handleInvisibleButtonClick() {
-    fetchMessages();
+    fetchMessages()
   }
 
-  function handleBanButtonClick(id: string) {
+  function BanUtilisateur(id: string) {
     fetch(`http://127.0.0.1:5600/moderation/${id}`, {
-      method: "DELETE",
+      method: 'DELETE'
     })
-      .then((res) => {
-        return res.json();
+      .then(res => {
+        return res.json()
       })
-      .then((res) => {
-        getChat();
-      });
+      .then(res => {
+        getChat()
+      })
   }
 
   function fetchMessages() {
-    fetch("http://127.0.0.1:5600/moderation", {
-      method: "GET",
+    fetch('http://127.0.0.1:5600/moderation', {
+      method: 'GET'
     })
-      .then((res) => {
-        return res.json();
+      .then(res => {
+        return res.json()
       })
-      .then((res) => {
-        setMessages(res);
-      });
+      .then(res => {
+        setMessages(res)
+      })
   }
 
   return (
@@ -71,11 +70,11 @@ export function ModerationChat() {
           Espace Modération :
         </label>
         <section id="espace-Moderation" className="text-white mt-3">
-          {messages.map((msg) => (
+          {messages.map(msg => (
             <p className="text-me-white" key={msg.id}>
               {msg.pseudo}: {msg.message}
               <button
-                onClick={() => handleBanButtonClick(msg.id)}
+                onClick={() => BanUtilisateur(msg.id)}
                 className="bg-red-500 text-white px-2 py-1 ml-2 rounded-md"
               >
                 Bannir
@@ -87,8 +86,8 @@ export function ModerationChat() {
       <button
         ref={invisibleButtonRef}
         onClick={handleInvisibleButtonClick}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
       ></button>
     </div>
-  );
-		  }
+  )
+}

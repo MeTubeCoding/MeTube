@@ -455,3 +455,59 @@ app.listen(5600, () => {
 app.delete('/moderation/:id', (req, res) => {
   const messageId = req.params.id;
 });
+
+app.get('/node/transfertAutorisation',(req,res)=>{
+
+  let reponse;
+
+  client.connect(async err => {
+      try {
+        const database = client.db("BigOne");
+        const enAttente = database.collection("enAttente");
+        const confirm = database.collection("confirm");
+
+        const search = await enAttente.find({}).toArray();
+        if (search.length === 0) {
+          res.end("Il n'y a aucune demande");
+          return;
+        }
+
+        const transfert = await confirm.insertMany(search);
+        const detruire = await enAttente.deleteMany({});
+        res.end("Autorisation accordée");
+      } catch (error) {
+        res.end("Une erreur s'est produite");
+      } finally {
+        await client.close();
+      }
+  });
+
+})
+
+app.get('/node/transfertAutorisation',(req,res)=>{
+
+  let reponse;
+
+  client.connect(async err => {
+      try {
+        const database = client.db("BigOne");
+        const enAttente = database.collection("enAttente");
+        const confirm = database.collection("confirm");
+        
+        const search = await enAttente.find({}).toArray();
+        if (search.length === 0) {
+          res.end("Il n'y a aucune demande");
+          return;
+        }
+        
+        const transfert = await confirm.insertMany(search);
+        const detruire = await enAttente.deleteMany({});
+        res.end("Autorisation accordée");
+      } catch (error) {
+        res.end("Une erreur s'est produite");
+      } finally {
+        await client.close();
+      }
+  });
+
+})
