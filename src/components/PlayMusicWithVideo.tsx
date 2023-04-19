@@ -1,8 +1,10 @@
 import React from 'react'
-import { audioRefs } from './MusicPlayer'
-import selectedAudios from './MusicPlayer'
 
-const PlayMusicWithVideo = () => {
+interface Props {
+  selectedAudios: File[]
+  audioRefs: React.MutableRefObject<Array<HTMLAudioElement | null>>
+}
+const PlayMusicWithVideo = ({ selectedAudios, audioRefs }: Props) => {
   const videoElement = document.getElementById(
     'video-element'
   ) as HTMLVideoElement
