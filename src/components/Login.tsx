@@ -53,12 +53,6 @@ const Login: React.FC = () => {
           console.log(hashedPassword)
           console.log(loginState.password)
           
-          // Récupérer le username de l'utilisateur et l'enregistrer dans le localStorage
-          localStorage.setItem("username", JSON.stringify(data.username));
-  
-          localStorage.setItem("email",JSON.stringify(data.email));
-          localStorage.setItem("password",JSON.stringify(hashedPassword));
-
           // Comparez le mot de passe hashé stocké dans votre base de données avec le mot de passe entré par l'utilisateur lors de la tentative de connexion
           const passwordMatch = bcrypt.compareSync(
             loginState.password,
@@ -67,7 +61,7 @@ const Login: React.FC = () => {
           if (passwordMatch) {
             // Connexion réussie
             localStorage.setItem("test",JSON.stringify(data));
-            navigate('/')
+            navigate('/profile')
           } else {
             // Échec de la connexion
             setLoginState({
