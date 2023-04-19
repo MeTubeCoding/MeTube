@@ -1,31 +1,139 @@
-import React from 'react';
-import './Live.css'; // Importez le fichier CSS
+import React, { useEffect, useState } from "react"
+import "../index.css"
+import { Chat } from "./Chat"
+import { LiveNavBar } from "./LiveNavBar"
+import { ModerationChat } from "./ModerationChat"
+import { Description } from "./Description"
+import NombreViewer from "./NombreViewer"
+import ListeViewer from "./ListeViewer"
+import { Titre } from "./Titre"
+import { Stream } from "./Stream"
 
 export function Live() {
+	let localStream: MediaStream
+	let showEcran: MediaStream
+	let peerConnection: RTCPeerConnection
+	let remoteStream: MediaStream
+	
+	const [mode, setMode] = useState("streamer");
 
-  let localStream: MediaStream;
-  let remoteStream;
-
-  const init = async () => {
-
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-    } catch (error) {
-      // Gérer l'erreur ici
+    const handleModeChange = (newMode: string) => {
+        setMode(newMode);
     }
 
-    (document.getElementById('user-1') as HTMLVideoElement).srcObject = localStream;
-  }
+	const init = async () => {
+		console.log("exec")
 
-  init();
+		try {
+			localStream = await navigator.mediaDevices.getUserMedia({
+				video: true,
+				audio: false,
+			})
+			showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
+		} catch (error) {
+			console.log(error)
+		}
 
-  return (
-    <>
-      <div id="videos" className='border flex justify-around'>
-        <video className="video-player flipped" id="user-1" autoPlay playsInline></video>
-        <video className="video-player" id="user-2" autoPlay playsInline></video>
-      </div>
-    </>
+		(document.getElementById("webcam") as HTMLVideoElement).srcObject =
+			localStream
+		;(document.getElementById("partageEcran") as HTMLVideoElement).srcObject =
+			showEcran
 
-  )
+		createOffer()
+	}
+
+	const createOffer = async () => {
+		peerConnection = new RTCPeerConnection()
+
+		remoteStream = new MediaStream()
+
+		const offer = await peerConnection.createOffer()
+		await peerConnection.setLocalDescription(offer)
+
+		console.log("Offer", offer)
+	}
+
+	useEffect(() => {
+		init()
+		console.log("init")
+	}, [])
+
+	return (
+		<>
+		
+			<LiveNavBar onModeChange={handleModeChange} />
+
+			{mode === "streamer" && (
+				<div className='streamer-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<ModerationChat />
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+									<div className='flex flex-col items-center mt-4'>
+										<Description />
+									</div>
+									<Titre />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+								<div className='live-info'>
+									<ListeViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
+
+			{mode === "moderateur" && (
+				<div className='moderateur-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<ModerationChat />
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
+
+			{mode === "viewer" && (
+				<div className='viewer-content'>
+					{
+						<div className='flex flex-row text-white'>
+							<section className='flex flex-row'>
+								<div className='flex flex-col items-center'>
+									<Stream />
+								</div>
+							</section>
+
+							<Chat />
+							<div>
+								<div className='live-info'>
+									<NombreViewer />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			)}
+		</>
+	)
 }

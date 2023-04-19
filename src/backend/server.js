@@ -87,21 +87,16 @@ app.post('/signup', (req, res) => {
     async function run() {
       try {
         const database = client.db('profile')
-        const movies = database.collection('users')
-        //   console.log("mongo connect")
+        const messages = database.collection('users')
         const query = req.body
-        //   console.log(query);
-        await movies.insertOne(query)
-        //   console.log(movie);
+        await messages.insertOne(query)
       } finally {
-        // Ensures that the client will close when you finish/error
         await client.close()
       }
     }
     run().catch(console.dir)
   })
-  //coucou
-  res.end('trop cool')
+  res.end()
 })
 
 const bcrypt = require('bcryptjs')
@@ -121,17 +116,24 @@ app.post('/login', async (req, res) => {
         res.json({
           success: true,
           message: 'Connexion réussie',
-          hashedPassword: user.password
+          hashedPassword: user.password,
+          email: `${email}`,
+          password: `${password}`
+
         })
       } else {
         res.status(401).json({ success: false, message: 'Incorrect password' })
+        res.end()
       }
     } else {
       res.status(404).json({ success: false, message: 'Email does not exist' })
+      res.end()
     }
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error while connecting' })
+    res.end()
   }
+  res.end()
 })
 
 app.get('/check-email', async (req, res) => {
@@ -140,6 +142,7 @@ app.get('/check-email', async (req, res) => {
   const users = database.collection('users')
   const user = await users.findOne({ 'email-address': email })
   res.json({ exists: !!user })
+  res.end()
 })
 
 app.get('/demo', (req, res) => {
@@ -163,7 +166,9 @@ app.get('/profile', async (req, res) => {
     res.json({ username: user.username, email: user.emailAddress })
   } else {
     res.status(401).send('Unauthorized')
+    res.end()
   }
+  res.end()
 })
 
 // app.use('/', express.static(public));
@@ -339,6 +344,105 @@ app.post('/node/sub', (req, res) => {
   })
 
   res.end()
+})
+app.post('/chat', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/moderation', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/desc', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('description')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/titre', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('titre')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.get('/chat', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/moderation', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
 })
 
 app.get('/demo', (req, res) => {
