@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface BibliothequeMediasProps {
-  // Ajoutez les props nécessaires ici
-}
-
-const BibliothequeMedias: React.FC<BibliothequeMediasProps> = ({}) => {
+const BibliothequeMedias: React.FC = () => {
   return (
     <div className="bg-me-white rounded-lg shadow-lg p-4">
       <div className="bg-me-black rounded-md p-2">

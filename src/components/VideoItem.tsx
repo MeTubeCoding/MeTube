@@ -1,30 +1,14 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
-const VideoItem = ({ video }: { video: File }): JSX.Element => {
-  const videoElement = useRef<HTMLVideoElement | null>(null)
+type VideoItemProps = {
+  video: string | File
+}
 
-  // Function to handle play button click
-  const handlePlay = (): any => {
-    if (videoElement.current != null) {
-      void videoElement.current.play()
-    }
-  }
+const VideoItem = ({ video }: VideoItemProps) => {
+  const videoUrl =
+    typeof video === 'string' ? video : URL.createObjectURL(video)
 
-  // Function to handle pause button click
-  const handlePause = (): any => {
-    if (videoElement.current != null) {
-      videoElement.current.pause()
-    }
-  }
-
-  return (
-    <div>
-      <video ref={videoElement} src={URL.createObjectURL(video)} controls />
-      <button onClick={handlePlay}>Play</button>
-      <br></br>
-      <button onClick={handlePause}>Pause</button>
-    </div>
-  )
+  return <video src={videoUrl} controls width="100%" />
 }
 
 export default VideoItem

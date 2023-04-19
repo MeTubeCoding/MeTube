@@ -1,16 +1,30 @@
-import React, { useState, type ChangeEvent } from 'react'
+import React, { useState } from 'react'
 import VideoItem from '../components/VideoItem'
 import VideoEditor from '../components/VideoEditor'
 import NavigationBar from '../components/NavigationBar'
+import Cropper from '../components/fonction/CropVideo'
 
-const VideoPage: React.FC = () => {
-  const [selectedVideos, setSelectedVideos] = useState<File[]>([])
+const VideoPage = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | undefined>(
+    undefined
+  )
 
-  const handleVideoUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files != null) {
-      const files = Array.from(event.target.files)
-      setSelectedVideos([...selectedVideos, ...files])
+  const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0]
+      const videoUrl = URL.createObjectURL(file)
+      setSelectedVideo(videoUrl)
     }
+  }
+
+  const saveCroppedVideo = (croppedSrc: string) => {
+    setSelectedVideo(croppedSrc)
+    console.log('Cropped video saved successfully!')
+  }
+
+  const handleCropCancel = () => {
+    setSelectedVideo(undefined)
+    console.log('Crop cancelled successfully!')
   }
 
   return (
@@ -29,26 +43,22 @@ const VideoPage: React.FC = () => {
               <h2 className="text-xl font-medium text-me-yellow">
                 Select one or more videos to get started:
               </h2>
-              <label
-                htmlFor="video-upload"
-                className="px-4 py-2 text-sm font-medium text-me-yellow bg-me-lightpurple rounded-md cursor-pointer hover:bg-me-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
-              >
-                Choose files
-              </label>
-              <input
-                id="video-upload"
-                type="file"
-                accept="video/*"
-                multiple
-                onChange={handleVideoUpload}
-                className="sr-only"
-              />
             </div>
               )}
         </div>
         <div className="w-1/3 flex items-center justify-center">
           <div className="w-full max-w-xs px-4">
-            <VideoEditor />
+            {selectedVideo && (
+              <Cropper
+                src={selectedVideo}
+                onDone={saveCroppedVideo}
+                onCancel={handleCropCancel}
+              />
+            )}
+            <VideoEditor
+              selectedVideo={selectedVideo}
+              handleVideoUpload={handleVideoUpload}
+            />
           </div>
         </div>
       </div>

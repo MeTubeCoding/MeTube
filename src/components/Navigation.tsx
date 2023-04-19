@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface NavigationProps {
-  // Ajoutez les props nécessaires ici
-}
-
-const Navigation: React.FC<NavigationProps> = ({}) => {
+const Navigation: React.FC = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-me-black p-6">
       <div className="flex items-center flex-shrink-0 text-me-white mr-6">

@@ -9,12 +9,16 @@ const OutilDecoupage: React.FC = () => {
   const [end, setEnd] = React.useState<number>(0)
 
   // Fonction appelée lorsque la valeur du champ de début est modifiée.
-  const handleStartChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleStartChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setStart(parseInt(event.target.value))
   }
 
   // Fonction appelée lorsque la valeur du champ de fin est modifiée.
-  const handleEndChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleEndChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setEnd(parseInt(event.target.value))
   }
 

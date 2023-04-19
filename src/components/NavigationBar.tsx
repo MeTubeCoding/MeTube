@@ -13,12 +13,19 @@ import { Link } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
-const NavigationBar = () => {
+const NavigationBar = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
-    navigate('/videopage')
+  const handleClickEditor = (): unknown => {
+    return navigate('/videopage')
   }
+  const handleClickShort = (): unknown => {
+    return navigate('/short')
+  }
+  function handleClick(event: MouseEvent<HTMLImageElement, MouseEvent>): void {
+    throw new Error('Function not implemented.')
+  }
+
   return (
     <nav className="bg-me-colorprimary py-2 w-full fixed top-0">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -37,9 +44,9 @@ const NavigationBar = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <div>
                   <div
-                    onClick={handleClick}
+                    onClick={handleClickEditor}
                     style={{ cursor: 'pointer' }}
-                    className="text-me-yellow hover:bg-me-orange hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-me-black hover:bg-me-black-700 hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Video Editor
                   </div>
