@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 const Main = (): JSX.Element => {
   // Your code here
-  return <></>;
-};
+  return <></>
+}
 
-export default Main;
+export default Main
