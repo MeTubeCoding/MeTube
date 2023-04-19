@@ -1,6 +1,10 @@
+/* eslint-disable prettier/prettier */
 import React from 'react'
-import WindowUploadInfos from './pages/WindowUploadInfos'
+import WindowVideo from'./pages/WindowVideo'
 
-export default function App () {
-  return <WindowUploadInfos />
+const App = () => {
+  return (
+    <WindowVideo /> )
 }
+
+export default App

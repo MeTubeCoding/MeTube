@@ -1,2 +1,2 @@
-/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable prettier/prettier */
 /// <reference types="react-scripts" />

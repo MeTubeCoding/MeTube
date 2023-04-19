@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useState } from "react";
-import "tailwindcss/tailwind.css";
+/* eslint-disable prettier/prettier */
+import React, { useState } from 'react'
+import 'tailwindcss/tailwind.css'
 
 const WindowCreateOneChannel = () => {
-  const [pseudo, setPseudo] = useState("");
+  const [pseudo, setPseudo] = useState('')
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+    e.preventDefault()
     // Ajouter le code pour traiter les données du formulaire
-  };
+  }
 
   return (
     <body className="bg-gray-100">
@@ -64,8 +62,8 @@ const WindowCreateOneChannel = () => {
               id="pseudo"
               name="pseudo"
               value={pseudo}
-              onChange={(e) => {
-                setPseudo(e.target.value);
+              onChange={e => {
+                setPseudo(e.target.value)
               }}
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="Enter the name of your channel"
@@ -82,7 +80,7 @@ const WindowCreateOneChannel = () => {
         </form>
       </div>
     </body>
-  );
-};
+  )
+}
 
-export default WindowCreateOneChannel;
+export default WindowCreateOneChannel
