@@ -18,17 +18,21 @@ const PlayMusicWithVideo = () => {
 
     // Ajouter un événement "canplay" pour s'assurer que la lecture ne commence pas avant que l'audio soit prêt
     audioElements.forEach(audioElement => {
-      audioElement.addEventListener('canplay', () => {
-        // Commencer la lecture de l'audio et de la vidéo en même temps
-        audioElement.play()
-        videoElement.play()
-      })
+      if (audioElement) {
+        audioElement.addEventListener('canplay', () => {
+          // Commencer la lecture de l'audio et de la vidéo en même temps
+          audioElement.play()
+          videoElement.play()
+        })
+      }
     })
 
     // Ajouter un événement "timeupdate" pour synchroniser la lecture de l'audio et de la vidéo
     videoElement.addEventListener('timeupdate', () => {
       audioElements.forEach(audioElement => {
-        audioElement.currentTime = videoElement.currentTime
+        if (audioElement) {
+          audioElement.currentTime = videoElement.currentTime
+        }
       })
     })
 
@@ -36,7 +40,9 @@ const PlayMusicWithVideo = () => {
     const removeListeners = () => {
       videoElement.removeEventListener('timeupdate', syncAudio)
       audioElements.forEach(audioElement => {
-        audioElement.removeEventListener('canplay', playTogether)
+        if (audioElement) {
+          audioElement.removeEventListener('canplay', playTogether)
+        }
       })
     }
 
@@ -56,7 +62,9 @@ function syncAudio(this: HTMLVideoElement, ev: Event) {
   )
 
   audioElements.forEach(audioElement => {
-    audioElement.currentTime = this.currentTime
+    if (audioElement) {
+      audioElement.currentTime = this.currentTime
+    }
   })
 }
 

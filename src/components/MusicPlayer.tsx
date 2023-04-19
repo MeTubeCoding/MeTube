@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react'
 import PlayMusicWithVideo from './PlayMusicWithVideo'
 
-const MusicPlayer = () => {
-  const [selectedAudios, setSelectedAudios] = useState<File[]>([])
-  const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
+const [selectedAudios, setSelectedAudios] = useState<File[]>([])
+const audioRefs = useRef<Array<HTMLAudioElement | null>>([])
 
+const MusicPlayer = () => {
   const handleMusicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files
     if (files != null) {
@@ -54,5 +54,7 @@ const MusicPlayer = () => {
     </div>
   )
 }
+
+export { audioRefs, selectedAudios }
 
 export default MusicPlayer
