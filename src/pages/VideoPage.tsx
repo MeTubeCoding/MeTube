@@ -37,19 +37,6 @@ const VideoPage = () => {
               <h2 className="text-xl font-medium text-me-black">
                 Select a video to get started:
               </h2>
-              <label
-                htmlFor="video-upload"
-                className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
-              >
-                Choose a file
-              </label>
-              <input
-                id="video-upload"
-                type="file"
-                accept="video/*"
-                onChange={handleVideoUpload}
-                className="sr-only"
-              />
             </div>
           )}
         </div>

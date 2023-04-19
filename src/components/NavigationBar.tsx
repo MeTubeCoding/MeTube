@@ -2,14 +2,14 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 
-const NavigationBar = (): any => {
+const NavigationBar = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const handleClickEditor = (): any => {
-    navigate('/videopage')
+  const handleClickEditor = (): unknown => {
+    return navigate('/videopage')
   }
-  const handleClickShort = (): any => {
-    navigate('/short')
+  const handleClickShort = (): unknown => {
+    return navigate('/short')
   }
   return (
     <nav className="bg-me-colorprimary py-2 w-full fixed top-0">
