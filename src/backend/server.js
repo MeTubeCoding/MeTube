@@ -8,6 +8,7 @@
 // Cela va probablement un peu changer car il faut que je l'adapte pour typescript mais pour pouvez
 // commencer à taffer la dessus y'aura juste quelque correction mineur à l'avenir le temps je règle le
 // problème
+import videoRoutes from './routes/videos'
 
 const express = require('express')
 const app = express()
@@ -49,6 +50,8 @@ app.use(
     origin: 'http://localhost:3000'
   })
 )
+
+app.use('/videos', videoRoutes)
 
 app.post('/node/sub', (req, res) => {
   client.connect(err => {
