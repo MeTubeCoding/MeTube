@@ -118,8 +118,8 @@ app.post('/login', async (req, res) => {
           message: 'Connexion réussie',
           hashedPassword: user.password,
           email: `${email}`,
-          password: `${password}`
-
+          password: `${password}`,
+          username: user.username // Ajouter cette ligne pour inclure le nom d'utilisateur
         })
       } else {
         res.status(401).json({ success: false, message: 'Incorrect password' })
@@ -342,6 +342,7 @@ app.post('/node/sub', (req, res) => {
 
   res.end()
 })
+
 app.post('/chat', (req, res) => {
   client.connect(err => {
     async function run() {
@@ -358,6 +359,7 @@ app.post('/chat', (req, res) => {
   })
   res.end()
 })
+
 app.post('/moderation', (req, res) => {
   client.connect(err => {
     async function run() {
@@ -408,6 +410,23 @@ app.post('/titre', (req, res) => {
   res.end()
 })
 
+app.post('/dataLive',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('dataLive');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
 app.get('/chat', (req, res) => {
   client.connect(err => {
     async function runy() {
@@ -431,6 +450,23 @@ app.get('/moderation', (req, res) => {
       try {
         const database = client.db('LiveBdd')
         const messages = database.collection('messageModeration')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/username', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('profile')
+        const messages = database.collection('users')
         let search = await messages.find({}).toArray()
         const reponseSearch = JSON.stringify(search)
         res.end(reponseSearch)

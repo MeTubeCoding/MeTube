@@ -10,37 +10,7 @@ export function Chat() {
 	const [messages, setMessages] = useState<Message[]>([])
 	const invisibleButtonRef = useRef<HTMLButtonElement>(null)
 	const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
-	const motsInterdit = [
-		"ta race",
-		"chatte",
-		"couille",
-		"couille",
-		"bite",
-		"zizi",
-		"nique ta mère",
-		"merde",
-		"imbécile",
-		"bordel",
-		"enfoiré",
-		"connard",
-		"bouffon",
-		"boloss",
-		"abrutti",
-		"salope",
-		"pd",
-		"fdp",
-		"ta grand mère la pute",
-		"fils de pute",
-		"negro",
-		"nigger",
-		"hitler",
-		"staline",
-		"nique la coding",
-		"fuck",
-		"test",
-		"pute",
-		"gay",
-	]
+	const motsInterdit = ["test"]
 	useEffect(() => {
 		const interval = setInterval(() => {
 			getChat()
@@ -55,7 +25,7 @@ export function Chat() {
 		const message = document.getElementById("message-input") as HTMLInputElement
 		const local = {
 			message: message.value,
-			pseudo: "Tristan",
+			pseudo: localStorage.getItem("username")?.replace(/"/g, '') || "Unknown",
 		}
 		fetch("http://127.0.0.1:5600/chat", {
 			method: "POST",
@@ -77,7 +47,7 @@ export function Chat() {
 		const message = document.getElementById("message-input") as HTMLInputElement
 		const local = {
 			message: message.value,
-			pseudo: "Tristan",
+			pseudo: localStorage.getItem("username")?.replace(/"/g, '') || "Unknown",
 		}
 		fetch("http://127.0.0.1:5600/moderation", {
 			method: "POST",
