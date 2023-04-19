@@ -45,10 +45,14 @@ function Video(): JSX.Element {
           </div>
         </div>
         <div className="shortsBottom">
-          <div className="shortsDesc"></div>
+          <div className="shortsDesc">
+            <p className="description">description</p>
+          </div>
           <div className="shortsDetails">
-            <Avatar />
-            <p>channel name</p>
+            <div className="pseudos">
+              <Avatar />
+              <p>channel</p>
+            </div>
             <button>Subscribe</button>
           </div>
         </div>
