@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
 import "../index.css"
-import { Chat } from "./Chat"
+import { Chat } from "./chat"
 import { LiveNavBar } from "./LiveNavBar"
-import { ModerationChat } from "./ModerationChat"
-import { Description } from "./Description"
-import NombreViewer from "./NombreViewer"
-import ListeViewer from "./ListeViewer"
-import { Titre } from "./Titre"
+import { ModerationChat } from "./moderationChat"
+import { Description } from "./description"
+import NombreViewer from "./nombreViewer"
+import ListeViewer from "./listeViewer"
+import { Titre } from "./titre"
 import { Stream } from "./Stream"
 
 export function Live() {
