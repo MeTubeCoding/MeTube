@@ -59,7 +59,7 @@ const Navbar = (props: Props) => {
           </div>
           <div className="flex items-center">
             <Link
-              to="/upload"
+              to="/window-upload"
               className="text-me-yellow text-opacity-75 hover:text-opacity-100 font-bold text-lg mx-4"
             >
               Upload
