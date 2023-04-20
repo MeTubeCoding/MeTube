@@ -21,6 +21,7 @@ import path from "path";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { query } from "express";
 
+const router = require('./routes')
 const uri = process.env.DB_LINK;
 
 const client = new MongoClient(uri, {
@@ -41,6 +42,14 @@ app.use(
   })
 );
 
+app.use("/api", router);
+
+app.use((res, req, next) => {
+  res.setHeader("Acess-Control-Allow-Origin", "*");
+  res.setHeader("Acess-Control-Allow-Headers", "*");
+  next();
+});
+
 app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
@@ -48,6 +57,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/videos", videoRoutes);
+
 
 app.post("/node/sub", (req, res) => {
   client.connect((err) => {
