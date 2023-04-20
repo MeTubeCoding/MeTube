@@ -1,6 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-
 import ChannelBanner from './ChannelBanner'
 import ChannelPresentation from './ChannelPresentation'
 import Tabs from './Tabs'
