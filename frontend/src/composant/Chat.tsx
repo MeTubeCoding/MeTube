@@ -9,54 +9,20 @@ interface Message {
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([])
   const invisibleButtonRef = useRef<HTMLButtonElement>(null)
-  const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
-  const motsInterdit = [
-    'ta race',
-    'chatte',
-    'couille',
-    'couille',
-    'bite',
-    'zizi',
-    'nique ta mère',
-    'merde',
-    'imbécile',
-    'bordel',
-    'enfoiré',
-    'connard',
-    'bouffon',
-    'boloss',
-    'abrutti',
-    'salope',
-    'pd',
-    'fdp',
-    'ta grand mère la pute',
-    'fils de pute',
-    'negro',
-    'nigger',
-    'hitler',
-    'staline',
-    'nique la coding',
-    'fuck',
-    'test',
-    'pute',
-    'gay'
-  ]
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getChat()
-    }, 6000)
+  const motsInterdit = ['test']
 
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(interval)
-  }, [])
+  useEffect(() => {
+    // getChat()
+  })
 
   function log() {
     console.log('log')
-    const message = document.getElementById('message-input') as HTMLInputElement
+    const message = document.getElementById('message_chat') as HTMLInputElement
     const local = {
       message: message.value,
       pseudo: localStorage.getItem('username')?.replace(/"/g, '') || 'Unknown'
     }
+    console.log(local)
     fetch('http://127.0.0.1:5600/chat', {
       method: 'POST',
       headers: {
@@ -74,11 +40,12 @@ export function Chat() {
 
   function logModeration() {
     console.log('log Modération')
-    const message = document.getElementById('message-input') as HTMLInputElement
+    const message = document.getElementById('message_chat') as HTMLInputElement
     const local = {
       message: message.value,
       pseudo: localStorage.getItem('username')?.replace(/"/g, '') || 'Unknown'
     }
+    console.log(local)
     fetch('http://127.0.0.1:5600/moderation', {
       method: 'POST',
       headers: {
@@ -98,7 +65,7 @@ export function Chat() {
     event.preventDefault()
     console.log('verify')
     const messageInput = document.getElementById(
-      'message-input'
+      'message_chat'
     ) as HTMLInputElement
     const messageText = messageInput.value
     const hasForbiddenWord = motsInterdit.some(word =>
@@ -159,13 +126,12 @@ export function Chat() {
         HTMLButtonElement,
         MouseEvent
       >)
-      resetInput()
     }
   }
 
   function resetInput() {
     const messageInput = document.getElementById(
-      'message-input'
+      'message_chat'
     ) as HTMLInputElement
     messageInput.value = ''
   }
@@ -184,7 +150,7 @@ export function Chat() {
           <input
             type="text"
             name="message"
-            id="message-input"
+            id="message_chat"
             className="border border-gray-300 rounded-md bg-me-background text-me-white"
             onKeyPress={handleKeyPress}
           ></input>
@@ -194,11 +160,12 @@ export function Chat() {
           >
             Send
           </button>
-          <button
-            ref={invisibleButtonRef}
-            onClick={handleInvisibleButtonClick}
-            style={{ display: 'none' }}
-          ></button>
+          <p
+            onClick={getChat}
+            className="bg-me-colorprimary font-bold mt-2 rounded-md"
+          >
+            Get Chat
+          </p>
         </form>
       </div>
     </>
