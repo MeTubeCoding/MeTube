@@ -10,47 +10,10 @@ import { Titre } from './Titre'
 import { Stream } from './Stream'
 
 export default function Live() {
-  let localStream: MediaStream
-  let showEcran: MediaStream
-  let peerConnection: RTCPeerConnection
-  let remoteStream: MediaStream
-
   const [mode, setMode] = useState('streamer')
 
   const handleModeChange = (newMode: string) => {
     setMode(newMode)
-  }
-
-  const init = async () => {
-    console.log('exec')
-
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: false
-      })
-      showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
-    } catch (error) {
-      console.log(error)
-    }
-
-    ;(document.getElementById('webcam') as HTMLVideoElement).srcObject =
-      localStream
-    ;(document.getElementById('partageEcran') as HTMLVideoElement).srcObject =
-      showEcran
-
-    createOffer()
-  }
-
-  const createOffer = async () => {
-    peerConnection = new RTCPeerConnection()
-
-    remoteStream = new MediaStream()
-
-    const offer = await peerConnection.createOffer()
-    await peerConnection.setLocalDescription(offer)
-
-    console.log('Offer', offer)
   }
 
   function post() {
@@ -79,11 +42,6 @@ export default function Live() {
         console.log(res)
       })
   }
-
-  useEffect(() => {
-    init()
-    console.log('init')
-  }, [])
 
   return (
     <>

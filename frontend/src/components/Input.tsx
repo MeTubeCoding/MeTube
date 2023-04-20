@@ -6,7 +6,7 @@ import React from 'react'
 import { type ChangeEvent } from 'react'
 
 const fixedInputClass =
-  'rounded-md appearance-none relative block w-full bg-me-yellow px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm'
+  'rounded-md appearance-none relative block w-full bg-me-lightpurple px-3 py-2 border border-grey-300 placeholder-grey-500 text-grey-900 focus:outline-none focus:ring-white-500 focus:border-white-500 focus:z-10 sm:text-sm'
 
 interface InputProps {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
@@ -34,7 +34,7 @@ export default function Input({
   customClass
 }: InputProps) {
   return (
-    <div className="my-5">
+    <div className="my-5 text-me-darkpurple px-40">
       <label htmlFor={labelFor} className="sr-only">
         {labelText}
       </label>
