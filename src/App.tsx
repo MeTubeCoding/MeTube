@@ -1,8 +1,9 @@
 import React from 'react'
 import WindowVideo from './pages/WindowVideo'
+import WindowUpload from './pages/WindowUpload'
 
 const App = () => {
-  return <WindowVideo />
+  return <WindowUpload />
 }
 
-export default App;
+export default App

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { channel } from 'diagnostics_channel'
+import React, { useState } from 'react'
 
 interface ChannelFormData {
-  user_id: string;
-  name: string;
-  nametag: string;
-  description: string;
-  country: string;
+  user_id: string
+  name: string
+  nametag: string
+  description: string
+  country: string
 }
 
 const CreateChannel: React.FC = () => {
@@ -14,34 +15,35 @@ const CreateChannel: React.FC = () => {
     name: '',
     nametag: '',
     description: '',
-    country: '',
-  });
+    country: ''
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const response = await fetch('/api/channels', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData),
-      });
+        body: JSON.stringify(formData)
+      })
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('Channel created:', data);
+        const data = await response.json()
+        console.log('Channel created:', data)
       } else {
-        throw new Error(Error creating channel: ${response.statusText});
+        //throw new Error('Error, creating channel:', ${response.statusText})
+        console.error('Error, creating channel:', response.statusText)
       }
     } catch (error) {
-      console.error('Error creating channel:', error.message);
+      console.error('Error creating channel:', error)
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -49,23 +51,45 @@ const CreateChannel: React.FC = () => {
       <input type="hidden" name="user_id" value="your_user_id" />
       <label>
         Name:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
       </label>
       <label>
         Nametag:
-        <input type="text" name="nametag" value={formData.nametag} onChange={handleChange} required />
+        <input
+          type="text"
+          name="nametag"
+          value={formData.nametag}
+          onChange={handleChange}
+          required
+        />
       </label>
       <label>
         Description:
-        <input type="text" name="description" value={formData.description} onChange={handleChange} />
+        <input
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Country:
-        <input type="text" name="country" value={formData.country} onChange={handleChange} />
+        <input
+          type="text"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+        />
       </label>
       <button type="submit">Create Channel</button>
     </form>
-  );
-};
+  )
+}
 
-export default CreateChannel;
+export default CreateChannel
