@@ -10,6 +10,7 @@
 // problème
 import dotenv from "dotenv"
 dotenv.config()
+import channelRoutes from "./routes/channels.js"
 import videoRoutes from "./routes/videos.js"
 import mongoose from "mongoose"
 import express from "express"
@@ -50,7 +51,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/videos", videoRoutes)
-
+app.use("/channels", channelRoutes)
 app.post("/node/sub", (req, res) => {
 	client.connect((err) => {
 		async function run() {
