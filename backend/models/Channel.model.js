@@ -5,16 +5,10 @@ const Schema = mongoose.Schema;
 
 const ChannelModelSchema = new Schema({
   id: Number,
-  title: String,
-  miniature: String,
-  channel: String,
-  video: String,
-  tags: Array,
-  views: Number,
-  release: Array,
-  description: String,
-  short: Boolean,
-  duration: Number
+  name: String,
+  pfp: String,
+  subs: Number,
+  about: String
 });
 
 // Compile model from schema
