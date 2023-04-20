@@ -6,41 +6,48 @@ import { BsPatchCheck } from 'react-icons/bs';
 import { FaThumbsUp, FaThumbsDown, FaShareAlt, FaExclamationTriangle, FaCheckCircle } from 'react-icons/fa';
 import 'tailwindcss/tailwind.css';
 
+import profile from '../components/user.jpg';
+
 const WindowVideo = () => {
 
   return (
     <body className="bg-me-darkpurple min-h-screen">
-      <div className="max-w-screen-lg mx-auto mt-0" style={{ marginLeft: "10%" }}>
+      <div className="max-w-screen-lg mx-auto mt-0" style={{ marginLeft: "13%" }}>
+      <br /><br />
         <div className="flex flex-col items-start">
-          <div className="flex flex-row justify-between w-full">
+          <div className="flex flex-row -ml-5 justify-between rounded-lg w-full">
             <video
               className="w-full flex-grow-1 transform -translate-x-1/2 translate-x-5"
               controls
+              src={require("../assets/CodingPresentation.mp4")}
               width="560"
               height="315"
             >
-              <source src="https://www.youtube.com/watch?v=UbFOU_XR85E" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-          <h2 className="mt-4 text-xl font-bold pl-4 text-me-yellow">CODING FACTORY DE CERGY : LA CALIFORNIE !</h2>
+          <h2 className="mt-4 text-xl font-bold pl-4 text-me-yellow">CODING FACTORY CERGY : THE CALIFORNIA !</h2>
           <div className="flex items-center justify-between mt-4 pl-4 w-full">
             <div className="flex items-center">
               <div className="flex items-center">
                 <div
                   className="w-14 h-14 bg-me-yellow rounded-full"
-                  style={{ backgroundImage: "url('https://via.placeholder.com/150')" }}
+                  style={{ 
+                    backgroundImage: `url(${profile})`, 
+                    backgroundPosition: 'center', 
+                    backgroundSize: 'cover' 
+                  }}
                 ></div>
                 <div className="ml-2">
                   <div className="flex items-center">
                     <h4 className="text-me-orange font-bold mb-1 mr-2">André From The Valley</h4>
                     <BsPatchCheck className="text-me-yellow w-5 h-5" />
                   </div>
-                  <p className="text-sm text-me-yellow">100 000 abonnés</p>
+                  <p className="text-sm text-me-yellow">100 000 subscribers</p>
                 </div>
               </div>
               <button className="ml-4 px-4 py-2 text-me-yellow bg-me-lightpurple rounded-full shadow-md hover:shadow-lg h-10">
-                S&apos;abonner
+                Subscribe
               </button>
             </div>
             <div className="flex flex-col items-end">
@@ -59,17 +66,17 @@ const WindowVideo = () => {
                   <button className="p-2 rounded-full bg-me-lightpurple shadow-md hover:shadow-lg">
                     <FaShareAlt className="text-me-yellow w-4 h-4" />
                   </button>
-                <span className="text-me-yellow ml-2">Partager</span>
+                <span className="text-me-yellow ml-2">Share</span>
                 <span className="text-me-yellow mx-2">|</span>
                   <button className="p-2 rounded-full bg-me-lightpurple shadow-md hover:shadow-lg">
                     <FaExclamationTriangle className="text-me-yellow w-4 h-4" />
                   </button>
-                <span className="text-me-yellow ml-2">Signaler</span>
+                <span className="text-me-yellow ml-2">Report</span>
               </div>
             </div>
           </div>
           <div className="bg-me-lightpurple rounded-lg mt-6 px-3 py-2">
-              <p className="text-me-orange text-sm font-bold">500 000 vues • 19 avril 2023</p>
+              <p className="text-me-orange text-sm font-bold">500 000 views • 19 april 2023</p>
               <div className="mt-2">
                 <p className="text-me-yellow text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas eaque quibusdam rerum ratione nesciunt id excepturi. Libero assumenda asperiores sit deleniti, quam sunt temporibus sint accusantium et, id non voluptates explicabo adipisci. Quos aliquam delectus laborum tenetur est mollitia voluptate velit! Tempora numquam modi quisquam dolorem, debitis necessitatibus! Unde officiis facere repellendus minima nam suscipit blanditiis repellat iure recusandae sapiente vitae voluptatem, assumenda ad illo maxime ipsum similique voluptas? Dicta harum soluta voluptas iure rerum accusamus, earum perferendis quisquam sed provident placeat nostrum nobis, eveniet ratione quae amet! Minima nam esse repudiandae rem nisi. Molestias accusantium est ullam, qui impedit dolorem, nesciunt culpa expedita exercitationem adipisci sit amet mollitia natus? Quisquam magni consectetur officiis quasi amet deleniti quibusdam! Magnam, beatae autem. Quaerat nulla error perferendis quis dolores dicta ipsa exercitationem provident vel, maxime sapiente vitae esse assumenda tempore suscipit minima rerum est praesentium. Distinctio aliquid amet nihil accusantium tempora, commodi doloribus excepturi repudiandae, deserunt et soluta saepe reprehenderit officia pariatur perspiciatis quia at magnam facere earum, dicta natus repellat! Adipisci modi architecto voluptas expedita culpa eius saepe, praesentium ea dolore dolores quaerat eligendi. Sed minima error labore itaque esse tenetur ex eligendi, voluptatem autem. Vel cupiditate voluptas laudantium, quo molestias nesciunt perferendis quam? Minima voluptas mollitia sint placeat officiis quasi veniam delectus cumque temporibus aliquid animi dolorem, nostrum ullam optio aspernatur minus porro, ducimus voluptatem? Quae animi doloribus reprehenderit sequi molestiae, quod quisquam. Iusto laborum ratione provident aperiam dolorum, nam ea adipisci temporibus labore molestiae, vero unde quaerat ex sint!
@@ -78,12 +85,12 @@ const WindowVideo = () => {
             </div>
             <div className="mt-6 w-full">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-bold text-me-yellow pl-4">Commentaires (3)</h3>
+                <h3 className="text-lg font-bold text-me-yellow pl-4">Comments (3)</h3>
                 <div>
-                  <label htmlFor="sort-select" className="mr-2 text-me-yellow font-bold">Trier par :</label>
+                  <label htmlFor="sort-select" className="mr-2 text-me-yellow font-bold">Sort By :</label>
                   <select id="sort-select" className="bg-me-orange text-me-yellow px-2 py-1 rounded">
-                    <option value="top">Top des commentaires</option>
-                    <option value="recent">Les plus récents d&apos;abord</option>
+                    <option value="top">Top Comments</option>
+                    <option value="recent">Most recent first</option>
                   </select>
                 </div>
               </div>
@@ -96,19 +103,19 @@ const WindowVideo = () => {
                       </div>
                       <div className="flex-1">
                         <form className="flex">
-                          <input type="text" placeholder="Ajouter un commentaire..." className="text-me-yellow bg-me-darkpurple p-2 rounded-full w-full mx-2" />
-                          <button type="submit" className="ml-auto p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg">
-                            <span className="text-me-yellow">Annuler</span>
+                          <input type="text" placeholder="add a comment..." className="text-me-yellow bg-me-darkpurple p-2 rounded-full w-full mx-2" />
+                          <button type="submit" className="p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg mx-2">
+                            <span className="text-me-yellow">Cancel</span>
                           </button>
-                          <button type="submit" className="ml-auto p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg">
-                            <span className="text-me-yellow">Ajouter</span>
+                          <button type="submit" className="p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg ml-2">
+                            <span className="text-me-yellow">Add</span>
                           </button>
                         </form>
                       </div>
                     </div>
                     <div className="flex mb-4">
                       <div className="flex-shrink-0 mr-2">
-                        <img src="https://via.placeholder.com/40" alt="Logo de chaîne" className="rounded-full w-8 h-8" />
+                        <img src={require('../components/valerie.jpg')} alt="Logo de chaîne" className="rounded-full w-8 h-8 object-center" />
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
@@ -123,14 +130,14 @@ const WindowVideo = () => {
                             <FaThumbsDown className="text-me-yellow w-4 h-4" />
                           </button>
                           <button className="p-2 rounded-full bg-me-darkpurple shadow-md hover:shadow-lg">
-                            <span className="text-me-yellow">Répondre</span>
+                            <span className="text-me-yellow">Respond</span>
                           </button>
                         </div>
                       </div>
                     </div>
                     <div className="flex mb-4">
                       <div className="flex-shrink-0 mr-2">
-                        <img src="https://via.placeholder.com/40" alt="Logo de chaîne" className="rounded-full w-8 h-8" />
+                        <img src={require('../components/colombe.jpg')} alt="Logo de chaîne" className="rounded-full w-8 h-8 object-center" />
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
@@ -145,14 +152,14 @@ const WindowVideo = () => {
                             <FaThumbsDown className="text-me-yellow w-4 h-4" />
                           </button>
                           <button className="p-2 rounded-full bg-me-darkpurple shadow-md hover:shadow-lg">
-                            <span className="text-me-yellow">Répondre</span>
+                            <span className="text-me-yellow">Respond</span>
                           </button>
                         </div>
                       </div>
                     </div>
                     <div className="flex mb-4">
                       <div className="flex-shrink-0 mr-2">
-                        <img src="https://via.placeholder.com/40" alt="Logo de chaîne" className="rounded-full w-8 h-8" />
+                        <img src={require('../components/musk.jpg')} alt="Logo de chaîne" className="rounded-full w-8 h-8 object-center" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center">
@@ -168,7 +175,7 @@ const WindowVideo = () => {
                             <FaThumbsDown className="text-me-yellow w-4 h-4" />
                           </button>
                           <button className="p-2 rounded-full bg-me-darkpurple shadow-md hover:shadow-lg">
-                            <span className="text-me-yellow">Répondre</span>
+                            <span className="text-me-yellow">Respond</span>
                           </button>
                         </div>
                       </div>
