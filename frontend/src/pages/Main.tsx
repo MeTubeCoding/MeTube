@@ -122,7 +122,6 @@ const Main = () => {
               sortBy={sortBy}
               filter={filter}
             ></Filters>
-            <HomePage shorts={shorts} visible={isSideBarVisible}></HomePage>
             {channels.length === 0 && videos.length === 0 ? (
               <div className="flex justify-center">
                 <p className="text-me-yellow text-xl">No Results</p>
