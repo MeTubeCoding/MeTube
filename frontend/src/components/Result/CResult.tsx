@@ -39,8 +39,8 @@ const CResult = (props: Props) => {
         </p>
       </div>
       <a
-        className={`bg-me-lightpurple py-3 px-6 rounded-full hover:bg-me-yellow text-me-yellow hover:text-me-darkpurple ${
-          props.visible ? 'ml-36' : 'ml-72'
+        className={`bg-me-lightpurple py-3 px-6 rounded-full hover:bg-me-yellow text-me-yellow hover:text-me-darkpurple absolute ${
+          props.visible ? 'left-[60rem]' : 'left-[60rem]'
         }`}
       >
         Subscribe

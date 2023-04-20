@@ -8,14 +8,14 @@ import NearMeIcon from '@mui/icons-material/NearMe'
 import { Avatar } from '@mui/material'
 
 export interface SIResult {
-    id: number
-    url: string
-    channel: string
-    description: string
-    likes: number
-    dislikes: number
-    comments: number
-    shares: number
+  id: number
+  url: string
+  channel: string
+  description: string
+  likes: number
+  dislikes: number
+  comments: number
+  shares: number
 }
 interface Props {
   short: SIResult
@@ -30,12 +30,7 @@ const SResult = (props: Props) => {
   return (
     <div className="video">
       <div className="shortsContainer">
-        <video
-          className="video__player"
-          loop
-          src={props.short.url}
-          autoPlay
-        />
+        <video className="video__player" loop src={props.short.url} autoPlay />
         <div className="shortsVideoTop">
           <div className="shortsVideoTopIcon">
             <ArrowBackIcon />

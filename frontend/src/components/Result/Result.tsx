@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export interface IResult {
   id: number
@@ -7,9 +7,15 @@ export interface IResult {
   channel: string
   video: string
   tag: string[]
+  views: number
+  release: string[]
+  description: string
+  short: boolean
+  duration: string
 }
 interface Props {
   video: IResult
+  filter: string
   visible: boolean
 }
 
@@ -34,11 +40,15 @@ const Result = (props: Props) => {
     }
   }
 
+  useEffect(() => {
+    console.log(props.video)
+  }, [props.video])
+
   return (
     <div
       className={`flex mt-4 overflow-auto ${props.visible ? 'ml-96' : 'ml-60'}`}
     >
-      <div className="max-w-fit rounded-lg bg-[#000000] m-2">
+      <div className="max-w-fit h-40 rounded-lg bg-[#000000] m-2">
         <a
           className="w-72 h-40 flex rounded-lg relative justify-center overflow-hidden"
           href="#"
@@ -56,9 +66,22 @@ const Result = (props: Props) => {
           </video>
         </a>
       </div>
-      <div className="m-3 max-w-3/12">
+      <div className="m-3 max-h-36 w-6/12 overflow-hidden">
         <p className="text-me-yellow font-semibold">{props.video.title}</p>
-        <p className="text-me-yellow text-opacity-75">{props.video.channel}</p>
+        <p className="text-me-yellow text-opacity-75 text-xs">
+          {props.video.views} views • Release-date: {props.video.release[0]}-
+          {props.video.release[1]}-{props.video.release[2]}
+        </p>
+        <p className="text-me-yellow text-opacity-75 text-xs my-3 flex items-center font-semibold">
+          <img
+            className="rounded-full h-6 w-6 mr-2"
+            src="https://cdn.discordapp.com/attachments/494204379822555139/1097441029117988914/Capture_decran_2023-04-17_a_10.36.13.png"
+          ></img>
+          {props.video.channel}
+        </p>
+        <p className="text-me-yellow text-xs text-opacity-75 overflow-hidden text-ellipsis whitespace-nowrap h-4">
+          {props.video.description}
+        </p>
       </div>
     </div>
   )

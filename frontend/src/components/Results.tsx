@@ -1,45 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Result, { type IResult } from './Result/Result'
-import CResult, { type CIResult } from './Result/CResult'
 import SResult, { type SIResult } from './Result/SResult'
+import CResult, { type CIResult } from './Result/CResult'
 export type IResults = Array<IResult>
-export type CIResults = Array<CIResult>
 export type SIResults = Array<SIResult>
+export type CIResults = Array<CIResult>
 
 interface Props {
   videos: IResults
   channels: CIResults
-  shorts: SIResults
+  sortBy: string
   filter: string
   visible: boolean
 }
 
-const Results = (props: Props): any => {
+const Results = (props: Props) => {
+  const sortVids = () => {
+    console.log('sort')
+    if (props.sortBy === 'viewsUP') {
+      props.videos.sort((a, b) => b.views - a.views)
+    } else if (props.sortBy === 'viewsDOWN') {
+      props.videos.sort((a, b) => a.views - b.views)
+    }
+  }
+
+  useEffect(() => {
+    sortVids()
+  }, [props.sortBy])
+
   return (
     <>
-    {props.shorts.length === 0 && props.filter !== 'movie' &&
-      props.filter !== 'playlist' && props.filter !== 'channel' ?  <div></div> : <div>
-          <div>
-            {props.shorts.map(short => (
-              <SResult
-                key={short.id}
-                short={short}
-                visible={props.visible}
-              />
-            ))}
-          </div>
-          <hr
-            className={`my-8 border-me-yellow ${
-              props.visible
-                ? 'w-[54.76%] ml-[24.75rem]'
-                : 'w-[64.90%] ml-[15.73rem]'
-            }`}
-          ></hr>
-        </div> }
-      {props.channels.length === 0 &&
-      props.filter !== 'video' &&
-      props.filter !== 'movie' &&
-      props.filter !== 'playlist' ? (
+      {props.channels.length === 0 ||
+      props.filter === 'video' ||
+      props.filter === 'playlist' ||
+      props.filter === 'movie' ? (
         <div></div>
       ) : (
         <div>
@@ -56,20 +50,25 @@ const Results = (props: Props): any => {
             className={`my-8 border-me-yellow ${
               props.visible
                 ? 'w-[54.76%] ml-[24.75rem]'
-                : 'w-[64.90%] ml-[15.73rem]'
+                : 'w-[64.80%] ml-[15.73rem]'
             }`}
           ></hr>
         </div>
       )}
-      {props.videos.length === 0 &&
-      props.filter !== 'channel' &&
-      props.filter !== 'movie' &&
-      props.filter !== 'playlist' ? (
+      {props.videos.length === 0 ||
+      props.filter === 'channel' ||
+      props.filter === 'playlist' ||
+      props.filter === 'movie' ? (
         <div></div>
       ) : (
         <div className="pb-6">
           {props.videos.map(video => (
-            <Result key={video.id} video={video} visible={props.visible} />
+            <Result
+              key={video.id}
+              video={video}
+              visible={props.visible}
+              filter={props.filter}
+            />
           ))}
         </div>
       )}

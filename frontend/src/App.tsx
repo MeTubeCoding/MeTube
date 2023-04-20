@@ -7,7 +7,11 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import HomePage from './pages/HomePage'
-import VideoPage from './pages/VideoPage'
+import Tendances from './pages/feed/trending'
+import History from './pages/feed/history'
+import Bibliotheque from './pages/feed/library'
+import Abonnements from './pages/feed/subscriptions'
+import Live from './composant/Live'
 
 function App() {
   return (
@@ -16,11 +20,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/videopage" element={<VideoPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/feed/trending" element={<Tendances />} />
+            <Route path="/feed/history" element={<History />} />
+            <Route path="/feed/library" element={<Bibliotheque />} />
+            <Route path="/feed/subscriptions" element={<Abonnements />} />
+            <Route path="/live" element={<Live />} />
           </Routes>
         </BrowserRouter>
       </div>
