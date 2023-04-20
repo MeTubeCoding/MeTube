@@ -10,15 +10,6 @@ export function ModerationChat() {
   const [messages, setMessages] = useState<Message[]>([])
   const invisibleButtonRef = useRef<HTMLButtonElement>(null)
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
-  useEffect(() => {
-    getChat()
-    const interval = setInterval(() => {
-      getChat()
-    }, 5000)
-
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(interval)
-  }, [])
 
   function getChat() {
     fetch('http://127.0.0.1:5600/moderation', {
@@ -28,7 +19,17 @@ export function ModerationChat() {
         return res.json()
       })
       .then(res => {
-        setMessages(res)
+        console.log(res)
+        const section = document.getElementById(
+          'espace-moderation'
+        ) as HTMLInputElement
+        section.innerHTML = ''
+        res.forEach((message: { message: string; pseudo: string }) => {
+          const text = `${message.pseudo}: ${message.message}`
+          const p = document.createElement('p')
+          p.textContent = text
+          section.appendChild(p)
+        })
       })
   }
 
@@ -57,9 +58,7 @@ export function ModerationChat() {
 
   function banUser(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault()
-    const messageInput = document.getElementById(
-      'message-input'
-    ) as HTMLInputElement
+    const messageInput = document.getElementById('ban') as HTMLInputElement
     const pseudo = messageInput.value
 
     fetch('http://127.0.0.1:5600/ban', {
@@ -87,14 +86,13 @@ export function ModerationChat() {
         >
           Espace Modération :
         </label>
-        <section id="espace-Moderation" className="text-white mt-3">
-          {messages.map(msg => (
-            <p className="text-me-white" key={msg.id}>
-              {msg.pseudo}: {msg.message}
-            </p>
-          ))}
-        </section>
-        <p onClick={() => getChat()}>Rafraichir</p>
+        <section id="espace-moderation" className="text-me-white"></section>
+        <p
+          onClick={() => getChat()}
+          className="text-me-colorprimary font-bold mt-2 rounded-md"
+        >
+          Rafraichir
+        </p>
       </form>
       <form className="mt-10 flex flex-col justify-end">
         <label
