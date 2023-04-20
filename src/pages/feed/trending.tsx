@@ -26,7 +26,7 @@ function Tendances() {
               src="https://www.youtube.com/img/trending/avatar/trending.png"
             ></img>
             <h3 className="ml-5 p-0 text-center leading-normal text-3xl">
-              FOR YOU
+              TRENDINGS
             </h3>
           </div>
           <div className="ml-5 flex flex_col justify-center">
