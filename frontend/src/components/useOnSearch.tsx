@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { IResults } from './Results'
-import { CIResults } from './Results'
+import { IResults, SIResults, CIResults } from './Results'
 
 const useOnSearch = () => {
   const [videos, setVideos] = useState<IResults | []>([])
   const [channels, setChannels] = useState<CIResults | []>([])
+  const [shorts, setShorts] = useState<SIResults | []>([])
 
   const onSearch = (
     data: string,

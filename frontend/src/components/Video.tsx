@@ -7,15 +7,61 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 import InsertCommentIcon from '@mui/icons-material/InsertComment'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import { Avatar } from '@mui/material'
+import axios from 'axios'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const source = require('../video/drole.mp4')
+interface VideoProps {
+  src: string
+  channel: string
+  description: string
+  like: number
+  dislike: number
+  share: number
+  comment: number
+}
 
-function Video(props: any): JSX.Element {
-  const [subscribe, setSubscribe] = useState(false)
+function Video({
+  src,
+  channel,
+  description,
+  like,
+  dislike,
+  share,
+  comment
+}: VideoProps): JSX.Element {
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  const shorts = async () => {
+    const endpoint = await axios.get(`http://127.0.0.1:5600/getshort`) 
+    console.log(endpoint)// Remplacez par l'URL de votre serveur
+    return endpoint.data
+  }
+  shorts()
+  
+
+  const [subs, setSubs] = useState(false)
+  const [likes, setLikes] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(false)
 
   const handleSubscribe = () => {
-    setSubscribe(!subscribe)
+    setSubs(sub => !sub)
+  }
+  const handleLike = async () => {
+    try {
+      const response = await axios.post('/videos/${props.id}/like')
+      setLikes(response.data.likes)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleVideoPress = () => {
+    if (playing) {
+      setPlaying(false)
+      videoRef.current?.pause()
+    } else {
+      videoRef.current?.play()
+      setPlaying(play => !play)
+    }
   }
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
   // const [description] = useState('test description')
@@ -23,7 +69,13 @@ function Video(props: any): JSX.Element {
   return (
     <div className="video">
       <div className="shortsContainer">
-        <video className="video_player" src={source} autoPlay muted loop />
+        <video
+          className="video__player"
+          onClick={handleVideoPress}
+          loop
+          ref={videoRef}
+          src={src}
+        />
         <div className="shortsVideoTop">
           <div className="shortsVideoTopIcon">
             <ArrowBackIcon />
@@ -34,38 +86,42 @@ function Video(props: any): JSX.Element {
         </div>
         <div className="shortsVideoSideIcons">
           <div className="shortsVideoSideIcon">
-            <ThumbUpIcon />
-            <p>600</p>
+            <ThumbUpIcon onClick={handleLike} />
+            <p>{like}</p>
           </div>
           <div className="shortsVideoSideIcon">
             <ThumbDownIcon />
-            <p>600</p>
+            <p>{dislike}</p>
           </div>
           <div className="shortsVideoSideIcon">
             <InsertCommentIcon />
-            <p>600</p>
+            <p>{comment}</p>
           </div>
           <div className="shortsVideoSideIcon">
             <NearMeIcon />
-            <p>600</p>
+            <p>{share}</p>
           </div>
         </div>
         <div className="shortsBottom">
           <div className="shortsDesc">
-            <p className="description">description</p>
+            <p className="description">{description}</p>
           </div>
           <div className="shortsDetails">
             <div className="pseudos">
-              <Avatar />
-              <p>channel</p>
+              <Avatar
+                src={
+                  'https://lh3.googleusercontent.com/ogw/ADGmqu8BCzU8GejYorGqXeu98A1kfEFYKFT85I3_9KJBzfw=s32-c-mo'
+                }
+              />
+              <p>{channel}</p>
             </div>
             <button
               style={{
-                background: subscribe ? 'red' : 'hsla(0, 0%, 69.4%, .609'
+                background: subs ? 'red' : 'hsla(0, 0%, 69.4%, .609'
               }}
               onClick={handleSubscribe}
             >
-              {subscribe ? 'SUBSCRIBED' : 'SUBSCRIBE'}
+              {subs ? 'SUBSCRIBED' : 'SUBSCRIBE'}
             </button>
           </div>
         </div>
