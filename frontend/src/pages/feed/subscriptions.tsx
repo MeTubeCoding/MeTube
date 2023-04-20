@@ -18,14 +18,6 @@ function Abonnements() {
 
   return (
     <div className="Abonnements text-me-yellow">
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} setSearched={function (value: React.SetStateAction<boolean>): void {
-          throw new Error('Function not implemented.')
-        } } />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
       <div className="bg-neutral-900 object-cover absolute top-0 left-0 right-0">
         <img src="menu-btn.png" className="object-cover w-5 m-5"></img>
         <div className="rounded-full absolute top-0 left-0 right-0 bottom-0 hover:bg-white opacity-25 object-cover w-9 m-3"></div>
