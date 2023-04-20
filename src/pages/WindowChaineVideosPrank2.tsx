@@ -3,9 +3,9 @@ import React from "react";
 import "tailwindcss/tailwind.css";
 
 import logo from './user.jpg';
-import cover from './cover.jpg';
+import cover from './coverprank2.jpg';
 
-const WindowChaineVideos = () => {
+const WindowChaineVideosPrank2 = () => {
   return (
     <div className="relative bg-me-darkpurple" style={{ marginLeft: '13%' }}>
       <div className="w-full h-64" style={{ backgroundImage: `url(${cover})`, backgroundPosition: 'center center', backgroundSize: 'cover' }}></div>
@@ -39,4 +39,4 @@ const WindowChaineVideos = () => {
   );
 };
 
-export default WindowChaineVideos;
+export default WindowChaineVideosPrank2;
