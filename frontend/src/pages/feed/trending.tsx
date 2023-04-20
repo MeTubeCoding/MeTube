@@ -23,7 +23,9 @@ function Tendances() {
   return (
     <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
       <div style={{ height: '5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} setSearched={function (value: React.SetStateAction<boolean>): void {
+          throw new Error('Function not implemented.')
+        } } />
       </div>
       <div className="flex flex-col" style={{ height: '3.5vh' }}>
         <SideBar visible={isSideBarVisible} />
