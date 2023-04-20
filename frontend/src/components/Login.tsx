@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/formFields'
@@ -60,8 +59,10 @@ const Login: React.FC = () => {
           )
           if (passwordMatch) {
             // Connexion réussie
-            navigate('/profile')
-          } else {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('email', loginState.email);
+            navigate('/profile', { state: { email: loginState.email } });
+          }else {
             // Échec de la connexion
             setLoginState({
               ...loginState,
