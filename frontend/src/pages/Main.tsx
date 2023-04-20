@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useOnSearch } from '../components/useOnSearch'
+import { getShorts } from '../components/getShorts'
 import Navbar from '../components/Navbar'
 import SideBar from '../components/SideBar'
 import Tendances from './feed/trending'
 import Results from '../components/Results'
 import Filters from '../components/Filters'
+import HomePage from './HomePage'
 
 const Main = () => {
   const [HasSearched, setHasSearched] = useState(false)
+  const [onShorts, setOnShorts] = useState(false)
+
+  const { shorts, onLoad } = getShorts()
 
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
   const [filter, setFilter] = useState('none')
@@ -89,12 +94,19 @@ const Main = () => {
       <div style={{ height: '8.5vh' }}>
         <Navbar
           setSearched={setHasSearched}
+          setShorts={setOnShorts}
           onSearch={onSearch}
           onToggleSideBar={toggleSideBarVisibility}
         />
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
+        <SideBar
+          visible={isSideBarVisible}
+          setShorts={setOnShorts}
+          onShorts={onShorts}
+          shorts={shorts}
+          onLoad={onLoad}
+        />
         {HasSearched ? (
           <div>
             <Filters
@@ -110,6 +122,7 @@ const Main = () => {
               sortBy={sortBy}
               filter={filter}
             ></Filters>
+            <HomePage shorts={shorts} visible={isSideBarVisible}></HomePage>
             {channels.length === 0 && videos.length === 0 ? (
               <div className="flex justify-center">
                 <p className="text-me-yellow text-xl">No Results</p>
@@ -124,6 +137,8 @@ const Main = () => {
               />
             )}
           </div>
+        ) : onShorts === true ? (
+          <HomePage shorts={shorts} visible={false}></HomePage>
         ) : (
           <Tendances></Tendances>
         )}

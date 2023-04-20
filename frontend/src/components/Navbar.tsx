@@ -9,6 +9,7 @@ interface Props {
     setSearched: React.Dispatch<React.SetStateAction<boolean>>
   ) => void
   setSearched: React.Dispatch<React.SetStateAction<boolean>>
+  setShorts: React.Dispatch<React.SetStateAction<boolean>>
   onToggleSideBar: () => void
 }
 
@@ -19,6 +20,7 @@ const Navbar = (props: Props) => {
 
   const backToHome = () => {
     props.setSearched(false)
+    props.setShorts(false)
   }
 
   return (

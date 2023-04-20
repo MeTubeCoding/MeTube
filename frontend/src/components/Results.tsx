@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import Result, { type IResult } from './Result/Result'
+import SResult, { type SIResult } from './Result/SResult'
 import CResult, { type CIResult } from './Result/CResult'
 export type IResults = Array<IResult>
+export type SIResults = Array<SIResult>
 export type CIResults = Array<CIResult>
 
 interface Props {

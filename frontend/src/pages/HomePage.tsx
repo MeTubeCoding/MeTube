@@ -1,36 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import NavigationBar from '../components/NavigationBar'
-import Video from '../components/Video'
+import React from 'react'
 import './HomePage.css'
-import Videos from '../components/Videos'
+import SResult, { SIResult } from '../components/Result/SResult'
 
-interface VideoData {
-  id: number
-  url: string
+export type SIResults = Array<SIResult>
+
+interface Props {
+  shorts: SIResults
+  visible: boolean
 }
 
-const HomePage = (): JSX.Element => {
-  const [video, setVideo] = useState<VideoData[]>([])
-  useEffect(() => {
-    setVideo(Videos)
-  }, [])
+const HomePage = (props: Props): JSX.Element => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 'calc(100vh - 60px)'
-      }}
-    >
-      <div>
-        <NavigationBar />
-      </div>
-      <div className="mt-[15%] video">
-        {video.map(vid => (
-          <Video key={vid.id} id={vid.id} src={vid.url} />
-        ))}
+    <div className="max-h-screen">
+      <div className="flex justify-center items-center max-w-3xl mx-auto">
+        <div className="mt-[15%] video">
+          <div>
+            {props.shorts.map(short => (
+              <SResult key={short.id} short={short} visible={props.visible} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -17,13 +17,24 @@ import {
   MdOutlineFeedback,
   MdOutlineBolt
 } from 'react-icons/md'
+import { SIResults } from './Results'
 
 interface SideBarProps {
   visible: boolean
+  setShorts: React.Dispatch<React.SetStateAction<boolean>>
+  onLoad: (setOnShorts: React.Dispatch<React.SetStateAction<boolean>>) => void
+  onShorts: boolean
+  shorts: SIResults
 }
 
 function SideBar(props: SideBarProps) {
   const bar = useRef<HTMLDivElement>(null)
+
+  const doShorts = () => {
+    props.onLoad(props.setShorts)
+    console.log(props.onShorts)
+    console.log(props.shorts)
+  }
 
   const mainpart = [
     {
@@ -145,10 +156,21 @@ function SideBar(props: SideBarProps) {
                 key={name}
                 className={`hover:bg-me-lightpurple rounded-lg py-4`}
               >
-                <a href={href} className="flex flex-col items-center gap-2">
-                  {icon}
-                  <span className="text-xs tracking-wider">{name}</span>
-                </a>
+                {href === '/shorts' ? (
+                  <a
+                    href="#"
+                    className="flex flex-col items-center gap-2"
+                    onClick={doShorts}
+                  >
+                    {icon}
+                    <span className="text-xs tracking-wider">{name}</span>
+                  </a>
+                ) : (
+                  <a href="#" className="flex flex-col items-center gap-2">
+                    {icon}
+                    <span className="text-xs tracking-wider">{name}</span>
+                  </a>
+                )}
               </li>
             )
           })}
