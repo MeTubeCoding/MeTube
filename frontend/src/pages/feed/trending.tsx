@@ -22,12 +22,6 @@ function Tendances() {
 
   return (
     <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div style={{ height: '7vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
-      </div>
-      <div className="flex flex-col" style={{ height: '3.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
       <div className="flex flex-row ml-[5%] h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
