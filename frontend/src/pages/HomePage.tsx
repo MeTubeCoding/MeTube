@@ -48,7 +48,13 @@ const HomePage = (): JSX.Element => {
   return (
     <div className="max-h-screen">
       <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+        <Navbar
+          onSearch={onSearch}
+          onToggleSideBar={toggleSideBarVisibility}
+          setSearched={function (value: React.SetStateAction<boolean>): void {
+            throw new Error('Function not implemented.')
+          }}
+        />
       </div>
       <div className="flex justify-center items-center max-w-3xl mx-auto">
         <div className="mt-[15%] video">

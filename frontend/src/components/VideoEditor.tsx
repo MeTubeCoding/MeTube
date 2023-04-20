@@ -1,5 +1,5 @@
 import React from 'react'
-import MusicPlayer from './MusicPlayer'
+import MusicPlayer from '../pages/MusicPlayer'
 
 interface VideoEditorProps {
   selectedVideo: string | undefined
