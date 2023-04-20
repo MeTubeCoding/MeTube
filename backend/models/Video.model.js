@@ -4,12 +4,17 @@ import { mongoose } from "mongoose";
 const Schema = mongoose.Schema;
 
 const VideoModelSchema = new Schema({
+  id: Number,
   title: String,
   miniature: String,
+  channel: String,
   video: String,
-  release: String,
+  tags: Array,
+  views: Number,
+  release: Array,
   description: String,
   short: Boolean,
+  duration: Number
 });
 
 // Compile model from schema
