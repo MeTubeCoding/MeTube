@@ -13,7 +13,7 @@ const useOnSearch = () => {
     console.log(JSON.stringify(data))
     setSearched(true)
 
-    fetch('http://127.0.0.1:5600/videos', {
+    fetch('http://127.0.0.1:5600/videos/searchVideos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
