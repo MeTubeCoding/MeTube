@@ -29,19 +29,17 @@ export const createChannels = async (req, res) => {
 export const searchChannels = async (req, res) => {
   try {
     const channels = await ChannelModel.find();
-    const requestString = req.body.data;
-    const regexString = requestString.replace(/ /g, "|").split("").join(".*");
-    const regex = new RegExp(regexString, "i");
-    const requestedChannels = channels.filter(
-      (channel) =>
-        regex.test(channel.title) ||
-        regex.test(channel.channel) ||
-        channel.tags.some((tag) => regex.test(tag))
-    );
+    const requestString = req.body.data
+  const regexString = requestString.replace(/ /g, '|').split('').join('.*')
+  const regex = new RegExp(regexString, 'i')
 
-    if (requestedChannels.length > 0) {
-      res.json(requestedChannels);
-    }
+  const requestedChannels = channels.filter(channel =>
+    regex.test(channel.name)
+  )
+
+  if (requestedChannels.length > 0) {
+    res.json(requestedChannels)
+  }
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
