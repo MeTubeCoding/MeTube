@@ -49,7 +49,7 @@ export default function ForgotPassword() {
   }
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+    <form className="mt-8 space-y-6 text-me-white" onSubmit={handleSubmit}>
       <div className="">
         {fields.map(field => (
           <Input
