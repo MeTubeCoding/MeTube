@@ -5,4 +5,4 @@ const App = () => {
   return <WindowVideo />
 }
 
-export default App
+export default App;
