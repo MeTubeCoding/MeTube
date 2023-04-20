@@ -1,5 +1,4 @@
 import React from 'react'
-import mockData from '../../timeline_components/mocking.json'
 
 // import composant  :
 import {
@@ -16,10 +15,10 @@ import {
 function Tendances() {
   return (
     <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
-      <div className="flex flex-row justify-center h-screen bg-neutral-900">
+      <div className="flex flex-row ml-[5%] h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
-          <div className="mb-5 flex flex-row justify-center items-center my-3 mx-1/100 lg:mx-5/100">
+          <div className="ml-[90%] mb-10 flex flex-row justify-center items-center my-3">
             <img
               className="rounded-full mr-2%"
               src="https://www.youtube.com/img/trending/avatar/trending.png"
