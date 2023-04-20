@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './HomePage.css'
-import Videos from '../components/Videos'
-import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
 import { useNavigate } from 'react-router-dom'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import SResult, { SIResult } from '../components/Result/SResult'
@@ -40,16 +37,18 @@ const HomePage = (props: Props): JSX.Element => {
           </div>
         </div>
       </div>
-      <button
-        onClick={verify}
-        style={{
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: '#a45d2b'
-        }}
-      >
-        <FontAwesomeIcon icon={faSquarePlus} size="4x" />
-      </button>
+      <div className="ml-[10%]">
+        <button
+          onClick={verify}
+          style={{
+            border: 'none',
+            backgroundColor: 'transparent',
+            color: '#a45d2b'
+          }}
+        >
+          <FontAwesomeIcon icon={faSquarePlus} size="4x" />
+        </button>
+      </div>
     </div>
   )
 }

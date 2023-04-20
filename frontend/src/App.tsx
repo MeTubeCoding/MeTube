@@ -25,6 +25,7 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/videopage" element={<VideoPage />} />
             <Route path="/feed/trending" element={<Tendances />} />
             <Route path="/feed/history" element={<History />} />
             <Route path="/feed/library" element={<Bibliotheque />} />
