@@ -39,7 +39,6 @@ const Main = () => {
               setSort={setSort}
             />
             <Results
-              sortBy={sortBy}
               videos={videos}
               channels={channels}
               filter={filter}

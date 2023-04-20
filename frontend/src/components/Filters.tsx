@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { MdOutlineTune } from 'react-icons/md'
 
 interface Props {
+  sortVids: () => void
   visible: boolean
   filter: string
   sortBy: string
@@ -18,29 +19,28 @@ interface Props {
 const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
 
-  const [viewsB, setViewsB] = useState(false)
+  const doSort = (sortType: () => void) => {
+    sortType()
+    props.sortVids()
+  }
 
   const sViews = () => {
     props.sortViews()
-    setViewsB(prevState => !prevState)
     console.log('sort by ' + props.sortBy)
   }
 
   const sRating = () => {
     props.sortRating()
-    setViewsB(false)
     console.log('sort by ' + props.sortBy)
   }
 
   const sDate = () => {
     props.sortDate()
-    setViewsB(false)
     console.log('sort by ' + props.sortBy)
   }
 
   const sRelev = () => {
     props.sortRelevance()
-    setViewsB(false)
     console.log('sort by ' + props.sortBy)
   }
 
@@ -157,22 +157,26 @@ const Filters = (props: Props) => {
     {
       name: 'Relevance',
       sort: sRelev,
-      bool: 'relev'
+      bool: 'relev',
+      bool2: 'relev'
     },
     {
       name: 'Upload date',
       sort: sDate,
-      bool: 'date'
+      bool: 'date',
+      bool2: 'date'
     },
     {
       name: 'View count',
       sort: sViews,
-      bool: 'views'
+      bool: 'viewsUP',
+      bool2: 'viewsDOWN'
     },
     {
       name: 'Rating',
       sort: sRating,
-      bool: 'rating'
+      bool: 'rating',
+      bool2: 'rating'
     }
   ]
 
@@ -228,7 +232,7 @@ const Filters = (props: Props) => {
                 <li key={name} className={`rounded-lg`}>
                   <span
                     className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
-                      props.filter === bool || viewsB === true
+                      props.filter === bool
                         ? 'text-opacity-100'
                         : 'text-opacity-50'
                     }`}
@@ -271,16 +275,16 @@ const Filters = (props: Props) => {
           <ul className="flex flex-col text-me-yellow p-4">
             <p>SORT BY</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {sortBy.map(({ name, sort, bool }) => {
+            {sortBy.map(({ name, sort, bool, bool2 }) => {
               return (
                 <li key={name} className={`rounded-lg`}>
                   <span
                     className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
-                      props.sortBy === bool
+                      props.sortBy === bool || props.sortBy === bool2
                         ? 'text-opacity-100'
                         : 'text-opacity-50'
                     }`}
-                    onClick={sort}
+                    onClick={() => doSort(sort)}
                   >
                     {name}
                   </span>

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useOnSearch } from '../components/useOnSearch'
 import Results from '../components/Results'
 import Filters from '../components/Filters'
+import { IResult } from '../components/Result/Result'
 
 interface Props {
   setFilter: React.Dispatch<React.SetStateAction<string>>
@@ -80,9 +81,26 @@ const Recherche = (props: Props) => {
     }
   }
 
+  const videoList = videos
+  const [sorting, setSorting] = useState(false)
+
+  const sortVids = () => {
+    console.log('sort')
+    if (props.sortBy === 'viewsUP') {
+      videoList.sort((a, b) => b.views - a.views)
+      setSorting(true)
+    } else if (props.sortBy === 'viewsDOWN') {
+      videoList.sort((a, b) => b.views + a.views)
+      setSorting(true)
+    } else {
+      setSorting(false)
+    }
+  }
+
   return (
     <div>
       <Filters
+        sortVids={sortVids}
         visible={props.visible}
         filterChannel={filterChannel}
         filterVideo={filterVideo}
@@ -95,13 +113,21 @@ const Recherche = (props: Props) => {
         sortBy={props.sortBy}
         filter={props.filter}
       ></Filters>
-      <Results
-        visible={props.visible}
-        filter={props.filter}
-        sortBy={props.sortBy}
-        videos={videos}
-        channels={channels}
-      />
+      {sorting != true ? (
+        <Results
+          visible={props.visible}
+          filter={props.filter}
+          videos={videos}
+          channels={channels}
+        />
+      ) : (
+        <Results
+          visible={props.visible}
+          filter={props.filter}
+          videos={videoList}
+          channels={channels}
+        />
+      )}
     </div>
   )
 }
