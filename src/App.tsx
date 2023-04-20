@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import ChaineAccueil from './components/ChaineAccueil'
 import WindowVideo from './pages/WindowVideo'
+import VideosPage from './components/VideosPage'
 
 function App() {
   return (
