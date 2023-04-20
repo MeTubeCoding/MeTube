@@ -10,12 +10,10 @@
 // problème
 import dotenv from "dotenv"
 dotenv.config()
-import channelRoutes from "./routes/channels.js"
-import shortRoutes from "./routes/shorts.js"
-import videoRoutes from "./routes/videos.js";
-import mongoose from "mongoose";
-import express from "express";
-const app = express();
+import videoRoutes from "./routes/videos.js"
+import mongoose from "mongoose"
+import express from "express"
+const app = express()
 
 import cors from "cors"
 import bodyparser from "body-parser"
@@ -52,9 +50,6 @@ app.get("/", (req, res) => {
 })
 
 app.use("/videos", videoRoutes)
-app.use("/channels", channelRoutes)
-
-app.use("/shorts", shortRoutes)
 
 app.post("/node/sub", (req, res) => {
 	client.connect((err) => {

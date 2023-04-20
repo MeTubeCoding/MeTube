@@ -12,8 +12,16 @@ import { trend_tag } from '../../timeline_components/trending_categories'
 // ================================================================================================
 
 function Tendances() {
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const [filter, setFilter] = useState('none')
+  const { videos, channels, onSearch } = useOnSearch()
+
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
+  }
+
   return (
-    <div className="flex flex-row ml-[5%] h-screen bg-neutral-900">
+    <div className="flex flex-row ml-[15%] text-me-orange h-screen bg-neutral-900">
       <div>
         <div className="ml-[50%] mb-10 flex flex-row justify-center items-center my-3">
           <img
