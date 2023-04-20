@@ -1,0 +1,53 @@
+{
+    "env": {
+<<<<<<< HEAD:.eslintrc.json
+      "browser": true,
+      "commonjs": true,
+      "node": true,
+      "es2021": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "prettier"
+=======
+        "browser": true,
+        "commonjs": true,
+        "node":true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "overrides": [
+>>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/.eslintrc.json
+    ],
+    "overrides": [],
+    "parserOptions": {
+<<<<<<< HEAD:.eslintrc.json
+      "project": ["./tsconfig.json"],
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+=======
+        "project": ["./frontend/tsconfig.json"],
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+>>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/.eslintrc.json
+    },
+    "plugins": ["react"],
+    "rules": {
+<<<<<<< HEAD:.eslintrc.json
+      "prettier/prettier": "error"
+    }
+  }
+=======
+        "prettier/prettier": "error"
+    }
+}
+>>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/.eslintrc.json

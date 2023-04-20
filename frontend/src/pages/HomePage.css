@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.video {
+  @apply relative h-[67vh] w-full max-w-[320px] overflow-scroll;
+  scroll-snape-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.video::-webkit-scrollbar {
+  @apply hidden;
+}
