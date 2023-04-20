@@ -3,6 +3,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import ChaineAccueil from './components/ChaineAccueil'
+import WindowVideo from './pages/WindowVideo'
 
 function App() {
   return (

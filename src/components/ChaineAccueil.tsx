@@ -55,15 +55,15 @@ const ChaineAccueil = () => {
                 <div className="flex space-x-4">
                   <p className="text-me-yellow font-medium text-lg">@AndreFromTheValley</p>
                   <p className="text-me-yellow font-medium text-lg">•</p>
-                  <p className="text-me-yellow font-medium text-lg">100 000 abonnés 1 vidéo</p>
+                  <p className="text-me-yellow font-medium text-lg">100 000 subscribers 1 video</p>
                 </div>
                 <p className="text-me-yellow font-medium text-lg">Founder Agile@School® // Agile Coach // Product Ops // Product & Coding Bootcamp Shamane</p>
                 <div className="mt-4 flex space-x-4">
-                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">ACCUEIL</button>
-                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">VIDÉOS</button>
-                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">EN DIRECT</button>
-                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">À PROPOS</button>
-                  <button className="bg-me-orange text-me-yellow font-bold py-2 px-4 rounded-lg ml-auto">S&apos;abonner</button>
+                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg border-b-2">HOME</button>
+                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">VIDEOS</button>
+                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">LIVE</button>
+                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">IN REGARDS TO</button>
+                  <button className="bg-me-orange text-me-yellow font-bold py-2 px-4 rounded-lg ml-auto">Subscribe</button>
                 </div>
               </div>
             </div>
@@ -71,12 +71,12 @@ const ChaineAccueil = () => {
               <div className="relative ml-25 mb-20 w-1/3">
                 <video
                   className="w-full h-full"
-                  src="../assets/test.mp4"
+                  src={require("../assets/test.mp4")}
                   controls
                 ></video>
               </div>
               <div className="ml-8 flex flex-col justify-start">
-                <h2 className="text-2xl text-me-orange font-semibold">CODING FACTORY DE CERGY : LA CALIFORNIE !</h2>
+                <h2 className="text-2xl text-me-orange font-semibold">CODING FACTORY CERGY : THE CALIFORNIA !</h2>
                 <p className="text-me-yellow mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, repellat?</p>
               </div>
             </div>
