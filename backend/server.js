@@ -249,8 +249,8 @@ app.post('/chat', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('messageChat')
+        const database = client.db('METUBE')
+        const messages = database.collection('message_chat')
         const query = req.body
         await messages.insertOne(query)
       } finally {
@@ -266,41 +266,8 @@ app.post('/moderation', (req, res) => {
   client.connect(err => {
     async function run() {
       try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('messageModeration')
-        const query = req.body
-        await messages.insertOne(query)
-      } finally {
-        await client.close()
-      }
-    }
-    run().catch(console.dir)
-  })
-  res.end()
-})
-app.post('/desc', (req, res) => {
-  client.connect(err => {
-    async function run() {
-      try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('description')
-        const query = req.body
-        await messages.insertOne(query)
-      } finally {
-        await client.close()
-      }
-    }
-    run().catch(console.dir)
-  })
-  res.end()
-})
-
-app.post('/titre', (req, res) => {
-  client.connect(err => {
-    async function run() {
-      try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('titre')
+        const database = client.db('METUBE')
+        const messages = database.collection('message_moderation')
         const query = req.body
         await messages.insertOne(query)
       } finally {
@@ -316,8 +283,8 @@ app.post('/dataLive',(req,res)=>{
   client.connect(err => {
     async function run() {
       try {
-        const database = client.db('LiveBdd');
-        const messages = database.collection('dataLive');
+        const database = client.db('METUBE');
+        const messages = database.collection('data_live');
         const query = req.body;
         await messages.insertOne(query);
       } finally {
@@ -333,8 +300,8 @@ app.get('/chat', (req, res) => {
   client.connect(err => {
     async function runy() {
       try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('messageChat')
+        const database = client.db('METUBE')
+        const messages = database.collection('message_chat')
         let search = await messages.find({}).toArray()
         const reponseSearch = JSON.stringify(search)
         res.end(reponseSearch)
@@ -350,8 +317,8 @@ app.get('/moderation', (req, res) => {
   client.connect(err => {
     async function runy() {
       try {
-        const database = client.db('LiveBdd')
-        const messages = database.collection('messageModeration')
+        const database = client.db('METUBE')
+        const messages = database.collection('message_moderation')
         let search = await messages.find({}).toArray()
         const reponseSearch = JSON.stringify(search)
         res.end(reponseSearch)
@@ -367,8 +334,8 @@ app.get('/username', (req, res) => {
   client.connect(err => {
     async function runy() {
       try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
+        const database = client.db('METUBE')
+        const messages = database.collection('users_profile')
         let search = await messages.find({}).toArray()
         const reponseSearch = JSON.stringify(search)
         res.end(reponseSearch)
