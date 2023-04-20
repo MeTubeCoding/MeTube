@@ -1,44 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import Video from '../components/Video';
-import './HomePage.css';
-import Videos from '../components/Videos';
-import Popup, { Prompt } from '../components/fonction/Popup';
-import Navbar from '../components/Navbar';
-import { useOnSearch } from '../components/useOnSearch';
+import React, { useEffect, useState } from 'react'
+import Video from '../components/Video'
+import './HomePage.css'
+import Videos from '../components/Videos'
+import Popup, { Prompt } from '../components/fonction/Popup'
+import Navbar from '../components/Navbar'
+import { useOnSearch } from '../components/useOnSearch'
+import { useNavigate } from 'react-router-dom'
 
 interface VideoData {
-  id: number;
-  url: string;
+  id: number
+  url: string
 }
 
 const HomePage = (): JSX.Element => {
-  const [video, setVideo] = useState<VideoData[]>([]);
-  const [showPopup, setShowPopup] = useState<boolean>(false);
-  const [comment, setComment] = useState<string>('');
+  const [video, setVideo] = useState<VideoData[]>([])
+  const [showPopup, setShowPopup] = useState<boolean>(false)
+  const [comment, setComment] = useState<string>('')
+  const navigate = useNavigate()
 
-  const { onSearch } = useOnSearch();
+  const handleClickEditor = (): unknown => {
+    return navigate('/videopage')
+  }
+
+  const { onSearch } = useOnSearch()
 
   useEffect(() => {
-    setVideo(Videos);
-  }, []);
+    setVideo(Videos)
+  }, [])
 
   const handleCommentSubmit = () => {
-    console.log('Comment submitted:', comment);
-    setShowPopup(false);
-    setComment('');
-  };
+    console.log('Comment submitted:', comment)
+    setShowPopup(false)
+    setComment('')
+  }
 
   const toggleSideBarVisibility = () => {
     // setIsSideBarVisible((prevState) => !prevState);
-  };
+  }
 
   return (
     <div className="max-h-screen">
       <div style={{ height: '8.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
-      <div className='flex justify-center items-center max-w-3xl mx-auto'>
-        <div className="mt-[15%] video" >
+      <div className="flex justify-center items-center max-w-3xl mx-auto">
+        <div className="mt-[15%] video">
           {video.map(vid => (
             <Video
               key={vid.id}
@@ -49,17 +55,26 @@ const HomePage = (): JSX.Element => {
           ))}
         </div>
       </div>
+      <div
+        onClick={handleClickEditor}
+        style={{ cursor: 'pointer' }}
+        className="text-me-orange hover:bg-me-darkpurple hover:text-me-yellow px-3 py-2 rounded-md text-sm font-medium w-32"
+      >
+        Video Editor
+      </div>
       {showPopup && (
         <Popup
           onClose={() => setShowPopup(false)}
           onSubmit={handleCommentSubmit}
           comment={comment}
-          onCommentChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
+          onCommentChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setComment(e.target.value)
+          }
           defaultValue={''}
           placeholder={''}
           onChange={(value: string) => {
-            throw new Error('Function not implemented.');
-          } }
+            throw new Error('Function not implemented.')
+          }}
           value={''}
         >
           <textarea
@@ -77,7 +92,7 @@ const HomePage = (): JSX.Element => {
         </Popup>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

@@ -20,15 +20,6 @@ const MusicPlayer = () => {
     audioRefs.current.splice(index, 1)
   }
 
-  const handlePlayWithVideo = () => {
-    if (audioRefs.current.length > 0 && selectedAudios.length > 0) {
-      ;<PlayMusicWithVideo
-        selectedAudios={selectedAudios}
-        audioRefs={audioRefs}
-        videoRef={} // Pass the videoRef from VideoPage component here
-      />
-    }
-  }
 
   return (
     <div>
@@ -38,13 +29,6 @@ const MusicPlayer = () => {
           <audio ref={ref => (audioRefs.current[index] = ref)} controls>
             <source src={URL.createObjectURL(file)} />
           </audio>
-          <button
-            onClick={() => {
-              handlePlayWithVideo()
-            }}
-          >
-            Jouer la musique sur la vidéo
-          </button>
           <br></br>
           <button
             onClick={() => {
