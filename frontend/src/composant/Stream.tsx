@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import '../index.css'
 
 export function Stream() {
-  let localStream: MediaStream
-  let showEcran: MediaStream
   let peerConnection: RTCPeerConnection
   let remoteStream: MediaStream
 
+  const [localStream, setLocalStream] = useState<MediaStream>()
+  const [showEcran, setShowEcran] = useState<MediaStream>()
   const [mode, setMode] = useState('streamer')
 
   const handleModeChange = (newMode: string) => {
@@ -17,21 +17,19 @@ export function Stream() {
     console.log('exec')
 
     try {
-      localStream = await navigator.mediaDevices.getUserMedia({
+      const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: false
       })
-      showEcran = await navigator.mediaDevices.getDisplayMedia({ video: true })
+      setLocalStream(stream)
+
+      const display = await navigator.mediaDevices.getDisplayMedia({
+        video: true
+      })
+      setShowEcran(display)
     } catch (error) {
       console.log(error)
     }
-
-    ;(document.getElementById('webcam') as HTMLVideoElement).srcObject =
-      localStream
-    ;(document.getElementById('partageEcran') as HTMLVideoElement).srcObject =
-      showEcran
-
-    createOffer()
   }
 
   const createOffer = async () => {
@@ -49,6 +47,17 @@ export function Stream() {
     init()
     console.log('init')
   }, [])
+
+  useEffect(() => {
+    if (localStream && showEcran) {
+      ;(document.getElementById('webcam') as HTMLVideoElement).srcObject =
+        localStream
+      ;(document.getElementById('partageEcran') as HTMLVideoElement).srcObject =
+        showEcran
+
+      createOffer()
+    }
+  }, [localStream, showEcran])
 
   return (
     <div className="relative">
