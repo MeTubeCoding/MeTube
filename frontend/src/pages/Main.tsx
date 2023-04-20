@@ -6,6 +6,7 @@ import SideBar from '../components/SideBar'
 import Filters from '../components/Filters'
 import { channel } from 'diagnostics_channel'
 import { set } from 'mongoose'
+import HomePage from './HomePage'
 
 const Main = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
@@ -55,20 +56,7 @@ const Main = () => {
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
-        <Filters
-          visible={isSideBarVisible}
-          filterChannel={filterChannel}
-          filterVideo={filterVideo}
-          filterMovie={filterMovie}
-          filterPlaylist={filterPlaylist}
-          filter={filter}
-        ></Filters>
-        <Results
-          visible={isSideBarVisible}
-          filter={filter}
-          videos={videos}
-          channels={channels}
-        />
+        <HomePage visible={isSideBarVisible} shorts={}></HomePage>
       </div>
     </div>
   )

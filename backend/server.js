@@ -20,8 +20,6 @@ import bodyparser from "body-parser";
 import path from "path";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { query } from "express";
-
-const router = require('./routes')
 const uri = process.env.DB_LINK;
 
 const client = new MongoClient(uri, {
@@ -41,14 +39,6 @@ app.use(
     extended: true,
   })
 );
-
-app.use("/api", router);
-
-app.use((res, req, next) => {
-  res.setHeader("Acess-Control-Allow-Origin", "*");
-  res.setHeader("Acess-Control-Allow-Headers", "*");
-  next();
-});
 
 app.use(cors(corsOptions));
 
@@ -122,6 +112,21 @@ app.post("/login", async (req, res) => {
       .json({ success: false, message: "Erreur lors de la connexion" });
   }
 });
+
+app.post('/getshort', async (req, res) => {
+  const database = client.db("METUBE");
+  const shorts = database.collection("shorts");
+  console.log(shorts)
+  try {
+    res.json({shorts})
+  
+  }
+  catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Pas de like" });
+  }
+})
 
 app.get("/demo", (req, res) => {
   res.end("reponse du serveur");
