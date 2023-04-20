@@ -15,7 +15,7 @@ export default function Header({
   linkUrl = '#'
 }: HeaderProps): JSX.Element {
   return (
-    <div className="mb-10">
+    <div className="mb-10 mt-20">
       <div className="flex justify-center">
         <img
           alt=""
