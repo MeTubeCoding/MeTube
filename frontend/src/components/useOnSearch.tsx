@@ -25,7 +25,7 @@ const useOnSearch = () => {
         setVideos(response)
       })
 
-    fetch('http://localhost:5600/channels/searchChannels', {
+    fetch('http://127.0.0.1:5600/channels/searchChannels', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
