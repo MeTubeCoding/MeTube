@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import WindowVideo from'./pages/WindowVideo'
+import WindowChaineVideos from'./pages/WindowChaineVideos'
 
 const App = () => {
   return (
-    <WindowVideo /> )
+    <WindowChaineVideos /> )
 }
 
 export default App

@@ -28,7 +28,6 @@ const WindowChaineVideosPrank2 = () => {
               <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">À PROPOS</button>
               <button className="bg-me-orange text-me-yellow font-bold py-2 px-4 rounded-lg ml-auto">S&apos;abonner</button>
             </div>
-
           </div>
           <div className="flex flex-col">
 

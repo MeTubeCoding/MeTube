@@ -95,6 +95,22 @@ const WindowVideo = () => {
                         <img src="https://via.placeholder.com/40" alt="Logo de chaîne" className="rounded-full w-8 h-8" />
                       </div>
                       <div className="flex-1">
+                        <form className="flex">
+                          <input type="text" placeholder="Ajouter un commentaire..." className="text-me-yellow bg-me-darkpurple p-2 rounded-full w-full mx-2" />
+                          <button type="submit" className="ml-auto p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg">
+                            <span className="text-me-yellow">Annuler</span>
+                          </button>
+                          <button type="submit" className="ml-auto p-2 rounded-full bg-me-orange shadow-md hover:shadow-lg">
+                            <span className="text-me-yellow">Ajouter</span>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                    <div className="flex mb-4">
+                      <div className="flex-shrink-0 mr-2">
+                        <img src="https://via.placeholder.com/40" alt="Logo de chaîne" className="rounded-full w-8 h-8" />
+                      </div>
+                      <div className="flex-1">
                         <div className="flex justify-between">
                           <h4 className="text-me-orange font-bold mb-1">Valérie ECALLE</h4>
                         </div>
