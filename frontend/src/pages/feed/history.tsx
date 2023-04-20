@@ -19,21 +19,15 @@ function History() {
 
   return (
     <div className="History text-me-orange">
-      <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} setSearched={function (value: React.SetStateAction<boolean>): void {
-          throw new Error('Function not implemented.')
-        } } />
-      </div>
-      <div className="flex flex-col" style={{ height: '92.5vh' }}>
-        <SideBar visible={isSideBarVisible} />
-      </div>
       <div className="max-h-screen">
         <div style={{ height: '7vh' }}>
           <Navbar
             onSearch={onSearch}
-            onToggleSideBar={toggleSideBarVisibility} setSearched={function (value: React.SetStateAction<boolean>): void {
+            onToggleSideBar={toggleSideBarVisibility}
+            setSearched={function (value: React.SetStateAction<boolean>): void {
               throw new Error('Function not implemented.')
-            } }          />
+            }}
+          />
         </div>
         <div className="flex flex-col">
           <SideBar visible={isSideBarVisible} />
