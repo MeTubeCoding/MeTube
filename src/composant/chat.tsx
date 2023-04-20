@@ -46,7 +46,6 @@ export function Chat() {
 			getChat()
 		}, 6000)
 
-		// Cleanup function to clear the interval when the component unmounts
 		return () => clearInterval(interval)
 	}, [])
 
