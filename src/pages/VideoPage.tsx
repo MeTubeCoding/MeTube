@@ -3,6 +3,7 @@ import VideoItem from '../components/VideoItem'
 import VideoEditor from '../components/VideoEditor'
 import NavigationBar from '../components/NavigationBar'
 import Cropper from '../components/fonction/CropVideo'
+import OutilTexte from '../components/fonction/OutilTexte'
 
 const VideoPage = () => {
   const [selectedVideo, setVideoUrl] = useState<string | undefined>(undefined)
@@ -23,6 +24,19 @@ const VideoPage = () => {
     // Remove the cropped video and reset the component state
     setVideoUrl(undefined)
     console.log('Crop cancelled successfully!')
+  }
+  const handleAddText = (
+    text: string,
+    position: { x: string; y: string },
+    duration: string
+  ) => {
+    console.log(
+      `Text "${text}" added successfully at position (${position.x}, ${position.y}) for ${duration} seconds`
+    )
+  }
+
+  const saveTextEditor = () => {
+    console.log('Your text saved successfully!')
   }
 
   return (
@@ -65,6 +79,11 @@ const VideoPage = () => {
             <VideoEditor
               selectedVideo={selectedVideo}
               handleVideoUpload={handleVideoUpload}
+            />
+            <OutilTexte
+              src={selectedVideo}
+              onAddText={handleAddText}
+              saveTextEditor={saveTextEditor}
             />
           </div>
         </div>

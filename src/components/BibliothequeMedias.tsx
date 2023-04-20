@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 interface BibliothequeMediasProps {
   // Ajoutez les props nécessaires ici
@@ -26,7 +26,7 @@ const BibliothequeMedias: React.FC<BibliothequeMediasProps> = ({}) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BibliothequeMedias;
+export default BibliothequeMedias

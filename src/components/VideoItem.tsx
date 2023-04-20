@@ -11,5 +11,4 @@ const VideoItem = ({ video }: VideoItemProps) => {
   return <video src={videoUrl} controls width="100%" />
 }
 
-export default VideoItem;
-
+export default VideoItem

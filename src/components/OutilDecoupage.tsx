@@ -1,31 +1,31 @@
-import React from "react";
+import React from 'react'
 
 /**
  * Composant qui permet de découper un média.
  */
 const OutilDecoupage: React.FC = () => {
   // Définit deux états pour stocker le début et la fin de la découpe.
-  const [start, setStart] = React.useState<number>(0);
-  const [end, setEnd] = React.useState<number>(0);
+  const [start, setStart] = React.useState<number>(0)
+  const [end, setEnd] = React.useState<number>(0)
 
   // Fonction appelée lorsque la valeur du champ de début est modifiée.
   const handleStartChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setStart(parseInt(event.target.value));
-  };
+    setStart(parseInt(event.target.value))
+  }
 
   // Fonction appelée lorsque la valeur du champ de fin est modifiée.
   const handleEndChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setEnd(parseInt(event.target.value));
-  };
+    setEnd(parseInt(event.target.value))
+  }
 
   // Fonction appelée lorsque le bouton "Découper" est cliqué.
   const handleDecouperClick = (): void => {
     // Ajoutez le code pour découper le média ici
-  };
+  }
 
   return (
     <div className="bg-me-white rounded-lg shadow-lg p-4">
@@ -65,7 +65,7 @@ const OutilDecoupage: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OutilDecoupage;
+export default OutilDecoupage

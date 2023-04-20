@@ -16,6 +16,7 @@ const VideoEditor = ({
   const [croppedVideo, setCroppedVideo] = useState<string | undefined>(
     undefined
   )
+  const [text, setText] = useState<string | undefined>(undefined)
 
   const handleCrop = () => {
     if (selectedVideo) {
@@ -34,6 +35,9 @@ const VideoEditor = ({
   const handleCancelCrop = () => {
     // Sortir du mode de sélection de la zone de recadrage
     setCropMode(false)
+  }
+  const handleAddText = (text: string) => {
+    setText(text)
   }
 
   return (
@@ -54,13 +58,7 @@ const VideoEditor = ({
             </div>
           </div>
           <div>
-
-            {
-              < OutilTexte text={''} />
-              
-
-              
-            }
+            <OutilTexte src={selectedVideo} onAddText={handleAddText} />
           </div>
           <div>
             {cropMode ? (
@@ -104,8 +102,7 @@ const VideoEditor = ({
         </div>
       </div>
     </div>
+  )
+}
 
-  );
-};
-
-export default VideoEditor;
+export default VideoEditor

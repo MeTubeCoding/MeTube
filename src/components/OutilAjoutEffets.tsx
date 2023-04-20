@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 interface OutilAjoutEffetsProps {
   // Ajouter les props nécessaires ici
@@ -21,7 +21,7 @@ const OutilAjoutEffets: React.FC<OutilAjoutEffetsProps> = ({}) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OutilAjoutEffets;
+export default OutilAjoutEffets

@@ -1,14 +1,14 @@
-import React from "react"; // Importer useState pour gérer l'état local
+import React from 'react' // Importer useState pour gérer l'état local
 //import React, { useState } from "react";
-import "./Video.css";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
-import NearMeIcon from "@mui/icons-material/NearMe";
-import { Avatar } from "@mui/material";
-import OutilTexte from "./fonction/OutilTexte";
+import './Video.css'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'
+import InsertCommentIcon from '@mui/icons-material/InsertComment'
+import NearMeIcon from '@mui/icons-material/NearMe'
+import { Avatar } from '@mui/material'
+import OutilTexte from './fonction/OutilTexte'
 
 function Video(): JSX.Element {
   // Utiliser useState pour gérer l'état local et éviter les appels excessifs à setState
@@ -56,7 +56,7 @@ function Video(): JSX.Element {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Video;
+export default Video

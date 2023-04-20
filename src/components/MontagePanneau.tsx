@@ -1,7 +1,7 @@
-import React from "react";
-import OutilDecoupage from "./OutilDecoupage";
-import OutilAjoutEffets from "./OutilAjoutEffets";
-import OutilTexte from "./fonction/OutilTexte";
+import React from 'react'
+import OutilDecoupage from './OutilDecoupage'
+import OutilAjoutEffets from './OutilAjoutEffets'
+import OutilTexte from './fonction/OutilTexte'
 
 interface MontagePanneauProps {
   // Ajoutez les props nécessaires ici
@@ -23,26 +23,41 @@ const MontagePanneau: React.FC<MontagePanneauProps> = ({}) => {
             <p className="mt-2 font-medium text-me-black">Vidéo 1</p>
             <OutilDecoupage />
             <OutilAjoutEffets />
-            <OutilTexte />
+            <OutilTexte
+              src={undefined}
+              onAddText={function (textSrc: string): void {
+                throw new Error('Function not implemented.')
+              }}
+            />
           </div>
           <div className="bg-me-black rounded-md p-2 flex flex-col items-center justify-center">
             <div className="w-20 h-20 bg-me-black rounded-lg"></div>
             <p className="mt-2 font-medium text-me-black">Vidéo 2</p>
             <OutilDecoupage />
             <OutilAjoutEffets />
-            <OutilTexte />
+            <OutilTexte
+              src={undefined}
+              onAddText={function (textSrc: string): void {
+                throw new Error('Function not implemented.')
+              }}
+            />
           </div>
           <div className="bg-me-black rounded-md p-2 flex flex-col items-center justify-center">
             <div className="w-20 h-20 bg-me-black rounded-lg"></div>
             <p className="mt-2 font-medium text-me-black">Vidéo 3</p>
             <OutilDecoupage />
             <OutilAjoutEffets />
-            <OutilTexte />
+            <OutilTexte
+              src={undefined}
+              onAddText={function (textSrc: string): void {
+                throw new Error('Function not implemented.')
+              }}
+            />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MontagePanneau;
+export default MontagePanneau

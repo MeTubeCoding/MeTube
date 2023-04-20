@@ -27,11 +27,15 @@ const NavigationBar = (): any => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-              <div>
-                <div onClick={handleClickEditor} style={{ cursor: 'pointer' }} className="text-me-black hover:bg-me-black-700 hover:text-me-white px-3 py-2 rounded-md text-sm font-medium">
-                  Video Editor
+                <div>
+                  <div
+                    onClick={handleClickEditor}
+                    style={{ cursor: 'pointer' }}
+                    className="text-me-black hover:bg-me-black-700 hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Video Editor
+                  </div>
                 </div>
-              </div>
 
                 <Link
                   to="/music"
@@ -53,7 +57,12 @@ const NavigationBar = (): any => {
               <span className="bg-me-red inline-flex items-center justify-center p-2 rounded-md text-me-white hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-me-black focus:ring-me-white">
                 Choose a file
               </span>
-              <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+              <input
+                id="file-upload"
+                name="file-upload"
+                type="file"
+                className="sr-only"
+              />
             </label>
             <button
               type="button"

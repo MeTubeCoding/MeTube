@@ -1,8 +1,8 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import NavigationBar from "./components/NavigationBar";
-import VideoPage from "./pages/VideoPage";
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import NavigationBar from './components/NavigationBar'
+import VideoPage from './pages/VideoPage'
 
 function App(): JSX.Element {
   return (
@@ -10,12 +10,12 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/short" element={<HomePage />} />
-          <Route path="/" element={<NavigationBar />} />
+          <Route path="/NavigationBar" element={<NavigationBar />} />
           <Route path="/videopage" element={<VideoPage />} />
         </Routes>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

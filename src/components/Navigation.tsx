@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 interface NavigationProps {
   // Ajoutez les props nécessaires ici
@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({}) => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
