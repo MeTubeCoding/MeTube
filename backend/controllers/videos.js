@@ -39,9 +39,7 @@ export const searchVideos = async (req, res) => {
         video.tags.some((tag) => regex.test(tag))
     );
 
-    if (requestedVideos.length > 0) {
-      res.json(requestedVideos);
-    }
+    res.json(requestedVideos);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
