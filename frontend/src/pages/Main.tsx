@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useOnSearch } from '../components/useOnSearch'
 import Navbar from '../components/Navbar'
 import SideBar from '../components/SideBar'
-import Recherche from './Recherche'
 import Tendances from './feed/trending'
 import Results from '../components/Results'
+import Filters from '../components/Filters'
 
 const Main = () => {
   const [HasSearched, setHasSearched] = useState(false)
@@ -16,6 +16,72 @@ const Main = () => {
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(prevState => !prevState)
+  }
+
+  const sortRelevance = () => {
+    if (sortBy != 'relev') {
+      setSort('relev')
+    } else {
+      setSort('none')
+    }
+  }
+
+  const sortDate = () => {
+    if (sortBy != 'date') {
+      setSort('date')
+    } else {
+      setSort('none')
+    }
+  }
+
+  const sortViews = () => {
+    if (sortBy != 'viewsUP' && sortBy != 'viewsDOWN') {
+      setSort('viewsUP')
+    } else if (sortBy != 'viewsDOWN') {
+      setSort('viewsDOWN')
+    } else {
+      setSort('none')
+    }
+  }
+
+  const sortRating = () => {
+    if (sortBy != 'rating') {
+      setSort('rating')
+    } else {
+      setSort('none')
+    }
+  }
+
+  const filterChannel = () => {
+    if (filter != 'channel') {
+      setFilter('channel')
+    } else {
+      setFilter('none')
+    }
+  }
+
+  const filterMovie = () => {
+    if (filter != 'movie') {
+      setFilter('movie')
+    } else {
+      setFilter('none')
+    }
+  }
+
+  const filterVideo = () => {
+    if (filter != 'video') {
+      setFilter('video')
+    } else {
+      setFilter('none')
+    }
+  }
+
+  const filterPlaylist = () => {
+    if (filter != 'playlist') {
+      setFilter('playlist')
+    } else {
+      setFilter('none')
+    }
   }
 
   return (
@@ -31,20 +97,32 @@ const Main = () => {
         <SideBar visible={isSideBarVisible} />
         {HasSearched ? (
           <div>
-            <Recherche
-              filter={filter}
-              sortBy={sortBy}
+            <Filters
               visible={isSideBarVisible}
-              setFilter={setFilter}
-              setSort={setSort}
-            />
-            <Results
+              filterChannel={filterChannel}
+              filterVideo={filterVideo}
+              filterMovie={filterMovie}
+              filterPlaylist={filterPlaylist}
+              sortRelevance={sortRelevance}
+              sortRating={sortRating}
+              sortViews={sortViews}
+              sortDate={sortDate}
               sortBy={sortBy}
-              videos={videos}
-              channels={channels}
               filter={filter}
-              visible={isSideBarVisible}
-            ></Results>
+            ></Filters>
+            {channels.length === 0 && videos.length === 0 ? (
+              <div className="flex justify-center">
+                <p className="text-me-yellow text-xl">No Results</p>
+              </div>
+            ) : (
+              <Results
+                visible={isSideBarVisible}
+                filter={filter}
+                sortBy={sortBy}
+                videos={videos}
+                channels={channels}
+              />
+            )}
           </div>
         ) : (
           <Tendances></Tendances>
