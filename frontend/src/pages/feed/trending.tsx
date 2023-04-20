@@ -6,7 +6,7 @@ import {
   trend_movies,
   trend_new,
   trend_music
-} from '../../timeline_components/trending_categories'
+} from '../../components/trending_components/trending_categories'
 
 //import { BrowserRouter as Router, Route, Routes as Switch, Link } from 'react-router-dom'
 
