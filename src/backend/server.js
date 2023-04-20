@@ -173,11 +173,11 @@ app.use(
 app.post('/channels', function (req, res) {
   const fakeChannels = [
     {
-      id: 1,
-      name: 'Roro',
-      pfp: 'https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png',
-      subs: 200,
-      about: 'Grape fan'
+      "id": 1,
+      "name": "Roro",
+      "pfp": "https://cdn.discordapp.com/attachments/494204379822555139/1097441029503860797/Capture_decran_2023-04-17_a_10.36.32.png",
+      "subs": 200,
+      "about": "Grape fan"
     },
     {
       id: 2,
