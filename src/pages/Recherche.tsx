@@ -5,12 +5,48 @@ import Filters from '../components/Filters'
 
 interface Props {
     setFilter: React.Dispatch<React.SetStateAction<string>>
+    setSort: React.Dispatch<React.SetStateAction<string>>
     filter: string
+    sortBy: string
     visible: boolean
   }
 
 const Recherche = (props: Props) => {
   const { videos, channels } = useOnSearch()
+
+  const sortRelevance = () => {
+    if(props.sortBy != 'relev') {
+      props.setSort('relev')
+    } else {
+      props.setSort('none')
+    }
+  }
+
+  const sortDate = () => {
+    if(props.sortBy != 'date') {
+      props.setSort('date')
+    } else {
+      props.setSort('none')
+    }
+  }
+
+  const sortViews = () => {
+    if(props.sortBy != 'viewsUP' && props.sortBy != 'viewsDOWN') {
+      props.setSort('viewsUP')
+    } else if (props.sortBy != 'viewsDOWN') {
+      props.setSort('viewsDOWN')
+    } else {
+      props.setSort('none')
+    }
+  }
+
+  const sortRating = () => {
+    if(props.sortBy != 'rating') {
+      props.setSort('rating')
+    } else {
+      props.setSort('none')
+    }
+  }
 
   const filterChannel = () => {
     if (props.filter != 'channel') {
@@ -52,11 +88,17 @@ const Recherche = (props: Props) => {
           filterVideo={filterVideo}
           filterMovie={filterMovie}
           filterPlaylist={filterPlaylist}
+          sortRelevance={sortRelevance}
+          sortRating={sortRating}
+          sortViews={sortViews}
+          sortDate={sortDate}
+          sortBy={props.sortBy}
           filter={props.filter}
         ></Filters>
         <Results
           visible={props.visible}
           filter={props.filter}
+          sortBy={props.sortBy}
           videos={videos}
           channels={channels}
         />

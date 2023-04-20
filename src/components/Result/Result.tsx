@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export interface IResult {
   id: number
@@ -39,6 +39,10 @@ const Result = (props: Props) => {
       void videoRef.current.play()
     }
   }
+
+  useEffect(() => {
+    console.log(props.video)
+  }, [props.video]);
 
   return (
     <div

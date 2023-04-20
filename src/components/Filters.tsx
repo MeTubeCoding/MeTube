@@ -4,52 +4,62 @@ import { MdOutlineTune } from 'react-icons/md'
 interface Props {
   visible: boolean
   filter: string
+  sortBy: string
   filterChannel: () => void
   filterVideo: () => void
   filterMovie: () => void
   filterPlaylist: () => void
+  sortRelevance: () => void
+  sortDate: () => void
+  sortRating: () => void
+  sortViews: () => void
 }
 
 const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
 
-  const [ChannelF, setChannelF] = useState(false)
-  const [VideoF, setVideoF] = useState(false)
-  const [PlayF, setPlayF] = useState(false)
-  const [MovieF, setMovieF] = useState(false)
+  const [viewsB, setViewsB] = useState(false)
+
+  const sViews = () => {
+    props.sortViews()
+    setViewsB(prevState => !prevState)
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sRating = () => {
+    props.sortRating()
+    setViewsB(false)
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sDate = () => {
+    props.sortDate()
+    setViewsB(false)
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sRelev = () => {
+    props.sortRelevance()
+    setViewsB(false)
+    console.log('sort by ' + props.sortBy)
+  }
 
   const fVideo = () => {
-    setChannelF(false)
-    setPlayF(false)
-    setVideoF(prevState => !prevState)
-    setMovieF(false)
     props.filterVideo()
     console.log('filter by ' + props.filter)
   }
 
   const fChannel = () => {
-    setChannelF(prevState => !prevState)
-    setPlayF(false)
-    setVideoF(false)
-    setMovieF(false)
     props.filterChannel()
     console.log('filter by ' + props.filter)
   }
 
   const fPlaylist = () => {
-    setChannelF(false)
-    setPlayF(prevState => !prevState)
-    setVideoF(false)
-    setMovieF(false)
     props.filterPlaylist()
     console.log('filter by ' + props.filter)
   }
 
   const fMovie = () => {
-    setChannelF(false)
-    setPlayF(false)
-    setVideoF(false)
-    setMovieF(prevState => !prevState)
     props.filterMovie()
     console.log('filter by ' + props.filter)
   }
@@ -75,22 +85,22 @@ const Filters = (props: Props) => {
     {
       name: 'Video',
       filter: fVideo,
-      bool: VideoF
+      bool: 'video'
     },
     {
       name: 'Channel',
       filter: fChannel,
-      bool: ChannelF
+      bool: 'channel'
     },
     {
       name: 'Playlist',
       filter: fPlaylist,
-      bool: PlayF
+      bool: 'playlist'
     },
     {
       name: 'Movie',
       filter: fMovie,
-      bool: MovieF
+      bool: 'movie'
     }
     //,
     // {
@@ -145,16 +155,24 @@ const Filters = (props: Props) => {
   ]
   const sortBy = [
     {
-      name: 'Relevance'
+      name: 'Relevance',
+      sort: sRelev,
+      bool: 'relev'
     },
     {
-      name: 'Upload date'
+      name: 'Upload date',
+      sort: sDate,
+      bool: 'date'
     },
     {
-      name: 'View count'
+      name: 'View count',
+      sort: sViews,
+      bool: 'views'
     },
     {
-      name: 'Rating'
+      name: 'Rating',
+      sort: sRating,
+      bool: 'rating'
     }
   ]
 
@@ -210,7 +228,7 @@ const Filters = (props: Props) => {
                 <li key={name} className={`rounded-lg`}>
                   <span
                     className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
-                      bool === true ? 'text-opacity-100' : 'text-opacity-50'
+                      props.filter === bool || viewsB === true ? 'text-opacity-100' : 'text-opacity-50'
                     }`}
                     onClick={filter}
                   >
@@ -236,26 +254,33 @@ const Filters = (props: Props) => {
           <ul className="flex flex-col text-me-yellow p-4">
             <p>FEATURES</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {Features.map(({ name }) => {
-              return (
-                <li key={name} className={` rounded-lg`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
-                    {name}
-                  </span>
-                </li>
-              )
-            })}
+            <div className="h-[8.5rem] overflow-scroll">
+              {Features.map(({ name }) => {
+                return (
+                  <li key={name} className={`rounded-lg`}>
+                    <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
+                      {name}
+                    </span>
+                  </li>
+                )
+              })}
+            </div>
           </ul>
           <ul className="flex flex-col text-me-yellow p-4">
             <p>SORT BY</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {sortBy.map(({ name }) => {
+            {sortBy.map(({ name, sort, bool }) => {
               return (
-                <li key={name} className={` rounded-lg`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
-                    {name}
-                  </span>
-                </li>
+                <li key={name} className={`rounded-lg`}>
+                <span
+                  className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
+                    props.sortBy === bool ? 'text-opacity-100' : 'text-opacity-50'
+                  }`}
+                  onClick={sort}
+                >
+                  {name}
+                </span>
+              </li>
               )
             })}
           </ul>
