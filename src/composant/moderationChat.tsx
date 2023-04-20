@@ -58,7 +58,7 @@ export function ModerationChat() {
 
 	function banUser(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		event.preventDefault()
-		const messageInput = document.getElementById("message-input") as HTMLInputElement
+		const messageInput = document.getElementById("ban") as HTMLInputElement
 		const pseudo = messageInput.value
 
 		fetch("http://127.0.0.1:5600/ban", {
@@ -104,7 +104,7 @@ export function ModerationChat() {
 				<input
 					type='text'
 					name='message'
-					id='message-input'
+					id='ban'
 					className='border border-gray-300 rounded-md bg-me-background text-me-white'
 					onKeyPress={handleKeyPress}
 				></input>

@@ -119,7 +119,8 @@ app.post('/login', async (req, res) => {
           hashedPassword: user.password,
           email: `${email}`,
           password: `${password}`,
-          username: user.username // Ajouter cette ligne pour inclure le nom d'utilisateur
+          username: user.username,
+          status: user.status
         })
       } else {
         res.status(401).json({ success: false, message: 'Incorrect password' })
@@ -477,6 +478,34 @@ app.get('/username', (req, res) => {
     runy().catch(console.dir)
   })
 })
+
+async function banUser(username) {
+  try {
+    const database = client.db('profile');
+    const users = database.collection('users');
+    await users.updateOne({ username }, { $set: { status: "banned" } });
+  } catch (error) {
+    console.error("Error while banning user:", error);
+    throw error;
+  }
+}
+
+app.post("/ban", async (req, res) => {
+  const { username } = req.body;
+
+  if (!username) {
+    res.status(400).json({ error: "Username is required." });
+    return;
+  }
+
+  try {
+    await banUser(username);
+    res.status(200).json({ message: "User banned successfully." });
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred while banning the user." });
+  }
+});
+
 
 app.get('/demo', (req, res) => {
   console.log('test')

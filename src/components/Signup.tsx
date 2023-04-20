@@ -61,7 +61,7 @@ export default function Signup(): JSX.Element {
       ...signupState,
       password: hashedPassword,
       confirmpassword: hashedPassword,
-      Status: 'Streamer'
+      status: 'Streamer'
     }
 
     fetch('http://127.0.0.1:5600/signup', {
