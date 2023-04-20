@@ -5,7 +5,7 @@ interface LiveNavBarProps {
   onModeChange: (mode: string) => void
 }
 
-export default function LiveNavBar({ onModeChange }: LiveNavBarProps) {
+export function LiveNavBar({ onModeChange }: LiveNavBarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {

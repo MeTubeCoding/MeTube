@@ -13,6 +13,6 @@ const VideoModelSchema = new Schema({
 });
 
 // Compile model from schema
-const VideoModel = mongoose.model("videos", VideoModelSchema);
+const VideoModel = mongoose.model("video", VideoModelSchema);
 
 export default VideoModel;

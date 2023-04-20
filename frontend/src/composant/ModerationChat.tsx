@@ -6,7 +6,7 @@ interface Message {
   message: string
 }
 
-export default function ModerationChat() {
+export function ModerationChat() {
   const [messages, setMessages] = useState<Message[]>([])
   const invisibleButtonRef = useRef<HTMLButtonElement>(null)
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
@@ -48,6 +48,36 @@ export default function ModerationChat() {
     fetchMessages()
   }
 
+  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+    }
+  }
+
+  function banUser(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault()
+    const messageInput = document.getElementById(
+      'message-input'
+    ) as HTMLInputElement
+    const pseudo = messageInput.value
+
+    fetch('http://127.0.0.1:5600/ban', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ pseudo })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        messageInput.value = ''
+        getChat()
+      })
+      .catch(error => console.error(error))
+  }
+
   return (
     <div className="h-300 border border-gray-300 p-10 bg-me-background rounded-xl">
       <form className="margin-top: 10px;">
@@ -64,6 +94,27 @@ export default function ModerationChat() {
             </p>
           ))}
         </section>
+      </form>
+      <form className="mt-10 flex flex-col justify-end">
+        <label
+          htmlFor="message-input"
+          className="text-me-colorprimary font-bold"
+        >
+          Pseudo à bannir:
+        </label>
+        <input
+          type="text"
+          name="message"
+          id="message-input"
+          className="border border-gray-300 rounded-md bg-me-background text-me-white"
+          onKeyPress={handleKeyPress}
+        ></input>
+        <button
+          onClick={event => banUser(event)}
+          className="bg-me-colorprimary font-bold mt-2 rounded-md"
+        >
+          Ban
+        </button>
       </form>
       <button
         ref={invisibleButtonRef}

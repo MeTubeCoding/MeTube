@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Titre() {
+export function Titre() {
   const [titre, settitre] = React.useState('')
 
   function handleInputChange(event: {
@@ -46,12 +46,6 @@ export default function Titre() {
         onChange={handleInputChange}
         placeholder="Enter your description here"
       />
-      <button
-        className="mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-md hover:bg-neutral-300 hover:text-red-600 bg-opacity-90 bg-me-colorprimary"
-        onClick={post}
-      >
-        Send
-      </button>
     </div>
   )
 }

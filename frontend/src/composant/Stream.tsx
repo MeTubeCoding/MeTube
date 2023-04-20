@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../index.css'
 
-export default function Stream() {
+export function Stream() {
   let localStream: MediaStream
   let showEcran: MediaStream
   let peerConnection: RTCPeerConnection

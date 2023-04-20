@@ -6,7 +6,7 @@ interface Message {
   message: string
 }
 
-export default function Chat() {
+export function Chat() {
   const [messages, setMessages] = useState<Message[]>([])
   const invisibleButtonRef = useRef<HTMLButtonElement>(null)
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
@@ -55,7 +55,7 @@ export default function Chat() {
     const message = document.getElementById('message-input') as HTMLInputElement
     const local = {
       message: message.value,
-      pseudo: 'Tristan'
+      pseudo: localStorage.getItem('username')?.replace(/"/g, '') || 'Unknown'
     }
     fetch('http://127.0.0.1:5600/chat', {
       method: 'POST',
@@ -77,7 +77,7 @@ export default function Chat() {
     const message = document.getElementById('message-input') as HTMLInputElement
     const local = {
       message: message.value,
-      pseudo: 'Tristan'
+      pseudo: localStorage.getItem('username')?.replace(/"/g, '') || 'Unknown'
     }
     fetch('http://127.0.0.1:5600/moderation', {
       method: 'POST',
