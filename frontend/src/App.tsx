@@ -12,6 +12,7 @@ import History from './pages/feed/history'
 import Bibliotheque from './pages/feed/library'
 import Abonnements from './pages/feed/subscriptions'
 import Live from './composant/Live'
+import VideoPage from './pages/VideoPage'
 
 function App() {
   return (
