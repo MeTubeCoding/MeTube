@@ -38,15 +38,15 @@ export function trend_tag() {
             </div>
             <div className="w-2/3 px-4">
               <h5 className="text-lg font-bold">{video.titre}</h5>
-              <div className='flex flex-row'>
-              <p className="text-gray-500">{video.chaine}</p>
+              <div className="flex flex-row">
+                <p className="text-gray-500">{video.chaine}</p>
               </div>
               <div className="flex flex-row">
-              {video.tags.map((tag, index) => (
-                <p key={index} className="text-gray-500 mr-1">
-                  #{tag}
-                </p>
-              ))}
+                {video.tags.map((tag, index) => (
+                  <p key={index} className="text-gray-500 mr-1">
+                    #{tag}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

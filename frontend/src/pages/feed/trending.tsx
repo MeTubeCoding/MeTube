@@ -13,7 +13,7 @@ import { trend_tag } from '../../timeline_components/trending_categories'
 
 function Tendances() {
   return (
-    <div className="flex flex-row text-me-yellow ml-[5%] h-screen bg-neutral-900">
+    <div className="flex flex-row text-me-yellow ml-[15%] h-screen bg-neutral-900">
       <div>
         <div className="ml-[50%] mb-10 flex flex-row justify-center items-center my-3">
           <img
