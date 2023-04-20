@@ -37,9 +37,7 @@ export const searchChannels = async (req, res) => {
     regex.test(channel.name)
   )
 
-  if (requestedChannels.length > 0) {
-    res.json(requestedChannels)
-  }
+  res.json(requestedChannels)
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
