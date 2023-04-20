@@ -62,6 +62,7 @@ export default function Live() {
     const local = {
       titre: titre.value,
       description: description.value,
+      streamer: localStorage.getItem('username'),
       date: new Date().toISOString()
     }
     fetch('http://127.0.0.1:5600/dataLive', {
