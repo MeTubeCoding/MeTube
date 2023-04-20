@@ -34,7 +34,7 @@ export function trend_tag() {
         {vid_a_afficher.map(video => (
           <div className="flex mb-[5%]">
             <div className="w-1/3">
-              <img src={video.minia} />
+              <img className='w-64 h-144 rounded-lg'src={video.minia} />
             </div>
             <div className="w-2/3 px-4">
               <h5 className="text-lg font-bold">{video.titre}</h5>
