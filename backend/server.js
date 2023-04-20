@@ -51,8 +51,6 @@ app.get("/", (req, res) => {
 
 app.use("/videos", videoRoutes)
 
-app.use("/channels", channelRoutes)
-
 app.post("/node/sub", (req, res) => {
 	client.connect((err) => {
 		async function run() {
