@@ -3,31 +3,10 @@
     {
       "id": "1",
       "nom": "test",
-      "tag_pref": ["anime", "demon slayer","gaming"]
+      "tag_pref": ["Musique"]
     }
   ],
   "videos": [
-    {
-      "minia": "https://i.ytimg.com/vi/PExjHWbkafk/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDlckMe_GSZq42l_Il3clU_LnOCuA",
-      "titre": "Demon Slayer (saison 2) EN 19 MINUTES | RE: TAKE",
-      "chaine": "RE: Take",
-      "img_chaine": "https://yt3.googleusercontent.com/ytc/AGIKgqM46c5NmKKXZ1ShyDb-oKdeUlQwFIKquYyx0UkDTw=s176-c-k-c0x00ffffff-no-rj-mo",
-      "tags": ["anime", "demon slayer"]
-    },
-    {
-      "minia": "https://i.ytimg.com/vi/nwo6gnOBVt4/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBFZPCSsVJrvaJBW3Zyhr2ubqElVA",
-      "titre": "Le CLASH des animés",
-      "chaine": "Cyprien",
-      "img_chaine": "https://yt3.googleusercontent.com/ytc/AGIKgqMxElWNrprX5uPpND2JAAEJHOClsXrTryE4NJ7L7Q=s176-c-k-c0x00ffffff-no-rj-mo",
-      "tags": ["anime", "demon slayer", "dragon ball z", "naruto"]
-    },
-    {
-      "minia": "https://i.ytimg.com/vi/vzqqat6IMIw/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAxLhAeVGTJUfizUyrjfqRlclM1VA",
-      "titre": "QUI est le PIRE YOUTUBEUR ? (Tier list)",
-      "chaine": "Club Pingouin • Trash",
-      "img_chaine": "https://yt3.googleusercontent.com/ow9AssSjtwg9bwv2JsPxf7wTDdK36VDCSTjwnoPwNx0c4YFAcQpwjQRX01gsybEb51OP2FGdew=s176-c-k-c0x00ffffff-no-rj",
-      "tags": ["divertissement", "tier list"]
-    },
     {
       "minia": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA6t_8gXhVJaexTSRAZ4rQm4iSlKQ",
       "titre": "Rick Astley - Never Gonna Give You Up (Video)",
