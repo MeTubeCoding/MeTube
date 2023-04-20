@@ -62,7 +62,7 @@ const ChaineAccueil = () => {
                   <button className="text-me-yellow py-2 px-4 font-bold rounded-lg border-b-2">HOME</button>
                   <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">VIDEOS</button>
                   <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">LIVE</button>
-                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">IN REGARDS TO</button>
+                  <button className="text-me-yellow py-2 px-4 font-bold rounded-lg">ABOUT</button>
                   <button className="bg-me-orange text-me-yellow font-bold py-2 px-4 rounded-lg ml-auto">Subscribe</button>
                 </div>
               </div>

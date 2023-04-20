@@ -12,16 +12,17 @@ const WindowVideo = () => {
 
   return (
     <body className="bg-me-darkpurple min-h-screen">
-      <div className="max-w-screen-lg mx-auto mt-0" style={{ marginLeft: "10%" }}>
+      <div className="max-w-screen-lg mx-auto mt-0" style={{ marginLeft: "13%" }}>
+      <br /><br />
         <div className="flex flex-col items-start">
-          <div className="flex flex-row justify-between w-full">
+          <div className="flex flex-row -ml-5 justify-between rounded-lg w-full">
             <video
               className="w-full flex-grow-1 transform -translate-x-1/2 translate-x-5"
               controls
+              src={require("../assets/CodingPresentation.mp4")}
               width="560"
               height="315"
             >
-              <source src="https://www.youtube.com/watch?v=UbFOU_XR85E" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
