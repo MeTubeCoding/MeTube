@@ -84,6 +84,7 @@ app.post("/data", (req, res) => {
       }
     }
     run().catch(console.dir);
+    run.end()
   });
 
   res.end("trop cool");
