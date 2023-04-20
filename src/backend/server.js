@@ -154,6 +154,31 @@ app.get('/demo', (req, res) => {
 
 app.use(cors())
 
+app.use('/storage/thumbnails', express.static(path.join(__dirname, 'storage/thumbnails')));
+
+app.get('/api/video/:url', async (req, res) => {
+  const { url } = req.params;
+
+  try {
+    const database = client.db('ChannelBDD');
+    const videos = database.collection('videos');
+
+    const videoData = await videos.findOne({ 'url': url });
+    console.log("videoData: ", videoData);
+
+    if (videoData) {
+      res.json(videoData);
+    } else {
+      res.status(404).json({ message: 'Video not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching video data:', error);
+    res.status(500).json({ message: 'Error fetching video data' });
+  } finally {
+    await client.close();
+  }
+});
+
 app.post('/videos', function (req, res) {
   const fakeVideos = [
     {

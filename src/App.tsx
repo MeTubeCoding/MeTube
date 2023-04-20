@@ -6,6 +6,7 @@ import SignupPage from './pages/Signup'
 import LoginPage from './pages/Login'
 import ChannelCreationPage from './pages/ChannelCreation'
 import WindowUploadFusion from './pages/WindowUploadFusion'
+import VideoPage from './pages/Video'
 
 function App(): JSX.Element {
   return (
@@ -38,6 +39,7 @@ function App(): JSX.Element {
               path='/window-upload-fusion'
               element={<WindowUploadFusion />}
             />
+            <Route path="/video/:videoUrl" element={<VideoPage />} />
           </Routes>
         </BrowserRouter>
       </div>
