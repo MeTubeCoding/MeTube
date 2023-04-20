@@ -34,20 +34,22 @@ export default function Input({
   customClass
 }: InputProps) {
   return (
-    <div className="my-5 text-me-darkpurple px-40">
-      <label htmlFor={labelFor} className="sr-only">
-        {labelText}
-      </label>
-      <input
-        onChange={handleChange}
-        value={value}
-        id={id}
-        name={name}
-        type={type}
-        required={isRequired}
-        className={`${fixedInputClass} ${customClass}`}
-        placeholder={placeholder}
-      />
-    </div>
+    <div className="my-5 text-me-darkpurple" style={{ width: "50%", marginLeft: "25%" }}>
+  <label htmlFor={labelFor} className="sr-only">
+    {labelText}
+  </label>
+  <input
+    onChange={handleChange}
+    value={value}
+    id={id}
+    name={name}
+    type={type}
+    required={isRequired}
+    className={`${fixedInputClass} ${customClass}`}
+    style={{ width: "100%", padding: "10px" }}
+    placeholder={placeholder}
+  />
+</div>
+
   )
 }
