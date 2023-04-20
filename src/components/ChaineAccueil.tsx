@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 
 import logo from './user.jpg';
 import cover from './cover.jpg';
+import VideosPage from "./VideosPage";
 
 const ChaineAccueil = () => {
 

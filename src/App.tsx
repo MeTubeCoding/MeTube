@@ -3,6 +3,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import ChaineAccueil from './components/ChaineAccueil'
+import VideosPage from './components/VideosPage'
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/ChaineAccueil" element={<ChaineAccueil />} />
+          <Route path="/VideosPage" element={<VideosPage />} />
+
         </Routes>
       </BrowserRouter>
     </div>
