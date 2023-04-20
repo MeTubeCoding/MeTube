@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { MdOutlineTune } from 'react-icons/md'
 
 interface Props {
-  sortVids: () => void
   visible: boolean
   filter: string
   sortBy: string
@@ -18,11 +17,6 @@ interface Props {
 
 const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
-
-  const doSort = (sortType: () => void) => {
-    sortType()
-    props.sortVids()
-  }
 
   const sViews = () => {
     props.sortViews()
@@ -284,7 +278,7 @@ const Filters = (props: Props) => {
                         ? 'text-opacity-100'
                         : 'text-opacity-50'
                     }`}
-                    onClick={() => doSort(sort)}
+                    onClick={sort}
                   >
                     {name}
                   </span>

@@ -7,11 +7,25 @@ export type CIResults = Array<CIResult>
 interface Props {
   videos: IResults
   channels: CIResults
+  sortBy: string
   filter: string
   visible: boolean
 }
 
 const Results = (props: Props) => {
+  const sortVids = () => {
+    console.log('sort')
+    if (props.sortBy === 'viewsUP') {
+      props.videos.sort((a, b) => b.views - a.views)
+    } else if (props.sortBy === 'viewsDOWN') {
+      props.videos.sort((a, b) => a.views - b.views)
+    }
+  }
+
+  useEffect(() => {
+    sortVids()
+  }, [props.sortBy])
+
   return (
     <>
       {props.channels.length === 0 ||
