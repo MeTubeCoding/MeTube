@@ -79,7 +79,7 @@ function SideBar(props: SideBarProps) {
   const thirdpart = [
     {
       icon: <MdOutlineBolt className="text-xl" />,
-      name: 'Trending',
+      name: 'For You',
       href: '/feed/trending'
     },
     {

@@ -22,6 +22,8 @@ import path from "path";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { query } from "express";
 
+import bcrypt from 'bcryptjs'
+
 const uri = process.env.DB_LINK;
 
 const client = new MongoClient(uri, {
@@ -75,8 +77,8 @@ app.post("/data", (req, res) => {
   client.connect((err) => {
     async function run() {
       try {
-        const database = client.db("profile");
-        const movies = database.collection("users");
+        const database = client.db("METUBE");
+        const movies = database.collection("users_profile");
         const query = req.body;
         await movies.insertOne(query);
       } finally {
@@ -85,35 +87,92 @@ app.post("/data", (req, res) => {
       }
     }
     run().catch(console.dir);
+    run.end()
   });
 
   res.end("trop cool");
 });
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body
 
   try {
-    const database = client.db("profile");
-    const users = database.collection("users");
+    const database = client.db('METUBE')
+    const users = database.collection('users_profile')
 
-    const user = await users.findOne({ "email-address": email });
+    const user = await users.findOne({ emailaddress: email })
 
     if (user) {
-      if (password === user.password) {
-        res.json({ success: true, message: "Connexion réussie" });
+      const isPasswordCorrect = await bcrypt.compare(password, user.password)
+      if (isPasswordCorrect) {
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
       } else {
-        res
-          .status(401)
-          .json({ success: false, message: "Mot de passe incorrect" });
+        res.status(401).json({ success: false, message: 'Incorrect password' })
       }
     } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" });
+      res.status(404).json({ success: false, message: 'Email does not exist' })
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: "Erreur lors de la connexion" });
+    res.status(500).json({ success: false, message: 'Error while connecting' })
   }
+  res.end()
+})
+app.post('/signup', async (req, res) => {
+  try {
+    const database = client.db('METUBE')
+    const messages = database.collection('users_profile')
+    const query = req.body
+    await messages.insertOne(query)
+    await client.close()
+    res.end() // Fermez la requête ici
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ success: false, message: 'Error while creating user profile' })
+  }
+  res.end()
+})
+app.get('/check-email', async (req, res) => {
+  const { email } = req.query
+  const database = client.db('METUBE')
+  const users = database.collection('users_profile')
+  const user = await users.findOne({ 'emailaddress': email })
+  res.json({ exists: !!user })
+  res.end()
+})
+
+
+
+app.get('/profile', async (req, res) => {
+  const { email } = req.query
+  const database = client.db('METUBE');
+  const users = database.collection('users_profile');
+
+  try {
+    const user = await users.findOne({ emailaddress: email });
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+    } else {
+      const userData = {
+        lastname: user.lastname,
+        firstname: user.firstname,
+        country: user.country,
+        city: user.city,
+        username: user.username,
+        email: user.emailaddress,
+        // Autres données de profil à ajouter ici
+      };
+      res.json({ success: true, user: userData });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error while fetching user profile' });
+  }
+
+  // Fermer la requête en envoyant la réponse
+  res.end();
 });
 
 app.get("/demo", (req, res) => {
@@ -246,6 +305,143 @@ app.post("/node/sub", (req, res) => {
 
   res.end();
 });
+
+
+app.post('/chat', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/moderation', (req, res) => {
+  console.log("test")
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/desc', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('description')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/titre', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('titre')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/dataLive',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('dataLive');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
+app.get('/chat', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/moderation', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/username', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('METUBE')
+        const messages = database.collection('users_profile')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
 
 app.get("/demo", (req, res) => {
   console.log("test");

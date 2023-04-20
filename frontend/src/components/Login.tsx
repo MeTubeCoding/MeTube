@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFields } from '../constants/formFields'
@@ -53,6 +52,10 @@ const Login: React.FC = () => {
           console.log(hashedPassword)
           console.log(loginState.password)
 
+          localStorage.setItem('username', JSON.stringify(data.username))
+          localStorage.setItem('email', JSON.stringify(data.email))
+          localStorage.setItem('password', JSON.stringify(hashedPassword))
+
           // Comparez le mot de passe hashé stocké dans votre base de données avec le mot de passe entré par l'utilisateur lors de la tentative de connexion
           const passwordMatch = bcrypt.compareSync(
             loginState.password,
@@ -60,8 +63,10 @@ const Login: React.FC = () => {
           )
           if (passwordMatch) {
             // Connexion réussie
-            navigate('/profile')
-          } else {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('email', loginState.email);
+            navigate('/profile', { state: { email: loginState.email } });
+          }else {
             // Échec de la connexion
             setLoginState({
               ...loginState,
