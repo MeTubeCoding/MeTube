@@ -94,6 +94,7 @@ export function ModerationChat() {
             </p>
           ))}
         </section>
+        <p onClick={() => getChat()}>Rafraichir</p>
       </form>
       <form className="mt-10 flex flex-col justify-end">
         <label
