@@ -13,25 +13,24 @@ interface Props {
 }
 
 const Results = (props: Props) => {
-
   const sortVids = () => {
-      console.log('sort')
-      if (props.sortBy === 'viewsUP') {
-        props.videos.sort((a, b) => b.views - a.views)
-      } else if (props.sortBy === 'viewsDOWN') {
-        props.videos.sort((a, b) => b.views + a.views)
-      }
+    console.log('sort')
+    if (props.sortBy === 'viewsUP') {
+      props.videos.sort((a, b) => b.views - a.views)
+    } else if (props.sortBy === 'viewsDOWN') {
+      props.videos.sort((a, b) => b.views + a.views)
+    }
   }
 
   useEffect(() => {
-    sortVids();
-  }, [props.sortBy, props.videos]);
+    sortVids()
+  }, [props.sortBy, props.videos])
 
   return (
     <>
-      {props.channels.length === 0 || 
-      props.filter === 'video' || 
-      props.filter === 'playlist' || 
+      {props.channels.length === 0 ||
+      props.filter === 'video' ||
+      props.filter === 'playlist' ||
       props.filter === 'movie' ? (
         <div></div>
       ) : (
@@ -55,9 +54,9 @@ const Results = (props: Props) => {
         </div>
       )}
       {props.videos.length === 0 ||
-      props.filter === 'channel' || 
-      props.filter === 'playlist' || 
-      props.filter === 'movie'? (
+      props.filter === 'channel' ||
+      props.filter === 'playlist' ||
+      props.filter === 'movie' ? (
         <div></div>
       ) : (
         <div className="pb-6">
