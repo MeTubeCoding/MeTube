@@ -38,7 +38,10 @@ const SearchBar = (props: IProps) => {
   useEffect(() => {
     const handleDocumentClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      if (!target.closest('#search-dropdown') && !target.closest('.search-history')) {
+      if (
+        !target.closest('#search-dropdown') &&
+        !target.closest('.search-history')
+      ) {
         setShowHistory(false)
       }
     }
@@ -92,7 +95,7 @@ const SearchBar = (props: IProps) => {
           className="bg-me-mediumpurple border border-me-lightpurple text-me-yellow font-semibold placeholder:text-me-yellow placeholder:text-opacity-70 placeholder:font-semibold p-1 pl-4 pr-2 rounded-l-full focus:outline-none  focus:border-me-yellow h-10 w-11/12"
           onFocus={yBorder}
           onBlur={nBorder}
-          autoComplete='off'
+          autoComplete="off"
           placeholder="Search..."
           required
         />
@@ -132,9 +135,9 @@ const SearchBar = (props: IProps) => {
                   className="cursor-pointer hover:bg-me-lightpurple text-me-yellow text-opacity-50 hover:text-opacity-100 rounded-xl my-2 p-2"
                   onClick={() => handleHistoryClick(searchItem.term)}
                 >
-                {searchItem.term.length > 50
-                 ? `${searchItem.term.slice(0, 50)}...`
-                 : searchItem.term}
+                  {searchItem.term.length > 50
+                    ? `${searchItem.term.slice(0, 50)}...`
+                    : searchItem.term}
                 </li>
               ))}
               <li className="border-t lex justify-start items-center">
