@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import { MdOutlineKeyboardVoice } from 'react-icons/md'
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 interface IProps {
   setSearchValue: (value: string) => void
