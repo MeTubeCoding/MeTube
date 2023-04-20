@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],

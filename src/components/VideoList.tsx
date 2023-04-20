@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable prettier/prettier */
 import ChannelBanner from './ChannelBanner'
 import ChannelPresentation from './ChannelPresentation'
 import Tabs from './Tabs'

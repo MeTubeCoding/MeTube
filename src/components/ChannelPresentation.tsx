@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable prettier/prettier */
 
 function ChannelPresentation() {
   return (
