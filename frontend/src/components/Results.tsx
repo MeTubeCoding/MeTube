@@ -18,13 +18,13 @@ const Results = (props: Props) => {
     if (props.sortBy === 'viewsUP') {
       props.videos.sort((a, b) => b.views - a.views)
     } else if (props.sortBy === 'viewsDOWN') {
-      props.videos.sort((a, b) => b.views + a.views)
+      props.videos.sort((a, b) => a.views - b.views)
     }
   }
 
   useEffect(() => {
     sortVids()
-  }, [props.sortBy, props.videos])
+  }, [props.sortBy])
 
   return (
     <>
