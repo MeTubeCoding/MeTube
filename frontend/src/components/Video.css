@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.video {
+  @apply relative h-[60vh] w-[300px] bg-[black] rounded-[20px];
+}
+.video_player {
+  @apply object-fill w-full h-full rounded-[10px];
+}
+.shortsVideoTop {
+  @apply absolute min-w-fit w-full flex justify-between top-2.5;
+}
+.shortsVideoTopIcon {
+  @apply flex;
+}
+.shortsVideoSideIcons {
+  @apply absolute flex flex-col items-center right-2.5 bottom-5;
+}
+.shortsVideoSideIcon {
+  @apply flex flex-col items-center;
+}
+.shortsVideoSideIcon > p {
+  @apply text-[white] text-[small];
+}
+.shortsVideoSideIcon > .MuiSvgIcon-root {
+  @apply text-[35px] p-2.5 hover:text-[red];
+}
+.shortsBottom {
+  @apply flex absolute flex-col bottom-2.5;
+}
+.shortsDesc {
+  @apply flex p-2.5;
+}
+.shortsDesc > p {
+  @apply text-[white];
+}
+.MuiSvgIcon-root {
+  @apply cursor-pointer text-[white];
+}
+.pseudos {
+  @apply flex flex-col;
+}
+.shortsDetails {
+  @apply flex items-center p-2.5;
+}
+.pseudos p {
+  @apply text-[white] font-normal h-5 w-[60px] text-[small] mr-2.5;
+}
+.shortsDetails > button {
+  @apply bg-[rgba(255,0,0,0.609)] text-[white] font-[bold] cursor-pointer text-[10px] p-[7px] rounded-[3px] border-[none] hover:bg-[red];
+  outline: none;
+}
+.shortsDesc > .ticker {
+  @apply h-fit w-full max-w-[250px];
+}
+.description {
+  @apply text-[white] text-[small];
+}
