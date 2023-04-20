@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import PlayMusicWithVideo from './PlayMusicWithVideo'
 
 const MusicPlayer = () => {
   const [selectedAudios, setSelectedAudios] = useState<File[]>([])
@@ -20,7 +19,6 @@ const MusicPlayer = () => {
     audioRefs.current.splice(index, 1)
   }
 
-
   return (
     <div>
       <input type="file" onChange={handleMusicChange} multiple />
@@ -34,6 +32,7 @@ const MusicPlayer = () => {
             onClick={() => {
               handleRemove(index)
             }}
+            className="px-4 py-2 text-sm font-medium text-me-orange bg-me-mediumpurple rounded-md cursor-pointer hover:bg-me-lightpurple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-lightpurple"
           >
             Enlever la musique
           </button>

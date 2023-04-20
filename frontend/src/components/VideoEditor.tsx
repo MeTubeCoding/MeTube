@@ -1,4 +1,5 @@
 import React from 'react'
+import MusicPlayer from './MusicPlayer'
 
 interface VideoEditorProps {
   selectedVideo: string | undefined
@@ -29,7 +30,7 @@ const VideoEditor = ({
                 <div>
                   <label
                     htmlFor="video-upload"
-                    className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
+                    className="px-4 py-2 text-sm font-medium text-me-orange bg-me-mediumpurple rounded-md cursor-pointer hover:bg-me-lightpurple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-lightpurple"
                   >
                     Change video
                   </label>
@@ -46,7 +47,7 @@ const VideoEditor = ({
               <>
                 <label
                   htmlFor="video-upload"
-                  className="px-4 py-2 text-sm font-medium text-me-white bg-me-red rounded-md cursor-pointer hover:bg-me-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-red"
+                  className="px-4 py-2 text-sm font-medium text-me-orange bg-me-mediumpurple rounded-md cursor-pointer hover:bg-me-lightpurple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-lightpurple"
                 >
                   Choose a file
                 </label>
@@ -59,6 +60,9 @@ const VideoEditor = ({
                 />
               </>
             )}
+          </div>
+          <div className="mt-[30%] mb-[30%]">
+            <MusicPlayer />
           </div>
         </div>
       </div>

@@ -6,6 +6,9 @@ import Popup, { Prompt } from '../components/fonction/Popup'
 import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
 import { useNavigate } from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 interface VideoData {
   id: number
@@ -18,10 +21,6 @@ const HomePage = (): JSX.Element => {
   const [comment, setComment] = useState<string>('')
   const navigate = useNavigate()
 
-  const handleClickEditor = (): unknown => {
-    return navigate('/videopage')
-  }
-
   const { onSearch } = useOnSearch()
 
   useEffect(() => {
@@ -32,6 +31,14 @@ const HomePage = (): JSX.Element => {
     console.log('Comment submitted:', comment)
     setShowPopup(false)
     setComment('')
+  }
+  const verify = () => {
+    const pseudo = localStorage.getItem('username')?.replace(/"/g, '')
+    if (!pseudo) {
+      navigate('/login')
+    } else {
+      navigate('/videopage')
+    }
   }
 
   const toggleSideBarVisibility = () => {
@@ -55,13 +62,16 @@ const HomePage = (): JSX.Element => {
           ))}
         </div>
       </div>
-      <div
-        onClick={handleClickEditor}
-        style={{ cursor: 'pointer' }}
-        className="text-me-orange hover:bg-me-darkpurple hover:text-me-yellow px-3 py-2 rounded-md text-sm font-medium w-32"
+      <button
+        onClick={verify}
+        style={{
+          border: 'none',
+          backgroundColor: 'transparent',
+          color: '#a45d2b'
+        }}
       >
-        Video Editor
-      </div>
+        <FontAwesomeIcon icon={faSquarePlus} size="4x" />
+      </button>
       {showPopup && (
         <Popup
           onClose={() => setShowPopup(false)}
@@ -84,7 +94,7 @@ const HomePage = (): JSX.Element => {
             onChange={event => setComment(event.target.value)}
           />
           <button
-            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full py-2 px-4 bg-me-mediumpurple hover:bg-lightpurple text-me-yellow font-bold rounded-md focus:outline-none focus:ring-2 focus:ring-me-yellow focus:ring-opacity-50"
             onClick={handleCommentSubmit}
           >
             Submit

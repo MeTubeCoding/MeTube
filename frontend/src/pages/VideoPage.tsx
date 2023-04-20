@@ -54,14 +54,14 @@ const VideoPage = () => {
     <div className="flex flex-col h-screen">
       <NavigationBar />
       <div className="flex-1 flex flex-row">
-        <div className="flex-1 flex items-center justify-center bg-me-black">
+        <div className="flex-1 flex items-center justify-center bg-me-darkpurple">
           {selectedVideo ? (
             <>
               <VideoItem video={selectedVideo} />
             </>
           ) : (
             <div className="flex flex-col items-center justify-center space-y-4">
-              <h2 className="text-xl font-medium text-me-black">
+              <h2 className="text-xl font-medium text-me-orange">
                 Select a video to get started:
               </h2>
             </div>
