@@ -74,8 +74,8 @@ app.post("/data", (req, res) => {
   client.connect((err) => {
     async function run() {
       try {
-        const database = client.db("profile");
-        const movies = database.collection("users");
+        const database = client.db("METUBE");
+        const movies = database.collection("users_profile");
         const query = req.body;
         await movies.insertOne(query);
       } finally {
@@ -92,8 +92,8 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
   try {
-    const database = client.db('profile')
-    const users = database.collection('users')
+    const database = client.db('METUBE')
+    const users = database.collection('users_profile')
 
     const user = await users.findOne({ emailaddress: email })
 
@@ -114,11 +114,12 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error while connecting' })
   }
+  res.end()
 })
 app.post('/signup', async (req, res) => {
   try {
-    const database = client.db('profile')
-    const messages = database.collection('users')
+    const database = client.db('METUBE')
+    const messages = database.collection('users_profile')
     const query = req.body
     await messages.insertOne(query)
     await client.close()
@@ -131,8 +132,8 @@ app.post('/signup', async (req, res) => {
 })
 app.get('/check-email', async (req, res) => {
   const { email } = req.query
-  const database = client.db('profile')
-  const users = database.collection('users')
+  const database = client.db('METUBE')
+  const users = database.collection('users_profile')
   const user = await users.findOne({ 'emailaddress': email })
   res.json({ exists: !!user })
   res.end()
@@ -142,8 +143,8 @@ app.get('/check-email', async (req, res) => {
 
 app.get('/profile', async (req, res) => {
   const { email } = req.query
-  const database = client.db('profile');
-  const users = database.collection('users');
+  const database = client.db('METUBE');
+  const users = database.collection('users_profile');
 
   try {
     const user = await users.findOne({ emailaddress: email });
@@ -320,6 +321,7 @@ app.post('/chat', (req, res) => {
 })
 
 app.post('/moderation', (req, res) => {
+  console.log("test")
   client.connect(err => {
     async function run() {
       try {
@@ -424,8 +426,8 @@ app.get('/username', (req, res) => {
   client.connect(err => {
     async function runy() {
       try {
-        const database = client.db('profile')
-        const messages = database.collection('users')
+        const database = client.db('METUBE')
+        const messages = database.collection('users_profile')
         let search = await messages.find({}).toArray()
         const reponseSearch = JSON.stringify(search)
         res.end(reponseSearch)
