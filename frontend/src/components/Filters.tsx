@@ -1,17 +1,62 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { MdOutlineTune } from 'react-icons/md'
 
 interface Props {
   visible: boolean
   filter: string
+  sortBy: string
   filterChannel: () => void
   filterVideo: () => void
   filterMovie: () => void
   filterPlaylist: () => void
+  sortRelevance: () => void
+  sortDate: () => void
+  sortRating: () => void
+  sortViews: () => void
 }
 
 const Filters = (props: Props) => {
   const dropMenu = useRef<HTMLDivElement>(null)
+
+  const sViews = () => {
+    props.sortViews()
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sRating = () => {
+    props.sortRating()
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sDate = () => {
+    props.sortDate()
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const sRelev = () => {
+    props.sortRelevance()
+    console.log('sort by ' + props.sortBy)
+  }
+
+  const fVideo = () => {
+    props.filterVideo()
+    console.log('filter by ' + props.filter)
+  }
+
+  const fChannel = () => {
+    props.filterChannel()
+    console.log('filter by ' + props.filter)
+  }
+
+  const fPlaylist = () => {
+    props.filterPlaylist()
+    console.log('filter by ' + props.filter)
+  }
+
+  const fMovie = () => {
+    props.filterMovie()
+    console.log('filter by ' + props.filter)
+  }
 
   const uploadDate = [
     {
@@ -32,16 +77,24 @@ const Filters = (props: Props) => {
   ]
   const Type = [
     {
-      name: 'Video'
+      name: 'Video',
+      filter: fVideo,
+      bool: 'video'
     },
     {
-      name: 'Channel'
+      name: 'Channel',
+      filter: fChannel,
+      bool: 'channel'
     },
     {
-      name: 'Playlist'
+      name: 'Playlist',
+      filter: fPlaylist,
+      bool: 'playlist'
     },
     {
-      name: 'Movie'
+      name: 'Movie',
+      filter: fMovie,
+      bool: 'movie'
     }
     //,
     // {
@@ -96,16 +149,28 @@ const Filters = (props: Props) => {
   ]
   const sortBy = [
     {
-      name: 'Relevance'
+      name: 'Relevance',
+      sort: sRelev,
+      bool: 'relev',
+      bool2: 'relev'
     },
     {
-      name: 'Upload date'
+      name: 'Upload date',
+      sort: sDate,
+      bool: 'date',
+      bool2: 'date'
     },
     {
-      name: 'View count'
+      name: 'View count',
+      sort: sViews,
+      bool: 'viewsUP',
+      bool2: 'viewsDOWN'
     },
     {
-      name: 'Rating'
+      name: 'Rating',
+      sort: sRating,
+      bool: 'rating',
+      bool2: 'rating'
     }
   ]
 
@@ -119,26 +184,6 @@ const Filters = (props: Props) => {
         // dropMenu.current.classList.remove('flex')
       }
     }
-  }
-
-  const fVideo = () => {
-    console.log('filter by ' + props.filter)
-    props.filterVideo()
-  }
-
-  const fChannel = () => {
-    console.log('filter by ' + props.filter)
-    props.filterChannel()
-  }
-
-  const fPlaylist = () => {
-    console.log('filter by ' + props.filter)
-    props.filterPlaylist()
-  }
-
-  const fMovie = () => {
-    console.log('filter by ' + props.filter)
-    props.filterMovie()
   }
 
   return (
@@ -164,8 +209,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {uploadDate.map(({ name }) => {
               return (
-                <li key={name} className={`rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={`rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs text-me-yellow text-opacity-50 tracking-wider hover:text-opacity-100">
                     {name}
                   </span>
                 </li>
@@ -176,10 +221,17 @@ const Filters = (props: Props) => {
           <ul className="flex flex-col text-me-yellow p-4">
             <p>TYPE</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {Type.map(({ name }) => {
+            {Type.map(({ name, filter, bool }) => {
               return (
-                <li key={name} className={`rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={`rounded-lg`}>
+                  <span
+                    className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
+                      props.filter === bool
+                        ? 'text-opacity-100'
+                        : 'text-opacity-50'
+                    }`}
+                    onClick={filter}
+                  >
                     {name}
                   </span>
                 </li>
@@ -191,8 +243,8 @@ const Filters = (props: Props) => {
             <hr className={`my-3 border-me-yellow w-36`}></hr>
             {Duration.map(({ name }) => {
               return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={` rounded-lg`}>
+                  <span className="hover:cursor-pointer text-xs tracking-wider text-me-yellow text-opacity-50 hover:text-opacity-100">
                     {name}
                   </span>
                 </li>
@@ -202,23 +254,32 @@ const Filters = (props: Props) => {
           <ul className="flex flex-col text-me-yellow p-4">
             <p>FEATURES</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {Features.map(({ name }) => {
-              return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
-                    {name}
-                  </span>
-                </li>
-              )
-            })}
+            <div className="h-[8.5rem] overflow-scroll">
+              {Features.map(({ name }) => {
+                return (
+                  <li key={name} className={`rounded-lg`}>
+                    <span className="hover:cursor-pointer text-xs tracking-wider text-opacity-50 text-me-yellow hover:text-opacity-100">
+                      {name}
+                    </span>
+                  </li>
+                )
+              })}
+            </div>
           </ul>
           <ul className="flex flex-col text-me-yellow p-4">
             <p>SORT BY</p>
             <hr className={`my-3 border-me-yellow w-36`}></hr>
-            {sortBy.map(({ name }) => {
+            {sortBy.map(({ name, sort, bool, bool2 }) => {
               return (
-                <li key={name} className={` rounded-lg py-1`}>
-                  <span className="hover:cursor-pointer text-xs tracking-wider">
+                <li key={name} className={`rounded-lg`}>
+                  <span
+                    className={`hover:cursor-pointer text-xs text-me-yellow tracking-wider hover:text-opacity-100 ${
+                      props.sortBy === bool || props.sortBy === bool2
+                        ? 'text-opacity-100'
+                        : 'text-opacity-50'
+                    }`}
+                    onClick={sort}
+                  >
                     {name}
                   </span>
                 </li>
