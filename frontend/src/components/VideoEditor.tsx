@@ -64,6 +64,11 @@ const VideoEditor = ({
           <div className="mt-[30%] mb-[30%]">
             <MusicPlayer />
           </div>
+          <div>
+            <button className="px-4 py-2 text-sm font-medium text-me-orange bg-me-mediumpurple rounded-md cursor-pointer hover:bg-me-lightpurple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-me-lightpurple">
+              Envoyer
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Video from '../components/Video'
 import './HomePage.css'
 import Videos from '../components/Videos'
-import Popup, { Prompt } from '../components/fonction/Popup'
 import Navbar from '../components/Navbar'
 import { useOnSearch } from '../components/useOnSearch'
 import { useNavigate } from 'react-router-dom'
@@ -33,12 +32,7 @@ const HomePage = (): JSX.Element => {
     setComment('')
   }
   const verify = () => {
-    const pseudo = localStorage.getItem('username')?.replace(/"/g, '')
-    if (!pseudo) {
-      navigate('/login')
-    } else {
-      navigate('/videopage')
-    }
+    navigate('/videopage')
   }
 
   const toggleSideBarVisibility = () => {
@@ -78,35 +72,6 @@ const HomePage = (): JSX.Element => {
       >
         <FontAwesomeIcon icon={faSquarePlus} size="4x" />
       </button>
-      {showPopup && (
-        <Popup
-          onClose={() => setShowPopup(false)}
-          onSubmit={handleCommentSubmit}
-          comment={comment}
-          onCommentChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setComment(e.target.value)
-          }
-          defaultValue={''}
-          placeholder={''}
-          onChange={(value: string) => {
-            throw new Error('Function not implemented.')
-          }}
-          value={''}
-        >
-          <textarea
-            className="w-full h-32 p-2 mb-4 rounded-md resize-none"
-            placeholder="Enter your comment here"
-            value={comment}
-            onChange={event => setComment(event.target.value)}
-          />
-          <button
-            className="w-full py-2 px-4 bg-me-mediumpurple hover:bg-lightpurple text-me-yellow font-bold rounded-md focus:outline-none focus:ring-2 focus:ring-me-yellow focus:ring-opacity-50"
-            onClick={handleCommentSubmit}
-          >
-            Submit
-          </button>
-        </Popup>
-      )}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import VideoItem from '../components/VideoItem'
 import VideoEditor from '../components/VideoEditor'
-import NavigationBar from '../components/NavigationBar'
+import Navbar from '../components/Navbar'
 import Cropper from '../components/fonction/CropVideo'
 import AudioLibrary from '../components/AudioLibrary'
 import { fetchTracks } from '../api/ccMixter'
@@ -52,7 +52,20 @@ const VideoPage = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      <NavigationBar />
+      <Navbar
+        onSearch={function (
+          data: string,
+          setSearched: React.Dispatch<React.SetStateAction<boolean>>
+        ): void {
+          throw new Error('Function not implemented.')
+        }}
+        setSearched={function (value: React.SetStateAction<boolean>): void {
+          throw new Error('Function not implemented.')
+        }}
+        onToggleSideBar={function (): void {
+          throw new Error('Function not implemented.')
+        }}
+      />
       <div className="flex-1 flex flex-row">
         <div className="flex-1 flex items-center justify-center bg-me-darkpurple">
           {selectedVideo ? (
