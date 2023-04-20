@@ -28,10 +28,10 @@ function Tendances() {
       <div className="flex flex-col" style={{ height: '3.5vh' }}>
         <SideBar visible={isSideBarVisible} />
       </div>
-      <div className="flex flex-row ml-[5%] h-screen bg-neutral-900">
+      <div className="flex flex-row ml-[20%] h-screen bg-neutral-900">
         <div className="bg-neutral-700 px-8 mr-20 "></div>
         <div>
-          <div className="ml-[90%] mb-10 flex flex-row justify-center items-center my-3">
+          <div className=" mb-10 flex flex-row justify-center items-center my-3">
             <img
               className="rounded-full mr-2%"
               src="https://www.youtube.com/img/trending/avatar/trending.png"
