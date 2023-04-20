@@ -19,7 +19,9 @@ function Abonnements() {
   return (
     <div className="Abonnements text-me-yellow">
       <div style={{ height: '8.5vh' }}>
-        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
+        <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} setSearched={function (value: React.SetStateAction<boolean>): void {
+          throw new Error('Function not implemented.')
+        } } />
       </div>
       <div className="flex flex-col" style={{ height: '92.5vh' }}>
         <SideBar visible={isSideBarVisible} />
