@@ -6,6 +6,7 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 import InsertCommentIcon from '@mui/icons-material/InsertComment'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import { Avatar } from '@mui/material'
+import './Video.css'
 
 export interface SIResult {
   id: number
@@ -33,7 +34,6 @@ const SResult = (props: Props) => {
         <video className="video__player" loop src={props.short.url} autoPlay />
         <div className="shortsVideoTop">
           <div className="shortsVideoTopIcon">
-            <ArrowBackIcon />
           </div>
           <div className="shortsVideoTopIcon">
             <MoreVertIcon />
