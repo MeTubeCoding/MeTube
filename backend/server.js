@@ -21,6 +21,8 @@ import path from "path";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { query } from "express";
 
+import bcrypt from 'bcryptjs'
+
 const uri = process.env.DB_LINK;
 
 const client = new MongoClient(uri, {
@@ -86,33 +88,33 @@ app.post("/data", (req, res) => {
 
   res.end("trop cool");
 });
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body
 
   try {
-    const database = client.db("profile");
-    const users = database.collection("users");
+    const database = client.db('profile')
+    const users = database.collection('users')
 
-    const user = await users.findOne({ "emailaddress": email });
+    const user = await users.findOne({ emailaddress: email })
 
     if (user) {
-      if (password === user.password) {
-        res.json({ success: true, message: "Connexion réussie" });
+      const isPasswordCorrect = await bcrypt.compare(password, user.password)
+      if (isPasswordCorrect) {
+        res.json({
+          success: true,
+          message: 'Connexion réussie',
+          hashedPassword: user.password
+        })
       } else {
-        res
-          .status(401)
-          .json({ success: false, message: "Mot de passe incorrect" });
+        res.status(401).json({ success: false, message: 'Incorrect password' })
       }
     } else {
-      res.status(404).json({ success: false, message: "L'email n'existe pas" });
+      res.status(404).json({ success: false, message: 'Email does not exist' })
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: "Erreur lors de la connexion" });
+    res.status(500).json({ success: false, message: 'Error while connecting' })
   }
-  res.end()
-});
+})
 app.post('/signup', async (req, res) => {
   try {
     const database = client.db('profile')
