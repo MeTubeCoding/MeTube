@@ -65,7 +65,7 @@ const Navbar = (props: Props) => {
               Upload
             </Link>
             <Link
-              to="/login"
+              to="/profile"
               className="text-me-yellow text-opacity-75 hover:text-opacity-100 font-bold text-lg"
             >
               Account
