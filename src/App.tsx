@@ -1,26 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Main from './pages/Main'
 
-import { Box } from '@mui/material'
-import { VideoList } from './components'
-import VideoItem from './components/VideoItem'
-import ChannelBanner from './components/ChannelBanner'
+import ChaineHeader from './components/ChaineHeader'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/Accueil" element={<VideoList />} />
-
-          <Route path="/Live" element={<h1>Page Résultats</h1>} />
-          <Route
-            path="/videos"
-            element={<VideoItem thumbnail={''} title={''} videoId={''} />}
-          />
+          <Route path="/" element={<ChaineHeader />} />
         </Routes>
       </BrowserRouter>
     </div>

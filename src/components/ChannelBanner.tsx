@@ -1,10 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/space-before-function-paren */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/indent */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-
+/* eslint-disable prettier/prettier */
 function ChannelBanner() {
   return (
     <div className="bg-me-orange ml-80 mb-7 h-52 flex items-center justify-between w-auto h-200 bg-cover bg-center mt-40 ml-200 px-20">

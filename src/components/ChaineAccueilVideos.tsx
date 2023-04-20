@@ -1,49 +1,45 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable prettier/prettier */
-import ChannelBanner from './ChannelBanner'
-import ChannelPresentation from './ChannelPresentation'
-import Tabs from './Tabs'
+import React from "react";
+import Tabs from "./Tabs";
 
-function VideoList() {
-  const videos = [
-    {
-      id: 1,
-      title: 'Titre de la vidéo 1',
-      imgUrl: 'https://picsum.photos/id/241/200/300'
-    },
-    {
-      id: 2,
-      title: 'Titre de la vidéo 2',
-      imgUrl: 'https://picsum.photos/id/242/200/300'
-    },
-    {
-      id: 3,
-      title: 'Titre de la vidéo 3',
-      imgUrl: 'https://picsum.photos/id/243/200/300'
-    },
-    {
-      id: 4,
-      title: 'Titre de la vidéo 4',
-      imgUrl: 'https://picsum.photos/id/244/200/300'
-    },
-    {
-      id: 5,
-      title: 'Titre de la vidéo 5',
-      imgUrl: 'https://picsum.photos/id/247/200/300'
-    },
-    {
-      id: 6,
-      title: 'Titre de la vidéo 6',
-      imgUrl: 'https://picsum.photos/id/247/200/300'
-    }
-    // Ajoutez plus de vidéos ici
-  ]
+function ChaineAccueilVideos() {
+
+    const videos = [
+        {
+          id: 1,
+          title: 'Titre de la vidéo 1',
+          imgUrl: 'https://picsum.photos/id/241/200/300'
+        },
+        {
+          id: 2,
+          title: 'Titre de la vidéo 2',
+          imgUrl: 'https://picsum.photos/id/242/200/300'
+        },
+        {
+          id: 3,
+          title: 'Titre de la vidéo 3',
+          imgUrl: 'https://picsum.photos/id/243/200/300'
+        },
+        {
+          id: 4,
+          title: 'Titre de la vidéo 4',
+          imgUrl: 'https://picsum.photos/id/244/200/300'
+        },
+        {
+          id: 5,
+          title: 'Titre de la vidéo 5',
+          imgUrl: 'https://picsum.photos/id/247/200/300'
+        },
+        {
+          id: 6,
+          title: 'Titre de la vidéo 6',
+          imgUrl: 'https://picsum.photos/id/247/200/300'
+        }
+        // Ajoutez plus de vidéos ici
+    ]
 
   return (
     <>
-      <ChannelBanner />
-      <ChannelPresentation />
       <Tabs />
 
       <div className="flex">
@@ -64,7 +60,7 @@ function VideoList() {
           <div
             key={video.id}
             className="w-full md:w-60 h-48 mt-8 px-4 mb-8"
-            style={index % 3 === 0 ? { clear: 'left' } : {}}
+            style={index % 3 === 0 ? { clear: "left" } : {}}
           >
             <div className="bg-me-lightpurple h-72 rounded-xl overflow-hidden flex flex-col justify-between">
               <img
@@ -83,7 +79,7 @@ function VideoList() {
         ))}
       </div>
     </>
-  )
+  );
 }
 
-export default VideoList
+export default ChaineAccueilVideos;
