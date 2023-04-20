@@ -1,23 +1,6 @@
-<<<<<<< HEAD:src/components/NavigationBar.tsx
-/* eslint-disable eol-last */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable padded-blocks */
-/* eslint-disable @typescript-eslint/indent */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/display-name */
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FaBars } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-=======
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/NavigationBar.tsx
 
 const NavigationBar = (): JSX.Element => {
   const navigate = useNavigate()
@@ -28,13 +11,6 @@ const NavigationBar = (): JSX.Element => {
   const handleClickShort = (): unknown => {
     return navigate('/short')
   }
-<<<<<<< HEAD:src/components/NavigationBar.tsx
-  function handleClick(event: MouseEvent<HTMLImageElement, MouseEvent>): void {
-    throw new Error('Function not implemented.')
-  }
-
-=======
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/NavigationBar.tsx
   return (
     <nav className="bg-me-colorprimary py-2 w-full fixed top-0">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -45,11 +21,7 @@ const NavigationBar = (): JSX.Element => {
                 className="h-8 w-8"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                 alt="Workflow"
-<<<<<<< HEAD:src/components/NavigationBar.tsx
-                onClick={handleClick}
-=======
                 onClick={handleClickShort}
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/NavigationBar.tsx
                 style={{ cursor: 'pointer' }}
               />
             </div>
@@ -64,22 +36,9 @@ const NavigationBar = (): JSX.Element => {
                     Video Editor
                   </div>
                 </div>
-<<<<<<< HEAD:src/components/NavigationBar.tsx
-
-                <Link
-                  to="/music"
-                  className="text-me-yellow hover:bg-me-orange hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Music Library
-                </Link>
-                <Link
-                  to="/slideshow"
-                  className="text-me-yellow hover:bg-me-orange hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
-=======
                 <Link
                   to="/slideshow"
                   className="text-me-black hover:bg-me-black hover:text-me-white px-3 py-2 rounded-md text-sm font-medium"
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/NavigationBar.tsx
                 >
                   Slideshow Editor
                 </Link>

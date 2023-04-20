@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/components/fonction/CropVideo.tsx
-import React, { useState, useRef } from 'react'
-=======
 import React, { useState, useRef, useEffect } from 'react'
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/fonction/CropVideo.tsx
 
 interface CropperProps {
   src: string
@@ -33,8 +29,6 @@ const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
     width: 0,
     height: 0
   })
-<<<<<<< HEAD:src/components/fonction/CropVideo.tsx
-=======
   useEffect(() => {
     setCropDimensions({
       x: cropPosition.x,
@@ -43,17 +37,13 @@ const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
       height: cropSize.height
     })
   }, [cropPosition, cropSize])
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/fonction/CropVideo.tsx
 
   const handleCrop = () => {
     if (videoRef.current && canvasRef.current) {
       if (!cropMode) {
         // Enter crop mode
         setCropMode(true)
-<<<<<<< HEAD:src/components/fonction/CropVideo.tsx
-=======
         drawCropArea()
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/fonction/CropVideo.tsx
       } else {
         // Cancel crop selection
         setCropMode(false)
@@ -80,8 +70,6 @@ const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
   const handleMouseUp = () => {
     if (dragging) {
       setDragging(false)
-<<<<<<< HEAD:src/components/fonction/CropVideo.tsx
-=======
       drawCropArea()
     }
   }
@@ -110,7 +98,6 @@ const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
         context.lineWidth = 2
         context.strokeRect(x, y, width, height)
       }
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/fonction/CropVideo.tsx
     }
   }
 
@@ -158,10 +145,7 @@ const Cropper = ({ src, onDone, onCancel }: CropperProps) => {
       // Update crop position and size state
       setCropPosition(newPosition)
       setCropSize({ width: newWidth, height: newHeight })
-<<<<<<< HEAD:src/components/fonction/CropVideo.tsx
-=======
       drawCropArea()
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/fonction/CropVideo.tsx
     }
   }
 

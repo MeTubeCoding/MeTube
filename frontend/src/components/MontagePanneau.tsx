@@ -40,8 +40,5 @@ const MontagePanneau: React.FC = () => {
     </div>
   )
 }
-<<<<<<< HEAD:src/components/MontagePanneau.tsx
-=======
 
 export default MontagePanneau
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/MontagePanneau.tsx

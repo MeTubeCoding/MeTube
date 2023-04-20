@@ -25,12 +25,8 @@ const MusicPlayer = () => {
       ;<PlayMusicWithVideo
         selectedAudios={selectedAudios}
         audioRefs={audioRefs}
-<<<<<<< HEAD:src/components/MusicPlayer.tsx
-      /> // Utiliser le composant PlayMusicWithVideo
-=======
         videoRef={} // Pass the videoRef from VideoPage component here
       />
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/components/MusicPlayer.tsx
     }
   }
 

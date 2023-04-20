@@ -2,10 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
-<<<<<<< HEAD:src/index.tsx
-=======
-
->>>>>>> 3e6b1aa594d5d0812ed4a75da42e30cd001b15fd:frontend/src/index.tsx
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
