@@ -7,6 +7,7 @@ import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import HomePage from './pages/HomePage'
+import Live from './composant/Live'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/live" element={<Live />} />
           </Routes>
         </BrowserRouter>
       </div>
