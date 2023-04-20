@@ -93,7 +93,7 @@ app.post("/login", async (req, res) => {
     const database = client.db("profile");
     const users = database.collection("users");
 
-    const user = await users.findOne({ "email-address": email });
+    const user = await users.findOne({ "emailaddress": email });
 
     if (user) {
       if (password === user.password) {
@@ -111,6 +111,7 @@ app.post("/login", async (req, res) => {
       .status(500)
       .json({ success: false, message: "Erreur lors de la connexion" });
   }
+  res.end()
 });
 app.post('/signup', async (req, res) => {
   try {
@@ -130,7 +131,7 @@ app.get('/check-email', async (req, res) => {
   const { email } = req.query
   const database = client.db('profile')
   const users = database.collection('users')
-  const user = await users.findOne({ 'email-address': email })
+  const user = await users.findOne({ 'emailaddress': email })
   res.json({ exists: !!user })
   res.end()
 })
