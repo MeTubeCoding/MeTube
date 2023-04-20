@@ -12,19 +12,30 @@ import { trend_tag } from '../../timeline_components/trending_categories'
 // ================================================================================================
 
 function Tendances() {
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const [filter, setFilter] = useState('none')
+  const { videos, channels, onSearch } = useOnSearch()
+
+  const toggleSideBarVisibility = () => {
+    setIsSideBarVisible(prevState => !prevState)
+  }
+
   return (
-    <div className="flex flex-row text-me-yellow ml-[15%] h-screen bg-neutral-900">
-      <div>
-        <div className="ml-[50%] mb-10 flex flex-row justify-center items-center my-3">
-          <img
-            className="rounded-full mr-2%"
-            src="https://www.youtube.com/img/trending/avatar/trending.png"
-          ></img>
-          <h3 className="ml-5 p-0 text-center leading-normal text-3xl">
-            RECOMMANDATIONS
-          </h3>
+    <div className="h-screen text-me-yellow font-sans-roboto font-normal text-base leading-relaxed text-left m-0 p-0 h-screen">
+      <div className="flex flex-row ml-[5%] h-screen bg-neutral-900">
+        <div className="bg-neutral-700 px-8 mr-20 "></div>
+        <div>
+          <div className="ml-[90%] mb-10 flex flex-row justify-center items-center my-3">
+            <img
+              className="rounded-full mr-2%"
+              src="https://www.youtube.com/img/trending/avatar/trending.png"
+            ></img>
+            <h3 className="ml-5 p-0 text-center leading-normal text-3xl">
+              RECOMMANDATIONS
+            </h3>
+          </div>
+          <div className="ml-5 flex flex_col justify-center">{trend_tag()}</div>
         </div>
-        <div className="ml-10 flex flex_col justify-center">{trend_tag()}</div>
       </div>
     </div>
   )
