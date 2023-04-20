@@ -11,6 +11,7 @@ import Tendances from './pages/feed/trending'
 import History from './pages/feed/history'
 import Bibliotheque from './pages/feed/library'
 import Abonnements from './pages/feed/subscriptions'
+import Live from './composant/Live'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/feed/history" element={<History />} />
             <Route path="/feed/library" element={<Bibliotheque />} />
             <Route path="/feed/subscriptions" element={<Abonnements />} />
+            <Route path="/live" element={<Live />} />
           </Routes>
         </BrowserRouter>
       </div>

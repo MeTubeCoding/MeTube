@@ -74,8 +74,8 @@ app.post("/data", (req, res) => {
   client.connect((err) => {
     async function run() {
       try {
-        const database = client.db("profile");
-        const movies = database.collection("users");
+        const database = client.db("METUBE");
+        const movies = database.collection("users_profile");
         const query = req.body;
         await movies.insertOne(query);
       } finally {
@@ -84,6 +84,7 @@ app.post("/data", (req, res) => {
       }
     }
     run().catch(console.dir);
+    run.end()
   });
 
   res.end("trop cool");
@@ -92,8 +93,8 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body
 
   try {
-    const database = client.db('profile')
-    const users = database.collection('users')
+    const database = client.db('METUBE')
+    const users = database.collection('users_profile')
 
     const user = await users.findOne({ emailaddress: email })
 
@@ -114,11 +115,12 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error while connecting' })
   }
+  res.end()
 })
 app.post('/signup', async (req, res) => {
   try {
-    const database = client.db('profile')
-    const messages = database.collection('users')
+    const database = client.db('METUBE')
+    const messages = database.collection('users_profile')
     const query = req.body
     await messages.insertOne(query)
     await client.close()
@@ -131,8 +133,8 @@ app.post('/signup', async (req, res) => {
 })
 app.get('/check-email', async (req, res) => {
   const { email } = req.query
-  const database = client.db('profile')
-  const users = database.collection('users')
+  const database = client.db('METUBE')
+  const users = database.collection('users_profile')
   const user = await users.findOne({ 'emailaddress': email })
   res.json({ exists: !!user })
   res.end()
@@ -142,8 +144,8 @@ app.get('/check-email', async (req, res) => {
 
 app.get('/profile', async (req, res) => {
   const { email } = req.query
-  const database = client.db('profile');
-  const users = database.collection('users');
+  const database = client.db('METUBE');
+  const users = database.collection('users_profile');
 
   try {
     const user = await users.findOne({ emailaddress: email });
@@ -300,6 +302,143 @@ app.post("/node/sub", (req, res) => {
 
   res.end();
 });
+
+
+app.post('/chat', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/moderation', (req, res) => {
+  console.log("test")
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+app.post('/desc', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('description')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/titre', (req, res) => {
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('titre')
+        const query = req.body
+        await messages.insertOne(query)
+      } finally {
+        await client.close()
+      }
+    }
+    run().catch(console.dir)
+  })
+  res.end()
+})
+
+app.post('/dataLive',(req,res)=>{
+  client.connect(err => {
+    async function run() {
+      try {
+        const database = client.db('LiveBdd');
+        const messages = database.collection('dataLive');
+        const query = req.body;
+        await messages.insertOne(query);
+      } finally {
+        await client.close(); 
+      }
+    }
+    run().catch(console.dir);
+  });
+  res.end();
+});
+
+app.get('/chat', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageChat')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/moderation', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('LiveBdd')
+        const messages = database.collection('messageModeration')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
+
+app.get('/username', (req, res) => {
+  client.connect(err => {
+    async function runy() {
+      try {
+        const database = client.db('METUBE')
+        const messages = database.collection('users_profile')
+        let search = await messages.find({}).toArray()
+        const reponseSearch = JSON.stringify(search)
+        res.end(reponseSearch)
+      } finally {
+        await client.close()
+      }
+    }
+    runy().catch(console.dir)
+  })
+})
 
 app.get("/demo", (req, res) => {
   console.log("test");
