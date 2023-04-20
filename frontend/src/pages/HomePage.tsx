@@ -1,41 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import Video from '../components/Video'
-import './HomePage.css'
-import Videos from '../components/Videos'
-import Popup from '../components/fonction/Popup'
-import Navbar from '../components/Navbar'
-import { channel } from 'diagnostics_channel'
-import { useOnSearch } from '../components/useOnSearch'
+import React, { useEffect, useState } from 'react';
+import Video from '../components/Video';
+import './HomePage.css';
+import Videos from '../components/Videos';
+import Popup, { Prompt } from '../components/fonction/Popup';
+import Navbar from '../components/Navbar';
+import { useOnSearch } from '../components/useOnSearch';
 
 interface VideoData {
-  id: number
-  url: string
+  id: number;
+  url: string;
 }
 
 const HomePage = (): JSX.Element => {
-  const [video, setVideo] = useState<VideoData[]>([])
-  const [showPopup, setShowPopup] = useState<boolean>(false)
-  const [comment, setComment] = useState<string>('')
-  const { videos, channels, onSearch } = useOnSearch()
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+  const [video, setVideo] = useState<VideoData[]>([]);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [comment, setComment] = useState<string>('');
 
+  const { onSearch } = useOnSearch();
 
   useEffect(() => {
-    setVideo(Videos)
-  }, [])
+    setVideo(Videos);
+  }, []);
 
   const handleCommentSubmit = () => {
-    console.log('Comment submitted:', comment)
-    setShowPopup(false)
-    setComment('')
-  }
+    console.log('Comment submitted:', comment);
+    setShowPopup(false);
+    setComment('');
+  };
+
   const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
+    // setIsSideBarVisible((prevState) => !prevState);
+  };
 
   return (
     <div className="max-h-screen">
-      <div style={{ height: '8.5vh'}}>
+      <div style={{ height: '8.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
       <div className='flex justify-center items-center max-w-3xl mx-auto'>
@@ -50,11 +49,18 @@ const HomePage = (): JSX.Element => {
           ))}
         </div>
       </div>
-
       {showPopup && (
         <Popup
           onClose={() => setShowPopup(false)}
           onSubmit={handleCommentSubmit}
+          comment={comment}
+          onCommentChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
+          defaultValue={''}
+          placeholder={''}
+          onChange={(value: string) => {
+            throw new Error('Function not implemented.');
+          } }
+          value={''}
         >
           <textarea
             className="w-full h-32 p-2 mb-4 rounded-md resize-none"
@@ -71,7 +77,7 @@ const HomePage = (): JSX.Element => {
         </Popup>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
