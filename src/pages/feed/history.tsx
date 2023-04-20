@@ -14,7 +14,7 @@ function History() {
   }
 
   return (
-    <div className="History text-me-orange">
+    <div className="History">
       <div style={{ height: '8.5vh' }}>
         <Navbar onSearch={onSearch} onToggleSideBar={toggleSideBarVisibility} />
       </div>
@@ -29,9 +29,9 @@ function History() {
       <div className="bg-neutral-900 object-cover absolute top-14 left-80 bottom-0 right-0 w-60"></div>
       <div className="bg-neutral-900 object-cover absolute top-14 right-96 w-20 bottom-0"></div>
       <div className="bg-neutral-900 object-cover absolute top-36 left-96 right-96 mr-20 bottom-0 overflow-y-auto max-h-[1000px]">
-        <p className="font-bold text-base relative top-5">Historique de visionage</p>
+        <p className="font-bold text-base text-me-orange relative top-5">Historique de visionage</p>
       <div>
-          <p className="font-bold text-base relative mt-12 mb-5">Aujourd&apos;hui</p>
+          <p className="font-bold text-base text-me-yellow relative mt-12 mb-5">Aujourd&apos;hui</p>
           <div className="relative mb-4 overflow-hidden group">
             <iframe
               className="rounded-xl"
@@ -43,13 +43,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 mb-16 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 mb-16 text-me-orange">
               [ Cover ] - Attack on Titan - FINAL SEASON (S4) OP - My War - David - Fils de Ange Momone - AM&D
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
             David fils de Momone • 2,9 M de vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               Mon dernier single est disponible absolument partout 
               👉https://bfan.link/j-ai-mange-une-pomme-et-j-ai-plein-d-energie
 
@@ -91,13 +91,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               J&apos;ai Survécu 100 Jours Sur Terraria en Mode Master...
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Ekyoten • 72 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               Il y a 10 mois je sortais ma toute première vidéo, survivre 100 jours en expert sur terraria, 10 mois plus tard je me sens enfin prêt à relever le plus gros défi de terraria, survivre 100 jours en MASTER !
 
               -- Réseaux--
@@ -139,13 +139,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               la magie du jeu vidéo
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Timy’s adventures • 127 vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               salut! Aujourd’hui je vous palre du jeu vidéo
               Bon visonnage!
 
@@ -174,9 +174,9 @@ function History() {
           </div>
         </div>
         <div>
-          <p className="font-bold text-base text-white relative mt-12 mb-6">Hier</p>
+          <p className="font-bold text-base text-me-yellow relative mt-12 mb-6">Hier</p>
           <div>
-            <p className="absolute font-bold text-base text-white relative mt-10 mb-5">
+            <p className="absolute font-bold text-base text-me-orange relative mt-10 mb-5">
               Shorts
               <div className="bg-neutral-100 absolute right-0 top-2 w-1 h-1 bg-gray-500 rounded-full"></div>
               <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
@@ -195,7 +195,7 @@ function History() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
+                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-me-orange">
                     L&apos;EXPOSÉ CATASTROPHIQUE de CHOSS
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
@@ -203,7 +203,7 @@ function History() {
                     <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
                     <div className="bg-neutral-100 absolute right-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></div>
                   </div>
-                  <div className="relative text-xs top-2 text-gray-400">
+                  <div className="relative text-xs top-2 text-me-yellow">
                     3,1 M de vues
                   </div>
                 </div>
@@ -220,7 +220,7 @@ function History() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
+                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-me-orange">
                     600 NOUVEAUX items AJOUTÉS à Minecraft.. ?
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
@@ -228,7 +228,7 @@ function History() {
                     <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
                     <div className="bg-neutral-100 absolute right-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></div>
                   </div>
-                  <div className="relative text-xs top-2 text-gray-400">
+                  <div className="relative text-xs top-2 text-me-yellow">
                     362 k vues
                   </div>
                 </div>
@@ -245,7 +245,7 @@ function History() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
+                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-me-orange">
                     🤔 L’heure est grave…
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
@@ -253,7 +253,7 @@ function History() {
                     <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
                     <div className="bg-neutral-100 absolute right-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></div>
                   </div>
-                  <div className="relative text-xs top-2 text-gray-400">
+                  <div className="relative text-xs top-2 text-me-yellow">
                     1,6 M de vues
                   </div>
                 </div>
@@ -270,7 +270,7 @@ function History() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
+                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-me-orange">
                     Je goûte un gâteau interdit en Europe... ⚠️🍰
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
@@ -278,7 +278,7 @@ function History() {
                     <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
                     <div className="bg-neutral-100 absolute right-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></div>
                   </div>
-                  <div className="relative text-xs top-2 text-gray-400">
+                  <div className="relative text-xs top-2 text-me-yellow">
                     3,4 M de vues
                   </div>
                 </div>
@@ -295,7 +295,7 @@ function History() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-white">
+                  <div className="relative text-xs top-2 font-bold mt-0 mr-8 text-me-orange">
                     Tu peux APPELER MARIO AU TÉLÉPHONE ☎️
                   </div>
                   <div className="relative -top-6 left-4 mt-0 mr-8 hidden group-hover:block">
@@ -303,7 +303,7 @@ function History() {
                     <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>
                     <div className="bg-neutral-100 absolute right-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></div>
                   </div>
-                  <div className="relative text-xs top-2 text-gray-400">
+                  <div className="relative text-xs top-2 text-me-yellow">
                     1 M de vues
                   </div>
                 </div>
@@ -324,13 +324,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               Finir Mario Bros DS sans MOURIR ?
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Lamatrak • 58 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               Si je meurs, je recommence tout le jeu ! C&apos;est le défi que je me suis lancé aujourd&apos;hui et que j&apos;ai réalisé en live sur twitch: https://www.twitch.tv/lamatrak
               Il s&apos;agit de ma première vidéo Youtube, j&apos;ai tout fait tout seul, de la minia au montage, n&apos;hésitez pas à me dire ce que vous en pensez ! 
               biz.
@@ -360,13 +360,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               Ce Speedrunneur n&apos;est Littéralement pas Humain...
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Julgane • 682 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               On regarde PLEINS de Records du Monde de Speedrun sur pleins de Jeux ! Y a d&apos;ailleurs des ordinateurs qui jouent parfaitement, bref likez commentez si vous aimez svp.......
 
               Liste des vidéos regardées: https://pastebin.com/CFiM8LFH
@@ -405,13 +405,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               5 épisodes LÉGENDAIRES des SIMPSON (à voir absolument) #2
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Cinéma Trash • 363 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               Est ce que vous connaissez vraiment tout des Simpson ?
               La série va fêter son 750ème épisode, regarder les 34 saisons entier vous demanderait plus de 273 heures !
               La naissance de Bart, le père secret de Lisa… il y a forcément des choses que vous avez manqué. Des épisodes légendaires, que vous devez              absolument aller voir !
@@ -451,13 +451,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               TEST EN CARTON #110 - Hogwarts Legacy
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               Savun • 302 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               - Chaîne Twitch : https://www.twitch.tv/savun
               - Chaîne rediff VOD :   
 
@@ -547,13 +547,13 @@ function History() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-white">
+            <div className="absolute text-base font-bold mr-32 left-72 top-0 bottom-0 text-me-orange">
               Rocket League est le jeu le plus dur du monde.
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-12 mb-16 text-me-yellow">
               EGO • 534 k vues
             </div>
-            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-gray-400">
+            <div className="absolute text-xs mr-0 left-72 top-20 mt-1 text-me-yellow">
               On parle de LoL, on parle de Cs, on parle de Valo, mais tout le monde semble oublier Rocket League. Alors, moi, je vous explique.
 
 
