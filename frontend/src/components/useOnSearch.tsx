@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { IResults, CIResults } from './Results'
+import { IResults, CIResults, SIResults } from './Results'
 
 const useOnSearch = () => {
   const [videos, setVideos] = useState<IResults | []>([])
   const [channels, setChannels] = useState<CIResults | []>([])
+  const [searchShorts, setShorts] = useState<SIResults | []>([])
 
   const onSearch = (
     data: string,
@@ -37,9 +38,20 @@ const useOnSearch = () => {
       .then((response: CIResults) => {
         setChannels(response)
       })
+    
+    fetch('http://127.0.0.1:5600/shorts/searchShorts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(async response => await response.json())
+      .then((response: SIResults) => {
+      setShorts(response)
+    })
   }
 
-  return { onSearch, videos, channels, setVideos, setChannels }
+  return { onSearch, videos, channels, searchShorts, setVideos, setChannels, setShorts }
 }
 
 export { useOnSearch }

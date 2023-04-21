@@ -17,7 +17,7 @@ const Main = () => {
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
   const [filter, setFilter] = useState('none')
   const [sortBy, setSort] = useState('none')
-  const { videos, channels, onSearch } = useOnSearch()
+  const { videos, channels, searchShorts, onSearch } = useOnSearch()
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(prevState => !prevState)
@@ -133,7 +133,7 @@ const Main = () => {
                 filter={filter}
                 sortBy={sortBy}
                 videos={videos}
-                shorts={shorts}
+                shorts={searchShorts}
                 channels={channels}
               />
             )}
