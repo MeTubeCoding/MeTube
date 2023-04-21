@@ -1,25 +1,10 @@
-import React, { useState } from 'react'
-import Main from '../../pages/Main'
-import Results from '../../components/Results'
-import Navbar from '../../components/Navbar'
-import { useOnSearch } from '../../components/useOnSearch'
-import SideBar from '../../components/SideBar'
-import Filters from '../../components/Filters'
-import { channel } from 'diagnostics_channel'
-import { set } from 'mongoose'
+import React from 'react'
 
 function Abonnements() {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const { videos, onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
-
   return (
     <div className="Abonnements text-me-yellow">
       <div className="bg-neutral-900 object-cover absolute top-0 left-0 right-0">
-        <img src="menu-btn.png" className="object-cover w-5 m-5"></img>
+        <img src="menu-btn.png" className="object-cover w-5 m-5" alt='menu'></img>
         <div className="rounded-full absolute top-0 left-0 right-0 bottom-0 hover:bg-white opacity-25 object-cover w-9 m-3"></div>
       </div>
       <div className="bg-neutral-900 object-cover absolute top-14 left-0 bottom-0 w-60"></div>

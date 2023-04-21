@@ -1,6 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { BsPatchCheck } from 'react-icons/bs';
 import { FaThumbsUp, FaThumbsDown, FaShareAlt, FaExclamationTriangle, FaCheckCircle } from 'react-icons/fa';

@@ -22,7 +22,8 @@ import { SIResults } from './Results'
 interface SideBarProps {
   visible: boolean
   setShorts: React.Dispatch<React.SetStateAction<boolean>>
-  onLoad: (setOnShorts: React.Dispatch<React.SetStateAction<boolean>>) => void
+  setSearch: React.Dispatch<React.SetStateAction<boolean>>
+  onLoad: (setOnShorts: React.Dispatch<React.SetStateAction<boolean>>, setOnSearch: React.Dispatch<React.SetStateAction<boolean>>) => void
   onShorts: boolean
   shorts: SIResults
 }
@@ -31,7 +32,7 @@ function SideBar(props: SideBarProps) {
   const bar = useRef<HTMLDivElement>(null)
 
   const doShorts = () => {
-    props.onLoad(props.setShorts)
+    props.onLoad(props.setShorts, props.setSearch)
     console.log(props.onShorts)
     console.log(props.shorts)
   }

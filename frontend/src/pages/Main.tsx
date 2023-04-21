@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useOnSearch } from '../components/useOnSearch'
-import { getShorts } from '../components/getShorts'
+import { GetShorts } from '../components/GetShorts'
 import Navbar from '../components/Navbar'
 import SideBar from '../components/SideBar'
 import Tendances from './feed/trending'
@@ -12,7 +12,7 @@ const Main = () => {
   const [HasSearched, setHasSearched] = useState(false)
   const [onShorts, setOnShorts] = useState(false)
 
-  const { shorts, onLoad } = getShorts()
+  const { shorts, onLoad } = GetShorts()
 
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
   const [filter, setFilter] = useState('none')
@@ -24,7 +24,7 @@ const Main = () => {
   }
 
   const sortRelevance = () => {
-    if (sortBy != 'relev') {
+    if (sortBy !== 'relev') {
       setSort('relev')
     } else {
       setSort('none')
@@ -32,7 +32,7 @@ const Main = () => {
   }
 
   const sortDate = () => {
-    if (sortBy != 'date') {
+    if (sortBy !== 'date') {
       setSort('date')
     } else {
       setSort('none')
@@ -40,9 +40,9 @@ const Main = () => {
   }
 
   const sortViews = () => {
-    if (sortBy != 'viewsUP' && sortBy != 'viewsDOWN') {
+    if (sortBy !== 'viewsUP' && sortBy !== 'viewsDOWN') {
       setSort('viewsUP')
-    } else if (sortBy != 'viewsDOWN') {
+    } else if (sortBy !== 'viewsDOWN') {
       setSort('viewsDOWN')
     } else {
       setSort('none')
@@ -50,7 +50,7 @@ const Main = () => {
   }
 
   const sortRating = () => {
-    if (sortBy != 'rating') {
+    if (sortBy !== 'rating') {
       setSort('rating')
     } else {
       setSort('none')
@@ -58,7 +58,7 @@ const Main = () => {
   }
 
   const filterChannel = () => {
-    if (filter != 'channel') {
+    if (filter !== 'channel') {
       setFilter('channel')
     } else {
       setFilter('none')
@@ -66,7 +66,7 @@ const Main = () => {
   }
 
   const filterMovie = () => {
-    if (filter != 'movie') {
+    if (filter !== 'movie') {
       setFilter('movie')
     } else {
       setFilter('none')
@@ -74,7 +74,7 @@ const Main = () => {
   }
 
   const filterVideo = () => {
-    if (filter != 'video') {
+    if (filter !== 'video') {
       setFilter('video')
     } else {
       setFilter('none')
@@ -82,7 +82,7 @@ const Main = () => {
   }
 
   const filterPlaylist = () => {
-    if (filter != 'playlist') {
+    if (filter !== 'playlist') {
       setFilter('playlist')
     } else {
       setFilter('none')
@@ -103,6 +103,7 @@ const Main = () => {
         <SideBar
           visible={isSideBarVisible}
           setShorts={setOnShorts}
+          setSearch={setHasSearched}
           onShorts={onShorts}
           shorts={shorts}
           onLoad={onLoad}
@@ -132,6 +133,7 @@ const Main = () => {
                 filter={filter}
                 sortBy={sortBy}
                 videos={videos}
+                shorts={shorts}
                 channels={channels}
               />
             )}

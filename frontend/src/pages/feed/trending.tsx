@@ -1,7 +1,4 @@
-import React, { useState } from 'react'
-import Navbar from '../../components/Navbar'
-import { useOnSearch } from '../../components/useOnSearch'
-import SideBar from '../../components/SideBar'
+import React from 'react'
 
 // import composant  :
 import { trend_tag } from '../../timeline_components/trending_categories'
@@ -12,14 +9,6 @@ import { trend_tag } from '../../timeline_components/trending_categories'
 // ================================================================================================
 
 function Tendances() {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const [filter, setFilter] = useState('none')
-  const { videos, channels, onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
-
   return (
     <div className="flex flex-row ml-[15%] text-me-orange h-screen bg-neutral-900">
       <div>
@@ -27,6 +16,7 @@ function Tendances() {
           <img
             className="rounded-full mr-2%"
             src="https://www.youtube.com/img/trending/avatar/trending.png"
+            alt='trending'
           ></img>
           <h3 className="ml-5 p-0 text-center leading-normal text-3xl">
             RECOMMANDATIONS

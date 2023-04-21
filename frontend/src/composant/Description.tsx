@@ -8,32 +8,11 @@ export function Description() {
   }) {
     setDescription(event.target.value)
   }
-  function post() {
-    console.log('log')
-    const message = document.getElementById('description') as HTMLInputElement
-    const local = {
-      description: message.value,
-      live: 'Zerator'
-    }
-    fetch('http://127.0.0.1:5600/desc', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(local)
-    })
-      .then(res => {
-        return res.text()
-      })
-      .then(res => {
-        console.log(res)
-      })
-  }
 
   return (
     <div className="p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md border">
       <div className="mt-3 text-center">
-        <h3 className="text-lg font-medium text-red-500 text-me-colorprimary font-bold">
+        <h3 className="text-lg font-medium text-red-500 text-me-colorprimary">
           Description
         </h3>
         <p className="mt-2 text-sm text-black-900 text-me-white">

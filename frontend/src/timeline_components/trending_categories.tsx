@@ -34,7 +34,7 @@ export function trend_tag() {
         {vid_a_afficher.map(video => (
           <div className="flex mb-[5%]">
             <div className="w-1/3">
-              <img className="w-64 h-144 rounded-lg" src={video.minia} />
+              <img className="w-64 h-144 rounded-lg" src={video.minia} alt='minia'/>
             </div>
             <div className="w-2/3 px-4">
               <h5 className="text-lg font-bold">{video.titre}</h5>
@@ -42,6 +42,7 @@ export function trend_tag() {
                 <img
                   className="w-6 h-6 rounded-full mr-2"
                   src={video.img_chaine}
+                  alt='pfp'
                 />
                 <p className="text-gray-500">{video.chaine}</p>
               </div>
@@ -75,6 +76,7 @@ export function trend_videos() {
             <img
               className="mr-1% rounded-lg h-144 w-64"
               src={trend_videos.minia}
+              alt='minia'
             />
             <h5 className="text-left font-sans py-2">{trend_videos.titre}</h5>
             <p className="text-left pb-5">{trend_videos.chaine}</p>

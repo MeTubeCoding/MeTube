@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const nombreViewer = () => {
+const NombreViewer = () => {
   const [viewerCount, setViewerCount] = useState(0)
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const nombreViewer = () => {
   )
 }
 
-export default nombreViewer
+export default NombreViewer

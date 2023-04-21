@@ -1,14 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
-
-interface Message {
-  id: string
-  pseudo: string
-  message: string
-}
+import React, { useEffect } from 'react'
 
 export function Chat() {
-  const [messages, setMessages] = useState<Message[]>([])
-  const invisibleButtonRef = useRef<HTMLButtonElement>(null)
   const motsInterdit = ['test']
 
   useEffect(() => {
@@ -80,20 +72,7 @@ export function Chat() {
       resetInput()
     }
   }
-
-  function fetchMessages() {
-    fetch('http://127.0.0.1:5600/chat', {
-      method: 'GET'
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(res => {
-        console.log(res)
-        setMessages(res)
-      })
-  }
-
+  
   function getChat() {
     fetch('http://127.0.0.1:5600/chat', {
       method: 'GET'
@@ -112,10 +91,6 @@ export function Chat() {
           section.appendChild(p)
         })
       })
-  }
-
-  function handleInvisibleButtonClick() {
-    fetchMessages()
   }
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {

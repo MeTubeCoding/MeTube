@@ -1,17 +1,18 @@
 import { useState } from 'react'
-import { IResults, SIResults, CIResults } from './Results'
+import { IResults, CIResults } from './Results'
 
 const useOnSearch = () => {
   const [videos, setVideos] = useState<IResults | []>([])
   const [channels, setChannels] = useState<CIResults | []>([])
-  const [shorts, setShorts] = useState<SIResults | []>([])
 
   const onSearch = (
     data: string,
-    setSearched: React.Dispatch<React.SetStateAction<boolean>>
+    setSearched: React.Dispatch<React.SetStateAction<boolean>>,
+    setOnShorts: React.Dispatch<React.SetStateAction<boolean>>, 
   ) => {
     console.log(JSON.stringify(data))
     setSearched(true)
+    setOnShorts(false)
 
     fetch('http://127.0.0.1:5600/videos/searchVideos', {
       method: 'POST',

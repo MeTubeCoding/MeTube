@@ -1,21 +1,6 @@
-import React, { useState } from 'react'
-import Main from '../../pages/Main'
-import Results from '../../components/Results'
-import Navbar from '../../components/Navbar'
-import { useOnSearch } from '../../components/useOnSearch'
-import SideBar from '../../components/SideBar'
-import Filters from '../../components/Filters'
-import { channel } from 'diagnostics_channel'
-import { set } from 'mongoose'
+import React from 'react'
 
 function History() {
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false)
-  const [filter, setFilter] = useState('none')
-  const { videos, channels, onSearch } = useOnSearch()
-
-  const toggleSideBarVisibility = () => {
-    setIsSideBarVisible(prevState => !prevState)
-  }
 
   return (
     <div className="History text-me-orange">
@@ -161,7 +146,7 @@ function History() {
             Hier
           </p>
           <div>
-            <p className="absolute font-bold text-base text-white relative mt-10 mb-5">
+            <p className="absolute font-bold text-base text-white mt-10 mb-5">
               Shorts
               <div className="bg-neutral-100 absolute right-0 top-2 w-1 h-1 bg-gray-500 rounded-full"></div>
               <div className="bg-neutral-100 absolute right-0 top-4 w-1 h-1 bg-gray-500 rounded-full"></div>

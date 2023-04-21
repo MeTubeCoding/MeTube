@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 interface Props {
   onSearch: (
     data: string,
-    setSearched: React.Dispatch<React.SetStateAction<boolean>>
+    setSearched: React.Dispatch<React.SetStateAction<boolean>>, setShorts: React.Dispatch<React.SetStateAction<boolean>>
   ) => void
   setSearched: React.Dispatch<React.SetStateAction<boolean>>
   setShorts: React.Dispatch<React.SetStateAction<boolean>>
@@ -56,7 +56,7 @@ const Navbar = (props: Props) => {
           </div>
           <div className="flex justify-center items-center flex-grow">
             <SearchBar
-              onSearch={data => props.onSearch(data, props.setSearched)}
+              onSearch={data => props.onSearch(data, props.setSearched, props.setShorts)}
             />
           </div>
           <div className="flex items-center">

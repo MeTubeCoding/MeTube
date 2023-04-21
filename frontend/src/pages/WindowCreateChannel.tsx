@@ -1,8 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React from 'react'
-import { useState } from 'react'
 
 const WindowCreateChannel = () => {
   return (

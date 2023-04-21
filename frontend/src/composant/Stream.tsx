@@ -3,15 +3,9 @@ import '../index.css'
 
 export function Stream() {
   let peerConnection: RTCPeerConnection
-  let remoteStream: MediaStream
 
   const [localStream, setLocalStream] = useState<MediaStream>()
   const [showEcran, setShowEcran] = useState<MediaStream>()
-  const [mode, setMode] = useState('streamer')
-
-  const handleModeChange = (newMode: string) => {
-    setMode(newMode)
-  }
 
   const init = async () => {
     console.log('exec')
@@ -35,8 +29,6 @@ export function Stream() {
   const createOffer = async () => {
     peerConnection = new RTCPeerConnection()
 
-    remoteStream = new MediaStream()
-
     const offer = await peerConnection.createOffer()
     await peerConnection.setLocalDescription(offer)
 
@@ -57,11 +49,11 @@ export function Stream() {
 
       createOffer()
     }
-  }, [localStream, showEcran])
+  })
 
   return (
     <div className="relative">
-      <div id="videos" className="w-max h-max px-20 w-full ">
+      <div id="videos" className="w-max h-max px-20">
         <video
           className="border rounded-md"
           id="partageEcran"

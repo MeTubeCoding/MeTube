@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Signup from '../components/Signup'
 
 function SignupPage(): JSX.Element {
-  {
+  
     return (
       <>
         <Header
@@ -15,7 +15,7 @@ function SignupPage(): JSX.Element {
         <Signup />
       </>
     )
-  }
+  
 }
 
 export default SignupPage

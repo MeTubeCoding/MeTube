@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 interface Message {
   id: string
@@ -7,9 +7,7 @@ interface Message {
 }
 
 export function ModerationChat() {
-  const [messages, setMessages] = useState<Message[]>([])
   const invisibleButtonRef = useRef<HTMLButtonElement>(null)
-  const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
 
   function getChat() {
     fetch('http://127.0.0.1:5600/moderation', {
@@ -41,7 +39,6 @@ export function ModerationChat() {
         return res.json()
       })
       .then(res => {
-        setMessages(res)
       })
   }
 

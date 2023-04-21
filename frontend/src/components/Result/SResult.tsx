@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import React, { useEffect } from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownIcon from '@mui/icons-material/ThumbDown'
@@ -31,7 +30,7 @@ const SResult = (props: Props) => {
   return (
     <div className="video">
       <div className="shortsContainer">
-        <video className="video__player" loop src={props.short.url} autoPlay />
+        <video className="video__player" loop src={props.short.url} autoPlay/>
         <div className="shortsVideoTop">
           <div className="shortsVideoTopIcon">
           </div>
