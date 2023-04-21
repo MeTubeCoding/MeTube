@@ -19,7 +19,7 @@ import WindowCreateOneChannel from './pages/WindowCreateOneChannel'
 
 function App() {
   return (
-    <div className="min-h-full h-screen flex">
+    <div className="min-h-full h-screen flex text-me-yellow">
       <div className="w-full space-y-8">
         <BrowserRouter>
           <Routes>
